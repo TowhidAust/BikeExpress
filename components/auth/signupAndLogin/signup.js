@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { AiOutlineGoogle } from 'react-icons/ai';
+import { FaFacebookF } from 'react-icons/fa';
 
 export default function SignUp() {
     const [rightPanelActiveClass, setRightPanelActiveClass] = useState('');
@@ -16,9 +18,9 @@ export default function SignUp() {
                     <form action="#">
                         <h1>Create Account</h1>
                         <div className="social-container">
-                            <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                            <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                            <a href="#" className="social"><AiOutlineGoogle color="#542d2d"/></a>
+                            <a href="#" className="social"><FaFacebookF color="#542d2d"/></a>
+                            {/* <a href="#" className="social"><FcGoogle/></a> */}
                         </div>
                         <span>or use your email for registration</span>
                         <input type="text" placeholder="Name" />
@@ -28,18 +30,18 @@ export default function SignUp() {
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
-                    <form action="#">
+                    <form action="/">
                         <h1>Sign in</h1>
                         <div className="social-container">
-                            <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                            <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                            <a href="#" className="social"><AiOutlineGoogle color="#542d2d"/></a>
+                            <a href="#" className="social"><FaFacebookF color="#542d2d"/></a>
+                            {/* <a href="#" className="social"><FcGoogle/></a> */}
                         </div>
                         <span>or use your account</span>
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
                         <a href="#">Forgot your password?</a>
-                        <button>Sign In</button>
+                        <button type="submit">Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">
