@@ -12,7 +12,7 @@ export default function SignUp() {
     }
   
     return (
-        <div>
+        <div className="signup-login-container">
             <div className={`container ${rightPanelActiveClass}`} id="container">
                 <div className="form-container sign-up-container">
                     <form action="#">
