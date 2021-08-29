@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {RiMotorbikeLine} from 'react-icons/ri'
+import {AiOutlineUser} from 'react-icons/ai'
 import {
   Collapse,
   Navbar,
@@ -22,24 +24,24 @@ const TopNav = (props) => {
   return (
     <div className="top-nav-root">
       <Navbar className="top-nav-container container" dark expand="md">
-        <NavbarBrand href="/">BikeExpress</NavbarBrand>
+        <NavbarBrand className="d-flex flex-row align-items-center" href="/"> <RiMotorbikeLine/> <div className="top-nav-logo-name"> BikeExpress </div></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mx-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">SELL</NavLink>
+              <NavLink className="text-white" href="/components/">SELL</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">BUY</NavLink>
+              <NavLink className="text-white" href="https://github.com/reactstrap/reactstrap">BUY</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">BUY AT HOME</NavLink>
+              <NavLink className="text-white" href="https://github.com/reactstrap/reactstrap">BUY AT HOME</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">SELL YOUR BIKE AND BUY NEW BIKE</NavLink>
+              <NavLink className="text-white" href="https://github.com/reactstrap/reactstrap">SELL YOUR BIKE AND BUY NEW BIKE</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
+              <DropdownToggle className="text-white" nav caret>
                 OPTIONS
               </DropdownToggle>
               <DropdownMenu right>
@@ -56,7 +58,12 @@ const TopNav = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          {/* <NavbarText>Simple Text</NavbarText> */}
+          <NavbarText>
+              <NavLink className="text-white d-flex flex-row align-items-center" href="/signup">
+                <AiOutlineUser/> 
+                <div className="top-nav-login-text">LOGIN</div>
+              </NavLink>
+            </NavbarText>
         </Collapse>
       </Navbar>
     </div>

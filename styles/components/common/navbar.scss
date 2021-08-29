@@ -1,5 +1,10 @@
 .top-nav-root{
+    font-weight: 500;
     background: linear-gradient(to right, #384569, #542d2d);
     color: white;
+    padding: 8px 0;
+    .top-nav-logo-name, .top-nav-login-text{
+        margin-left: 5px;
+    }
 
 }
