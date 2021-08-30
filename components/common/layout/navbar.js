@@ -59,11 +59,11 @@ const TopNav = (props) => {
             </UncontrolledDropdown>
           </Nav>
           <NavbarText>
-              <NavLink className="text-white d-flex flex-row align-items-center" href="/signup">
-                <AiOutlineUser/> 
-                <div className="top-nav-login-text">LOGIN</div>
-              </NavLink>
-            </NavbarText>
+            <NavLink className="text-white d-flex flex-row align-items-center" href="/signup">
+              <AiOutlineUser/> 
+              <div className="top-nav-login-text">LOGIN</div>
+            </NavLink>
+          </NavbarText>
         </Collapse>
       </Navbar>
     </div>

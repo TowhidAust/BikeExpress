@@ -2,10 +2,21 @@
 @import './components/auth/auth.scss';
 @import './components/common/carousel.scss';
 @import './components/common/navbar.scss';
+@import './components/common/banner.scss';
 * {
 	box-sizing: border-box;
 }
 body{
+	font-family: 'Montserrat', sans-serif !important;
   margin: 0;
   padding: 0;
+}
+
+.common-button-1{
+  width: 10em;
+  height: 3em;
+  background: $gradient;
+  border: none;
+  color: white;
+  border-radius: 3px;
 }

@@ -1,43 +1,42 @@
-// for select and search
-$glass: rgba(255, 255, 255, 0.2);
+$glass: rgba(255, 255, 255, 0.3);
 $glass-icon: rgba(255, 255, 255, 0.3);
 $gradient: linear-gradient(35deg, #384569, #542d2d);
 $option: #320a28;
+.banner-root{
+    // for select and search
 
-.carousel-root{
+    position: relative;
     width: 100%;
-    margin: auto;
-    .carousel-image{
-        position: relative;
-        width: 100%;
-        height: 93vh;
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .carousel-image-1{
-        background: url(https://images.pexels.com/photos/2393816/pexels-photo-2393816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .carousel-overlay{
+    background: url(https://images.pexels.com/photos/2393816/pexels-photo-2393816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 94vh;
+    
+    
+    .banner-overlay{
         color: white;
         width: 100%;
         height: 100%;
-        background: rgba($color: #000000, $alpha: 0.5);
+        background: rgba($color: #000000, $alpha: 0.7);
         position: absolute;
     }
-    .carousel-overlay-text {
+    .banner-overlay-text {
+        h1{
+            font-weight: bold;
+            font-size: 2em;
+        }
         p{
             font-size: 18px;
-            width: 70%;
+            width: 45em;
+            // background: red;
             margin: auto;
         }
-        width: 80%;
+        width: 100%;
         margin: auto;
     }
-    .carousel-overlay-search{
+    .banner-overlay-search{
+        // background: blue;
+        margin-top: 2em;
         // src: https://codepen.io/raubaca/pen/bGWmZje
         select {
             /* Reset */
@@ -70,5 +69,15 @@ $option: #320a28;
               display: none;
             }
           }
+
+          .banner-search-button{
+              width: 10em;
+              height: 3em;
+              background: $gradient;
+              border: none;
+              color: white;
+              border-radius: 3px;
+          }
     }
+
 }
