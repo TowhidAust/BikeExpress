@@ -4,7 +4,6 @@ $gradient: linear-gradient(35deg, #384569, #542d2d);
 $option: #320a28;
 .banner-root{
     // for select and search
-
     position: relative;
     width: 100%;
     background: url(https://images.pexels.com/photos/2393816/pexels-photo-2393816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
@@ -20,11 +19,15 @@ $option: #320a28;
         background: rgba($color: #000000, $alpha: 0.7);
         position: absolute;
     }
+    .banner-overlay-inner{
+      width: 100%;
+    }
     .banner-overlay-text {
         h1{
             text-transform: uppercase;
             font-weight: bold;
             font-size: 2em;
+            text-align: center;
         }
         .banner-logo-name{
           margin-left: 15px;
@@ -40,7 +43,9 @@ $option: #320a28;
     }
     .banner-overlay-search{
         background: #384569;
-        padding: 2%;
+        width: 50% !important;
+        margin: 0 auto;
+        padding: 1em;
         border-radius: 3px;
         margin-top: 2em;
         // src: https://codepen.io/raubaca/pen/bGWmZje
@@ -52,9 +57,9 @@ $option: #320a28;
             outline: 0;
             font: inherit;
             /* Personalize */
-            width: 22em;
+            width: 35%;
             height: 3em;
-            margin-right: 8px;
+            margin-right: 1%;
             padding: 0 4em 0 1em;
             background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
                 no-repeat right 0.8em center / 1.4em,
@@ -80,7 +85,7 @@ $option: #320a28;
 
           .banner-search-button{
               text-transform: uppercase;
-              width: 10em;
+              width: 28%;
               height: 3em;
               background: #542d2d;
               border: none;
@@ -88,5 +93,130 @@ $option: #320a28;
               border-radius: 3px;
           }
     }
+}
 
+
+// media queries
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .banner-root{
+    p{
+      width: 100% !important;
+    }
+
+    .banner-overlay-search{
+      width: 95% !important;
+      select {
+          width: 35%;
+          height: 3em;
+          font-size: 12px;
+      }
+
+      .banner-search-button{
+          width: 28%;
+          height: 3em !important;
+          font-size: 12px;
+          
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+  .banner-root{
+    p{
+      width: 100% !important;
+    }
+
+    .banner-overlay-search{
+      width: 95% !important;
+      select {
+          width: 35%;
+          height: 3em;
+          font-size: 12px;
+      }
+
+      .banner-search-button{
+          width: 28%;
+          height: 3em !important;
+          font-size: 12px;
+          
+      }
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .banner-root{
+    p{
+      width: 100% !important;
+    }
+
+    .banner-overlay-search{
+      width: 95% !important;
+      select {
+          width: 35%;
+          height: 3em;
+          font-size: 12px;
+      }
+
+      .banner-search-button{
+          width: 28%;
+          height: 3em !important;
+          font-size: 12px;
+          
+      }
+    }
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .banner-root{
+    p{
+      width: 100% !important;
+    }
+
+    .banner-overlay-search{
+      width: 95% !important;
+      select {
+          width: 35%;
+          height: 3em;
+          font-size: 12px;
+      }
+
+      .banner-search-button{
+          width: 28%;
+          height: 3em !important;
+          font-size: 12px;
+          
+      }
+    }
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px)  {
+  .banner-root{
+    p{
+      width: 100% !important;
+    }
+
+    .banner-overlay-search{
+      width: 95% !important;
+      select {
+          width: 35%;
+          height: 3em;
+          font-size: 12px;
+      }
+
+      .banner-search-button{
+          width: 28%;
+          height: 3em !important;
+          font-size: 12px;
+      }
+    }
+  }
 }

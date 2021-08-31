@@ -23,7 +23,7 @@ export default function CommonCard() {
 
   return (
     <div className="common-card-root container">
-      <h1 className="text-center mb-5">One Stop For Countless Benefits</h1>
+      <h1 className="text-center mb-5 mt-5">One Stop For Countless Benefits</h1>
       <div className="row" style={{width:"100%", margin:0}}>
           <div className="col-md-4">
               <Card className={classes.root}>
