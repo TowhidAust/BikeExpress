@@ -22,8 +22,12 @@ $option: #320a28;
     }
     .banner-overlay-text {
         h1{
+            text-transform: uppercase;
             font-weight: bold;
             font-size: 2em;
+        }
+        .banner-logo-name{
+          margin-left: 15px;
         }
         p{
             font-size: 18px;
@@ -35,18 +39,22 @@ $option: #320a28;
         margin: auto;
     }
     .banner-overlay-search{
-        // background: blue;
+        background: #384569;
+        padding: 2%;
+        border-radius: 3px;
         margin-top: 2em;
         // src: https://codepen.io/raubaca/pen/bGWmZje
         select {
+            text-transform: uppercase;
             /* Reset */
             appearance: none;
             border: 0;
             outline: 0;
             font: inherit;
             /* Personalize */
-            width: 20em;
+            width: 22em;
             height: 3em;
+            margin-right: 8px;
             padding: 0 4em 0 1em;
             background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
                 no-repeat right 0.8em center / 1.4em,
@@ -71,9 +79,10 @@ $option: #320a28;
           }
 
           .banner-search-button{
+              text-transform: uppercase;
               width: 10em;
               height: 3em;
-              background: $gradient;
+              background: #542d2d;
               border: none;
               color: white;
               border-radius: 3px;

@@ -15,6 +15,7 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import Logo from '../logo/logo';
 
 const TopNav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,12 @@ const TopNav = (props) => {
   return (
     <div className="top-nav-root">
       <Navbar className="top-nav-container container" dark expand="md">
-        <NavbarBrand className="d-flex flex-row align-items-center" href="/"> <RiMotorbikeLine/> <div className="top-nav-logo-name"> BikeExpress </div></NavbarBrand>
+        <NavbarBrand className="d-flex flex-row align-items-center" href="/"> 
+        {/* <div className="top-nav-logo-name">
+          Bike <div className="bike-logo"><RiMotorbikeLine/></div> Hub 
+        </div> */}
+        <Logo/>
+         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mx-auto" navbar>

@@ -1,4 +1,6 @@
-import React from 'react'
+import { RiMotorbikeLine } from 'react-icons/ri'
+import Logo from '../logo/logo';
+
 
 export default function Banner() {
     return (
@@ -6,8 +8,10 @@ export default function Banner() {
             <div className="banner-overlay d-flex flex-row justify-content-center align-items-center">
               <div className="banner-overlay-inner">
                 <div className="banner-overlay-text text-center">
-                  <h1> Buy sell or Exchange your bike from Bike Express </h1>
-                  <p> Browse the best bikes in your area. Doorstep delivery, used bike in your prefered area in reasonable price. Also buy new bike from anywhere in Bangladesh. So why so late? Let's jump in, and buy your dream bike. </p>
+                  <h1 className="d-flex flex-row"> Buy sell or Exchange your bike from <Logo/></h1>
+
+                   
+                  <p> Browse the best bikes in your area. Doorstep delivery, used bike in your prefered area in reasonable price. Also buy new bike from anywhere in Bangladesh. Why so late? Let's jump in, and buy your dream bike. </p>
                 </div>
                 <div className="banner-overlay-search d-flex justify-content-center align-items-center">
                     <select>

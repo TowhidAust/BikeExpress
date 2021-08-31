@@ -3,11 +3,12 @@
 @import './components/common/carousel.scss';
 @import './components/common/navbar.scss';
 @import './components/common/banner.scss';
+@import './components/common/logo.scss';
 * {
 	box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 body{
-	font-family: 'Montserrat', sans-serif !important;
   margin: 0;
   padding: 0;
 }

@@ -1,8 +1,6 @@
-.top-nav-root{
-    background: linear-gradient(to right, #384569, #542d2d);
-    color: white;
-    text-transform: uppercase;
-    .top-nav-logo-name{
+
+.logo-root{
+    .logo-name{
         position: relative;
         margin-left: 5px;
         display: flex;
@@ -10,25 +8,20 @@
         align-items: center;
         font-size: 30px;
         font-weight: 600;
+        text-transform: uppercase;
     }
-    .top-nav-login-text{
-        position: relative;
-        margin-left: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
+    
     .bike-logo{
         border: 1px solid #ddd;
         border-radius: 100%;
         width: 25px;
         height: 25px;
-        // margin-right: 10px;
         padding: 2%;
         display: flex;
         justify-content: center;
         align-items: center;
+        white-space: nowrap;
+        color: white;
     }
 
 }
