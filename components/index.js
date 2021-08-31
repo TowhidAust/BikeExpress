@@ -1,5 +1,6 @@
 import Banner from './common/banner/banner';
 import { Button } from '@material-ui/core';
+import CommonCard from './common/card/card';
 // import styles from '../styles/Home.module.css'
 
 export default function Index() {
@@ -8,7 +9,7 @@ export default function Index() {
       
       <Banner/>
       <section className="one-stop-section-root">
-        <Button color="primary">Hello World</Button>
+       <CommonCard/>
       </section>
     </>
   )
