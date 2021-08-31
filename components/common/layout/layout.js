@@ -16,7 +16,6 @@ export default function Layout({children}) {
                 <>
                    <TopNav/>
                    <div>{children}</div>
-                   {/* <div>footer</div> */}
                 </>
             )
         }
