@@ -1,15 +1,15 @@
+import BudgetBikes from './budgetBikes';
 import Banner from './common/banner/banner';
-import { Button } from '@material-ui/core';
-import CommonCard from './common/card/card';
-// import styles from '../styles/Home.module.css'
+import CommonCard from './oneStopCard';
+
 
 export default function Index() {
   return (
     <>
-      
-      <Banner/>
+      <Banner />
       <section className="one-stop-section-root">
-       <CommonCard/>
+        <CommonCard />
+        <BudgetBikes/>
       </section>
     </>
   )

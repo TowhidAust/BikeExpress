@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Logo from '../logo/logo';
+import Logo from '../common/logo/logo';
 import { AiOutlineDollar } from 'react-icons/ai';
 import { RiMotorbikeLine } from 'react-icons/ri';
 import {GiCardExchange, GiSellCard} from 'react-icons/gi'
@@ -22,7 +22,7 @@ export default function CommonCard() {
 
   return (
     <div className="common-card-root container">
-      <h1 className="text-center mb-5 mt-5">One Stop For Countless Benefits</h1>
+      <h1 className="text-center mb-5 mt-5">One stop for countless benefits</h1>
       <div className="row common-card-inner-row" style={{width:"100%", margin:0}}>
           <div className="col-md-4 mb-2 common-card-col">
               <Card className={`card-inner ${classes.root}`}>
