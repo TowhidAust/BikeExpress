@@ -1,59 +1,44 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Logo from '../common/logo/logo';
-import { AiOutlineDollar } from 'react-icons/ai';
-import { RiMotorbikeLine } from 'react-icons/ri';
-import {GiCardExchange, GiSellCard} from 'react-icons/gi'
-const useStyles = makeStyles({
-    root: {
-      width: "100%",
-      display: "flex",
-      height: "18em",
-      justifyContent: "center",
-      alignItems: "center",
-      marginBottom:"5%"
-      // background: "linear-gradient(to right, #384569, #542d2d)"
-    }
-  });
-export default function CommonCard() {
-    const classes = useStyles();
-//   const bull = <span className={classes.bullet}>•</span>;
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-  return (
-    <div className="common-card-root container">
-      <h1 className="text-center mb-5 mt-5">One stop for countless benefits</h1>
-      <div className="row common-card-inner-row" style={{width:"100%", margin:0}}>
-          <div className="col-md-4 mb-2 common-card-col">
-              <Card className={`card-inner ${classes.root}`}>
-              <CardContent>
-                  <div className="common-card-icon"> <AiOutlineDollar color="red"/></div>
-                  <h4 className="text-center">BUY USED BIKES</h4>
-                  <p className="text-center">Buy the best quality used bikes from BIKEHUB</p>
-              </CardContent>
-              </Card>
-          </div>
+const bull = (
+    <Box
+        component="span"
+        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+        •
+    </Box>
+);
 
-          <div className="col-md-4 mb-2 common-card-col">
-              <Card className={`card-inner ${classes.root}`}>
-              <CardContent>
-                  <div className="common-card-icon"><GiSellCard color="red"/></div>
-                  <h4 className="text-center">SELL YOUR BIKE</h4>
-                  <p className="text-center">Sell your bike to BIKEHUB at the best price with instant payment </p>
-              </CardContent>
-              </Card>
-          </div>
-
-          <div className="col-md-4 mb-2 common-card-col">
-              <Card className={`card-inner ${classes.root}`}>
-              <CardContent>
-                  <div className="common-card-icon"><GiCardExchange color="red"/></div>
-                  <h4 className="text-center"> EXCHANGE YOUR BIKE </h4>
-                  <p className="text-center"> Bring your old bike and get it exchanged with a new bike at the best price from BIKEHUB </p>
-              </CardContent>
-              </Card>
-          </div>
-      </div>
-    </div>
-    )
+export default function OneStopCard() {
+    return (
+        <div className="one-stop-card">
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        Word of the Day
+                    </Typography>
+                    <Typography variant="h5" component="div">
+                        be{bull}nev{bull}o{bull}lent
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        adjective
+                    </Typography>
+                    <Typography variant="body2">
+                        well meaning and kindly.
+                        <br />
+                        {'"a benevolent smile"'}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button size="small">Learn More</Button>
+                </CardActions>
+            </Card>
+        </div>
+    );
 }
