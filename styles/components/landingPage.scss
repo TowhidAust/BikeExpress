@@ -1,10 +1,24 @@
-
-.landing-page-root{
+.landing-page-root {
     width: 80%;
     margin: auto;
+
+    // ONE STOP CARDS SECTION
+    .bike-hub-basic-card {
+        cursor: pointer;
+    }
+
+    // FEATURED BIKES SECTION
     .budget-bikes-root {
         width: 100%;
         margin: auto;
         margin-bottom: 10%;
     }
+
+    .slick-carousel-container {
+        .slick-prev:before,
+        .slick-next:before {
+            color: red;
+        }
+    }
+
 }

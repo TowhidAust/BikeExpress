@@ -1,4 +1,4 @@
-import ProductCard from "../common/productCard";
+import ProductCard from "../common/product-card";
 import { styled } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
@@ -15,7 +15,7 @@ export default function BudgetBikes() {
     return (
         <div className="budget-bikes-root">
             <div className="budget-bikes-inner">
-                <h3 className="text-center p-5">Budget Bikes</h3>
+                <h3 className="text-center p-5 mt-5">FEATURED BIKES</h3>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} md={3}>
