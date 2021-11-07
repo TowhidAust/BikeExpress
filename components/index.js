@@ -3,24 +3,23 @@ import { Box } from '@mui/system';
 import BudgetBikes from './budget-bikes';
 import Banner from './common/banner/banner';
 import SlickCarousel from './common/slick-carousel/slick';
-import BasicCard from './basic-card';
+import BasicCard from './common/basic-card';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 import { Router, useRouter } from 'next/dist/client/router';
-import TemporaryDrawer from './drawer';
 export default function Index() {
 
   const router = useRouter();
   const returnIcon = (iconName) => {
     if (iconName === "usedBike") {
-      return <TwoWheelerIcon sx={{ color: "#384569", fontSize: "5em" }} />
+      return <TwoWheelerIcon sx={{ color: "#384569", fontSize: "4em" }} />
     }
     if (iconName === "sellBike") {
-      return <MonetizationOnOutlinedIcon sx={{ color: "#384569", fontSize: "5em" }} />
+      return <MonetizationOnOutlinedIcon sx={{ color: "#384569", fontSize: "4em" }} />
     }
     if (iconName === "exchangeBike") {
-      return <ChangeCircleOutlinedIcon sx={{ color: "#384569", fontSize: "5em" }} />
+      return <ChangeCircleOutlinedIcon sx={{ color: "#384569", fontSize: "4em" }} />
     }
   }
   const usedBikeClickHandler = () => {
@@ -41,7 +40,6 @@ export default function Index() {
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={4}>
-
                 <BasicCard title="SELL YOUR BIKE" description="Sell your bike to BikeHub at the best price with instant payment." icon={returnIcon('sellBike')} onclickCallback={sellBikeClickHandler} />
               </Grid>
               <Grid item xs={12} md={4}>

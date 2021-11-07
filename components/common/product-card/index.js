@@ -16,25 +16,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
-
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import AvTimerOutlinedIcon from '@mui/icons-material/AvTimerOutlined';
+import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 export default function ProductCard() {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   return (
     <Card>
       <CardMedia
@@ -44,40 +33,43 @@ export default function ProductCard() {
         alt="Paella dish"
       />
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: "red", fontSize: 12 }} aria-label="recipe">
-            10%
-          </Avatar>
-        }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+          <div className="product-discount">10%</div>
         }
         title="Yamaha r15 v3"
         subheader="September 14, 2016"
       />
-      <CardContent>
+      <CardContent className="pb-0">
         <div className="product-card-content">
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, color: "#9d9d9d" }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={12}>
-                Price: 280000 BDT
+              
+              <Grid className="pt-1 flex-start font-weight-bold" item xs={12} md={12} color="#384569">
+                <div>BDT 280000 </div>
               </Grid>
-              <Grid item xs={12} md={6}>
-                Used
+              <Grid className="pt-1 flex-start" item xs={12} md={6}>
+                <DateRangeIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
+                <div> 2021 </div>
               </Grid>
-              <Grid item xs={12} md={6}>
-                110 CC
+              <Grid className="pt-1 flex-start" item xs={12} md={6}>
+                <BuildOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
+                <div>Used</div>
               </Grid>
-              <Grid item xs={12} md={6}>
-                Dhaka
+              <Grid className="pt-1 flex-start" item xs={12} md={6}>
+                <SettingsOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
+                <div>110 CC</div>
               </Grid>
-              <Grid item xs={12} md={6}>
-                4418 kms
+              <Grid className="pt-1 flex-start" item xs={12} md={6}>
+                <LocationOnOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
+                <div>Dhaka</div>
               </Grid>
-              <Grid item xs={12} md={6}>
-                1 owner
+              <Grid className="pt-1 flex-start" item xs={12} md={6}>
+                <AvTimerOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
+                <div> 4418 kms </div>
+              </Grid>
+              <Grid className="pt-1 flex-start" item xs={12} md={6}>
+                <PersonOutlineOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
+                <div> 1 owner </div>
               </Grid>
             </Grid>
           </Box>
