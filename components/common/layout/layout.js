@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Footer from './footer';
 import TopNav from './navbar';
 export default function Layout({children}) {
     const router = useRouter();
@@ -16,6 +17,7 @@ export default function Layout({children}) {
                 <>
                    <TopNav/>
                    <div>{children}</div>
+                   <Footer/>
                 </>
             )
         }
