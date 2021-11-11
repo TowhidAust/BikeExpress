@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cleanup": "rm -rf node_modules & npm install"
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",
@@ -29,8 +30,8 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.13.3",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0"
+    "eslint-config-next": "11.1.0",
+    "eslint-config-prettier": "^8.3.0"
   }
 }

@@ -8,7 +8,7 @@ export default function Banner() {
             <h1 className="d-flex flex-row justify-content-center align-items-center flex-wrap"> Buy sell or Exchange your bike from <Logo /></h1>
 
 
-            <p> Browse the best bikes in your area. Doorstep delivery, used bike in your prefered area with reasonable price. Also buy new bike from anywhere in Bangladesh. Why so late? Let's jump in, and buy your dream bike. </p>
+            <p> Browse the best bikes in your area. Doorstep delivery, used bike in your prefered area with reasonable price. Also buy new bike from anywhere in Bangladesh. Why so late? Let&apos;s jump in, and buy your dream bike. </p>
           </div>
           <div className="banner-overlay-search d-flex justify-content-center align-items-center">
             <select>

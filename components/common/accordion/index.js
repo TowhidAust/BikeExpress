@@ -53,7 +53,7 @@ export default function CustomizedAccordions(props) {
     return (
         <div>
             {accordionCount.map((item, index) => ((
-                <Accordion expanded={expanded === `panel${index+1}`} onChange={handleChange(`panel${index+1}`)}>
+                <Accordion key={index} expanded={expanded === `panel${index+1}`} onChange={handleChange(`panel${index+1}`)}>
                     <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                         <Typography>Collapsible Group Item #1</Typography>
                     </AccordionSummary>
