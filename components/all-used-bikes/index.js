@@ -189,7 +189,7 @@ export default function AllUsedBikes() {
         ];
 
         return usedBikes.map((item, index) => (
-            <Grid className="p-1" key={index} item xs={12} md={3}>
+            <Grid className="p-1" key={index} item xs={12} md={4}>
                 <ProductCard productInfo={item}
                     title={item.title}
                     picture={item.picture}
