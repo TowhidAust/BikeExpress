@@ -48,3 +48,11 @@
       }
     }
   }
+
+  // abbr tag
+  abbr[data-bs-original-title], abbr[title] {
+    -moz-text-decoration: none !important;
+    text-decoration: none !important;
+    cursor: help;
+    text-decoration-skip-ink: none;
+}

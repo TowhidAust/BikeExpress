@@ -45,20 +45,8 @@ export default function Index() {
   const returnAllBudgetBikes = () => {
     let budgetBikes = [
       {
-        title: "YAMAHA R15 VERSION 4",
-        price: 300000,
-        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
-        discount: 0,
-        postedDate: "September 14, 2016",
-        modelYear: "2021",
-        cc: 155,
-        location: "Dhaka",
-        kmRun: 4418,
-        owner: 1,
-        condition: "used"
-      },
-      {
         title: "KTM",
+        picture: "https://images.pexels.com/photos/1715184/pexels-photo-1715184.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         price: 300000,
         description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
         discount: 10,
@@ -74,6 +62,7 @@ export default function Index() {
       {
         title: "HORNET",
         price: 300000,
+        picture: "https://images.pexels.com/photos/819805/pexels-photo-819805.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
         discount: 10,
         postedDate: "September 14, 2016",
@@ -87,6 +76,7 @@ export default function Index() {
       },
       {
         title: "SUZUKI GIXXER SF FI ABS",
+        picture: "https://images.pexels.com/photos/1191109/pexels-photo-1191109.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         price: 300000,
         description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
         discount: 10,
@@ -101,6 +91,22 @@ export default function Index() {
       },
       {
         title: "HONDA REPSOL",
+        picture: "https://images.pexels.com/photos/529782/pexels-photo-529782.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        price: 300000,
+        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
+        discount: 10,
+        postedDate: "September 14, 2016",
+        modelYear: "2021",
+        cc: 150,
+        location: "Dhaka",
+        kmRun: 4418,
+        owner: 2,
+        condition: "new"
+
+      },
+      {
+        title: "HONDA REPSOL",
+        picture: "https://images.pexels.com/photos/529782/pexels-photo-529782.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         price: 300000,
         description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
         discount: 10,
@@ -118,6 +124,7 @@ export default function Index() {
       <div className="p-1" key={index}>
         <ProductCard productInfo={item}
           title={item.title}
+          picture={item.picture}
           price={item.price}
           description={item.description}
           discount={item.discount}
@@ -132,6 +139,7 @@ export default function Index() {
       </div>
     ))
   }
+
   return (
     <>
       <Banner />
@@ -153,7 +161,7 @@ export default function Index() {
           </Box>
         </div>
         <div className="featured-bikes-container common-section-mergin">
-          <h3 className="text-center mb-3">FEATURED BIKES</h3>
+          <h3 className="text-center mb-4">FEATURED BIKES</h3>
           <FeaturedBikes />
         </div>
         <div className="budget-bikes-container common-section-mergin">

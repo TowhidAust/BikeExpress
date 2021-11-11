@@ -25,21 +25,21 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 export default function ProductCard(props) {
   console.log("props", props)
-  let { title, price, description, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, productInfo } = props
+  let { title, price, description, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, picture } = props
   
   return (
     <Card>
       <CardMedia
         component="img"
         height="194"
-        image="/images/default-bike.jpg"
+        image={picture || "/images/default-bike.jpg"}
         alt="Paella dish"
       />
       <CardHeader
         action={
           <div className="product-discount">{discount}%</div>
         }
-        title={<div style={{fontSize:"18px"}}>{title}</div>}
+        title={<div style={{fontSize:"14px", fontWeight: "bold"}}><abbr title={title}>{title.slice(0,16)}</abbr></div>}
         subheader={postedDate}
       />
       <CardContent className="pb-0">
@@ -48,7 +48,7 @@ export default function ProductCard(props) {
             <Grid container spacing={2}>
 
               <Grid className="pt-1 flex-start font-weight-bold" item xs={12} md={12} color="#384569">
-                <div>{price}</div>
+                <div>TK {price}</div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <DateRangeIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
