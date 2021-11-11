@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "../product-card"
 export default function SlickCarousel(props) {
   const { slickComponent } = props;
-
+  console.log('slickComponent', slickComponent)
   const settings = {
     dots: false,
     infinite: true,
@@ -40,46 +40,10 @@ export default function SlickCarousel(props) {
     ]
   };
 
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 5,
-  //   slidesToScroll: 3
-  // };
   return (
     <div className="slick-carousel-container">
       <Slider {...settings}>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
-        <div className="p-1">
-          {slickComponent}
-        </div>
+        {slickComponent}
       </Slider>
     </div>
   )

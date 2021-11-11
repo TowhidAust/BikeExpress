@@ -23,7 +23,10 @@ import AvTimerOutlinedIcon from '@mui/icons-material/AvTimerOutlined';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-export default function ProductCard() {
+export default function ProductCard(props) {
+  console.log("props", props)
+  let { title, price, description, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, productInfo } = props
+  
   return (
     <Card>
       <CardMedia
@@ -34,42 +37,42 @@ export default function ProductCard() {
       />
       <CardHeader
         action={
-          <div className="product-discount">10%</div>
+          <div className="product-discount">{discount}%</div>
         }
-        title="Yamaha r15 v3"
-        subheader="September 14, 2016"
+        title={<div style={{fontSize:"18px"}}>{title}</div>}
+        subheader={postedDate}
       />
       <CardContent className="pb-0">
         <div className="product-card-content">
           <Box sx={{ flexGrow: 1, color: "#9d9d9d" }}>
             <Grid container spacing={2}>
-              
+
               <Grid className="pt-1 flex-start font-weight-bold" item xs={12} md={12} color="#384569">
-                <div>BDT 280000 </div>
+                <div>{price}</div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <DateRangeIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
-                <div> 2021 </div>
+                <div> {modelYear} </div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <BuildOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
-                <div>Used</div>
+                <div>{condition}</div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <SettingsOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
-                <div>110 CC</div>
+                <div>{cc} CC</div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <LocationOnOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
-                <div>Dhaka</div>
+                <div>{location}</div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <AvTimerOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
-                <div> 4418 kms </div>
+                <div> {kmRun} kms </div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>
                 <PersonOutlineOutlinedIcon sx={{ fontSize: 20, marginBottom: "5px", marginRight: "5px" }} />
-                <div> 1 owner </div>
+                <div> {owner} owner </div>
               </Grid>
             </Grid>
           </Box>

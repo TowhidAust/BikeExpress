@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import ProductCard from '../common/product-card'
 import Select from 'react-select'
 import BikeHubCheckBox from '../common/checkbox'
-import CustomizedAccordions from '../common/accordion'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+
 
 // accordion imports
 import Accordion from '@mui/material/Accordion';
@@ -12,10 +13,10 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ReactPaginate from 'react-paginate'
 
 
 export default function AllUsedBikes() {
-    const [accordionCount, setAccordionCount] = useState([1, 2, 3]);
 
     // for accordion
     const [expanded, setExpanded] = React.useState(false);
@@ -51,7 +52,7 @@ export default function AllUsedBikes() {
                                         <Typography >
                                             Budget
                                         </Typography>
-                                        
+
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <div className="checkbox-container d-flex align-items-center">
@@ -72,7 +73,7 @@ export default function AllUsedBikes() {
                                         </div>
                                     </AccordionDetails>
                                 </Accordion>
-                                
+
                                 <Accordion className="m-0" expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
@@ -82,7 +83,7 @@ export default function AllUsedBikes() {
                                         <Typography >
                                             Brand
                                         </Typography>
-                                        
+
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <div className="checkbox-container d-flex align-items-center">
@@ -133,11 +134,23 @@ export default function AllUsedBikes() {
                                     </Grid>
                                 </Grid>
                             </Box>
+                            <div className="common-pagination-style">
+                                <ReactPaginate
+                                    previousLabel={<FiChevronLeft />}
+                                    nextLabel={<FiChevronRight />}
+                                    breakLabel={'...'}
+                                    breakClassName={'break-me'}
+                                    pageCount={100}
+                                    marginPagesDisplayed={2}
+                                    pageRangeDisplayed={6}
+                                    containerClassName={'pagination'}
+                                    activeClassName={'active'}
+                                />
+                            </div>
                         </div>
                     </Grid>
                 </Grid>
             </Box>
-
 
         </div>
     )

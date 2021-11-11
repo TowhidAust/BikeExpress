@@ -32,6 +32,106 @@ export default function Index() {
   const exchangeBikeClickHandler = () => {
     router.push('/exchange-bike');
   }
+
+  const returnAllBrandCards = () => {
+    let brands = ['SUZUKI', 'YAMAHA', 'HONDA', 'KTM', 'TVS'];
+    return brands.map((item, index) => (
+      <div className="p-1" key={index}>
+        <BasicCard icon={<TwoWheelerIcon sx={{ color: "#384569", fontSize: "4em" }} />} title={item} description="Lorem ipsum dolor sinet" />
+      </div>
+    ))
+  }
+
+  const returnAllBudgetBikes = () => {
+    let budgetBikes = [
+      {
+        title: "YAMAHA R15 VERSION 4",
+        price: 300000,
+        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
+        discount: 0,
+        postedDate: "September 14, 2016",
+        modelYear: "2021",
+        cc: 155,
+        location: "Dhaka",
+        kmRun: 4418,
+        owner: 1,
+        condition: "used"
+      },
+      {
+        title: "KTM",
+        price: 300000,
+        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
+        discount: 10,
+        postedDate: "September 14, 2016",
+        modelYear: "2021",
+        cc: 150,
+        location: "Dhaka",
+        kmRun: 4418,
+        owner: 1,
+        condition: "new"
+
+      },
+      {
+        title: "HORNET",
+        price: 300000,
+        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
+        discount: 10,
+        postedDate: "September 14, 2016",
+        modelYear: "2021",
+        cc: 150,
+        location: "Dhaka",
+        kmRun: 4418,
+        owner: 1,
+        condition: "new"
+
+      },
+      {
+        title: "SUZUKI GIXXER SF FI ABS",
+        price: 300000,
+        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
+        discount: 10,
+        postedDate: "September 14, 2016",
+        modelYear: "2021",
+        cc: 150,
+        location: "Dhaka",
+        kmRun: 4418,
+        owner: 1,
+        condition: "new"
+
+      },
+      {
+        title: "HONDA REPSOL",
+        price: 300000,
+        description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
+        discount: 10,
+        postedDate: "September 14, 2016",
+        modelYear: "2021",
+        cc: 150,
+        location: "Dhaka",
+        kmRun: 4418,
+        owner: 2,
+        condition: "new"
+
+      }
+    ];
+    return budgetBikes.map((item, index) => (
+      <div className="p-1" key={index}>
+        <ProductCard productInfo={item}
+          title={item.title}
+          price={item.price}
+          description={item.description}
+          discount={item.discount}
+          postedDate={item.postedDate}
+          modelYear={item.modelYear}
+          cc={item.cc}
+          location={item.location}
+          kmRun={item.kmRun}
+          owner={item.owner}
+          condition={item.condition}
+        />
+      </div>
+    ))
+  }
   return (
     <>
       <Banner />
@@ -58,11 +158,11 @@ export default function Index() {
         </div>
         <div className="budget-bikes-container common-section-mergin">
           <h3 className="text-center mb-3">BUDGET BIKES</h3>
-          <SlickCarousel slickComponent={<ProductCard />} />
+          <SlickCarousel slickComponent={returnAllBudgetBikes()} />
         </div>
         <div className="search-by-brand-container common-section-mergin">
           <h3 className="text-center mb-3">SEARCH BY BRAND</h3>
-          <SlickCarousel slickComponent={<BasicCard icon={<TwoWheelerIcon sx={{ color: "#384569", fontSize: "4em" }} />} title="SUZUKI" description="Lorem ipsum dolor sinet" />} />
+          <SlickCarousel slickComponent={returnAllBrandCards()} />
         </div>
       </section>
     </>
