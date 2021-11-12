@@ -1,10 +1,8 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ProductCard from "../product-card"
 export default function SlickCarousel(props) {
   const { slickComponent } = props;
-  console.log('slickComponent', slickComponent)
   const settings = {
     dots: false,
     infinite: true,

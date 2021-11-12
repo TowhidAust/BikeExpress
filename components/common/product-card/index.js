@@ -22,10 +22,11 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import AvTimerOutlinedIcon from '@mui/icons-material/AvTimerOutlined';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import Button from '@mui/material/Button';
 
 export default function ProductCard(props) {
-  console.log("props", props)
-  let { title, price, description, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, picture } = props
+  let { id, title, price, description, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, picture, seeDetailsClickHandler } = props;
+  
   
   return (
     <Card>
@@ -82,9 +83,8 @@ export default function ProductCard(props) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        <Button variant="text" size="small" color="primary">ADD TO CART</Button>
+        <Button variant="text" size="small" color="primary" onClick={(e)=>{seeDetailsClickHandler(e, id)}}>SEE MORE</Button>
       </CardActions>
     </Card>
   );
