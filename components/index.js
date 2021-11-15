@@ -24,7 +24,9 @@ export default function Index() {
     }
   }
   const usedBikeClickHandler = () => {
-    router.push('/used-bikes/all-used-bikes');
+    // router.push('/used-bikes/all-used-bikes');
+    router.push('/used-bikes/shops/bike-shop');
+    
   }
   const sellBikeClickHandler = () => {
     router.push('/sell-bike');

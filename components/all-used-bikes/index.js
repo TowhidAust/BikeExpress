@@ -312,7 +312,6 @@ export default function AllUsedBikes() {
                     </Grid>
                 </Grid>
             </Box>
-
         </div>
     )
 }

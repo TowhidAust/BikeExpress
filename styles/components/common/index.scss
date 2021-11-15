@@ -63,15 +63,11 @@ abbr[title] {
   text-decoration-skip-ink: none;
 }
 
-// SMALL BIKEHUB BUTTONS WITHOUT BACKGROUND
-.bike-hub-small-button {
-  min-width: 10em;
-  font-size: 12px;
-  border-radius: 3px;
-  text-transform: uppercase;
-  height: 3em;
-  background: none;
-  border: none;
-  color: red;
-  border-radius: 3 px;
+.image-width-100 {
+  width: 100%;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 14px;
 }
