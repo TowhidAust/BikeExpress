@@ -9,7 +9,9 @@
 @import './components/common/index.scss';
 @import './components/common/footer.scss';
 @import './components/common/product-card.scss';
-@import './components/all-used-bikes.scss';
+@import './components/all-used-bikes/all-used-bikes.scss';
+@import './components/all-used-bikes/shops.scss';
+
 * {
 	box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
