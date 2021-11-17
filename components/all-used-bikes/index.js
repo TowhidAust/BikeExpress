@@ -282,8 +282,6 @@ export default function AllUsedBikes() {
                                         </div>
                                     </AccordionDetails>
                                 </Accordion>
-
-
                             </div>
                         </div>
                     </Grid>
