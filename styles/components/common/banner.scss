@@ -1,6 +1,6 @@
 $glass: rgba(255, 255, 255, 0.3);
 $glass-icon: rgba(255, 255, 255, 0.3);
-$gradient: linear-gradient(35deg, black, darkred);
+$gradient: linear-gradient(35deg, black, red);
 $option: black;
 .banner-root{
     // for select and search
@@ -87,7 +87,7 @@ $option: black;
               text-transform: uppercase;
               width: 28%;
               height: 3em;
-              background: darkred;
+              background: red;
               border: none;
               color: white;
               border-radius: 3px;

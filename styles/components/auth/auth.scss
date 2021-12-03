@@ -1,5 +1,5 @@
 .signup-login-root {
-    background: linear-gradient(to bottom right, black, darkred);
+    background: linear-gradient(to bottom right, black, red);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,8 +36,8 @@
 
     button {
         border-radius: 20px;
-        border: 1px solid darkred;
-        background-color: darkred;
+        border: 1px solid red;
+        background-color: red;
         color: #FFFFFF;
         font-size: 12px;
         font-weight: bold;
@@ -151,9 +151,9 @@
 
     .overlay {
         background: #378b29;
-        background: -webkit-linear-gradient(to bottom right, darkred, black);
-        background: linear-gradient(to bottom right, black, darkred);
-        /* background: darkred; */
+        background: -webkit-linear-gradient(to bottom right, red, black);
+        background: linear-gradient(to bottom right, black, red);
+        /* background: red; */
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 0 0;
