@@ -9,9 +9,9 @@ export default function BikeHubCheckBox(props) {
     return (
         <div>
             <Checkbox {...label} sx={{
-                color: "#542d2d",
+                color: "darkred",
                 '&.Mui-checked': {
-                    color: "#542d2d",
+                    color: "darkred",
                 },
             }} />
         </div>

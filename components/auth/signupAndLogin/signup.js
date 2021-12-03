@@ -18,8 +18,8 @@ export default function SignUp() {
                     <form action="#">
                         <h1>Create Account</h1>
                         <div className="social-container">
-                            <a href="#" className="social"><AiOutlineGoogle color="#542d2d"/></a>
-                            <a href="#" className="social"><FaFacebookF color="#542d2d"/></a>
+                            <a href="#" className="social"><AiOutlineGoogle color="darkred"/></a>
+                            <a href="#" className="social"><FaFacebookF color="darkred"/></a>
                             {/* <a href="#" className="social"><FcGoogle/></a> */}
                         </div>
                         <span>or use your email for registration</span>
@@ -33,8 +33,8 @@ export default function SignUp() {
                     <form action="/">
                         <h1>Sign in</h1>
                         <div className="social-container">
-                            <a href="#" className="social"><AiOutlineGoogle color="#542d2d"/></a>
-                            <a href="#" className="social"><FaFacebookF color="#542d2d"/></a>
+                            <a href="#" className="social"><AiOutlineGoogle color="darkred"/></a>
+                            <a href="#" className="social"><FaFacebookF color="darkred"/></a>
                             {/* <a href="#" className="social"><FcGoogle/></a> */}
                         </div>
                         <span>or use your account</span>

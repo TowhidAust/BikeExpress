@@ -1,6 +1,6 @@
-$bike-hub-gradient-color: linear-gradient(to right, #384569, #542d2d);
-$bike-hub-primary-color: #384569;
-$bike-hub-secondary-color: #542d2d;
+$bike-hub-gradient-color: linear-gradient(to right, black, darkred);
+$bike-hub-primary-color: black;
+$bike-hub-secondary-color: darkred;
 
 .font-weight-bold {
   font-weight: bold;
@@ -49,7 +49,7 @@ $bike-hub-secondary-color: #542d2d;
 
     .active {
       color: white;
-      background-color: #384569;
+      background-color: black;
     }
   }
 }
@@ -70,4 +70,10 @@ abbr[title] {
 .title {
   font-weight: bold;
   font-size: 14px;
+}
+
+// custom width
+.container-80 {
+  width: 80%;
+  margin: auto;
 }

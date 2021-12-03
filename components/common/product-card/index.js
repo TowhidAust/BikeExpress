@@ -41,7 +41,7 @@ export default function ProductCard(props) {
           <Box sx={{ flexGrow: 1, color: "#9d9d9d" }}>
             <Grid container spacing={2}>
 
-              <Grid className="pt-1 flex-start font-weight-bold" item xs={12} md={12} color="#384569">
+              <Grid className="pt-1 flex-start font-weight-bold" item xs={12} md={12} color="black">
                 <div>TK {price}</div>
               </Grid>
               <Grid className="pt-1 flex-start" item xs={12} md={6}>

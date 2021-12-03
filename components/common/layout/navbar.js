@@ -173,7 +173,7 @@ export default function TopNav() {
     <React.Fragment>
       <CssBaseline />
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar sx={{background:"#384569"}}>
+          <AppBar sx={{background:"black"}}>
             <Toolbar>
               <TemporaryDrawer buttonText={returnMenuCollapseIcon}/>
               <Typography

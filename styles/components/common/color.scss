@@ -1,23 +1,23 @@
-$bike-hub-gradient-color: linear-gradient(to right, #384569, #542d2d);
-$bike-hub-primary-color: #384569;
-$bike-hub-secondary-color: #542d2d;
+$bike-hub-gradient-color: linear-gradient(to right, black, darkred);
+$bike-hub-primary-color: black;
+$bike-hub-secondary-color: darkred;
 
 .bike-hub-gradient-color {
-    background: linear-gradient(to right, #384569, #542d2d);
+    background: linear-gradient(to right, black, darkred);
 }
 
 .bike-hub-font-color-1 {
-    color: #384569;
+    color: black;
 }
 
 .bike-hub-font-color-2 {
-    color: #542d2d;
+    color: darkred;
 }
 
 .bike-hub-bg-color-1 {
-    background-color: #384569;
+    background-color: black;
 }
 
 .bike-hub-bg-color-2 {
-    background-color: #542d2d;
+    background-color: darkred;
 }

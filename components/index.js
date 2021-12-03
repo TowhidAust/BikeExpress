@@ -14,13 +14,13 @@ export default function Index() {
   const router = useRouter();
   const returnIcon = (iconName) => {
     if (iconName === "usedBike") {
-      return <TwoWheelerIcon sx={{ color: "#384569", fontSize: "4em" }} />
+      return <TwoWheelerIcon sx={{ color: "black", fontSize: "4em" }} />
     }
     if (iconName === "sellBike") {
-      return <MonetizationOnOutlinedIcon sx={{ color: "#384569", fontSize: "4em" }} />
+      return <MonetizationOnOutlinedIcon sx={{ color: "black", fontSize: "4em" }} />
     }
     if (iconName === "exchangeBike") {
-      return <ChangeCircleOutlinedIcon sx={{ color: "#384569", fontSize: "4em" }} />
+      return <ChangeCircleOutlinedIcon sx={{ color: "black", fontSize: "4em" }} />
     }
   }
   const usedBikeClickHandler = () => {
@@ -39,7 +39,7 @@ export default function Index() {
     let brands = ['SUZUKI', 'YAMAHA', 'HONDA', 'KTM', 'TVS'];
     return brands.map((item, index) => (
       <div className="p-1" key={index}>
-        <BasicCard icon={<TwoWheelerIcon sx={{ color: "#384569", fontSize: "4em" }} />} title={item} description="Lorem ipsum dolor sinet" />
+        <BasicCard icon={<TwoWheelerIcon sx={{ color: "black", fontSize: "4em" }} />} title={item} description="Lorem ipsum dolor sinet" />
       </div>
     ))
   }

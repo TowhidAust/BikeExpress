@@ -1,5 +1,5 @@
 .signup-login-root {
-    background: linear-gradient(to bottom right, #384569, #542d2d);
+    background: linear-gradient(to bottom right, black, darkred);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,8 +36,8 @@
 
     button {
         border-radius: 20px;
-        border: 1px solid #542d2d;
-        background-color: #542d2d;
+        border: 1px solid darkred;
+        background-color: darkred;
         color: #FFFFFF;
         font-size: 12px;
         font-weight: bold;
@@ -151,9 +151,9 @@
 
     .overlay {
         background: #378b29;
-        background: -webkit-linear-gradient(to bottom right, #542d2d, #384569);
-        background: linear-gradient(to bottom right, #384569, #542d2d);
-        /* background: #542d2d; */
+        background: -webkit-linear-gradient(to bottom right, darkred, black);
+        background: linear-gradient(to bottom right, black, darkred);
+        /* background: darkred; */
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 0 0;
@@ -234,7 +234,7 @@
     }
 
     footer i {
-        color: red;
+        color:black;
     }
 
     footer a {

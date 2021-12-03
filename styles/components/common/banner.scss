@@ -1,7 +1,7 @@
 $glass: rgba(255, 255, 255, 0.3);
 $glass-icon: rgba(255, 255, 255, 0.3);
-$gradient: linear-gradient(35deg, #384569, #542d2d);
-$option: #320a28;
+$gradient: linear-gradient(35deg, black, darkred);
+$option: black;
 .banner-root{
     // for select and search
     position: relative;
@@ -35,14 +35,14 @@ $option: #320a28;
         p{
             font-size: 18px;
             width: 45em;
-            // background: red;
+            // background:black;
             margin: auto;
         }
         width: 100%;
         margin: auto;
     }
     .banner-overlay-search{
-        background: #384569;
+        background: black;
         width: 50% !important;
         margin: 0 auto;
         padding: 1em;
@@ -87,7 +87,7 @@ $option: #320a28;
               text-transform: uppercase;
               width: 28%;
               height: 3em;
-              background: #542d2d;
+              background: darkred;
               border: none;
               color: white;
               border-radius: 3px;
