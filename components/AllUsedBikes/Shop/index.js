@@ -1,15 +1,10 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Accordion, AccordionDetails, AccordionSummary, Avatar, CardActionArea, CardMedia, Typography } from '@mui/material';
-import Select from 'react-select';
-
+import { CardActionArea, CardMedia, Typography } from '@mui/material';
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import BikeHubCheckBox from '../../common/checkbox';
-import { useState } from 'react';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Filter from '../Filter/Filter';
-import { Router, useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/dist/client/router';
 
 
 const BikeShops = (props) => {
@@ -129,6 +124,7 @@ const BikeShops = (props) => {
             )
         })
     }
+    
     return (
         <div className="all-bike-shop-root mt-1">
             <div className="all-shops container-80">

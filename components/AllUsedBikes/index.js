@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useState } from 'react'
+import React from 'react'
 import ProductCard from '../common/product-card'
 import Select from 'react-select'
 import BikeHubCheckBox from '../common/checkbox'

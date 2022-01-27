@@ -1,9 +1,9 @@
-$bike-hub-gradient-color: linear-gradient(to right, black, red);
+$bike-hub-gradient-color: linear-gradient(to right, black, green);
 $bike-hub-primary-color: black;
-$bike-hub-secondary-color: red;
+$bike-hub-secondary-color: green;
 
 .bike-hub-gradient-color {
-    background: linear-gradient(to right, black, red);
+    background: linear-gradient(to right, black, green);
 }
 
 .bike-hub-font-color-1 {
@@ -11,7 +11,7 @@ $bike-hub-secondary-color: red;
 }
 
 .bike-hub-font-color-2 {
-    color: red;
+    color: green;
 }
 
 .bike-hub-bg-color-1 {
@@ -19,5 +19,5 @@ $bike-hub-secondary-color: red;
 }
 
 .bike-hub-bg-color-2 {
-    background-color: red;
+    background-color: green;
 }

@@ -1,2 +1,2 @@
-import BikeShops from '../../../components/all-used-bikes/shop';
+import BikeShops from '../../../components/AllUsedBikes/Shop';
 export default BikeShops;
