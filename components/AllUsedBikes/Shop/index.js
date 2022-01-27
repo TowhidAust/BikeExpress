@@ -7,7 +7,7 @@ import Filter from '../Filter/Filter';
 import { useRouter } from 'next/dist/client/router';
 
 
-const BikeShops = (props) => {
+const BikeShops = () => {
     const router = useRouter();
     const shopCardClickHandler = () => {
         router.push('/used-bikes/all-used-bikes')

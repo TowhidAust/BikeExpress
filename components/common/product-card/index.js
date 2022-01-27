@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -18,7 +17,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import Button from '@mui/material/Button';
 
 export default function ProductCard(props) {
-  let { id, title, price, description, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, picture, seeDetailsClickHandler } = props;
+  let { id, title, price, discount, postedDate, modelYear, cc, location, kmRun, owner, condition, picture, seeDetailsClickHandler } = props;
   
   
   return (

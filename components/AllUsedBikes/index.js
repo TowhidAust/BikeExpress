@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import ProductCard from '../common/product-card'
 import Select from 'react-select'
-import BikeHubCheckBox from '../common/checkbox'
+import BikeHubCheckBox from '../common/CheckBox'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 

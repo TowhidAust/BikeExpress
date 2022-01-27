@@ -4,10 +4,10 @@ import { FaFacebookF } from 'react-icons/fa';
 
 export default function SignUp() {
     const [rightPanelActiveClass, setRightPanelActiveClass] = useState('');
-    const signUpButtonClickHandler = (e) => {
+    const signUpButtonClickHandler = () => {
         setRightPanelActiveClass('right-panel-active');
     }
-    const signInButtonClickHandler = (e) => {
+    const signInButtonClickHandler = () => {
         setRightPanelActiveClass('');
     }
   
