@@ -3,11 +3,11 @@ import { Box } from '@mui/system';
 import FeaturedBikes from './landing-page/featured-bikes';
 import Banner from './common/banner/banner';
 import SlickCarousel from './common/slick-carousel/slick';
-import BasicCard from './common/basic-card';
+import BasicCard from './common/BasicCard';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
-import { Router, useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/dist/client/router';
 import ProductCard from './common/product-card';
 export default function Index() {
 

@@ -1,2 +1,2 @@
-import SignUp from '../components/auth'
+import SignUp from '../components/Auth'
 export default SignUp

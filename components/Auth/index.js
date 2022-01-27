@@ -1,4 +1,4 @@
-import SignUp from "./signupAndLogin/signup";
+import SignUp from "./SignupAndLogin/Signup";
 
 export default function SignUpAndLogin() {
     return (

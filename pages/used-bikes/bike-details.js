@@ -1,2 +1,2 @@
-import BikeDetails from "../../components/all-used-bikes/bike-details";
+import BikeDetails from "../../components/AllUsedBikes/BikeDetails";
 export default BikeDetails
