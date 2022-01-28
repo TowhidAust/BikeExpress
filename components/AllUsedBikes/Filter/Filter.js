@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import Select from 'react-select';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import BikeHubCheckBox from '../../common/CheckBox'
+import BikeHubCheckBox from '../../Common/CheckBox'
 
 
 export default function Filter() {

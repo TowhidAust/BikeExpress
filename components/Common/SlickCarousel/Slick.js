@@ -2,20 +2,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 export default function SlickCarousel(props) {
-  const { slickComponent } = props;
+  const { slickComponent, slidesToShow, slidesToScroll } = props;
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: slidesToShow || 4,
+    slidesToScroll: slidesToScroll || 4,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: slidesToShow || 3,
+          slidesToScroll: slidesToScroll || 3,
           infinite: true,
           dots: true
         }

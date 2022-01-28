@@ -1,4 +1,4 @@
-import Layout from '../components/common/layout/layout'
+import Layout from '../components/Common/layout/layout'
 import '../styles/index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Head from 'next/head';
