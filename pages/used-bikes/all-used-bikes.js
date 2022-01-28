@@ -1,2 +1,2 @@
-import AllUsedBikes from "../../components/all-used-bikes";
+import AllUsedBikes from "../../components/AllUsedBikes";
 export default AllUsedBikes;

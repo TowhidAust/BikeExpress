@@ -41,38 +41,7 @@ export default function FeaturedBikes() {
                 condition: "new"
 
             },
-            {
-                id:3,
-                title: "SUZUKI GIXXER SF FI ABS",
-                picture: "https://images.pexels.com/photos/1191109/pexels-photo-1191109.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                price: 300000,
-                description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
-                discount: 10,
-                postedDate: "September 14, 2016",
-                modelYear: "2021",
-                cc: 150,
-                location: "Dhaka",
-                kmRun: 4418,
-                owner: 1,
-                condition: "new"
-
-            },
-            {
-                id:4,
-                title: "HONDA REPSOL",
-                picture: "https://images.pexels.com/photos/529782/pexels-photo-529782.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                price: 300000,
-                description: "Lorem ipsum dolor sinet with some yamaha r15 descriptions",
-                discount: 10,
-                postedDate: "September 14, 2016",
-                modelYear: "2021",
-                cc: 150,
-                location: "Dhaka",
-                kmRun: 4418,
-                owner: 2,
-                condition: "new"
-
-            }
+           
         ];
 
         return featuredBikes.map((item, index) => (

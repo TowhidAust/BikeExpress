@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -6,11 +5,11 @@ import { CardActionArea } from '@mui/material';
 
 
 export default function BasicCard(props) {
-    let { icon, title, description, onclickCallback } = props;
+    let { icon, title, description, onclickCallback, cardClass } = props;
     return (
         <div className="bike-hub-basic-card" onClick={onclickCallback}>
-            <Card>
-                <CardActionArea>
+            <Card className={cardClass}>
+                <CardActionArea className={cardClass}>
                     <CardContent>
                         <div className="text-center">
                             {icon}

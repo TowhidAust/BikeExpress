@@ -12,6 +12,7 @@ import ProductCard from './common/product-card';
 export default function Index() {
 
   const router = useRouter();
+
   const returnIcon = (iconName) => {
     if (iconName === "usedBike") {
       return <TwoWheelerIcon sx={{ color: "black", fontSize: "4em" }} />
@@ -23,14 +24,17 @@ export default function Index() {
       return <ChangeCircleOutlinedIcon sx={{ color: "black", fontSize: "4em" }} />
     }
   }
+
   const usedBikeClickHandler = () => {
     // router.push('/used-bikes/all-used-bikes');
     router.push('/used-bikes/shops/bike-shop');
-    
+
   }
+
   const sellBikeClickHandler = () => {
     router.push('/sell-bike');
   }
+
   const exchangeBikeClickHandler = () => {
     router.push('/exchange-bike');
   }
@@ -144,20 +148,20 @@ export default function Index() {
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <section className="landing-page-root">
         <div className="one-stop-card-container common-section-mergin">
           <h3 className="text-center mb-3">ONE STOP FOR COUNTLESS BENEFITS</h3>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={4}>
-                <BasicCard title="SELL YOUR BIKE" description="Sell your bike to BikeHub at the best price with instant payment." icon={returnIcon('sellBike')} onclickCallback={sellBikeClickHandler} />
+                <BasicCard title="SELL YOUR BIKE" description="Sell your bike to BikeHub at the best price with instant payment." icon={returnIcon('sellBike')} onclickCallback={sellBikeClickHandler} cardClass="home-min-card-height" />
               </Grid>
               <Grid item xs={12} md={4}>
-                <BasicCard title="BUY USED BIKES" description="Buy the best quality used bikes from BikeHub at a reasonable price." icon={returnIcon('usedBike')} onclickCallback={usedBikeClickHandler} />
+                <BasicCard title="BUY USED BIKES" description="Buy the best quality used bikes from BikeHub at a reasonable price." icon={returnIcon('usedBike')} onclickCallback={usedBikeClickHandler} cardClass="home-min-card-height"/>
               </Grid>
               <Grid item xs={12} md={4}>
-                <BasicCard title="EXCHANGE YOUR BIKE" description="Bring your old bike and get it exchanged with a new bike at the best price." icon={returnIcon('exchangeBike')} onclickCallback={exchangeBikeClickHandler} />
+                <BasicCard title="EXCHANGE YOUR BIKE" description="Bring your old bike and get it exchanged with a new bike at the best price." icon={returnIcon('exchangeBike')} onclickCallback={exchangeBikeClickHandler} cardClass="home-min-card-height"/>
               </Grid>
             </Grid>
           </Box>
