@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Footer from './footer';
-import TopNav from './navbar';
+import TopNav from './Navbar';
 export default function Layout({children}) {
     const router = useRouter();
     const currentRoute = router.route;

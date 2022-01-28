@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import ProductCard from '../common/product-card'
+import ProductCard from '../common/ProductCard'
 import Select from 'react-select'
 import BikeHubCheckBox from '../common/CheckBox'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';

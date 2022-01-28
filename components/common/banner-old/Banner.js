@@ -1,4 +1,4 @@
-import Logo from '../logo/logo';
+import Logo from '../Logo/Logo';
 export default function Banner() {
   return (
     <div className="banner-root">
