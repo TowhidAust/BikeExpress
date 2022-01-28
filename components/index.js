@@ -1,14 +1,13 @@
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import FeaturedBikes from './landing-page/featured-bikes';
-import Banner from './common/banner-old/Banner';
-import SlickCarousel from './common/slick-carousel/slick';
-import BasicCard from './common/BasicCard';
+import FeaturedBikes from './LandingPage/FeaturedBikes';
+import SlickCarousel from './common-old/SlickCarousel/Slick';
+import BasicCard from './common-old/BasicCard';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 import { useRouter } from 'next/dist/client/router';
-import ProductCard from './common/ProductCard';
+import ProductCard from './common-old/ProductCard';
 export default function Index() {
 
   const router = useRouter();

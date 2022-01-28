@@ -10,7 +10,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function TemporaryDrawer(props) {
-    let {buttonText} = props;
+  let { buttonText } = props;
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -58,7 +58,7 @@ export default function TemporaryDrawer(props) {
   );
 
   return (
-    <div style={{width:"30px"}}>
+    <div style={{ width: "30px" }}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <div onClick={toggleDrawer(anchor, true)}>{buttonText}</div>

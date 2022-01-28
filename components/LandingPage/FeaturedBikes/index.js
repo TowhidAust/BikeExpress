@@ -1,4 +1,4 @@
-import ProductCard from "../../common/ProductCard";
+import ProductCard from "../../common-old/ProductCard";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import router from "next/router";
