@@ -18,7 +18,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Logo from '../Logo/Logo'
-import TemporaryDrawer from '../drawer';
+import TemporaryDrawer from '../Drawer';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
