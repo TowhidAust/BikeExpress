@@ -2,6 +2,52 @@
   width: 80%;
   margin: auto;
 
+  // TOP BANNER
+  .banner-root-container {
+    .banner-menu-container {
+      background-color: #fff;
+      min-height: 550px;
+    }
+    .banner-menu-carousel {
+      //   background-color: #fff;
+    }
+
+    //BANNER SLICK ARROW STYLE
+    .slick-carousel-container {
+      position: relative;
+      .slick-prev:before,
+      .slick-next:before {
+        color: white;
+        font-size: 30px;
+      }
+
+      .slick-prev {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translate(0%, -50%);
+        z-index: 1;
+      }
+
+      .slick-next {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        z-index: 1;
+      }
+
+      .slick-dots {
+        position: absolute;
+        bottom: 15px;
+      }
+
+      .slick-dots li button:before {
+        font-size: 15px;
+        color: white;
+      }
+    }
+  }
+
   // ONE STOP CARDS SECTION
   .bike-hub-basic-card {
     cursor: pointer;
@@ -21,41 +67,43 @@
     margin-top: 5em;
     margin-bottom: 5em;
   }
+}
 
-  // TOP BANNER
-  .banner-root-container {
-    .banner-menu-container {
-      background-color: #fff;
-      min-height: 300px;
-    }
-    .banner-menu-carousel {
-    //   background-color: #fff;
-    }
 
-     // SLICK ARROW STYLE
-  .slick-carousel-container {
-    position: relative;
-    .slick-prev:before,
-    .slick-next:before {
-      color: white;
-      font-size: 30px;
-    }
 
-    .slick-prev {
-      position: absolute;
-      top: 50%;
-      left: 10px;
-      z-index: 1;
-    }
-
-    .slick-next {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      z-index: 1;
-    }
+// MEDIA QUERIES GOES HERE
+@media only screen and (min-width: 0) and (max-width: 600px) {
+  .banner-categories-container {
+    width: 100% !important;
+    font-size: 12px;
   }
-  }
+}
 
- 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+  .banner-categories-container {
+    width: 30% !important;
+    font-size: 12px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+  .banner-categories-container {
+    width: 30% !important;
+    font-size: 12px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .banner-categories-container {
+    width: 9% !important;
+    font-size: 12px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }

@@ -10,5 +10,7 @@ $option: #320a28;
   .slick-next:before {
     color: black;
   }
-
+  .slick-dots li button:before {
+    font-size: 15px;
+  }
 }

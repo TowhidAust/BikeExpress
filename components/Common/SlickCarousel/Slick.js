@@ -10,6 +10,7 @@ export default function SlickCarousel(props) {
     slidesToShow: slidesToShow || 4,
     slidesToScroll: slidesToScroll || 4,
     initialSlide: 0,
+    dots: true,
     responsive: [
       {
         breakpoint: 1024,
