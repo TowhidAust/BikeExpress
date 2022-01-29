@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 export default function SlickCarousel(props) {
   const { slickComponent, slidesToShow, slidesToScroll } = props;
   const settings = {
-    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: slidesToShow || 4,

@@ -4,7 +4,7 @@ import SlickCarousel from '../../Common/SlickCarousel/Slick';
 
 export default function Banner() {
     const returnAllBrandCards = () => {
-        let brands = ['/images/default-bike-2.jpg', '/images/default-bike-3.jpg', '/images/default-bike-2.jpg', '/images/default-bike-3.jpg', '/images/default-bike.jpg'];
+        let brands = ['/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg'];
         return brands.map((item, index) => (
             <div className="p-1" key={index}>
                 <img src={item} style={{ width: "100%", maxHeight: "400px", objectFit: "cover", borderRadius: "5px" }} alt='/images/default-bike-2.jpg' />
@@ -27,7 +27,7 @@ export default function Banner() {
                             <Box sx={{
                                 width: "100%",
                                 display: 'flex',
-                                justifyContent:"flex-start",
+                                justifyContent: "flex-start",
                                 flexWrap: 'wrap',
                                 '& > :not(style)': {
                                     m: 1,
@@ -35,46 +35,46 @@ export default function Banner() {
                                     height: 100,
                                 },
                             }}>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                         <div>SUZUKI</div>
+                                        <div>SUZUKI</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                          <div>YAMAHA</div>
+                                        <div>YAMAHA</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                          <div>KTM</div>
+                                        <div>KTM</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                          <div>TVS</div>
+                                        <div>TVS</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                          <div>HONDA</div>
+                                        <div>HONDA</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                                     <div className='banner-categories-content'>
-                                          <div>PALSAR</div>
+                                        <div>PALSAR</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                          <div>TARO</div>
+                                        <div>TARO</div>
                                     </div>
-                                }/>
-                                <Paper className='banner-categories-container' sx={{display:'flex', justifyContent: 'center', alignItems:'center'}} children={
+                                </Paper>
+                                <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div className='banner-categories-content'>
-                                          <div>HERO</div>
+                                        <div>HERO</div>
                                     </div>
-                                }/>
+                                </Paper>
 
                             </Box>
 
