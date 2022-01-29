@@ -3,10 +3,10 @@ import SlickCarousel from '../../Common/SlickCarousel/Slick';
 
 export default function Banner() {
     const returnAllBrandCards = () => {
-        let brands = ['/images/default-bike-r.jpg', '/images/default-bike-r.jpg', '/images/default-bike-r.jpg', '/images/default-bike-r.jpg', '/images/default-bike-r.jpg'];
+        let brands = ['/images/default-bike-2.jpg', '/images/default-bike-3.jpg', '/images/default-bike-2.jpg', '/images/default-bike-3.jpg', '/images/default-bike.jpg'];
         return brands.map((item, index) => (
             <div className="p-1" key={index}>
-                <img src={item} style={{width: "100%", maxHeight:"100%", objectFit: "cover"}} />
+                <img src={item} style={{width: "100%", maxHeight:"500px", objectFit: "cover", borderRadius: "5px"}} />
             </div>
         ))
     }

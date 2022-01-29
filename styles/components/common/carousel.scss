@@ -4,71 +4,11 @@ $glass-icon: rgba(255, 255, 255, 0.3);
 $gradient: linear-gradient(35deg, black, green);
 $option: #320a28;
 
-.carousel-root{
-    width: 100%;
-    margin: auto;
-    .carousel-image{
-        position: relative;
-        width: 100%;
-        height: 93vh;
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .carousel-image-1{
-        background: url(https://images.pexels.com/photos/2393816/pexels-photo-2393816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .carousel-overlay{
-        color: white;
-        width: 100%;
-        height: 100%;
-        background: rgba($color: #000000, $alpha: 0.5);
-        position: absolute;
-    }
-    .carousel-overlay-text {
-        p{
-            font-size: 18px;
-            width: 70%;
-            margin: auto;
-        }
-        width: 80%;
-        margin: auto;
-    }
-    .carousel-overlay-search{
-        // src: https://codepen.io/raubaca/pen/bGWmZje
-        select {
-            /* Reset */
-            appearance: none;
-            border: 0;
-            outline: 0;
-            font: inherit;
-            /* Personalize */
-            width: 20em;
-            height: 3em;
-            padding: 0 4em 0 1em;
-            background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
-                no-repeat right 0.8em center / 1.4em,
-              linear-gradient(to left, $glass-icon 3em, $glass 3em);
-            color: white;
-            border-radius: 0.25em;
-            box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            /* <option> colors */
-            option {
-              color: inherit;
-              background-color: $option;
-            }
-            /* Remove focus outline */
-            &:focus {
-              outline: none;
-            }
-            /* Remove IE arrow */
-            &::-ms-expand {
-              display: none;
-            }
-          }
-    }
+.slick-carousel-container {
+  position: relative;
+  .slick-prev:before,
+  .slick-next:before {
+    color: black;
+  }
+
 }

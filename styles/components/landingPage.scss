@@ -1,45 +1,61 @@
 .landing-page-root {
-    width: 80%;
+  width: 80%;
+  margin: auto;
+
+  // ONE STOP CARDS SECTION
+  .bike-hub-basic-card {
+    cursor: pointer;
+  }
+
+  .home-min-card-height {
+    min-height: 250px;
+  }
+
+  // FEATURED BIKES SECTION
+  .budget-bikes-root {
+    width: 100%;
     margin: auto;
+  }
 
-    // ONE STOP CARDS SECTION
-    .bike-hub-basic-card {
-        cursor: pointer;
+  .common-section-mergin {
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+
+  // TOP BANNER
+  .banner-root-container {
+    .banner-menu-container {
+      background-color: #fff;
+      min-height: 300px;
     }
-    
-    .home-min-card-height{
-        min-height: 250px;
-    }
-
-    // FEATURED BIKES SECTION
-    .budget-bikes-root {
-        width: 100%;
-        margin: auto;
-    }
-
-    .slick-carousel-container {
-
-        .slick-prev:before,
-        .slick-next:before {
-            color:black;
-        }
+    .banner-menu-carousel {
+    //   background-color: #fff;
     }
 
-    .common-section-mergin {
-        margin-top: 5em;
-        margin-bottom: 5em;
+     // SLICK ARROW STYLE
+  .slick-carousel-container {
+    position: relative;
+    .slick-prev:before,
+    .slick-next:before {
+      color: white;
+      font-size: 30px;
     }
 
-
-    // TOP BANNER
-    .banner-root-container {
-       .banner-menu-container {
-           background-color: #fff;
-           min-height: 300px;
-       }
-       .banner-menu-carousel {
-           background-color: #fff;
-       }
+    .slick-prev {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      z-index: 1;
     }
 
+    .slick-next {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      z-index: 1;
+    }
+  }
+  }
+
+ 
 }
