@@ -1,13 +1,22 @@
 import { Box, Grid } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import SlickCarousel from '../../Common/SlickCarousel/Slick';
+import defaultBike from '../../../public/images/default-bike-2.jpg'
+import Image from 'next/image';
 
 export default function Banner() {
     const returnAllBrandCards = () => {
+        // let brands = ['/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg'];
         let brands = ['/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg'];
         return brands.map((item, index) => (
             <div className="p-1" key={index}>
-                <img src={item} style={{ width: "100%", maxHeight: "400px", objectFit: "cover", borderRadius: "5px" }} alt='/images/default-bike-2.jpg' />
+                <Image
+                    alt="Banner-Bikes"
+                    src={defaultBike}
+                    objectFit="cover"
+                    quality={100}
+                    height={850}
+                />
             </div>
         ))
     }
@@ -17,7 +26,19 @@ export default function Banner() {
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={3} sm={12}>
-                        <div className='banner-menu-container'>Menubar</div>
+                        <div className='banner-left-menu-container'>
+                            <div className='banner-left-menu-title'>Categories</div>
+                            <ul className='banner-left-menu-ul'>
+                                <li>Used Bike</li>
+                                <li>New Bike</li>
+                                <li>All Accessories</li>
+                                <li>T-Shirt</li>
+                                <li>Jacket</li>
+                                <li>Riding Gears</li>
+                                <li>Helmet</li>
+                                <li>Bike Lock</li>
+                            </ul>
+                        </div>
                     </Grid>
                     <Grid item xs={12} md={9} sm={12}>
                         <div className='banner-menu-carousel'>
@@ -32,7 +53,7 @@ export default function Banner() {
                                 '& > :not(style)': {
                                     m: 1,
                                     width: "10%",
-                                    height: 100,
+                                    height: 70,
                                 },
                             }}>
                                 <Paper className='banner-categories-container' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -4,24 +4,36 @@
 
   // TOP BANNER
   .banner-root-container {
-    .banner-menu-container {
+    .banner-left-menu-container {
       background-color: #fff;
-      min-height: 550px;
-    }
-    // .landing-banner-image {
-    //   object-fit: cover;
-    //   // width: "100%", maxHeight: "400px", objectFit: "cover", borderRadius: "5px" 
+      min-height: 75vh;
+      border-radius: 5px;
+      // padding: 2%;
 
-    //   width: 100% !important;
-    //   height: 400px !important;
-    //   min-height: 400px !important;
-    //   max-height: 400px !important;
-    //   object-fit: cover;
-    //   border-radius: 5px;
+      .banner-left-menu-title{
+        text-align: center;
+        background-color: black;
+        color: white;
+        padding: 5%;
+        border-radius: 5px 5px 0 0;
+      }
+      .banner-left-menu-ul {
+        margin-top: 10px;
+        list-style: none;
+        // margin: 0;
+        padding: 0;
+      }
+      .banner-left-menu-ul li {
+        font-size: 15px;
+        cursor: pointer;
+        padding: 2% 6%;
+        margin: 1% 0;
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      }
 
-    // }
-    .banner-menu-carousel {
-      //   background-color: #fff;
+      .banner-left-menu-ul li:hover {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.05);
+      }
     }
 
     //BANNER SLICK ARROW STYLE
@@ -58,6 +70,10 @@
         color: white;
       }
     }
+
+    .banner-categories-container{
+      font-size: 13px;
+    }
   }
 
   // ONE STOP CARDS SECTION
@@ -81,8 +97,6 @@
   }
 }
 
-
-
 // MEDIA QUERIES GOES HERE
 @media only screen and (min-width: 0) and (max-width: 600px) {
   .banner-categories-container {
@@ -100,7 +114,7 @@
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 991px){
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner-categories-container {
     width: 30% !important;
     font-size: 12px;
@@ -113,9 +127,14 @@
     width: 9% !important;
     font-size: 12px;
   }
+  .banner-left-menu-container{
+    min-height: 65vh !important;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-
+@media only screen and (min-width: 1400px) {
+  .banner-left-menu-container{
+    min-height: 65vh !important;
+  }
 }
