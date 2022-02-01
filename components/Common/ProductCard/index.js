@@ -35,11 +35,10 @@ export default function ProductCard(props) {
         title={<div style={{fontSize:"14px", fontWeight: "bold"}}><abbr title={title}>{title.slice(0,16)}</abbr></div>}
         subheader={postedDate}
       />
-      <CardContent className="pb-0">
+      <CardContent className="pb-0 pt-0">
         <div className="product-card-content">
           <Box sx={{ flexGrow: 1, color: "#9d9d9d" }}>
-            <Grid container spacing={2}>
-
+            <Grid container>
               <Grid className="pt-1 flex-start font-weight-bold" item xs={12} md={12} color="black">
                 <div>TK {price}</div>
               </Grid>
@@ -73,10 +72,10 @@ export default function ProductCard(props) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon sx={{fontSize: "16px"}} />
         </IconButton>
-        <Button variant="text" size="small" color="primary">ADD TO CART</Button>
-        <Button variant="text" size="small" color="primary" onClick={(e)=>{seeDetailsClickHandler(e, id)}}>SEE MORE</Button>
+        <Button className='product-card-button' variant="text" size="small" color="primary">ADD TO CART</Button>
+        <Button className='product-card-button' variant="text" size="small" color="primary" onClick={(e)=>{seeDetailsClickHandler(e, id)}}>SEE MORE</Button>
       </CardActions>
     </Card>
   );

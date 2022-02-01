@@ -189,7 +189,7 @@ export default function AllUsedBikes() {
         ];
 
         return usedBikes.map((item, index) => (
-            <Grid className="p-1" key={index} item xs={12} md={4}>
+            <Grid key={index} item xs={12} md={4} xl={3}>
                 <ProductCard productInfo={item}
                     title={item.title}
                     picture={item.picture}
@@ -212,16 +212,15 @@ export default function AllUsedBikes() {
     return (
         <div className="all-used-bikes-root mt-5 mb-5">
             <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} md={3} sx={{paddingRight:"1%"}}>
+                <Grid container>
+                    <Grid item xs={12} md={3} sx={{ paddingRight: "1%" }}>
                         <h3>Filter</h3>
                         <div className="filter-container">
                             <div className="filter-inner">
-                                <div className="select-container">
+                                <div className="select-container mb-3">
                                     <Select options={selectOptions} />
                                 </div>
-
-                                <Accordion className="m-0" expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1bh-content"
@@ -287,9 +286,9 @@ export default function AllUsedBikes() {
                     </Grid>
                     <Grid item xs={12} md={9}>
                         <div className="product-cards-container">
-                            <h3 className="mb-4">All used bikes</h3>
+                            <h3>All used bikes</h3>
                             <Box sx={{ flexGrow: 1 }}>
-                                <Grid container spacing={2}>
+                                <Grid container spacing={1}>
                                     {returnUsedBikes()}
                                 </Grid>
                             </Box>

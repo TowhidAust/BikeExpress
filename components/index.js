@@ -9,6 +9,7 @@ import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlin
 import { useRouter } from 'next/dist/client/router';
 import ProductCard from './Common/ProductCard';
 import Banner from './LandingPage/Banner/Banner';
+
 export default function Index() {
 
   const router = useRouter();
@@ -26,9 +27,7 @@ export default function Index() {
   }
 
   const usedBikeClickHandler = () => {
-    // router.push('/used-bikes/all-used-bikes');
-    router.push('/used-bikes/shops/bike-shop');
-
+    router.push('/used-bikes/all-used-bikes');
   }
 
   const sellBikeClickHandler = () => {
@@ -148,14 +147,13 @@ export default function Index() {
 
   return (
     <>
-
       <section className="landing-page-root mt-5">
         <Banner />
         <div className="one-stop-card-container common-section-mergin">
           <h3 className="mb-3">ONE STOP FOR COUNTLESS BENEFITS</h3>
           <hr/>
           <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
               <Grid item xs={12} md={3}>
                 <BasicCard title="SELL YOUR BIKE" description="Sell your bike to BikeHub at the best price with instant payment." icon={returnIcon('sellBike')} onclickCallback={sellBikeClickHandler} cardClass="home-min-card-height" />
               </Grid>

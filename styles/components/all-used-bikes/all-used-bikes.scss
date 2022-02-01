@@ -2,6 +2,18 @@
     width: 80%;
     margin: auto;
     .filter-container{
-        background: #f4f4f4;
+        background: white;
+        font-size: 12px;
+        min-height: 500px;
+        border-radius: 5px;
+        padding: 3%;
+    }
+
+    .product-card-content {
+        font-size: 12px;
+    }
+
+    .product-card-button {
+        font-size: 10px;
     }
 }

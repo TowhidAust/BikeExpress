@@ -6,10 +6,13 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export default function BikeHubCheckBox() {
     return (
         <div>
-            <Checkbox {...label} sx={{
-                color: "red",
+            <Checkbox {...label}
+            
+            size='small'
+            sx={{
+                color: "black",
                 '&.Mui-checked': {
-                    color: "red",
+                    color: "black",
                 },
             }} />
         </div>
