@@ -100,8 +100,8 @@ export default function FeaturedBikes() {
     return (
         <div className="budget-bikes-root">
             <div className="budget-bikes-inner">
-                <Box sx={{ flexGrow: 1 }}>
-                    <Grid container spacing={2}>
+                <Box>
+                    <Grid container>
                         {returnFeaturedBikes()}
                     </Grid>
                 </Box>

@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import SlickCarousel from '../../Common/SlickCarousel/Slick';
 import defaultBike from '../../../public/images/default-bike-2.jpg'
 import Image from 'next/image';
+import DoubleArrowOutlinedIcon from '@mui/icons-material/DoubleArrowOutlined';
 
 export default function Banner() {
     const returnAllBrandCards = () => {
@@ -29,14 +30,15 @@ export default function Banner() {
                         <div className='banner-left-menu-container'>
                             <div className='banner-left-menu-title'>Categories</div>
                             <ul className='banner-left-menu-ul'>
-                                <li>Used Bike</li>
-                                <li>New Bike</li>
-                                <li>All Accessories</li>
-                                <li>T-Shirt</li>
-                                <li>Jacket</li>
-                                <li>Riding Gears</li>
-                                <li>Helmet</li>
-                                <li>Bike Lock</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> Used Bike</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> New Bike</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> All Accessories</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> T-Shirt</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> Jacket</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> Riding Gears</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> Helmet</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> Bike Lock</li>
+                                <li> <DoubleArrowOutlinedIcon sx={{ color: "#ddd" }} /> Bike Parts</li>
                             </ul>
                         </div>
                     </Grid>
@@ -96,9 +98,7 @@ export default function Banner() {
                                         <div>HERO</div>
                                     </div>
                                 </Paper>
-
                             </Box>
-
                         </div>
                     </Grid>
                 </Grid>

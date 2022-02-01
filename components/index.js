@@ -152,31 +152,38 @@ export default function Index() {
       <section className="landing-page-root mt-5">
         <Banner />
         <div className="one-stop-card-container common-section-mergin">
-          <h3 className="text-center mb-3">ONE STOP FOR COUNTLESS BENEFITS</h3>
+          <h3 className="mb-3">ONE STOP FOR COUNTLESS BENEFITS</h3>
+          <hr/>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={3}>
                 <BasicCard title="SELL YOUR BIKE" description="Sell your bike to BikeHub at the best price with instant payment." icon={returnIcon('sellBike')} onclickCallback={sellBikeClickHandler} cardClass="home-min-card-height" />
               </Grid>
-              <Grid item xs={12} md={4}>
-                <BasicCard title="BUY USED BIKES" description="Buy the best quality used bikes from BikeHub at a reasonable price." icon={returnIcon('usedBike')} onclickCallback={usedBikeClickHandler} cardClass="home-min-card-height" />
+              <Grid item xs={12} md={3}>
+                <BasicCard title="BUY USED BIKE" description="Buy the best quality used bikes from BikeHub at a reasonable price." icon={returnIcon('usedBike')} onclickCallback={usedBikeClickHandler} cardClass="home-min-card-height" />
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={3}>
+                <BasicCard title="BUY NEW BIKE" description="Bring your old bike and get it exchanged with a new bike at the best price." icon={returnIcon('usedBike')} onclickCallback={usedBikeClickHandler} cardClass="home-min-card-height" />
+              </Grid>
+              <Grid item xs={12} md={3}>
                 <BasicCard title="EXCHANGE YOUR BIKE" description="Bring your old bike and get it exchanged with a new bike at the best price." icon={returnIcon('exchangeBike')} onclickCallback={exchangeBikeClickHandler} cardClass="home-min-card-height" />
               </Grid>
             </Grid>
           </Box>
         </div>
         <div className="featured-bikes-container common-section-mergin">
-          <h3 className="text-center mb-4">FEATURED BIKES</h3>
+          <h3 className="mb-3">FEATURED BIKES</h3>
+          <hr/>
           <FeaturedBikes />
         </div>
         <div className="budget-bikes-container common-section-mergin">
-          <h3 className="text-center mb-3">BUDGET BIKES</h3>
+          <h3 className="mb-3">BUDGET BIKES</h3>
+          <hr/>
           <SlickCarousel slickComponent={returnAllBudgetBikes()} />
         </div>
         <div className="search-by-brand-container common-section-mergin">
-          <h3 className="text-center mb-3">SEARCH BY BRAND</h3>
+          <h3 className="mb-3">SEARCH BY BRAND</h3>
+          <hr/>
           <SlickCarousel slickComponent={returnAllBrandCards()} />
         </div>
       </section>
