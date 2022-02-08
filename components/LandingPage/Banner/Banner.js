@@ -2,21 +2,26 @@ import { Box, Grid } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import SlickCarousel from '../../Common/SlickCarousel/Slick';
 import defaultBike from '../../../public/images/default-bike-2.jpg'
+import bikeDeliveryImg from '../../../public/images/bike_delivery_1.png'
+import bikeInspectionImg from '../../../public/images/bike_inspection.png'
+import bikeServiceImg from '../../../public/images/bike_service_1.png'
+
 import Image from 'next/image';
 import DoubleArrowOutlinedIcon from '@mui/icons-material/DoubleArrowOutlined';
-
+const myLoader = ({ src, width, quality }) => {
+    return `https://c.tenor.com/Tu0MCmJ4TJUAAAAC/load-loading.gif/${src}?w=${width}&q=${quality || 75}`
+}
+// https://c.tenor.com/Tu0MCmJ4TJUAAAAC/load-loading.gif
 export default function Banner() {
     const returnAllBrandCards = () => {
-        // let brands = ['/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg'];
-        let brands = ['/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg', '/images/default-bike-2.jpg'];
+        let brands = [defaultBike, bikeDeliveryImg, bikeInspectionImg, bikeServiceImg];
         return brands.map((item, index) => (
-            <div className="p-1" key={index}>
+            <div className="p-1 image-cont" key={index}>
                 <Image
                     alt="Banner-Bikes"
-                    src={defaultBike}
+                    src={item}
                     objectFit="cover"
                     quality={100}
-                    height={850}
                 />
             </div>
         ))

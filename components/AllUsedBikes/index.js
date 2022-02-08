@@ -33,6 +33,9 @@ export default function AllUsedBikes() {
         { value: 'Sylhet', label: 'Sylhet' },
     ]
 
+    const seeDetailsClickHandler = (e, id) => {
+        alert("see details click handler")
+    }
     const returnUsedBikes = () => {
         let usedBikes = [
 
@@ -193,7 +196,7 @@ export default function AllUsedBikes() {
                 <ProductCard productInfo={item}
                     title={item.title}
                     picture={item.picture}
-
+                    seeDetailsClickHandler={seeDetailsClickHandler}
                     price={item.price}
                     description={item.description}
                     discount={item.discount}
