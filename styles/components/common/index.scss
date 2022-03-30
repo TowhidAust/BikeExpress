@@ -30,9 +30,11 @@ $bike-hub-secondary-color: green;
   margin-top: 20px;
 
   .pagination {
+    display: flex;
     flex-flow: wrap;
 
     li {
+      list-style: none;
       // padding: 2%;
       min-width: 50px;
       // background-color: #ddd;
@@ -44,11 +46,11 @@ $bike-hub-secondary-color: green;
       width: 100%;
       display: block;
       text-align: center;
-      color: black;
+      cursor: pointer;
+      // color: black;
     }
-
     .active {
-      color: white;
+      color: white !important;
       background-color: black;
     }
   }

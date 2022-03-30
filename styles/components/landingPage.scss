@@ -76,7 +76,7 @@
           display: block !important;
           width: 100% !important;
         }
-        img{
+        img {
           border-radius: 5px;
         }
         height: 450px;
@@ -114,7 +114,8 @@
   }
 }
 
-// MEDIA QUERIES GOES HERE
+// =======MEDIA QUERIES STARTS HERE========
+
 @media only screen and (min-width: 0) and (max-width: 600px) {
   .banner-categories-container {
     width: 100% !important;

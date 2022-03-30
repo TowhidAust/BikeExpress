@@ -1,5 +1,4 @@
-import { Grid } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Grid } from '@mui/material';
 import FeaturedBikes from './LandingPage/FeaturedBikes';
 import SlickCarousel from './Common/SlickCarousel/Slick';
 import BasicCard from './Common/BasicCard';

@@ -1,29 +1,15 @@
-import { Grid } from '@mui/material'
-import { Box } from '@mui/system'
+import { Grid, Box, Typography } from '@mui/material'
 import React from 'react'
 import ProductCard from '../Common/ProductCard'
 import Select from 'react-select'
 import BikeHubCheckBox from '../Common/CheckBox'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-
-
-// accordion imports
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from 'react-paginate';
+import { useRouter } from 'next/router';
 
 
 export default function AllUsedBikes() {
-
-    // for accordion
-    const [expanded, setExpanded] = React.useState(false);
-    const handleChange = (panel) => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
-    };
-
+    const router = useRouter();
     const selectOptions = [
         { value: 'Dhaka', label: 'Dhaka' },
         { value: 'Chittagong', label: 'Chittagong' },
@@ -34,7 +20,8 @@ export default function AllUsedBikes() {
     ]
 
     const seeDetailsClickHandler = (e, id) => {
-        alert("see details click handler")
+        alert("see details click handler");
+        router.push('/')
     }
     const returnUsedBikes = () => {
         let usedBikes = [
@@ -223,67 +210,58 @@ export default function AllUsedBikes() {
                                 <div className="select-container mb-3">
                                     <Select options={selectOptions} />
                                 </div>
-                                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel1bh-content"
-                                        id="panel1bh-header"
-                                    >
-                                        <Typography >
-                                            Budget
-                                        </Typography>
 
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>BDT 0 - 15000</div>
-                                        </div>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>BDT 0 - 25000</div>
-                                        </div>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>BDT 0 - 35000</div>
-                                        </div>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>BDT 0 - 45000</div>
-                                        </div>
-                                    </AccordionDetails>
-                                </Accordion>
+                                <div className="budget-filter">
+                                    <Typography variant="h6">
+                                        Budget
+                                    </Typography>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>BDT 0 - 15000</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>BDT 0 - 25000</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>BDT 0 - 35000</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>BDT 0 - 45000</div>
+                                    </div>
+                                </div>
+                                <div className="brand-filter">
+                                    <Typography variant="h6" sx={{marginTop:"4px"}}>
+                                        Brand
+                                    </Typography>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>SUZUKI</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>YAMAHA</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>HONDA</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>HERO</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>HERO</div>
+                                    </div>
+                                    <div className="checkbox-container d-flex align-items-center">
+                                        <BikeHubCheckBox />
+                                        <div>HERO</div>
+                                    </div>
+                                </div>
 
-                                <Accordion className="m-0" expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel1bh-content"
-                                        id="panel1bh-header"
-                                    >
-                                        <Typography >
-                                            Brand
-                                        </Typography>
-
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>SUZUKI</div>
-                                        </div>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>YAMAHA</div>
-                                        </div>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>HONDA</div>
-                                        </div>
-                                        <div className="checkbox-container d-flex align-items-center">
-                                            <BikeHubCheckBox />
-                                            <div>HERO</div>
-                                        </div>
-                                    </AccordionDetails>
-                                </Accordion>
                             </div>
                         </div>
                     </Grid>
