@@ -19,7 +19,7 @@ export default function AllUsedBikes() {
         { value: 'Sylhet', label: 'Sylhet' },
     ]
 
-    const seeDetailsClickHandler = (e, id) => {
+    const seeDetailsClickHandler = () => {
         alert("see details click handler");
         router.push('/')
     }

@@ -8,9 +8,7 @@ import bikeServiceImg from '../../../public/images/bike_service_1.png'
 
 import Image from 'next/image';
 import DoubleArrowOutlinedIcon from '@mui/icons-material/DoubleArrowOutlined';
-const myLoader = ({ src, width, quality }) => {
-    return `https://c.tenor.com/Tu0MCmJ4TJUAAAAC/load-loading.gif/${src}?w=${width}&q=${quality || 75}`
-}
+
 // https://c.tenor.com/Tu0MCmJ4TJUAAAAC/load-loading.gif
 export default function Banner() {
     const returnAllBrandCards = () => {
