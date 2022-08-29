@@ -1,0 +1,9 @@
+/build
+/dist
+dist
+build
+serviceWorker.js
+tsconfig.json
+tsconfig.node.json
+.eslintrc.json
+vite.config.ts
