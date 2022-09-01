@@ -20,16 +20,3 @@ export const LayoutContent = styled.div`
 	height: 100%;
 	background-color: #fff;
 `;
-
-export const AppContentWrapper = styled.div`
-	padding: 15px 10px;
-	overflow: auto;
-
-	@media only screen and (max-width: 767px) {
-		padding: 15px 10px;
-	}
-
-	@media (max-width: 580px) {
-		padding: 15px 10px;
-	}
-`;

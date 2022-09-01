@@ -2,6 +2,19 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+/*AntD overwrites*/
+.custom-side-bar.ant-menu-dark .ant-menu-item {
+  color: #334155 !important;
+}
+
+.custom-side-bar.ant-menu-dark .ant-menu-item:hover {
+  color: #059669 !important;
+}
+
+
+
+
+
 *,
 *::after,
 *::before {
@@ -11,12 +24,11 @@ const GlobalStyle = createGlobalStyle`
   text-rendering: optimizeLegibility;
 }
 
-
 html {
   font-size: 62.5%;
 
   body {
-    font-family: 'Hind Siliguri', sans-serif !important;
+    font-family: 'IBM Plex Sans', sans-serif; !important;
     line-height: 155%;
     font-size: 1.6rem;
   }

@@ -47,6 +47,7 @@
         "camelcase": "off",
         "react/jsx-wrap-multilines": "off",
         "react/forbid-prop-types": "off",
-        "no-unused-vars": "warn"
+        "no-unused-vars": "warn",
+        "import/extensions": "off"
     }
 }
