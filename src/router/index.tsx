@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { PRIVATE_ROUTE, PUBLIC_ROUTE } from './appRoutes';
 import PrivateOutlet from './PrivateOutlet';
+import LandingPage from '@/features/LandingPage';
 
 const SignupPage = lazy(() => import('@/pages/Signup/SignupPage'));
 const DashboardPage = lazy(() => import('@/pages/Dashboard/DashboardPage'));
@@ -17,6 +18,11 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.SIGNUP,
 			component: SignupPage,
+		},
+
+		{
+			path: PUBLIC_ROUTE.LANDING,
+			component: LandingPage,
 		},
 	];
 	return (

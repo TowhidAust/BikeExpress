@@ -1,41 +1,47 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
+import { FaMotorcycle } from 'react-icons/fa';
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 export default function TopBar() {
 	return (
-		<Layout>
-			<Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-				<div className="logo" />
-				<Menu
-					theme="dark"
-					mode="horizontal"
-					defaultSelectedKeys={['2']}
-					items={new Array(3).fill(null).map((_, index) => ({
-						key: String(index + 1),
-						label: `nav ${index + 1}`,
-					}))}
-				/>
-			</Header>
-			<Content
-				className="site-layout"
-				style={{ padding: '0 50px', marginTop: 64 }}
+		<>
+			<Header
+				className="pl-4 pr-4"
+				style={{ backgroundColor: 'black', width: '100%' }}
 			>
-				<Breadcrumb style={{ margin: '16px 0' }}>
-					<Breadcrumb.Item>Home</Breadcrumb.Item>
-					<Breadcrumb.Item>List</Breadcrumb.Item>
-					<Breadcrumb.Item>App</Breadcrumb.Item>
-				</Breadcrumb>
-				<div
-					className="site-layout-background"
-					style={{ padding: 24, minHeight: 380 }}
-				>
-					Content
+				<div className="logo" style={{ color: 'white' }}>
+					<h1
+						className="font-white"
+						style={{
+							width: '150px',
+							display: 'flex',
+							justifyContent: 'flex-start',
+							alignItems: 'center',
+						}}
+					>
+						BIKE{' '}
+						<FaMotorcycle
+							className="ml-2 mr-2"
+							color="red"
+							style={{ fontSize: '26px' }}
+						/>{' '}
+						HUB
+					</h1>
 				</div>
-			</Content>
-			<Footer style={{ textAlign: 'center' }}>
-				Ant Design ©2018 Created by Ant UED
-			</Footer>
-		</Layout>
+			</Header>
+			<Menu
+				theme="light"
+				mode="horizontal"
+				defaultSelectedKeys={['1']}
+				items={[
+					{ key: 1, label: 'Home' },
+					{ key: 2, label: 'Sell Bike' },
+					{ key: 3, label: 'Buy Used Bike' },
+					{ key: 4, label: 'Buy New Bike' },
+					{ key: 5, label: 'Home' },
+				]}
+			/>
+		</>
 	);
 }
