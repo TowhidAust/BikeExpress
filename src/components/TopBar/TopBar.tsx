@@ -11,7 +11,7 @@ export default function TopBar() {
 				style={{ backgroundColor: 'black', width: '100%' }}
 			>
 				<div className="logo" style={{ color: 'white' }}>
-					<h1
+					<h2
 						className="font-white"
 						style={{
 							width: '150px',
@@ -20,14 +20,13 @@ export default function TopBar() {
 							alignItems: 'center',
 						}}
 					>
-						BIKE{' '}
+						<span> BIKE </span>
 						<FaMotorcycle
-							className="ml-2 mr-2"
-							color="red"
+							className="ml-2 mr-2 primary-font-color"
 							style={{ fontSize: '26px' }}
-						/>{' '}
-						HUB
-					</h1>
+						/>
+						<span> HUB </span>
+					</h2>
 				</div>
 			</Header>
 			<Menu

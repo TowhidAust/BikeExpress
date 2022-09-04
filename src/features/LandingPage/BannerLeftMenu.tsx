@@ -1,21 +1,58 @@
 import { Menu } from 'antd';
+import { TbHelmet, TbSticker } from 'react-icons/tb';
+import {
+	GiCarWheel,
+	GiCoveredJar,
+	GiHornInternal,
+	GiMirrorMirror,
+	GiWinterGloves,
+} from 'react-icons/gi';
+import { RiLock2Line, RiTShirtAirLine } from 'react-icons/ri';
+import { BulbOutlined } from '@ant-design/icons';
+import { FaBatteryEmpty } from 'react-icons/fa';
 
 export default function BannerLeftMenu() {
 	return (
 		<Menu
+			style={{ minHeight: '460px' }}
 			mode="inline"
-			// style={{ width: 256 }}
 			items={[
-				{ key: 1, label: 'Helmet', className: 'm-0' },
-				{ key: 2, label: 'Riding Gears', className: 'm-0' },
-				{ key: 3, label: 'T-Shirt', className: 'm-0' },
-				{ key: 4, label: 'Light', className: 'm-0' },
-				{ key: 5, label: 'Looking Glass', className: 'm-0' },
-				{ key: 6, label: 'Horn', className: 'm-0' },
-				{ key: 7, label: 'Sticker', className: 'm-0' },
-				{ key: 8, label: 'Shoe', className: 'm-0' },
-				{ key: 9, label: 'Shoe', className: 'm-0' },
-				{ key: 10, label: 'Shoe', className: 'm-0' },
+				{ key: 1, label: 'Helmet', className: 'm-0', icon: <TbHelmet /> },
+				{
+					key: 2,
+					label: 'Riding Gears',
+					className: 'm-0',
+					icon: <GiWinterGloves />,
+				},
+				{
+					key: 3,
+					label: 'T-Shirt',
+					className: 'm-0',
+					icon: <RiTShirtAirLine />,
+				},
+				{ key: 4, label: 'Light', className: 'm-0', icon: <BulbOutlined /> },
+				{
+					key: 5,
+					label: 'Looking Glass',
+					className: 'm-0',
+					icon: <GiMirrorMirror />,
+				},
+				{ key: 6, label: 'Horn', className: 'm-0', icon: <GiHornInternal /> },
+				{ key: 7, label: 'Sticker', className: 'm-0', icon: <TbSticker /> },
+				{ key: 8, label: 'Lock', className: 'm-0', icon: <RiLock2Line /> },
+				{
+					key: 9,
+					label: 'Seat Cover',
+					className: 'm-0',
+					icon: <GiCoveredJar />,
+				},
+				{
+					key: 10,
+					label: 'Battery',
+					className: 'm-0',
+					icon: <FaBatteryEmpty />,
+				},
+				{ key: 11, label: 'Tire Gel', className: 'm-0', icon: <GiCarWheel /> },
 			]}
 		/>
 	);

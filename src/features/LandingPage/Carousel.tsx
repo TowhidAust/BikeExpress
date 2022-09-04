@@ -1,4 +1,6 @@
-import { Carousel } from 'antd';
+import { Carousel, Image } from 'antd';
+import royalEnfield2 from '@/assets/royalEnfield2.jpg';
+import royalEnfield3 from '@/assets/royalEnfield3.jpg';
 
 const contentStyle: React.CSSProperties = {
 	height: '300px',
@@ -10,18 +12,18 @@ const contentStyle: React.CSSProperties = {
 
 export default function BannerCarousel() {
 	return (
-		<Carousel autoplay>
+		<Carousel className="width-100" autoplay autoplaySpeed={5000}>
 			<div>
-				<h3 style={contentStyle}>1</h3>
+				<Image width="100%" src={royalEnfield3} style={contentStyle} />
 			</div>
 			<div>
-				<h3 style={contentStyle}>2</h3>
+				<Image width="100%" src={royalEnfield2} style={contentStyle} />
 			</div>
 			<div>
-				<h3 style={contentStyle}>3</h3>
+				<Image width="100%" src={royalEnfield3} style={contentStyle} />
 			</div>
 			<div>
-				<h3 style={contentStyle}>4</h3>
+				<Image width="100%" src={royalEnfield3} style={contentStyle} />
 			</div>
 		</Carousel>
 	);
