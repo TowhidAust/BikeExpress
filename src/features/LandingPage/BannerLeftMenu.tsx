@@ -17,7 +17,7 @@ export default function BannerLeftMenu() {
 			style={{ minHeight: '460px' }}
 			mode="inline"
 			items={[
-				{ key: 1, label: 'Helmet', className: 'm-0', icon: <TbHelmet /> },
+				{ key: 1, label: 'Helmet', className: 'm-0 mt-3', icon: <TbHelmet /> },
 				{
 					key: 2,
 					label: 'Riding Gears',

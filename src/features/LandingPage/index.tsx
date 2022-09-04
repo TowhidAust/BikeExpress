@@ -1,5 +1,6 @@
 import { Button, Card, Col, Layout, Row } from 'antd';
 import { RiOilLine, RiToolsLine } from 'react-icons/ri';
+import { GiLoveHowl, GiSchoolBag } from 'react-icons/gi';
 import TopBar from '@/components/TopBar/TopBar';
 import AppFooter from '@/components/Footer/Footer';
 import BannerCarousel from './Carousel';
@@ -29,22 +30,36 @@ export default function LandingPage() {
 							<Row gutter={[16, 16]} className="mt-3">
 								<Col xs={24} sm={24} md={4}>
 									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
-										<Button type="link" size="small" icon={<RiOilLine />}>
+										<Button
+											style={{ display: 'flex', alignItems: 'center' }}
+											type="link"
+											size="small"
+											icon={<RiOilLine />}
+										>
 											Engine Oil
 										</Button>
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
 									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
-										<Button type="link" size="small" icon={<RiToolsLine />}>
+										<Button
+											style={{ display: 'flex', alignItems: 'center' }}
+											type="link"
+											size="small"
+											icon={<RiToolsLine />}
+										>
 											Spare Parts
 										</Button>
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
 									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
-										{/* <p>Engine Oil</p> */}
-										<Button type="link" size="small" icon={<RiOilLine />}>
+										<Button
+											style={{ display: 'flex', alignItems: 'center' }}
+											type="link"
+											size="small"
+											icon={<GiLoveHowl />}
+										>
 											Bike Care
 										</Button>
 									</Card>
@@ -52,23 +67,40 @@ export default function LandingPage() {
 								<Col xs={24} sm={24} md={4}>
 									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										{/* <p>Engine Oil</p> */}
-										<Button type="link" size="small" icon={<RiOilLine />}>
-											Engine Oil
+										<Button
+											style={{ display: 'flex', alignItems: 'center' }}
+											type="link"
+											size="small"
+											icon={<GiSchoolBag />}
+										>
+											Bag Pack
 										</Button>
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
 									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										{/* <p>Engine Oil</p> */}
-										<Button type="link" size="small" icon={<RiOilLine />}>
+										<Button
+											style={{ display: 'flex', alignItems: 'center' }}
+											type="link"
+											size="small"
+											icon={<RiOilLine />}
+										>
 											Engine Oil
 										</Button>
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
 									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
-										{/* <p>Engine Oil</p> */}
-										<Button type="link" size="small" icon={<RiOilLine />}>
+										<Button
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+											}}
+											type="link"
+											size="small"
+											icon={<RiOilLine />}
+										>
 											Engine Oil
 										</Button>
 									</Card>
