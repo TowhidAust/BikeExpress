@@ -28,21 +28,21 @@ export default function LandingPage() {
 							<BannerCarousel />
 							<Row gutter={[16, 16]} className="mt-3">
 								<Col xs={24} sm={24} md={4}>
-									<Card className="p-0">
+									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										<Button type="link" size="small" icon={<RiOilLine />}>
 											Engine Oil
 										</Button>
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
-									<Card className="p-0">
+									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										<Button type="link" size="small" icon={<RiToolsLine />}>
 											Spare Parts
 										</Button>
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
-									<Card className="p-0">
+									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										{/* <p>Engine Oil</p> */}
 										<Button type="link" size="small" icon={<RiOilLine />}>
 											Bike Care
@@ -50,7 +50,7 @@ export default function LandingPage() {
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
-									<Card className="p-0">
+									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										{/* <p>Engine Oil</p> */}
 										<Button type="link" size="small" icon={<RiOilLine />}>
 											Engine Oil
@@ -58,7 +58,7 @@ export default function LandingPage() {
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
-									<Card className="p-0">
+									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										{/* <p>Engine Oil</p> */}
 										<Button type="link" size="small" icon={<RiOilLine />}>
 											Engine Oil
@@ -66,7 +66,7 @@ export default function LandingPage() {
 									</Card>
 								</Col>
 								<Col xs={24} sm={24} md={4}>
-									<Card className="p-0">
+									<Card className="p-0" bodyStyle={{ padding: '10px' }}>
 										{/* <p>Engine Oil</p> */}
 										<Button type="link" size="small" icon={<RiOilLine />}>
 											Engine Oil
