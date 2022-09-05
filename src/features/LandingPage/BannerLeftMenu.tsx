@@ -14,10 +14,11 @@ import { FaBatteryEmpty } from 'react-icons/fa';
 export default function BannerLeftMenu() {
 	return (
 		<Menu
+			className="py-5"
 			style={{ minHeight: '460px' }}
 			mode="inline"
 			items={[
-				{ key: 1, label: 'Helmet', className: 'm-0 mt-3', icon: <TbHelmet /> },
+				{ key: 1, label: 'Helmet', className: 'm-0', icon: <TbHelmet /> },
 				{
 					key: 2,
 					label: 'Riding Gears',
@@ -38,21 +39,37 @@ export default function BannerLeftMenu() {
 					icon: <GiMirrorMirror />,
 				},
 				{ key: 6, label: 'Horn', className: 'm-0', icon: <GiHornInternal /> },
-				{ key: 7, label: 'Sticker', className: 'm-0', icon: <TbSticker /> },
-				{ key: 8, label: 'Lock', className: 'm-0', icon: <RiLock2Line /> },
 				{
-					key: 9,
+					key: 7,
+					label: 'Sticker',
+					className: 'm-0',
+					icon: <TbSticker />,
+				},
+				{
+					key: 8,
+					label: 'Tank Pad',
+					className: 'm-0',
+					icon: <TbSticker />,
+				},
+				{ key: 9, label: 'Lock', className: 'm-0', icon: <RiLock2Line /> },
+				{
+					key: 10,
 					label: 'Seat Cover',
 					className: 'm-0',
 					icon: <GiCoveredJar />,
 				},
 				{
-					key: 10,
+					key: 11,
 					label: 'Battery',
 					className: 'm-0',
 					icon: <FaBatteryEmpty />,
 				},
-				{ key: 11, label: 'Tire Gel', className: 'm-0', icon: <GiCarWheel /> },
+				{
+					key: 12,
+					label: 'Number Plate Holder',
+					className: 'm-0',
+					icon: <GiCarWheel />,
+				},
 			]}
 		/>
 	);
