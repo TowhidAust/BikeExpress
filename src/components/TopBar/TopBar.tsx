@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd';
+import { Affix, Layout, Menu } from 'antd';
 import { FaMotorcycle } from 'react-icons/fa';
 
 const { Header } = Layout;
@@ -29,18 +29,21 @@ export default function TopBar() {
 					</h2>
 				</div>
 			</Header>
-			<Menu
-				theme="light"
-				mode="horizontal"
-				defaultSelectedKeys={['1']}
-				items={[
-					{ key: 1, label: 'Home' },
-					{ key: 2, label: 'Sell Bike' },
-					{ key: 3, label: 'Buy Used Bike' },
-					{ key: 4, label: 'Buy New Bike' },
-					{ key: 5, label: 'Home' },
-				]}
-			/>
+
+			<Affix offsetTop={0} className="width-100">
+				<Menu
+					theme="light"
+					mode="horizontal"
+					defaultSelectedKeys={['1']}
+					items={[
+						{ key: 1, label: 'Home' },
+						{ key: 2, label: 'Sell Bike' },
+						{ key: 3, label: 'Buy Used Bike' },
+						{ key: 4, label: 'Buy New Bike' },
+						{ key: 5, label: 'Bike Service' },
+					]}
+				/>
+			</Affix>
 		</>
 	);
 }
