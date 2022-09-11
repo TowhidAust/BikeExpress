@@ -1,37 +1,26 @@
-import { Col, Layout, Row } from 'antd';
+import { Col, Row } from 'antd';
 
-import TopBar from '@/components/TopBar/TopBar';
-import AppFooter from '@/components/Footer/Footer';
-import BannerCarousel from './Carousel';
-import BannerLeftMenu from './BannerLeftMenu';
-import BannerBottomMenu from './BannerBottomMenu';
-
-const { Content } = Layout;
+import BannerCarousel from './Carousel/Carousel';
+import BannerLeftMenu from './BannerMenu/BannerLeftMenu';
+import BannerBottomMenu from './BannerMenu/BannerBottomMenu';
+import AppLayout from '@/components/Layout/AppLayout';
+import FeaturedBikes from './FeaturedBikes/FeaturedBikes';
 
 export default function LandingPage() {
 	return (
-		<Layout>
-			<TopBar />
-			<Content
-				className="site-layout"
-				style={{ padding: '0 2%', marginTop: 24 }}
-			>
-				<div
-					className="site-layout-background"
-					style={{ padding: 24, minHeight: 380 }}
-				>
-					<Row gutter={[16, 16]}>
-						<Col xs={24} sm={24} md={6}>
-							<BannerLeftMenu />
-						</Col>
-						<Col xs={24} sm={24} md={18}>
-							<BannerCarousel />
-							<BannerBottomMenu />
-						</Col>
-					</Row>
-				</div>
-			</Content>
-			<AppFooter />
-		</Layout>
+		<AppLayout>
+			<Row gutter={[16, 16]}>
+				<Col xs={24} sm={24} md={6}>
+					<BannerLeftMenu />
+				</Col>
+				<Col xs={24} sm={24} md={18}>
+					<BannerCarousel />
+					<BannerBottomMenu />
+				</Col>
+				<Col xs={24} sm={24} md={24}>
+					<FeaturedBikes />
+				</Col>
+			</Row>
+		</AppLayout>
 	);
 }

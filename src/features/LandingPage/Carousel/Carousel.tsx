@@ -3,7 +3,7 @@ import royalEnfield2 from '@/assets/royalEnfield2.jpg';
 import royalEnfield3 from '@/assets/royalEnfield3.jpg';
 
 const contentStyle: React.CSSProperties = {
-	height: '300px',
+	height: '350px',
 	color: '#fff',
 	lineHeight: '160px',
 	textAlign: 'center',
