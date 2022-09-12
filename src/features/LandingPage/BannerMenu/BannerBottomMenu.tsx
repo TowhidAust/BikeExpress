@@ -66,7 +66,7 @@ export default function BannerBottomMenu() {
 	return (
 		<Row gutter={[16, 16]} className="mt-3">
 			{bannerBottomMenuCategories?.map((item) => (
-				<Col xs={24} sm={24} md={6}>
+				<Col xs={24} sm={24} md={6} key={Math.random()}>
 					<Card
 						hoverable
 						className="p-0"
