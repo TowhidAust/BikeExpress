@@ -8,8 +8,9 @@ import {
 } from 'react-router-dom';
 import { PRIVATE_ROUTE, PUBLIC_ROUTE } from './appRoutes';
 import PrivateOutlet from './PrivateOutlet';
-import LandingPage from '@/features/LandingPage';
 
+const LandingPage = lazy(() => import('@/features/LandingPage'));
+const UsedBikes = lazy(() => import('@/features/UsedBikes'));
 const SignupPage = lazy(() => import('@/pages/Signup/SignupPage'));
 const DashboardPage = lazy(() => import('@/pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound/NotFoundPage'));
@@ -23,6 +24,10 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.LANDING,
 			component: LandingPage,
+		},
+		{
+			path: PUBLIC_ROUTE.USED_BIKES,
+			component: UsedBikes,
 		},
 	];
 	return (

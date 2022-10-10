@@ -1,9 +1,12 @@
 import { Affix, Col, Input, Layout, Menu, Row } from 'antd';
 import { FaMotorcycle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 const { Header } = Layout;
 
 export default function TopBar() {
+	const navigate = useNavigate();
 	return (
 		<>
 			<Header
@@ -30,35 +33,26 @@ export default function TopBar() {
 					</Col>
 					<Col xs={24} md={6}>
 						<Input.Search className="mt-3" size="large" enterButton="search" />
-						{/* <div
-							style={{
-								display: 'flex',
-								justifyContent: 'flex-start',
-								alignItems: 'center',
-							}}
-						>
-							<Select defaultValue="Zhejiang" size="large">
-								<Option value="Zhejiang">Zhejiang</Option>
-								<Option value="Jiangsu">Jiangsu</Option>
-							</Select>
-							<Input size="large" defaultValue="Xihu District, Hangzhou" />
-							<Button size="large" type="primary">
-								Search
-							</Button>
-						</div> */}
 					</Col>
 				</Row>
 			</Header>
-
 			<Affix offsetTop={0} className="width-100">
 				<Menu
 					theme="light"
 					mode="horizontal"
 					defaultSelectedKeys={['1']}
 					items={[
-						{ key: 1, label: 'Home' },
+						{
+							key: 1,
+							label: 'Home',
+							onClick: () => navigate(PUBLIC_ROUTE.LANDING),
+						},
 						{ key: 2, label: 'Sell Bike' },
-						{ key: 3, label: 'Buy Used Bike' },
+						{
+							key: 3,
+							label: 'Buy Used Bike',
+							onClick: () => navigate(PUBLIC_ROUTE.USED_BIKES),
+						},
 						{ key: 4, label: 'Buy New Bike' },
 						{ key: 5, label: 'Bike Service' },
 					]}

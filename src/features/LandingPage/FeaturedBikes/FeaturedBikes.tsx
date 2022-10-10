@@ -1,82 +1,32 @@
-import { Button, Card, Col, Row, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import cafeRacer from '@/assets/cafeRacer.jpg';
+import ProductCardBike from '@/components/ProductCard/ProductCardBike';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 export default function FeaturedBikes() {
+	const navigate = useNavigate();
 	const data = [1, 2, 3, 4];
 	return (
 		<section className="mt-5">
-			<Typography.Title>Featured Bikes</Typography.Title>
+			<Typography.Title level={2}>Featured Bikes</Typography.Title>
 			<Row gutter={[8, 8]}>
-				{data.map((item) => (
-					<Col xs={24} sm={24} md={6} key={item}>
-						<Card
-							cover={
-								<div
-									style={{
-										position: 'relative',
-										textAlign: 'right',
-										backgroundImage: `url(${cafeRacer})`,
-										backgroundSize: '100% 100%',
-										backgroundRepeat: 'no-repeat',
-										height: '200px',
-									}}
-								>
-									<Button
-										style={{ position: 'absolute', bottom: 0, right: 0 }}
-										type="primary"
-									>
-										DETAILS
-									</Button>
-								</div>
-							}
-						>
-							<Row gutter={[8, 8]}>
-								<Col xs={24} sm={24} md={24}>
-									<Typography.Title
-										level={5}
-										style={{
-											whiteSpace: 'nowrap',
-											width: '90%',
-											overflow: 'hidden',
-											textOverflow: 'ellipsis',
-										}}
-									>
-										<abbr
-											style={{ textDecoration: 'none' }}
-											title="HONDA CBR 150 DUAL CHANNEL ABS"
-										>
-											HONDA CBR 150 DUAL CHANNEL ABS
-										</abbr>
-									</Typography.Title>
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									<Typography.Text className="font-weight-600" type="warning">
-										BDT 280000
-									</Typography.Text>
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									Condition: Used
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									Model: 2021
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									CC: 155
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									Km: 5000
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									owner: 1st
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									Location: Dhaka
-								</Col>
-								<Col xs={24} sm={24} md={12}>
-									Negotiable
-								</Col>
-							</Row>
-						</Card>
+				{data.map(() => (
+					<Col xs={24} sm={24} md={6} key={Math.random()}>
+						<ProductCardBike
+							// key={Math.random()}
+							image={cafeRacer}
+							title="HONDA CBR REPSOL 155 FI ABS"
+							price={0}
+							isUsed
+							model="2021"
+							cc={150}
+							km={1200}
+							isFirstOwner
+							location="Dhaka"
+							isNegotiable
+							onDetailsButtonClick={() => navigate(PUBLIC_ROUTE.USED_BIKES)}
+						/>
 					</Col>
 				))}
 			</Row>
