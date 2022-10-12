@@ -1,4 +1,4 @@
-import { Card, Col, Row, Select, Typography } from 'antd';
+import { Card, Col, Pagination, Row, Select, Typography } from 'antd';
 import AppLayout from '@/components/Layout/AppLayout';
 import ProductCardBike from '@/components/ProductCard/ProductCardBike';
 import cafeRacer from '@/assets/cafeRacer.jpg';
@@ -16,8 +16,6 @@ export default function UsedBikes() {
 							showSearch
 							placeholder="Select a city"
 							optionFilterProp="children"
-							// onChange={onChange}
-							// onSearch={onSearch}
 							filterOption={(input, option) =>
 								(option!.children as unknown as string)
 									.toLowerCase()
@@ -86,6 +84,10 @@ export default function UsedBikes() {
 								/>
 							</Col>
 						</Row>
+
+						<div className="mt-3 text-right">
+							<Pagination total={100} current={1} />
+						</div>
 					</Card>
 				</Col>
 			</Row>
