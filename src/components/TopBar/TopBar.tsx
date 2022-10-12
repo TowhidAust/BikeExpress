@@ -1,11 +1,16 @@
 import { Affix, Col, Input, Layout, Menu, Row } from 'antd';
 import { FaMotorcycle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
+import { RootState } from '@/redux/store';
+import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
 
 const { Header } = Layout;
 
 export default function TopBar() {
+	const { activeMenu } = useSelector((state: RootState) => state);
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	return (
 		<>
@@ -40,21 +45,45 @@ export default function TopBar() {
 				<Menu
 					theme="light"
 					mode="horizontal"
-					defaultSelectedKeys={['1']}
+					defaultSelectedKeys={[activeMenu.currentActiveMenu]}
 					items={[
 						{
-							key: 1,
+							key: 'home',
 							label: 'Home',
-							onClick: () => navigate(PUBLIC_ROUTE.LANDING),
+							onClick: () => {
+								dispatch(setCurrentActiveMenu('home'));
+								navigate(PUBLIC_ROUTE.LANDING);
+							},
 						},
-						{ key: 2, label: 'Sell Bike' },
 						{
-							key: 3,
-							label: 'Buy Used Bike',
-							onClick: () => navigate(PUBLIC_ROUTE.USED_BIKES),
+							key: 'sellBike',
+							label: 'Sell Bike',
+							onClick: () => {
+								dispatch(setCurrentActiveMenu('sellBike'));
+							},
 						},
-						{ key: 4, label: 'Buy New Bike' },
-						{ key: 5, label: 'Bike Service' },
+						{
+							key: 'buyUsedBike',
+							label: 'Buy Used Bike',
+							onClick: () => {
+								dispatch(setCurrentActiveMenu('buyUsedBike'));
+								navigate(PUBLIC_ROUTE.USED_BIKES);
+							},
+						},
+						{
+							key: 'buyNewBike',
+							label: 'Buy New Bike',
+							onClick: () => {
+								dispatch(setCurrentActiveMenu('buyNewBike'));
+							},
+						},
+						{
+							key: 'bikeService',
+							label: 'Bike Service',
+							onClick: () => {
+								dispatch(setCurrentActiveMenu('bikeService'));
+							},
+						},
 					]}
 				/>
 			</Affix>

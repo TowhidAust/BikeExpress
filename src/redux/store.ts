@@ -13,6 +13,7 @@ import session from 'redux-persist/lib/storage/session';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import type { Middleware } from '@reduxjs/toolkit';
 import counterReducer from '@/redux/counterSlice';
+import activeMenuSliceReducer from '@/redux/activeMenubarSlice';
 import authReducer from '@/redux/authSlice';
 // import { emptySplitApi } from '@/RTKQuery/apiSlice';
 import { globalErrorHandling } from './helper';
@@ -41,6 +42,7 @@ export const store = configureStore({
 	reducer: {
 		counter: counterReducer,
 		auth: persistedAuthReducer,
+		activeMenu: activeMenuSliceReducer,
 		// [emptySplitApi.reducerPath]: emptySplitApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
@@ -48,9 +50,9 @@ export const store = configureStore({
 			serializableCheck: {
 				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
 			},
-		})
-			// .concat(emptySplitApi.middleware)
-			.concat(rtkQueryErrorLogger),
+		}),
+	// .concat(emptySplitApi.middleware)
+	// .concat(rtkQueryErrorLogger),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

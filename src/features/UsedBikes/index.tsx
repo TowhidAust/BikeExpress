@@ -1,4 +1,4 @@
-import { Card, Col, Pagination, Row, Select, Typography } from 'antd';
+import { Card, Col, Pagination, Row, Select, Slider, Typography } from 'antd';
 import AppLayout from '@/components/Layout/AppLayout';
 import ProductCardBike from '@/components/ProductCard/ProductCardBike';
 import cafeRacer from '@/assets/cafeRacer.jpg';
@@ -10,25 +10,34 @@ export default function UsedBikes() {
 			<Row gutter={[16, 16]}>
 				<Col xs={24} sm={24} md={6}>
 					<Card>
-						<Typography.Title level={4}>Search Filter</Typography.Title>
-						<Select
-							className="width-100"
-							showSearch
-							placeholder="Select a city"
-							optionFilterProp="children"
-							filterOption={(input, option) =>
-								(option!.children as unknown as string)
-									.toLowerCase()
-									.includes(input.toLowerCase())
-							}
-						>
-							<Option value="dhaka">Dhaka</Option>
-							<Option value="chittagong">Chittagong</Option>
-							<Option value="rajshahi">Rajshahi</Option>
-							<Option value="khulna">Khulna</Option>
-							<Option value="barishal">Barishal</Option>
-							<Option value="sylhet">Sylhet</Option>
-						</Select>
+						<Row gutter={8}>
+							<Typography.Title level={4}>Search Filter</Typography.Title>
+							<Col lg={24}>
+								<Select
+									className="width-100"
+									showSearch
+									placeholder="Select a city"
+									optionFilterProp="children"
+									filterOption={(input, option) =>
+										(option!.children as unknown as string)
+											.toLowerCase()
+											.includes(input.toLowerCase())
+									}
+								>
+									<Option value="dhaka">Dhaka</Option>
+									<Option value="chittagong">Chittagong</Option>
+									<Option value="rajshahi">Rajshahi</Option>
+									<Option value="khulna">Khulna</Option>
+									<Option value="barishal">Barishal</Option>
+									<Option value="sylhet">Sylhet</Option>
+								</Select>
+							</Col>
+							<Col lg={24}>
+								<br />
+								<Typography.Text type="secondary">Kilometer</Typography.Text>
+								<Slider range defaultValue={[20, 50]} />
+							</Col>
+						</Row>
 					</Card>
 				</Col>
 				<Col xs={24} sm={24} md={18}>
@@ -86,7 +95,7 @@ export default function UsedBikes() {
 						</Row>
 
 						<div className="mt-3 text-right">
-							<Pagination total={100} current={1} />
+							<Pagination total={100} current={1} onChange={() => true} />
 						</div>
 					</Card>
 				</Col>
