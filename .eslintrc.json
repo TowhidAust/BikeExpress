@@ -48,6 +48,7 @@
         "react/jsx-wrap-multilines": "off",
         "react/forbid-prop-types": "off",
         "no-unused-vars": "warn",
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "jsx-a11y/anchor-is-valid": "off"
     }
 }

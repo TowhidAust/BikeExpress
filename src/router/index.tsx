@@ -10,7 +10,10 @@ import { PRIVATE_ROUTE, PUBLIC_ROUTE } from './appRoutes';
 import PrivateOutlet from './PrivateOutlet';
 
 const LandingPage = lazy(() => import('@/features/LandingPage'));
-const UsedBikes = lazy(() => import('@/features/UsedBikes'));
+const UsedBikes = lazy(() => import('@/pages/UsedBikes/UsedBikesPage'));
+const UsedBikeDetails = lazy(
+	() => import('@/pages/UsedBikes/UsedBikeDetailsPage'),
+);
 const SignupPage = lazy(() => import('@/pages/Signup/SignupPage'));
 const DashboardPage = lazy(() => import('@/pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound/NotFoundPage'));
@@ -28,6 +31,10 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.USED_BIKES,
 			component: UsedBikes,
+		},
+		{
+			path: PUBLIC_ROUTE.USED_BIKE_DETAILS_ID,
+			component: UsedBikeDetails,
 		},
 	];
 	return (

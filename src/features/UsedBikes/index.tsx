@@ -1,10 +1,13 @@
 import { Card, Col, Pagination, Row, Select, Slider, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import AppLayout from '@/components/Layout/AppLayout';
 import ProductCardBike from '@/components/ProductCard/ProductCardBike';
 import cafeRacer from '@/assets/cafeRacer.jpg';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 const { Option } = Select;
 export default function UsedBikes() {
+	const navigate = useNavigate();
 	return (
 		<AppLayout>
 			<Row gutter={[16, 16]}>
@@ -57,7 +60,9 @@ export default function UsedBikes() {
 									isFirstOwner
 									location="Dhaka"
 									isNegotiable
-									onDetailsButtonClick={() => false}
+									onDetailsButtonClick={() => {
+										return navigate(`${PUBLIC_ROUTE.USED_BIKE_DETAILS}/1234`);
+									}}
 								/>
 							</Col>
 							<Col xs={24} sm={24} md={12} lg={8} xxl={6}>
