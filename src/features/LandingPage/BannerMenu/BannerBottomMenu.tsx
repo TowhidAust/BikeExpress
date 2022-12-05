@@ -68,16 +68,24 @@ export default function BannerBottomMenu() {
 			{bannerBottomMenuCategories?.map((item) => (
 				<Col xs={24} sm={24} md={6} key={Math.random()}>
 					<Card
+						style={{
+							borderLeft: '6px solid black',
+							borderRadius: '10px 0 10px 0px',
+						}}
 						hoverable
 						className="p-0"
 						bodyStyle={{
-							padding: '10px',
+							padding: '0px',
 						}}
 					>
 						<Button
-							style={{ display: 'flex', alignItems: 'center' }}
+							block
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+							}}
 							type="link"
-							size="small"
+							size="large"
 							icon={<item.categoryIcon className="mr-2" />}
 						>
 							{item?.categoryName}

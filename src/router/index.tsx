@@ -14,7 +14,7 @@ const UsedBikes = lazy(() => import('@/pages/UsedBikes/UsedBikesPage'));
 const UsedBikeDetails = lazy(
 	() => import('@/pages/UsedBikes/UsedBikeDetailsPage'),
 );
-const SignupPage = lazy(() => import('@/pages/Signup/SignupPage'));
+const SignupPage = lazy(() => import('@/pages/Auth/SignupPage'));
 const DashboardPage = lazy(() => import('@/pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound/NotFoundPage'));
 export default function AppRoutes() {
@@ -35,6 +35,10 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.USED_BIKE_DETAILS_ID,
 			component: UsedBikeDetails,
+		},
+		{
+			path: PUBLIC_ROUTE.SIGNUP,
+			component: SignupPage,
 		},
 	];
 	return (
