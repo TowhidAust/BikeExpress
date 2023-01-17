@@ -98,15 +98,17 @@ export default function UsedBikeDetails() {
 								</Card>
 							</Col>
 						</Row>
-					</Col>
-					<Col xs={24} sm={24} md={16}>
+
+						<Divider className="mt-3" />
 						<Typography.Title className="m-0" level={3}>
 							GENERIC CAFE RACER 165 ABS
 						</Typography.Title>
 						<Typography.Title className="m-0" type="warning" level={5}>
 							BDT 250000
 						</Typography.Title>
-						<Divider className="mt-3" />
+					</Col>
+
+					<Col xs={24} sm={24} md={16}>
 						<Table
 							dataSource={data}
 							columns={columns}

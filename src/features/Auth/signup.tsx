@@ -1,4 +1,5 @@
-import { Button, Card, Col, Form, Input, Layout, Row } from 'antd';
+import { Button, Card, Col, Form, Input, Layout, Row, Typography } from 'antd';
+import Logo from '@/components/Logo/Logo';
 
 const { Content } = Layout;
 export default function Auth() {
@@ -18,8 +19,29 @@ export default function Auth() {
 			>
 				<Row gutter={[16, 16]} justify="center" align="middle">
 					<Col xs={24} sm={24} md={12} lg={12}>
-						<Card className="mt-5">
+						<Card className="mt-5" bodyStyle={{ padding: 0 }}>
+							<div
+								style={{ background: 'black', padding: 10, borderRadius: 3 }}
+							>
+								<Row
+									gutter={8}
+									className="text-center"
+									justify="center"
+									align="middle"
+								>
+									<Col md={6}>
+										<Logo fontColor="white" />
+									</Col>
+									<Col md={24}>
+										<Typography.Text style={{ color: 'white' }}>
+											Signup
+										</Typography.Text>
+									</Col>
+								</Row>
+							</div>
+
 							<Form
+								style={{ padding: '50px 40px' }}
 								labelCol={{ span: 24 }}
 								wrapperCol={{ span: 24 }}
 								size="large"
@@ -28,57 +50,39 @@ export default function Auth() {
 								onFinish={onFinish}
 								onFinishFailed={onFinishFailed}
 								autoComplete="off"
+								layout="vertical"
 							>
 								<Form.Item
-									label="Username"
+									// label="Username"
 									name="name"
 									rules={[
 										{ required: true, message: 'Please input your name!' },
 									]}
 								>
-									<Input />
+									<Input placeholder="Please enter your full name" />
 								</Form.Item>
 
 								<Form.Item
-									label="Email"
-									name="email"
-									rules={[
-										{ required: true, message: 'Please input your email!' },
-									]}
-								>
-									<Input />
-								</Form.Item>
-
-								<Form.Item
-									label="Phone"
+									// label="Phone"
 									name="phone"
 									rules={[
 										{ required: true, message: 'Please input your phone!' },
 									]}
 								>
-									<Input />
+									<Input placeholder="Please enter your phone" />
 								</Form.Item>
 
 								<Form.Item
-									label="Address"
-									name="address"
-									rules={[
-										{ required: true, message: 'Please input your address!' },
-									]}
-								>
-									<Input />
-								</Form.Item>
-
-								<Form.Item
-									label="Password"
+									// label="Password"
 									name="password"
 									rules={[
 										{ required: true, message: 'Please input your password!' },
 									]}
 								>
-									<Input.Password />
+									<Input.Password placeholder="Please enter your password" />
 								</Form.Item>
-								<Form.Item wrapperCol={{ offset: 4, span: 20 }}>
+
+								<Form.Item>
 									<Button block size="large" type="primary" htmlType="submit">
 										Submit
 									</Button>
