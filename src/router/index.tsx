@@ -36,10 +36,6 @@ export default function AppRoutes() {
 			path: PUBLIC_ROUTE.USED_BIKE_DETAILS_ID,
 			component: UsedBikeDetails,
 		},
-		{
-			path: PUBLIC_ROUTE.SIGNUP,
-			component: SignupPage,
-		},
 	];
 	return (
 		<Suspense fallback={<Spin />}>
