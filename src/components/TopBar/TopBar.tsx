@@ -81,6 +81,7 @@ export default function TopBar() {
 							key: 'bikeService',
 							label: 'Bike Service',
 							onClick: () => {
+								navigate(PUBLIC_ROUTE.SIGNUP);
 								dispatch(setCurrentActiveMenu('bikeService'));
 							},
 						},
