@@ -1,4 +1,13 @@
-import { Card, Col, Divider, Image, Row, Table, Typography } from 'antd';
+import {
+	Button,
+	Card,
+	Col,
+	Divider,
+	Image,
+	Row,
+	Table,
+	Typography,
+} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import AppLayout from '@/components/Layout/AppLayout';
 import cafeRacer from '@/assets/cafeRacer.jpg';
@@ -100,12 +109,27 @@ export default function UsedBikeDetails() {
 						</Row>
 
 						<Divider className="mt-3" />
-						<Typography.Title className="m-0" level={3}>
-							GENERIC CAFE RACER 165 ABS
-						</Typography.Title>
-						<Typography.Title className="m-0" type="warning" level={5}>
-							BDT 250000
-						</Typography.Title>
+						<Row>
+							<Col xs={24} sm={24} md={24}>
+								<Typography.Title className="m-0" level={3}>
+									GENERIC CAFE RACER 165 ABS
+								</Typography.Title>
+								<Typography.Title className="m-0" type="warning" level={5}>
+									BDT 250000
+								</Typography.Title>
+							</Col>
+
+							{/* <Col xs={24} sm={24} md={12}>
+								<Button block type="primary" size="large">
+									Add to Compare
+								</Button>
+							</Col> */}
+							<Col xs={24} sm={24} md={24}>
+								<Button className="mt-3" block type="primary" size="large">
+									RESERVE THIS BIKE
+								</Button>
+							</Col>
+						</Row>
 					</Col>
 
 					<Col xs={24} sm={24} md={16}>

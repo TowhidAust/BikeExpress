@@ -1,15 +1,21 @@
 import { Button, Card, Col, Form, Input, Layout, Row, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo/Logo';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 const { Content } = Layout;
 export default function Auth() {
+	const navigate = useNavigate();
+
 	const onFinish = () => {
 		// console.log('Success:', values);
+		navigate(PUBLIC_ROUTE.LANDING);
 	};
 
 	const onFinishFailed = () => {
 		// console.log('Failed:', errorInfo);
 	};
+
 	return (
 		<Layout>
 			<Content

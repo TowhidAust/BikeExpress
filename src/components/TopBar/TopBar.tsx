@@ -1,7 +1,8 @@
-import { Affix, Col, Input, Layout, Menu, Row } from 'antd';
+import { Affix, Button, Col, Layout, Menu, Row } from 'antd';
 import { FaMotorcycle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { UserOutlined } from '@ant-design/icons';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 import { RootState } from '@/redux/store';
 import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
@@ -13,12 +14,12 @@ export default function TopBar() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	return (
-		<>
+		<Affix offsetTop={0} className="width-100">
 			<Header
 				className="pl-4 pr-4"
 				style={{ backgroundColor: 'black', width: '100%', height: 'auto' }}
 			>
-				<Row gutter={[16, 16]} align="middle">
+				<Row gutter={[16, 16]} align="middle" justify="space-between">
 					<Col xs={24} md={6}>
 						<h2
 							className="font-white m-0"
@@ -36,58 +37,64 @@ export default function TopBar() {
 							<span> HUB </span>
 						</h2>
 					</Col>
-					<Col xs={24} md={6}>
-						<Input.Search className="mt-3" size="large" enterButton="search" />
+					<Col xs={24} md={6} className="text-right">
+						<Button
+							type="link"
+							icon={<UserOutlined />}
+							onClick={() => {
+								navigate(PUBLIC_ROUTE.SIGNUP);
+							}}
+						>
+							Login
+						</Button>
 					</Col>
 				</Row>
 			</Header>
-			<Affix offsetTop={0} className="width-100">
-				<Menu
-					theme="light"
-					mode="horizontal"
-					defaultSelectedKeys={[activeMenu.currentActiveMenu]}
-					items={[
-						{
-							key: 'home',
-							label: 'Home',
-							onClick: () => {
-								dispatch(setCurrentActiveMenu('home'));
-								navigate(PUBLIC_ROUTE.LANDING);
-							},
+			<Menu
+				theme="light"
+				mode="horizontal"
+				defaultSelectedKeys={[activeMenu.currentActiveMenu]}
+				items={[
+					{
+						key: 'home',
+						label: 'Home',
+						onClick: () => {
+							dispatch(setCurrentActiveMenu('home'));
+							navigate(PUBLIC_ROUTE.LANDING);
 						},
-						{
-							key: 'sellBike',
-							label: 'Sell Bike',
-							onClick: () => {
-								dispatch(setCurrentActiveMenu('sellBike'));
-							},
+					},
+					{
+						key: 'sellBike',
+						label: 'Sell Bike',
+						onClick: () => {
+							dispatch(setCurrentActiveMenu('sellBike'));
 						},
-						{
-							key: 'buyUsedBike',
-							label: 'Buy Used Bike',
-							onClick: () => {
-								dispatch(setCurrentActiveMenu('buyUsedBike'));
-								navigate(PUBLIC_ROUTE.USED_BIKES);
-							},
+					},
+					{
+						key: 'buyUsedBike',
+						label: 'Buy Used Bike',
+						onClick: () => {
+							dispatch(setCurrentActiveMenu('buyUsedBike'));
+							navigate(PUBLIC_ROUTE.USED_BIKES);
 						},
-						{
-							key: 'buyNewBike',
-							label: 'Buy New Bike',
-							onClick: () => {
-								dispatch(setCurrentActiveMenu('buyNewBike'));
-							},
+					},
+					{
+						key: 'buyNewBike',
+						label: 'Buy New Bike',
+						onClick: () => {
+							dispatch(setCurrentActiveMenu('buyNewBike'));
 						},
-						{
-							key: 'bikeService',
-							label: 'Bike Service',
-							onClick: () => {
-								navigate(PUBLIC_ROUTE.SIGNUP);
-								dispatch(setCurrentActiveMenu('bikeService'));
-							},
+					},
+					{
+						key: 'bikeService',
+						label: 'Bike Service',
+						onClick: () => {
+							navigate(PUBLIC_ROUTE.SIGNUP);
+							dispatch(setCurrentActiveMenu('bikeService'));
 						},
-					]}
-				/>
-			</Affix>
-		</>
+					},
+				]}
+			/>
+		</Affix>
 	);
 }
