@@ -1,9 +1,3 @@
-// type PropTypes = {
-// 	isSignupActive: boolean;
-// };
-
-export default function Signup(props: PropTypes) {
-	// const { isSignupActive } = props;
-
+export default function Signup() {
 	return <div>signup</div>;
 }
