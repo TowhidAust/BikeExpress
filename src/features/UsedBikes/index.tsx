@@ -47,7 +47,7 @@ export default function UsedBikes() {
 					<Card>
 						<Typography.Title level={4}> Used Bikes </Typography.Title>
 						<Row gutter={[16, 16]}>
-							<Col xs={24} sm={24} md={12} lg={8} xxl={6}>
+							<Col xs={24} sm={24} md={12} lg={8} xxl={8}>
 								<ProductCardBike
 									// key={Math.random()}
 									image={cafeRacer}
@@ -65,7 +65,7 @@ export default function UsedBikes() {
 									}}
 								/>
 							</Col>
-							<Col xs={24} sm={24} md={12} lg={8} xxl={6}>
+							<Col xs={24} sm={24} md={12} lg={8} xxl={8}>
 								<ProductCardBike
 									// key={Math.random()}
 									image={cafeRacer}
@@ -81,7 +81,7 @@ export default function UsedBikes() {
 									onDetailsButtonClick={() => false}
 								/>
 							</Col>
-							<Col xs={24} sm={24} md={12} lg={8} xxl={6}>
+							<Col xs={24} sm={24} md={12} lg={8} xxl={8}>
 								<ProductCardBike
 									// key={Math.random()}
 									image={cafeRacer}
