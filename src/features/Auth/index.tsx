@@ -1,20 +1,18 @@
 import { Button, Card, Col, Form, Input, Layout, Row, Typography } from 'antd';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Logo from '@/components/Logo/Logo';
-import { PUBLIC_ROUTE } from '@/router/appRoutes';
-import Signup from './Signup';
+// import { PUBLIC_ROUTE } from '@/router/appRoutes';
+import Signup from '@/features/Auth/SignupScreen';
 
 const { Content } = Layout;
 
 export default function Auth() {
 	const [isSignupActive, setIsSignupActive] = useState<boolean>(false);
 
-	const navigate = useNavigate();
-
 	const onFinish = () => {
 		// console.log('Success:', values);
-		navigate(PUBLIC_ROUTE.LANDING);
+		// navigate(PUBLIC_ROUTE.LANDING);
 	};
 
 	const onFinishFailed = () => {
@@ -28,7 +26,7 @@ export default function Auth() {
 					minHeight: '100vh',
 				}}
 			>
-				<Row gutter={[16, 16]} justify="center" align="middle">
+				<Row justify="center" align="middle">
 					<Col xs={24} sm={24} md={12} lg={12}>
 						<Card className="mt-5" bodyStyle={{ padding: 0 }}>
 							<div
@@ -43,12 +41,6 @@ export default function Auth() {
 									<Col md={8}>
 										<Logo fontColor="white" />
 									</Col>
-
-									{/* <Col md={8}>
-										<Typography.Text style={{ color: 'white' }}>
-											<Button type="link">Login</Button>
-										</Typography.Text>
-									</Col> */}
 
 									<Col md={8}>
 										<Typography.Text style={{ color: 'white' }}>
@@ -78,27 +70,18 @@ export default function Auth() {
 								layout="vertical"
 							>
 								<Form.Item
-									// label="Username"
-									name="name"
-									rules={[
-										{ required: true, message: 'Please input your name!' },
-									]}
-								>
-									<Input placeholder="Please enter your full name" />
-								</Form.Item>
-
-								<Form.Item
-									// label="Phone"
 									name="phone"
 									rules={[
-										{ required: true, message: 'Please input your phone!' },
+										{
+											required: true,
+											message: 'Please input your phone number!',
+										},
 									]}
 								>
 									<Input placeholder="Please enter your phone" />
 								</Form.Item>
 
 								<Form.Item
-									// label="Password"
 									name="password"
 									rules={[
 										{ required: true, message: 'Please input your password!' },

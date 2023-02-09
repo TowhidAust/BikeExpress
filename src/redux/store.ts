@@ -17,6 +17,7 @@ import activeMenuSliceReducer from '@/redux/activeMenubarSlice';
 import authReducer from '@/redux/authSlice';
 // import { emptySplitApi } from '@/RTKQuery/apiSlice';
 import { globalErrorHandling } from './helper';
+import { emptySliceApi } from '@/api/emptySliceApi';
 
 const persistConfig = {
 	key: 'auth',
@@ -32,6 +33,7 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
 	// RTK Query uses `createAsyncThunk` from redux-toolkit under the hood, so we're able to utilize these matchers!
 	if (isRejectedWithValue(action)) {
+		// use your global error handling for each api error
 		globalErrorHandling(action);
 	}
 
@@ -43,16 +45,16 @@ export const store = configureStore({
 		counter: counterReducer,
 		auth: persistedAuthReducer,
 		activeMenu: activeMenuSliceReducer,
-		// [emptySplitApi.reducerPath]: emptySplitApi.reducer,
+		[emptySliceApi.reducerPath]: emptySliceApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			serializableCheck: {
 				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
 			},
-		}),
-	// .concat(emptySplitApi.middleware)
-	// .concat(rtkQueryErrorLogger),
+		})
+			.concat(emptySliceApi.middleware)
+			.concat(rtkQueryErrorLogger),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
