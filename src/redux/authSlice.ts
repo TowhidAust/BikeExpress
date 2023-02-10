@@ -3,18 +3,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
 	user: {
-		uuid: '',
-		name: '',
-		email: '',
+		_id: '',
+		firsname: '',
+		lastname: '',
 		phone: '',
 	},
 	token: null,
-	refreshToken: null,
 	roles: [],
-	doctorList: [],
-	clinicList: [],
-	selectedDoctorUid: null,
-	selectedClinicUid: null,
 	selectedRole: null,
 };
 
@@ -30,10 +25,6 @@ export const authSlice = createSlice({
 			state.token = action.payload;
 		},
 
-		setRefreshToken: (state, action: PayloadAction<any>) => {
-			state.refreshToken = action.payload;
-		},
-
 		setRoles: (state, action: PayloadAction<any>) => {
 			state.roles = action.payload;
 		},
@@ -42,53 +33,22 @@ export const authSlice = createSlice({
 			state.selectedRole = action.payload;
 		},
 
-		setDoctorList: (state, action: PayloadAction<any>) => {
-			state.doctorList = action.payload;
-		},
-
-		setClinicList: (state, action: PayloadAction<any>) => {
-			state.clinicList = action.payload;
-		},
-
-		setselectedClinicUid: (state, action: PayloadAction<any>) => {
-			state.selectedClinicUid = action.payload;
-		},
-
-		setselectedDoctorUid: (state, action: PayloadAction<any>) => {
-			state.selectedDoctorUid = action.payload;
-		},
-
 		logout: (state) => {
 			state.user = {
-				uuid: '',
-				name: '',
-				email: '',
+				_id: '',
+				firsname: '',
+				lastname: '',
 				phone: '',
 			};
-			state.refreshToken = null;
 			state.token = null;
 			state.roles = [];
-			state.doctorList = [];
-			state.clinicList = [];
-			state.selectedDoctorUid = null;
-			state.selectedClinicUid = null;
 			state.selectedRole = null;
 		},
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const {
-	setUser,
-	setToken,
-	setRefreshToken,
-	logout,
-	setRoles,
-	setDoctorList,
-	setClinicList,
-	setselectedDoctorUid,
-	setselectedClinicUid,
-	setSelectedRole,
-} = authSlice.actions;
+export const { setUser, setToken, logout, setRoles, setSelectedRole } =
+	authSlice.actions;
 
 export default authSlice.reducer;
