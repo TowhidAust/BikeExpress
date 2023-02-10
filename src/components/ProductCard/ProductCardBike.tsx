@@ -73,7 +73,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 					</Typography.Title>
 				</Col>
 				<Col xs={24} sm={24} md={12}>
-					<Typography.Text className="font-weight-600" type="warning">
+					<Typography.Text className="font-weight-600 primary-font-color">
 						BDT {price}
 					</Typography.Text>
 				</Col>
@@ -90,7 +90,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 					Km: {km}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
-					owner: {isFirstOwner ? '1st' : 'Pre-Owned'}
+					Owner: {isFirstOwner ? '1st' : 'Pre-Owned'}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
 					Location: {location}

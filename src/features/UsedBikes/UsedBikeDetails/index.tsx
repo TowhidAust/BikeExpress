@@ -66,8 +66,8 @@ export default function UsedBikeDetails() {
 		},
 		{
 			key: '7',
-			title: 'Location',
-			value: 'Dhka',
+			title: 'LOCATION',
+			value: 'Dhaka',
 		},
 		{
 			key: '8',
