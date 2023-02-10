@@ -65,6 +65,25 @@ export default function Auth() {
 											borderRadius: 3,
 										}}
 									>
+										<div
+											style={{
+												width: '90%',
+												// background: 'red',
+												textAlign: 'center',
+												color: 'white',
+												position: 'absolute',
+												top: '50%',
+												left: '50%',
+												transform: 'translate(-50%, -50%)',
+											}}
+										>
+											<h1 style={{ color: 'white' }}> Welcome Back! </h1>
+											<p>
+												Are you looking for an used bike or any kind of bike
+												accessories? You are in the right place. Please login
+												and pick your desired bike with a few clicks.
+											</p>
+										</div>
 										<Row
 											gutter={8}
 											className="text-center"
