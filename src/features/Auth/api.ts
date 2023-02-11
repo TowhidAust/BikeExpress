@@ -9,6 +9,7 @@ export interface LoginResponseType {
 		firstname: number;
 		lastname: string;
 		phone: string;
+		role: string;
 	};
 }
 

@@ -10,7 +10,9 @@ import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
 const { Header } = Layout;
 
 export default function TopBar() {
-	const { activeMenu } = useSelector((state: RootState) => state);
+	const { activeMenu, auth } = useSelector((state: RootState) => state);
+	const { user } = auth;
+	const { firstname } = user;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	return (
@@ -39,15 +41,21 @@ export default function TopBar() {
 							</h2>
 						</Col>
 						<Col xs={24} md={6} className="text-right">
-							<Button
-								type="link"
-								icon={<UserOutlined />}
-								onClick={() => {
-									navigate(PUBLIC_ROUTE.SIGNUP);
-								}}
-							>
-								Login
-							</Button>
+							{!firstname ? (
+								<Button
+									type="link"
+									icon={<UserOutlined />}
+									onClick={() => {
+										navigate(PUBLIC_ROUTE.SIGNUP);
+									}}
+								>
+									Login
+								</Button>
+							) : (
+								<Button type="link" icon={<UserOutlined />}>
+									{firstname}
+								</Button>
+							)}
 						</Col>
 					</Row>
 				</Header>
