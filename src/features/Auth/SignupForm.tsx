@@ -1,6 +1,32 @@
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Form, Input, message, Select } from 'antd';
+import { useDispatch } from 'react-redux';
+import { useSignupMutation } from './api';
+import {
+	setRoles,
+	setSelectedRole,
+	setToken,
+	setUser,
+} from '@/redux/authSlice';
 
 export default function SignupForm() {
+	const dispatch = useDispatch();
+	const [signupMutation, { isLoading }] = useSignupMutation();
+	const onFinish = (values: any) => {
+		values.role = [values.role]; // because role should be an array
+		signupMutation(values)
+			.unwrap()
+			.then((snapshot) => {
+				dispatch(setUser(snapshot?.result));
+				dispatch(setToken(snapshot?.token));
+				dispatch(setRoles(snapshot?.result?.role));
+				dispatch(setSelectedRole(snapshot?.result?.role[0]));
+				message.success(snapshot?.message);
+			})
+			.catch((err) => {
+				if (err?.message) message.error(err?.message);
+			});
+	};
+
 	return (
 		<Form
 			style={{ padding: '50px 40px' }}
@@ -9,11 +35,23 @@ export default function SignupForm() {
 			size="large"
 			name="basic"
 			initialValues={{ remember: true }}
-			// onFinish={onFinish}
+			onFinish={onFinish}
 			// onFinishFailed={onFinishFailed}
 			autoComplete="off"
 			layout="vertical"
 		>
+			<Form.Item
+				name="phone"
+				rules={[
+					{
+						required: true,
+						message: 'Please enter your phone number!',
+					},
+				]}
+			>
+				<Input placeholder="Please enter your phone number" />
+			</Form.Item>
+
 			<Form.Item
 				name="firstname"
 				rules={[
@@ -39,7 +77,7 @@ export default function SignupForm() {
 			</Form.Item>
 
 			<Form.Item
-				name="passord"
+				name="password"
 				rules={[
 					{
 						required: true,
@@ -47,7 +85,7 @@ export default function SignupForm() {
 					},
 				]}
 			>
-				<Input.Password placeholder="Enter your password" />
+				<Input.Password placeholder="Please enter your password" />
 			</Form.Item>
 
 			<Form.Item
@@ -59,27 +97,27 @@ export default function SignupForm() {
 					},
 				]}
 			>
-				<Input.Password placeholder="Confirm your password" />
+				<Input.Password placeholder="Please Confirm your password" />
 			</Form.Item>
 
 			<Form.Item
-				name="passord"
+				name="role"
 				rules={[
 					{
 						required: true,
-						message: 'Enter your password!',
+						message: 'Select user type!',
 					},
 				]}
 			>
 				<Select
-					placeholder="Select user type"
+					placeholder="Please select user type"
 					// defaultValue="BUYER"
 					size="large"
 					// onChange={handleChange}
 					options={[
 						{
 							value: 'BUYER',
-							label: 'I WANT TO BUY',
+							label: 'I WANT TO BUY FROM BIKEHUB',
 						},
 						{
 							value: 'INDIVIDUAL_SELLER',
@@ -95,7 +133,7 @@ export default function SignupForm() {
 
 			<Form.Item>
 				<Button
-					// loading={isLoading}
+					loading={isLoading}
 					block
 					size="large"
 					type="primary"

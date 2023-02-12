@@ -2,8 +2,8 @@ import { emptySliceApi } from '@/api/emptySliceApi';
 
 export interface LoginResponseType {
 	status: string;
-	token: string;
 	message: string;
+	token: string;
 	result: {
 		_id: any;
 		firstname: number;
@@ -18,6 +18,29 @@ export interface LoginQueryType {
 	password: string;
 }
 
+export interface SignupResponseType {
+	status: string;
+	message: string;
+	token: string;
+	result: {
+		_id: string;
+		firstname: number;
+		lastname: string;
+		phone: string;
+		role: string;
+		createdAt: string;
+	};
+}
+
+export interface SignupQueryType {
+	firstname: string;
+	lastname: string;
+	role: string[];
+	phone: string;
+	password: string;
+	confirmPassword: string;
+}
+
 export const authApiSlice = emptySliceApi.injectEndpoints({
 	endpoints: (builder) => ({
 		login: builder.mutation<LoginResponseType, LoginQueryType>({
@@ -27,7 +50,14 @@ export const authApiSlice = emptySliceApi.injectEndpoints({
 				body: payload,
 			}),
 		}),
+		signup: builder.mutation<SignupResponseType, SignupQueryType>({
+			query: (payload) => ({
+				method: 'POST',
+				url: '/signup',
+				body: payload,
+			}),
+		}),
 	}),
 });
 
-export const { useLoginMutation } = authApiSlice;
+export const { useLoginMutation, useSignupMutation } = authApiSlice;

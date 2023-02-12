@@ -40,7 +40,7 @@ export default function Auth() {
 					dispatch(setUser(data?.result));
 					dispatch(setToken(data?.token));
 					dispatch(setRoles(data?.result?.role));
-					dispatch(setSelectedRole(data?.result?.role));
+					dispatch(setSelectedRole(data?.result?.role[0]));
 					message.success(data?.message);
 					navigate(PUBLIC_ROUTE.LANDING);
 				}
