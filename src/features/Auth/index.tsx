@@ -63,12 +63,12 @@ export default function Auth() {
 			>
 				<Row justify="center" align="middle">
 					<Col xs={24} sm={24} md={20} lg={18} xxl={14}>
-						<Card className="mt-5" bodyStyle={{ padding: 0 }}>
+						<Card bodyStyle={{ padding: 0 }}>
 							<Row>
 								<Col xs={24} sm={24} md={12}>
 									<div
 										style={{
-											minHeight: 550,
+											minHeight: 600,
 											width: '100%',
 											background: 'black',
 											padding: 10,
@@ -93,7 +93,7 @@ export default function Auth() {
 													: 'LOGIN TO YOUR ACCOUNT'}
 											</h1>
 											<p>
-												Are you looking for an used bike or any kind of bike
+												Are you looking for a used bike or any kind of bike
 												accessories? You are in the right place. Please login
 												and pick your desired bike with a few clicks.
 											</p>

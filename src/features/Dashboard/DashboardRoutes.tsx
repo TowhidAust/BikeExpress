@@ -19,7 +19,20 @@ export default function DashboardRoutes() {
 		},
 	];
 	return (
-		<Suspense fallback={<Spin />}>
+		<Suspense
+			fallback={
+				<div
+					style={{
+						minHeight: '100vh',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<Spin />
+				</div>
+			}
+		>
 			<Routes>
 				{routes.map((route) => (
 					<Route

@@ -7,3 +7,6 @@ tsconfig.json
 tsconfig.node.json
 .eslintrc.json
 vite.config.ts
+
+tailwind.config.cjs
+postcss.config.cjs

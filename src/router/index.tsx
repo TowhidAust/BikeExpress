@@ -38,7 +38,20 @@ export default function AppRoutes() {
 		},
 	];
 	return (
-		<Suspense fallback={<Spin />}>
+		<Suspense
+			fallback={
+				<div
+					style={{
+						minHeight: '100vh',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<Spin />
+				</div>
+			}
+		>
 			<Router>
 				<Routes>
 					{publicRoutes.map((route) => (

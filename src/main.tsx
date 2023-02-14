@@ -12,6 +12,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import App from './App';
 import { store } from './redux/store';
+import './index.css';
 
 const persistor = persistStore(store);
 
@@ -43,7 +44,14 @@ i18n
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<Suspense
 		fallback={
-			<div className="text-center mt-5">
+			<div
+				style={{
+					minHeight: '100vh',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
 				<Spin />
 			</div>
 		}

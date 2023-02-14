@@ -13,8 +13,7 @@
         "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
-    "overrides": [
-    ],
+    "overrides": [],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -52,4 +51,5 @@
         "jsx-a11y/anchor-is-valid": "off",
         "no-underscore-dangle": "off"
     }
+    
 }

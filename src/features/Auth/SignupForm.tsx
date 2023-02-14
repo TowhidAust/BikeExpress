@@ -29,7 +29,7 @@ export default function SignupForm() {
 
 	return (
 		<Form
-			style={{ padding: '50px 40px' }}
+			style={{ padding: '40px 40px' }}
 			labelCol={{ span: 24 }}
 			wrapperCol={{ span: 24 }}
 			size="large"
@@ -40,6 +40,7 @@ export default function SignupForm() {
 			autoComplete="off"
 			layout="vertical"
 		>
+			<div className="container mx-auto">GG</div>
 			<Form.Item
 				name="phone"
 				rules={[
