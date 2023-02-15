@@ -1,5 +1,6 @@
 import { Button, Form, Input, message, Select } from 'antd';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useSignupMutation } from './api';
 import {
 	setRoles,
@@ -7,10 +8,13 @@ import {
 	setToken,
 	setUser,
 } from '@/redux/authSlice';
+import { validatePassword, validatePhoneNumber } from './helper';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 export default function SignupForm() {
 	const dispatch = useDispatch();
 	const [signupMutation, { isLoading }] = useSignupMutation();
+	const navigate = useNavigate();
 	const onFinish = (values: any) => {
 		values.role = [values.role]; // because role should be an array
 		signupMutation(values)
@@ -21,6 +25,7 @@ export default function SignupForm() {
 				dispatch(setRoles(snapshot?.result?.role));
 				dispatch(setSelectedRole(snapshot?.result?.role[0]));
 				message.success(snapshot?.message);
+				navigate(PUBLIC_ROUTE.LANDING);
 			})
 			.catch((err) => {
 				if (err?.message) message.error(err?.message);
@@ -29,24 +34,33 @@ export default function SignupForm() {
 
 	return (
 		<Form
-			style={{ padding: '40px 40px' }}
+			style={{ padding: '50px 40px' }}
 			labelCol={{ span: 24 }}
 			wrapperCol={{ span: 24 }}
 			size="large"
 			name="basic"
 			initialValues={{ remember: true }}
 			onFinish={onFinish}
-			// onFinishFailed={onFinishFailed}
 			autoComplete="off"
 			layout="vertical"
 		>
-			<div className="container mx-auto">GG</div>
 			<Form.Item
 				name="phone"
 				rules={[
 					{
 						required: true,
 						message: 'Please enter your phone number!',
+					},
+					{
+						message: 'Phone number is not valid! (eg: 017XXXXYYYY)',
+						validator: (_, value) => {
+							const isPhoneNumberValid = validatePhoneNumber(value);
+							if (isPhoneNumberValid) {
+								return Promise.resolve();
+							}
+							return Promise.reject(new Error('Phone number is not valid'));
+						},
+						validateTrigger: 'onSubmit', // for not showing the error message on type
 					},
 				]}
 			>
@@ -84,6 +98,21 @@ export default function SignupForm() {
 						required: true,
 						message: 'Enter your password!',
 					},
+					{
+						message:
+							'Minimum eight characters, at least one letter, one number and one special character:',
+						validator: (_, value) => {
+							const isPasswordValid = validatePassword(value);
+							if (isPasswordValid) {
+								return Promise.resolve();
+							}
+							return Promise.reject(
+								new Error(
+									'Minimum eight characters, at least one letter, one number and one special character:',
+								),
+							);
+						},
+					},
 				]}
 			>
 				<Input.Password placeholder="Please enter your password" />
@@ -96,6 +125,16 @@ export default function SignupForm() {
 						required: true,
 						message: 'Confirm your password!',
 					},
+					({ getFieldValue }) => ({
+						validator(_, value) {
+							if (!value || getFieldValue('password') === value) {
+								return Promise.resolve();
+							}
+							return Promise.reject(
+								new Error('The two passwords that you entered do not match!'),
+							);
+						},
+					}),
 				]}
 			>
 				<Input.Password placeholder="Please Confirm your password" />
