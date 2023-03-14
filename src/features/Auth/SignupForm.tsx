@@ -40,7 +40,6 @@ export default function SignupForm() {
 			autoComplete="off"
 			layout="vertical"
 		>
-			<div className="container mx-auto">GG</div>
 			<Form.Item
 				name="phone"
 				rules={[

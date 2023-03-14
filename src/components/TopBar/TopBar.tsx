@@ -77,6 +77,7 @@ export default function TopBar() {
 							label: 'Sell Bike',
 							onClick: () => {
 								dispatch(setCurrentActiveMenu('sellBike'));
+								navigate(PUBLIC_ROUTE.SELL_BIKE_PAGE);
 							},
 						},
 						{
