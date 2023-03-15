@@ -1,23 +1,20 @@
-import { Button, Form, Input, Select } from 'antd';
+import { useState } from 'react';
+import { Button, Form, Select, Typography } from 'antd';
 import AppLayout from '@/components/Layout/AppLayout';
+import { DISTRICTS, DIVISIONS } from '@/constants';
 
 export default function SellBike() {
+	const [selectedDivision, setSelectedDivision] = useState<any[]>();
+
+	const handleFormValuesChange = (value: any) => {
+		if (value?.division) {
+			setSelectedDivision(DISTRICTS[value?.division as keyof typeof DISTRICTS]);
+		}
+	};
+
 	return (
 		<AppLayout>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat in
-				quibusdam quod voluptatibus nisi sunt ducimus sequi vel id, earum dolore
-				rerum reiciendis cum eligendi ex, illum praesentium eum iure?Lorem ipsum
-				dolor, sit amet consectetur adipisicing elit. Consequuntur quaerat
-				impedit necessitatibus numquam soluta, ipsum ab earum officia accusamus
-				reprehenderit. Aut incidunt tempore eos maiores in dolorem iure rerum
-				autem quia soluta enim suscipit quod totam, debitis ut, sapiente dolor
-				minima consequuntur laudantium recusandae vel animi. Sed modi a autem,
-				necessitatibus rerum dolorem quas debitis odio velit possimus quia
-				beatae aliquam sunt temporibus quaerat commodi cupiditate unde minus
-				recusandae doloribus inventore reiciendis? Ratione beatae suscipit quas
-				consectetur nulla perferendis deserunt consequatur aspernatur commodi,
-				eveniet saepe, nihil officiis velit eum illo ipsam praesentium?
+			<Typography.Title level={5}>
 				Obcaecati mollitia saepe numquam et perspiciatis nam quidem molestias,
 				itaque magnam blanditiis quod odit ipsam impedit debitis sit, explicabo
 				doloremque quo rem iure voluptatem architecto, enim culpa totam! Alias
@@ -27,7 +24,7 @@ export default function SellBike() {
 				impedit voluptatem sequi! Omnis explicabo ipsam aut rerum aliquam
 				impedit nemo unde ea porro, ex ratione similique cumque aliquid adipisci
 				cupiditate vel animi, molestias blanditiis? Debitis nemo neque.
-			</p>
+			</Typography.Title>
 			<section>
 				<Form
 					name="basic"
@@ -38,11 +35,16 @@ export default function SellBike() {
 					// onFinishFailed={onFinishFailed}
 					autoComplete="off"
 					size="large"
+					onValuesChange={handleFormValuesChange}
 				>
 					<Form.Item
-						// label="Division"
 						name="division"
-						rules={[{ required: true, message: 'Please input your division!' }]}
+						rules={[
+							{
+								required: true,
+								message: 'Please input your division!',
+							},
+						]}
 					>
 						<Select
 							showSearch
@@ -55,42 +57,35 @@ export default function SellBike() {
 									.toLowerCase()
 									.includes(input.toLowerCase())
 							}
-							options={[
-								{
-									value: 'dhaka',
-									label: 'Dhaka',
-								},
-								{
-									value: 'chittagong',
-									label: 'Chittagong',
-								},
-								{
-									value: 'rajshahi',
-									label: 'Rajshahi',
-								},
-								{
-									value: 'khulna',
-									label: 'Khulna',
-								},
-								{
-									value: 'barishal',
-									label: 'Barishal',
-								},
-								{
-									value: 'sylhet',
-									label: 'Sylhet',
-								},
-							]}
+							options={DIVISIONS}
 						/>
 					</Form.Item>
 
-					<Form.Item
-						// label="Password"
-						name="password"
-						rules={[{ required: true, message: 'Please input your password!' }]}
-					>
-						<Input.Password />
-					</Form.Item>
+					{selectedDivision && (
+						<Form.Item
+							name="district"
+							rules={[
+								{
+									required: true,
+									message: 'Please input your district!',
+								},
+							]}
+						>
+							<Select
+								showSearch
+								placeholder="Select your district"
+								optionFilterProp="children"
+								// onChange={onChange}
+								// onSearch={onSearch}
+								filterOption={(input, option) =>
+									(option?.label ?? '')
+										.toLowerCase()
+										.includes(input.toLowerCase())
+								}
+								options={selectedDivision}
+							/>
+						</Form.Item>
+					)}
 
 					<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 						<Button type="primary" htmlType="submit">
