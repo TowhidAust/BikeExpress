@@ -19,11 +19,6 @@ export default function LandingPage() {
 					<BannerBottomMenu />
 				</Col>
 				<Col xs={24} sm={24} md={24}>
-					<p>
-						The aspiration of Realme is to provide products with a comprehensive
-						superior experience for the customers, and Realme is committed to be
-						a trendsetting technology brand. So, do experience yourself.
-					</p>
 					<NewBikes />
 				</Col>
 				<Col xs={24} sm={24} md={24}>
