@@ -5,11 +5,18 @@ import { DISTRICTS, DIVISIONS } from '@/constants';
 
 export default function SellBike() {
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
+	const [form] = Form.useForm();
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
+			form.resetFields(['district']);
 			setSelectedDivision(DISTRICTS[value?.division as keyof typeof DISTRICTS]);
 		}
+	};
+
+	const onFinish = (value: any) => {
+		// eslint-disable-next-line no-console
+		console.log(value);
 	};
 
 	return (
@@ -27,11 +34,12 @@ export default function SellBike() {
 			</Typography.Title>
 			<section>
 				<Form
+					form={form}
 					name="basic"
 					// labelCol={{ span: 8 }}
 					// wrapperCol={{ span: 16 }}
 					initialValues={{ remember: true }}
-					// onFinish={onFinish}
+					onFinish={onFinish}
 					// onFinishFailed={onFinishFailed}
 					autoComplete="off"
 					size="large"

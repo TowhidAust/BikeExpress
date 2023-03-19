@@ -4,12 +4,12 @@ const DIVISIONS = [
 		label: 'Dhaka',
 	},
 	{
-		value: 'Mymensing',
-		label: 'Mymensing',
+		value: 'Mymensingh',
+		label: 'Mymensingh',
 	},
 	{
-		value: 'Chattogram',
-		label: 'Chattogram',
+		value: 'Chittagong',
+		label: 'Chittagong',
 	},
 	{
 		value: 'Rajshahi',
