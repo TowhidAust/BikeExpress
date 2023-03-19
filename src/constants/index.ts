@@ -20,8 +20,8 @@ const DIVISIONS = [
 		label: 'Khulna',
 	},
 	{
-		value: 'Barishal',
-		label: 'Barishal',
+		value: 'Barisal',
+		label: 'Barisal',
 	},
 	{
 		value: 'Sylhet',
@@ -116,4 +116,12 @@ const DISTRICTS = {
 	],
 };
 
-export { DIVISIONS, DISTRICTS };
+const BIKELIST = [
+	{ value: '101', label: 'SUZUKI GSX-R150 ABS' },
+	{ value: '102', label: 'SUZUKI GSX-S150' },
+	{ value: '103', label: 'SUZUKI BANDIT 150' },
+	{ value: '104', label: 'SUZUKI INTRUDER FI ABS' },
+	{ value: '105', label: 'SUZUKI GIXXER FI ABS' },
+];
+
+export { DIVISIONS, DISTRICTS, BIKELIST };

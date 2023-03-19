@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Button, Form, Select, Typography } from 'antd';
+import { AutoComplete, Button, Form, Input, Select, Typography } from 'antd';
 import AppLayout from '@/components/Layout/AppLayout';
-import { DISTRICTS, DIVISIONS } from '@/constants';
+import { BIKELIST, DISTRICTS, DIVISIONS } from '@/constants';
 
 export default function SellBike() {
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
@@ -45,6 +45,32 @@ export default function SellBike() {
 					size="large"
 					onValuesChange={handleFormValuesChange}
 				>
+					<Form.Item
+						name="Bike Brand"
+						rules={[
+							{
+								required: true,
+								message: 'Please input your bike brand!',
+							},
+						]}
+					>
+						<AutoComplete
+							showSearch
+							placeholder="Select your bike"
+							optionFilterProp="children"
+							// onChange={onChange}
+							// onSearch={onSearch}
+							// value={autoCompleteText}
+							// onChange={handleChange}
+							filterOption={(input, option) =>
+								(option?.label ?? '')
+									.toLowerCase()
+									.includes(input.toLowerCase())
+							}
+							options={BIKELIST}
+						/>
+					</Form.Item>
+
 					<Form.Item
 						name="division"
 						rules={[
@@ -94,8 +120,15 @@ export default function SellBike() {
 							/>
 						</Form.Item>
 					)}
-
-					<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+					<Form.Item
+						name="phone"
+						rules={[
+							{ required: true, message: 'Please input your phone number' },
+						]}
+					>
+						<Input placeholder="Phone number" type="text" />
+					</Form.Item>
+					<Form.Item>
 						<Button type="primary" htmlType="submit">
 							Submit
 						</Button>
