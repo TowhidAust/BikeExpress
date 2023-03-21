@@ -38,7 +38,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 						position: 'relative',
 						textAlign: 'right',
 						backgroundImage: `url(${image})`,
-						backgroundSize: '100% 100%',
+						backgroundSize: 'cover',
 						backgroundRepeat: 'no-repeat',
 						height: '200px',
 					}}
