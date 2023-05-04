@@ -7,7 +7,7 @@ export default function Logo(props: PropTypes) {
 	const { fontColor } = props;
 	return (
 		<h2
-			className="font-white m-0"
+			className="font-white m-0 p-0"
 			style={{
 				display: 'flex',
 				justifyContent: 'center',
