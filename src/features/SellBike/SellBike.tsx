@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { Button, Card, Col, Form, Input, Row, Select } from 'antd';
 import AppLayout from '@/components/Layout/AppLayout';
-import { BIKELIST, DISTRICTS, DIVISIONS } from '@/constants';
+import {
+	BIKELIST,
+	BIKE_MODEL_YEAR,
+	DISTRICTS,
+	DIVISIONS,
+	DURATION_OF_REGISTRATION,
+	YEAR_OF_REGISTRATION,
+} from '@/constants';
 
 export default function SellBike() {
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
@@ -176,7 +183,7 @@ export default function SellBike() {
 												.toLowerCase()
 												.includes(input.toLowerCase())
 										}
-										options={BIKELIST}
+										options={YEAR_OF_REGISTRATION}
 									/>
 								</Form.Item>
 								<Form.Item
@@ -199,7 +206,7 @@ export default function SellBike() {
 												.toLowerCase()
 												.includes(input.toLowerCase())
 										}
-										options={BIKELIST}
+										options={DURATION_OF_REGISTRATION}
 									/>
 								</Form.Item>
 								<Form.Item
@@ -222,7 +229,7 @@ export default function SellBike() {
 												.toLowerCase()
 												.includes(input.toLowerCase())
 										}
-										options={BIKELIST}
+										options={BIKE_MODEL_YEAR}
 									/>
 								</Form.Item>
 								<Form.Item>
