@@ -147,6 +147,50 @@ const DURATION_OF_REGISTRATION = [
 	{ value: 'expired', label: 'Tax Token Expired' },
 ];
 
+const ZONE_OF_REGISTRATION = [
+	{
+		value: 'Dhaka',
+		label: 'Dhaka',
+	},
+	{
+		value: 'Mymensingh',
+		label: 'Mymensingh',
+	},
+	{
+		value: 'Chittagong',
+		label: 'Chittagong',
+	},
+	{
+		value: 'Rajshahi',
+		label: 'Rajshahi',
+	},
+	{
+		value: 'Khulna',
+		label: 'Khulna',
+	},
+	{
+		value: 'Barisal',
+		label: 'Barisal',
+	},
+	{
+		value: 'Sylhet',
+		label: 'Sylhet',
+	},
+	{
+		value: 'Rangpur',
+		label: 'Rangpur',
+	},
+	{
+		value: 'Other',
+		label: 'Other',
+	},
+];
+
+const OWNERSHIP_STATUS = [
+	{ value: '1st Owner', label: '1st Owner' },
+	{ value: '2nd Owner', label: '2nd Owner' },
+];
+
 export {
 	DIVISIONS,
 	DISTRICTS,
@@ -154,4 +198,6 @@ export {
 	YEAR_OF_REGISTRATION,
 	DURATION_OF_REGISTRATION,
 	BIKE_MODEL_YEAR,
+	ZONE_OF_REGISTRATION,
+	OWNERSHIP_STATUS,
 };

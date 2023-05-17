@@ -1,5 +1,18 @@
+import {
+	Button,
+	Card,
+	Col,
+	Form,
+	Input,
+	Radio,
+	Row,
+	Select,
+	Typography,
+	Upload,
+} from 'antd';
+import ImgCrop from 'antd-img-crop';
+import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 import { useState } from 'react';
-import { Button, Card, Col, Form, Input, Row, Select } from 'antd';
 import AppLayout from '@/components/Layout/AppLayout';
 import {
 	BIKELIST,
@@ -7,11 +20,22 @@ import {
 	DISTRICTS,
 	DIVISIONS,
 	DURATION_OF_REGISTRATION,
+	OWNERSHIP_STATUS,
 	YEAR_OF_REGISTRATION,
+	ZONE_OF_REGISTRATION,
 } from '@/constants';
 
 export default function SellBike() {
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
+	const [fileList, setFileList] = useState<UploadFile[]>([
+		{
+			uid: '-1',
+			name: 'image.png',
+			status: 'done',
+			url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+		},
+	]);
+
 	const [form] = Form.useForm();
 
 	const handleFormValuesChange = (value: any) => {
@@ -19,6 +43,25 @@ export default function SellBike() {
 			form.resetFields(['district']);
 			setSelectedDivision(DISTRICTS[value?.division as keyof typeof DISTRICTS]);
 		}
+	};
+
+	const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
+		setFileList(newFileList);
+	};
+
+	const onPreview = async (file: UploadFile) => {
+		let src = file.url as string;
+		if (!src) {
+			src = await new Promise((resolve) => {
+				const reader = new FileReader();
+				reader.readAsDataURL(file.originFileObj as RcFile);
+				reader.onload = () => resolve(reader.result as string);
+			});
+		}
+		const image = new Image();
+		image.src = src;
+		const imgWindow = window.open(src);
+		imgWindow?.document.write(image.outerHTML);
 	};
 
 	const onFinish = (value: any) => {
@@ -30,79 +73,29 @@ export default function SellBike() {
 		<AppLayout>
 			<section>
 				<Row gutter={[8, 8]}>
-					<Col sm={24} md={12}>
-						<Card
-							title="Sell Your Bike"
-							headStyle={{ backgroundColor: 'black', color: 'white' }}
-							bodyStyle={{
-								background: 'black url(src/assets/cafeRacer.jpg) no-repeat',
-								backgroundSize: 'cover',
-								backgroundPosition: 'center',
-								padding: 0,
-								minHeight: '75vh',
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								color: 'white',
-							}}
-						>
-							<div
-								style={{
-									background: 'rgba(0, 0, 0, 0.75)',
-									padding: '10px 30px',
-									height: '75vh',
-									display: 'flex',
-									justifyContent: 'center',
-									alignItems: 'center',
-								}}
-							>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-								inventore quisquam illum beatae, at laudantium numquam dolorum
-								blanditiis ipsum fugit totam iure facere aliquid illo ab nisi
-								facilis nulla. Eveniet!
-							</div>
-						</Card>
-					</Col>
-					<Col sm={24} md={12}>
-						<Card title="Fill This Form" bodyStyle={{ minHeight: '75vh' }}>
+					<Col sm={24} md={24}>
+						<Card title="Fill This Form">
+							<Typography.Text type="secondary" strong>
+								Please take some time before filling this form. Take some
+								pictures of your bike from front-view, side-view, back-view,
+								close-view. And then come back here to fill this form. It may
+								take some time to fill this form. Also, Please keep your bike
+								details, papers beside you so that you can fill the form
+								quickly. Please keep patience and fill this form carefully.
+							</Typography.Text>
+							<br /> <br />
 							<Form
 								form={form}
 								name="basic"
-								// labelCol={{ span: 8 }}
-								// wrapperCol={{ span: 16 }}
 								initialValues={{ remember: true }}
 								onFinish={onFinish}
-								// onFinishFailed={onFinishFailed}
 								autoComplete="off"
 								size="large"
 								onValuesChange={handleFormValuesChange}
 							>
-								<Form.Item
-									name="Bike Brand"
-									rules={[
-										{
-											required: true,
-											message: 'Please input your bike brand!',
-										},
-									]}
-								>
-									<Select
-										showSearch
-										placeholder="Select your bike"
-										optionFilterProp="children"
-										// onChange={onChange}
-										// onSearch={onSearch}
-										// value={autoCompleteText}
-										// onChange={handleChange}
-										filterOption={(input, option) =>
-											(option?.label ?? '')
-												.toLowerCase()
-												.includes(input.toLowerCase())
-										}
-										options={BIKELIST}
-									/>
-								</Form.Item>
-
+								<Typography.Title level={5}>
+									Personal Information
+								</Typography.Title>
 								<Form.Item
 									name="division"
 									rules={[
@@ -116,8 +109,6 @@ export default function SellBike() {
 										showSearch
 										placeholder="Select your division"
 										optionFilterProp="children"
-										// onChange={onChange}
-										// onSearch={onSearch}
 										filterOption={(input, option) =>
 											(option?.label ?? '')
 												.toLowerCase()
@@ -141,8 +132,6 @@ export default function SellBike() {
 											showSearch
 											placeholder="Select your district"
 											optionFilterProp="children"
-											// onChange={onChange}
-											// onSearch={onSearch}
 											filterOption={(input, option) =>
 												(option?.label ?? '')
 													.toLowerCase()
@@ -163,6 +152,50 @@ export default function SellBike() {
 								>
 									<Input placeholder="Phone number" type="text" />
 								</Form.Item>
+
+								<Typography.Title level={5}>Bike Information</Typography.Title>
+								<Form.Item
+									name="bikeName"
+									rules={[
+										{
+											required: true,
+											message: 'Please input your bike brand!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										placeholder="Select your bike"
+										optionFilterProp="children"
+										filterOption={(input, option) =>
+											(option?.label ?? '')
+												.toLowerCase()
+												.includes(input.toLowerCase())
+										}
+										options={BIKELIST}
+									/>
+								</Form.Item>
+								<Form.Item
+									name="registrationZone"
+									rules={[
+										{
+											required: true,
+											message: 'Please input your bike registration zone!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										placeholder="Select your bike registration zone"
+										optionFilterProp="children"
+										filterOption={(input, option) =>
+											(option?.label ?? '')
+												.toLowerCase()
+												.includes(input.toLowerCase())
+										}
+										options={ZONE_OF_REGISTRATION}
+									/>
+								</Form.Item>
 								<Form.Item
 									name="yearOfRegistration"
 									rules={[
@@ -176,14 +209,26 @@ export default function SellBike() {
 										showSearch
 										placeholder="Select Year of Registration"
 										optionFilterProp="children"
-										// onChange={onChange}
-										// onSearch={onSearch}
 										filterOption={(input, option) =>
 											(option?.label ?? '')
 												.toLowerCase()
 												.includes(input.toLowerCase())
 										}
 										options={YEAR_OF_REGISTRATION}
+									/>
+								</Form.Item>
+								<Form.Item
+									name="kmRun"
+									rules={[
+										{
+											required: true,
+											message: 'Please input your bike milage!',
+										},
+									]}
+								>
+									<Input
+										type="text"
+										placeholder="Please input your bike milage"
 									/>
 								</Form.Item>
 								<Form.Item
@@ -199,8 +244,6 @@ export default function SellBike() {
 										showSearch
 										placeholder="Select duration of registration"
 										optionFilterProp="children"
-										// onChange={onChange}
-										// onSearch={onSearch}
 										filterOption={(input, option) =>
 											(option?.label ?? '')
 												.toLowerCase()
@@ -222,8 +265,6 @@ export default function SellBike() {
 										showSearch
 										placeholder="Select bike model year"
 										optionFilterProp="children"
-										// onChange={onChange}
-										// onSearch={onSearch}
 										filterOption={(input, option) =>
 											(option?.label ?? '')
 												.toLowerCase()
@@ -231,6 +272,76 @@ export default function SellBike() {
 										}
 										options={BIKE_MODEL_YEAR}
 									/>
+								</Form.Item>
+								<Form.Item
+									name="ownerShipStatus"
+									rules={[
+										{
+											required: true,
+											message: 'Please input bike ownership status!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										placeholder="Select bike ownership status"
+										optionFilterProp="children"
+										filterOption={(input, option) =>
+											(option?.label ?? '')
+												.toLowerCase()
+												.includes(input.toLowerCase())
+										}
+										options={OWNERSHIP_STATUS}
+									/>
+								</Form.Item>
+								<Form.Item
+									name="isAccidentHistory"
+									rules={[
+										{
+											required: true,
+											message: 'Please input bike ownership status!',
+										},
+									]}
+								>
+									<Radio.Group>
+										<Radio value={1}>Has Accident History</Radio>
+										<Radio value={0}>No Accident History</Radio>
+									</Radio.Group>
+								</Form.Item>
+								<Form.Item
+									name="detailDescription"
+									rules={[
+										{
+											required: true,
+											message: 'Please input details about your bike!',
+										},
+									]}
+								>
+									<Input.TextArea placeholder="Description" rows={8} />
+								</Form.Item>
+
+								<Typography.Title level={5}>Upload Image</Typography.Title>
+								<Form.Item
+									name="detailDescription"
+									rules={[
+										{
+											required: true,
+											message: 'Please input details about your bike!',
+										},
+									]}
+								>
+									{/* <Input.TextArea placeholder="Description" rows={8} /> */}
+									<ImgCrop rotationSlider>
+										<Upload
+											action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+											listType="picture-card"
+											fileList={fileList}
+											onChange={onChange}
+											onPreview={onPreview}
+										>
+											{fileList.length < 5 && '+ Upload'}
+										</Upload>
+									</ImgCrop>
 								</Form.Item>
 								<Form.Item>
 									<Button type="primary" htmlType="submit">

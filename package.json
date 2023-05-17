@@ -12,6 +12,7 @@
     "lint": "eslint . --max-warnings=0",
     "test": "jest -env=jsdom",
     "lint-fix": "eslint --fix",
+    "lint:fix": "eslint --fix --ext .tsx,.ts,.js,.jsx .",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@reduxjs/toolkit": "^1.9.2",
     "@rollup/plugin-alias": "^3.1.9",
     "antd": "^4.24.7",
+    "antd-img-crop": "^4.12.2",
     "axios": "^0.27.2",
     "i18next": "^21.9.1",
     "i18next-browser-languagedetector": "^6.1.5",
