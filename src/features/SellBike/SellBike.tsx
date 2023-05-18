@@ -351,7 +351,7 @@ export default function SellBike() {
 											]}
 										>
 											{/* <Input.TextArea placeholder="Description" rows={8} /> */}
-											<ImgCrop rotationSlider>
+											<ImgCrop rotationSlider aspect={2}>
 												<Upload
 													action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
 													listType="picture-card"
