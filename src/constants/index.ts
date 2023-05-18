@@ -191,6 +191,10 @@ const OWNERSHIP_STATUS = [
 	{ value: '2nd Owner', label: '2nd Owner' },
 ];
 
+const ACCIDENT_HISTORY = [
+	{ value: true, label: 'Has Accident History' },
+	{ value: false, label: 'No Accident History' },
+];
 export {
 	DIVISIONS,
 	DISTRICTS,
@@ -200,4 +204,5 @@ export {
 	BIKE_MODEL_YEAR,
 	ZONE_OF_REGISTRATION,
 	OWNERSHIP_STATUS,
+	ACCIDENT_HISTORY,
 };
