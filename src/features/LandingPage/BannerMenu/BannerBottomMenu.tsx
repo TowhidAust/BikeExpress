@@ -1,11 +1,5 @@
 import { RiOilLine, RiToolsLine } from 'react-icons/ri';
-import {
-	GiCartwheel,
-	GiLoveHowl,
-	GiSchoolBag,
-	GiSmartphone,
-	GiStickGrenade,
-} from 'react-icons/gi';
+import { GiCartwheel, GiLoveHowl, GiSchoolBag, GiSmartphone, GiStickGrenade } from 'react-icons/gi';
 import { Button, Card, Col, Row } from 'antd';
 import { FaGripHorizontal } from 'react-icons/fa';
 import { AiOutlineCamera, AiOutlinePhone } from 'react-icons/ai';

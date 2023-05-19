@@ -43,12 +43,7 @@ export default function Auth() {
 												transform: 'translate(-50%, -50%)',
 											}}
 										>
-											<Row
-												gutter={8}
-												className="text-center p-2"
-												justify="space-between"
-												align="middle"
-											>
+											<Row gutter={8} className="text-center p-2" justify="space-between" align="middle">
 												<Col md={8}>
 													<Logo fontColor="white" />
 												</Col>
@@ -76,15 +71,11 @@ export default function Auth() {
 												}}
 											>
 												<h1 style={{ color: 'white' }}>
-													{isSignupActive
-														? 'REGISTER AS A BUYER OR SELLER'
-														: 'LOGIN TO YOUR ACCOUNT'}
+													{isSignupActive ? 'REGISTER AS A BUYER OR SELLER' : 'LOGIN TO YOUR ACCOUNT'}
 												</h1>
 												<p>
-													Unsure about which Vehicle to Buy? Share your
-													requirement with us, and let us find the Best Vehicle
-													for you!. Please login and pick your desired bike with
-													a few clicks.
+													Unsure about which Vehicle to Buy? Share your requirement with us, and let us find the Best
+													Vehicle for you!. Please login and pick your desired bike with a few clicks.
 												</p>
 											</div>
 										</div>

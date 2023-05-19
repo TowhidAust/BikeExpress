@@ -1,16 +1,6 @@
-import {
-	Button,
-	Card,
-	Col,
-	Form,
-	Input,
-	Row,
-	Select,
-	Typography,
-	Upload,
-} from 'antd';
+import { Button, Card, Col, Form, Input, Row, Select, Typography, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
+import type { RcFile, UploadFile } from 'antd/es/upload/interface';
 import { useState } from 'react';
 import AppLayout from '@/components/Layout/AppLayout';
 import {
@@ -27,15 +17,8 @@ import {
 
 export default function SellBike() {
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
-	const [fileList, setFileList] = useState<UploadFile[]>([
-		{
-			uid: '-1',
-			name: 'image.png',
-			status: 'done',
-			url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-		},
-	]);
-
+	const [fileList, setFileList] = useState<any[]>([]);
+	const [images, setImageList] = useState<any[]>([]);
 	const [form] = Form.useForm();
 
 	const handleFormValuesChange = (value: any) => {
@@ -43,10 +26,6 @@ export default function SellBike() {
 			form.resetFields(['district']);
 			setSelectedDivision(DISTRICTS[value?.division as keyof typeof DISTRICTS]);
 		}
-	};
-
-	const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
-		setFileList(newFileList);
 	};
 
 	const onPreview = async (file: UploadFile) => {
@@ -63,10 +42,23 @@ export default function SellBike() {
 		const imgWindow = window.open(src);
 		imgWindow?.document.write(image.outerHTML);
 	};
+	const beforeUpload = (file: any) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => {
+			setFileList((prev) => [...prev, { url: reader.result }]);
+			setImageList((prev) => [...prev, file]);
+		};
+
+		// then upload `file` from the argument manually
+		return false;
+	};
 
 	const onFinish = (value: any) => {
 		// eslint-disable-next-line no-console
 		console.log(value);
+		// eslint-disable-next-line no-console
+		console.log(images);
 	};
 
 	return (
@@ -83,6 +75,10 @@ export default function SellBike() {
 								autoComplete="off"
 								size="large"
 								onValuesChange={handleFormValuesChange}
+								labelCol={{ span: 8 }}
+								wrapperCol={{ span: 16 }}
+								// layout="vertical"
+								labelAlign="left"
 							>
 								<Row gutter={24}>
 									<Col sm={24} md={12}>
@@ -90,6 +86,7 @@ export default function SellBike() {
 											Step1: Bike Information
 										</Typography.Title>
 										<Form.Item
+											label="Select Bike"
 											name="bikeName"
 											rules={[
 												{
@@ -103,14 +100,13 @@ export default function SellBike() {
 												placeholder="Select your bike"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={BIKELIST}
 											/>
 										</Form.Item>
 										<Form.Item
+											label="Registration Zone"
 											name="registrationZone"
 											rules={[
 												{
@@ -124,14 +120,13 @@ export default function SellBike() {
 												placeholder="Select your bike registration zone"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={ZONE_OF_REGISTRATION}
 											/>
 										</Form.Item>
 										<Form.Item
+											label="Registration Year"
 											name="yearOfRegistration"
 											rules={[
 												{
@@ -145,28 +140,25 @@ export default function SellBike() {
 												placeholder="Select Year of Registration"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={YEAR_OF_REGISTRATION}
 											/>
 										</Form.Item>
 										<Form.Item
 											name="kmRun"
+											label="Km Run"
 											rules={[
 												{
 													required: true,
-													message: 'Please input your bike milage!',
+													message: 'Please input total kilometer run of your bike!',
 												},
 											]}
 										>
-											<Input
-												type="text"
-												placeholder="Please input your bike milage"
-											/>
+											<Input type="number" placeholder="Total Kilometer run of your bike" />
 										</Form.Item>
 										<Form.Item
+											label="Tax Token"
 											name="durationOfRegistration"
 											rules={[
 												{
@@ -180,14 +172,13 @@ export default function SellBike() {
 												placeholder="Select duration of registration"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={DURATION_OF_REGISTRATION}
 											/>
 										</Form.Item>
 										<Form.Item
+											label="Bike Model Year"
 											name="bikeModelYear"
 											rules={[
 												{
@@ -201,14 +192,13 @@ export default function SellBike() {
 												placeholder="Select bike model year"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={BIKE_MODEL_YEAR}
 											/>
 										</Form.Item>
 										<Form.Item
+											label="Accident History"
 											name="isAccidentHistory"
 											rules={[
 												{
@@ -222,14 +212,13 @@ export default function SellBike() {
 												placeholder="Does your bike have accident history?"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={ACCIDENT_HISTORY}
 											/>
 										</Form.Item>
 										<Form.Item
+											label="Ownership"
 											name="ownerShipStatus"
 											rules={[
 												{
@@ -243,9 +232,7 @@ export default function SellBike() {
 												placeholder="Select bike ownership status"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={OWNERSHIP_STATUS}
 											/>
@@ -256,6 +243,7 @@ export default function SellBike() {
 											Step2: Personal Information
 										</Typography.Title>
 										<Form.Item
+											label="Division"
 											name="division"
 											rules={[
 												{
@@ -269,9 +257,7 @@ export default function SellBike() {
 												placeholder="Select your division"
 												optionFilterProp="children"
 												filterOption={(input, option) =>
-													(option?.label ?? '')
-														.toLowerCase()
-														.includes(input.toLowerCase())
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 												}
 												options={DIVISIONS}
 											/>
@@ -279,6 +265,7 @@ export default function SellBike() {
 
 										{selectedDivision && (
 											<Form.Item
+												label="District"
 												name="district"
 												rules={[
 													{
@@ -292,15 +279,14 @@ export default function SellBike() {
 													placeholder="Select your district"
 													optionFilterProp="children"
 													filterOption={(input, option) =>
-														(option?.label ?? '')
-															.toLowerCase()
-															.includes(input.toLowerCase())
+														(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 													}
 													options={selectedDivision}
 												/>
 											</Form.Item>
 										)}
 										<Form.Item
+											label="Phone"
 											name="phone"
 											rules={[
 												{
@@ -312,6 +298,7 @@ export default function SellBike() {
 											<Input placeholder="Phone number" type="text" />
 										</Form.Item>
 										<Form.Item
+											label="Address"
 											name="address"
 											rules={[
 												{
@@ -327,6 +314,7 @@ export default function SellBike() {
 											Step3: Write detail description of your bike
 										</Typography.Title>
 										<Form.Item
+											label="Description"
 											name="detailDescription"
 											rules={[
 												{
@@ -341,22 +329,14 @@ export default function SellBike() {
 										<Typography.Title level={5} className="primary-font-color">
 											Step4: Upload Image
 										</Typography.Title>
-										<Form.Item
-											name="detailDescription"
-											rules={[
-												{
-													required: true,
-													message: 'Please input details about your bike!',
-												},
-											]}
-										>
-											{/* <Input.TextArea placeholder="Description" rows={8} /> */}
-											<ImgCrop rotationSlider aspect={2}>
+										<Form.Item label="Upload Image">
+											<ImgCrop rotationSlider aspect={1.5} cropShape="rect" showReset>
 												<Upload
-													action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+													beforeUpload={beforeUpload}
+													name="fileList"
 													listType="picture-card"
 													fileList={fileList}
-													onChange={onChange}
+													// onChange={onChange}
 													onPreview={onPreview}
 												>
 													{fileList.length < 5 && '+ Upload'}
@@ -366,11 +346,9 @@ export default function SellBike() {
 									</Col>
 								</Row>
 
-								<Form.Item>
-									<Button type="primary" htmlType="submit" block>
-										Submit
-									</Button>
-								</Form.Item>
+								<Button type="primary" htmlType="submit" block>
+									Submit
+								</Button>
 							</Form>
 						</Card>
 					</Col>

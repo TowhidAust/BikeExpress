@@ -1,13 +1,5 @@
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
-import {
-	persistReducer,
-	FLUSH,
-	REHYDRATE,
-	PAUSE,
-	PERSIST,
-	PURGE,
-	REGISTER,
-} from 'redux-persist';
+import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 import session from 'redux-persist/lib/storage/session';
 import { setupListeners } from '@reduxjs/toolkit/query';

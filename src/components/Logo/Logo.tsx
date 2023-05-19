@@ -16,10 +16,7 @@ export default function Logo(props: PropTypes) {
 			}}
 		>
 			<span style={{ color: fontColor }}> BIKE </span>
-			<FaMotorcycle
-				className="ml-2 mr-2 primary-font-color"
-				style={{ fontSize: '26px' }}
-			/>
+			<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: '26px' }} />
 			<span style={{ color: fontColor }}> HUB </span>
 		</h2>
 	);

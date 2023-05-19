@@ -2,12 +2,7 @@ import { Button, Form, Input, message, Select } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSignupMutation } from './api';
-import {
-	setRoles,
-	setSelectedRole,
-	setToken,
-	setUser,
-} from '@/redux/authSlice';
+import { setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
 import { validatePassword, validatePhoneNumber } from './helper';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
@@ -99,17 +94,14 @@ export default function SignupForm() {
 						message: 'Enter your password!',
 					},
 					{
-						message:
-							'Minimum eight characters, at least one letter, one number and one special character:',
+						message: 'Minimum eight characters, at least one letter, one number and one special character:',
 						validator: (_, value) => {
 							const isPasswordValid = validatePassword(value);
 							if (isPasswordValid) {
 								return Promise.resolve();
 							}
 							return Promise.reject(
-								new Error(
-									'Minimum eight characters, at least one letter, one number and one special character:',
-								),
+								new Error('Minimum eight characters, at least one letter, one number and one special character:'),
 							);
 						},
 					},
@@ -130,9 +122,7 @@ export default function SignupForm() {
 							if (!value || getFieldValue('password') === value) {
 								return Promise.resolve();
 							}
-							return Promise.reject(
-								new Error('The two passwords that you entered do not match!'),
-							);
+							return Promise.reject(new Error('The two passwords that you entered do not match!'));
 						},
 					}),
 				]}
@@ -172,13 +162,7 @@ export default function SignupForm() {
 			</Form.Item>
 
 			<Form.Item>
-				<Button
-					loading={isLoading}
-					block
-					size="large"
-					type="primary"
-					htmlType="submit"
-				>
+				<Button loading={isLoading} block size="large" type="primary" htmlType="submit">
 					SIGN UP
 				</Button>
 			</Form.Item>

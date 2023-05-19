@@ -43,11 +43,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 						height: '200px',
 					}}
 				>
-					<Button
-						style={{ position: 'absolute', bottom: 0, right: 0 }}
-						type="primary"
-						onClick={onDetailsButtonClick}
-					>
+					<Button style={{ position: 'absolute', bottom: 0, right: 0 }} type="primary" onClick={onDetailsButtonClick}>
 						DETAILS
 					</Button>
 				</div>
@@ -64,18 +60,13 @@ export default function ProductCardBike(props: ProductPropTypes) {
 							textOverflow: 'ellipsis',
 						}}
 					>
-						<abbr
-							style={{ textDecoration: 'none' }}
-							title="HONDA CBR 150 DUAL CHANNEL ABS"
-						>
+						<abbr style={{ textDecoration: 'none' }} title="HONDA CBR 150 DUAL CHANNEL ABS">
 							{title}
 						</abbr>
 					</Typography.Title>
 				</Col>
 				<Col xs={24} sm={24} md={12}>
-					<Typography.Text className="font-weight-600 primary-font-color">
-						BDT {price}
-					</Typography.Text>
+					<Typography.Text className="font-weight-600 primary-font-color">BDT {price}</Typography.Text>
 				</Col>
 				<Col xs={24} sm={24} md={12}>
 					Condition: {isUsed ? 'Used' : 'New'}

@@ -1,13 +1,4 @@
-import {
-	Button,
-	Card,
-	Col,
-	Divider,
-	Image,
-	Row,
-	Table,
-	Typography,
-} from 'antd';
+import { Button, Card, Col, Divider, Image, Row, Table, Typography } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import AppLayout from '@/components/Layout/AppLayout';
 import cafeRacer from '@/assets/cafeRacer.jpg';
@@ -133,12 +124,7 @@ export default function UsedBikeDetails() {
 					</Col>
 
 					<Col xs={24} sm={24} md={16}>
-						<Table
-							dataSource={data}
-							columns={columns}
-							pagination={false}
-							bordered
-						/>
+						<Table dataSource={data} columns={columns} pagination={false} bordered />
 					</Col>
 				</Row>
 			</Card>

@@ -1,12 +1,6 @@
 import { Menu } from 'antd';
 import { TbHelmet, TbSticker } from 'react-icons/tb';
-import {
-	GiCarWheel,
-	GiCoveredJar,
-	GiHornInternal,
-	GiMirrorMirror,
-	GiWinterGloves,
-} from 'react-icons/gi';
+import { GiCarWheel, GiCoveredJar, GiHornInternal, GiMirrorMirror, GiWinterGloves } from 'react-icons/gi';
 import { RiLock2Line, RiTShirtAirLine } from 'react-icons/ri';
 import { BulbOutlined } from '@ant-design/icons';
 import { FaBatteryEmpty } from 'react-icons/fa';

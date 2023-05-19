@@ -1,17 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
-import {
-	Avatar,
-	Badge,
-	Button,
-	Col,
-	Dropdown,
-	Layout,
-	Menu,
-	Row,
-	Space,
-	Tag,
-} from 'antd';
+import { Avatar, Badge, Button, Col, Dropdown, Layout, Menu, Row, Space, Tag } from 'antd';
 import {
 	DashboardOutlined,
 	AccountBookOutlined,
@@ -104,13 +93,9 @@ function Dashboard() {
 					<Row gutter={16}>
 						<Col lg={12}>
 							{isCollapsed ? (
-								<MenuUnfoldOutlined
-									onClick={() => setIsCollapsed(!isCollapsed)}
-								/>
+								<MenuUnfoldOutlined onClick={() => setIsCollapsed(!isCollapsed)} />
 							) : (
-								<MenuFoldOutlined
-									onClick={() => setIsCollapsed(!isCollapsed)}
-								/>
+								<MenuFoldOutlined onClick={() => setIsCollapsed(!isCollapsed)} />
 							)}
 						</Col>
 						<Col lg={12}>
@@ -136,9 +121,7 @@ function Dashboard() {
 											className="border-solid-1px white-bg"
 											shape="circle"
 											size="small"
-											icon={
-												<NotificationOutlined className="fourth-font-color" />
-											}
+											icon={<NotificationOutlined className="fourth-font-color" />}
 										/>
 									</Badge>
 								</Col>

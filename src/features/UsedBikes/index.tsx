@@ -22,9 +22,7 @@ export default function UsedBikes() {
 									placeholder="Select a city"
 									optionFilterProp="children"
 									filterOption={(input, option) =>
-										(option!.children as unknown as string)
-											.toLowerCase()
-											.includes(input.toLowerCase())
+										(option!.children as unknown as string).toLowerCase().includes(input.toLowerCase())
 									}
 								>
 									<Option value="dhaka">Dhaka</Option>

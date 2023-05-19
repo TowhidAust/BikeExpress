@@ -18,10 +18,7 @@ export default function TopBar() {
 	return (
 		<Affix offsetTop={0} className="width-100">
 			<div>
-				<Header
-					className="pl-4 pr-4"
-					style={{ backgroundColor: 'black', width: '100%', height: 'auto' }}
-				>
+				<Header className="pl-4 pr-4" style={{ backgroundColor: 'black', width: '100%', height: 'auto' }}>
 					<Row gutter={[16, 16]} align="middle" justify="space-between">
 						<Col xs={24} md={6}>
 							<h2
@@ -33,10 +30,7 @@ export default function TopBar() {
 								}}
 							>
 								<span> BIKE </span>
-								<FaMotorcycle
-									className="ml-2 mr-2 primary-font-color"
-									style={{ fontSize: '26px' }}
-								/>
+								<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: '26px' }} />
 								<span> HUB </span>
 							</h2>
 						</Col>

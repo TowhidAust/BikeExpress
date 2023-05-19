@@ -2,12 +2,7 @@ import { Button, Form, Input, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from './api';
-import {
-	setRoles,
-	setSelectedRole,
-	setToken,
-	setUser,
-} from '@/redux/authSlice';
+import { setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 import { validatePhoneNumber } from './helper';
 
@@ -92,13 +87,7 @@ export default function LoginForm() {
 			</Form.Item>
 
 			<Form.Item>
-				<Button
-					loading={isLoading}
-					block
-					size="large"
-					type="primary"
-					htmlType="submit"
-				>
+				<Button loading={isLoading} block size="large" type="primary" htmlType="submit">
 					LOGIN
 				</Button>
 			</Form.Item>

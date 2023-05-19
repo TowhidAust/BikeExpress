@@ -35,11 +35,7 @@ export default function DashboardRoutes() {
 		>
 			<Routes>
 				{routes.map((route) => (
-					<Route
-						key={route?.path}
-						path={`${route.path}`}
-						element={<route.component />}
-					/>
+					<Route key={route?.path} path={`${route.path}`} element={<route.component />} />
 				))}
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
