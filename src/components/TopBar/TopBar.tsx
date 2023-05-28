@@ -1,11 +1,11 @@
 import { Affix, Button, Col, Layout, Menu, Row } from 'antd';
-import { FaMotorcycle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserOutlined } from '@ant-design/icons';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 import { RootState } from '@/redux/store';
 import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
+import Logo from '../Logo/Logo';
 
 const { Header } = Layout;
 
@@ -21,7 +21,8 @@ export default function TopBar() {
 				<Header className="pl-4 pr-4" style={{ backgroundColor: 'black', width: '100%', height: 'auto' }}>
 					<Row gutter={[16, 16]} align="middle" justify="space-between">
 						<Col xs={24} md={6}>
-							<h2
+							<Logo fontColor="white" width={120} fontSize={18} iconFontSize={26} />
+							{/* <h2
 								className="font-white m-0"
 								style={{
 									display: 'flex',
@@ -32,7 +33,7 @@ export default function TopBar() {
 								<span> BIKE </span>
 								<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: '26px' }} />
 								<span> HUB </span>
-							</h2>
+							</h2> */}
 						</Col>
 						<Col xs={24} md={6} className="text-right">
 							{!firstname ? (
@@ -80,13 +81,6 @@ export default function TopBar() {
 							onClick: () => {
 								dispatch(setCurrentActiveMenu('buyUsedBike'));
 								navigate(PUBLIC_ROUTE.USED_BIKES);
-							},
-						},
-						{
-							key: 'buyNewBike',
-							label: 'Buy New Bike',
-							onClick: () => {
-								dispatch(setCurrentActiveMenu('buyNewBike'));
 							},
 						},
 						{

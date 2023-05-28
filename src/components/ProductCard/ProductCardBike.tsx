@@ -1,34 +1,23 @@
 import { Button, Card, Col, Row, Typography } from 'antd';
 
 type ProductPropTypes = {
-	// key: any;
-	image: any;
-	title: string;
-	price: number;
-	isUsed: boolean;
-	model: string;
-	cc: number;
-	km: number;
-	isFirstOwner: boolean;
-	location: string;
-	isNegotiable: boolean;
+	productInfo: {
+		image: string;
+		title: string;
+		price: string;
+		isUsed: boolean;
+		model: string;
+		cc: number;
+		km: string;
+		isFirstOwner: boolean;
+		location: string;
+		isNegotiable: boolean;
+	};
 	onDetailsButtonClick: () => void;
 };
 export default function ProductCardBike(props: ProductPropTypes) {
-	const {
-		// key,
-		image,
-		title,
-		price,
-		isUsed,
-		model,
-		cc,
-		km,
-		isFirstOwner,
-		location,
-		isNegotiable,
-		onDetailsButtonClick,
-	} = props;
+	const { onDetailsButtonClick, productInfo } = props;
+	const { image, title, price, isUsed, model, cc, km, isFirstOwner, location, isNegotiable } = productInfo;
 	return (
 		<Card
 			// key={key}

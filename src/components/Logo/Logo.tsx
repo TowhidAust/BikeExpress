@@ -2,22 +2,27 @@ import { FaMotorcycle } from 'react-icons/fa';
 
 type PropTypes = {
 	fontColor: string;
+	width: any;
+	fontSize: any;
+	iconFontSize: any;
 };
 export default function Logo(props: PropTypes) {
-	const { fontColor } = props;
+	const { fontColor, width, fontSize, iconFontSize } = props;
 	return (
-		<h2
+		<div
 			className="font-white m-0 p-0"
 			style={{
+				width,
+				fontSize,
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
 				textAlign: 'center',
 			}}
 		>
-			<span style={{ color: fontColor }}> BIKE </span>
-			<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: '26px' }} />
-			<span style={{ color: fontColor }}> HUB </span>
-		</h2>
+			<div style={{ color: fontColor, width: '33%' }}> BIKE </div>
+			<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: iconFontSize }} />
+			<div style={{ color: fontColor, width: '33%' }}> HUB </div>
+		</div>
 	);
 }

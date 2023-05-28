@@ -48,51 +48,21 @@ export default function UsedBikes() {
 							<Col xs={24} sm={24} md={12} lg={8} xxl={8}>
 								<ProductCardBike
 									// key={Math.random()}
-									image={cafeRacer}
-									title="HONDA CBR REPSOL 155 FI ABS"
-									price={250000}
-									isUsed
-									model="2021"
-									cc={150}
-									km={1200}
-									isFirstOwner
-									location="Dhaka"
-									isNegotiable
+									productInfo={{
+										image: cafeRacer,
+										title: 'HONDA CBR REPSOL 155 FI ABS',
+										price: '0',
+										isUsed: true,
+										model: '2021',
+										cc: 150,
+										km: '1200',
+										isFirstOwner: true,
+										location: 'Dhaka',
+										isNegotiable: true,
+									}}
 									onDetailsButtonClick={() => {
 										return navigate(`${PUBLIC_ROUTE.USED_BIKE_DETAILS}/1234`);
 									}}
-								/>
-							</Col>
-							<Col xs={24} sm={24} md={12} lg={8} xxl={8}>
-								<ProductCardBike
-									// key={Math.random()}
-									image={cafeRacer}
-									title="HONDA CBR REPSOL 155 FI ABS"
-									price={250000}
-									isUsed
-									model="2021"
-									cc={150}
-									km={1200}
-									isFirstOwner
-									location="Dhaka"
-									isNegotiable
-									onDetailsButtonClick={() => false}
-								/>
-							</Col>
-							<Col xs={24} sm={24} md={12} lg={8} xxl={8}>
-								<ProductCardBike
-									// key={Math.random()}
-									image={cafeRacer}
-									title="HONDA CBR REPSOL 155 FI ABS"
-									price={280000}
-									isUsed
-									model="2021"
-									cc={150}
-									km={1200}
-									isFirstOwner
-									location="Dhaka"
-									isNegotiable
-									onDetailsButtonClick={() => false}
 								/>
 							</Col>
 						</Row>

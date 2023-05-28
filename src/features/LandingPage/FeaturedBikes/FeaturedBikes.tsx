@@ -15,16 +15,18 @@ export default function FeaturedBikes() {
 					<Col xs={24} sm={24} md={6} key={Math.random()}>
 						<ProductCardBike
 							// key={Math.random()}
-							image={cafeRacer}
-							title="HONDA CBR REPSOL 155 FI ABS"
-							price={0}
-							isUsed
-							model="2021"
-							cc={150}
-							km={1200}
-							isFirstOwner
-							location="Dhaka"
-							isNegotiable
+							productInfo={{
+								image: cafeRacer,
+								title: 'HONDA CBR REPSOL 155 FI ABS',
+								price: '0',
+								isUsed: true,
+								model: '2021',
+								cc: 150,
+								km: '1200',
+								isFirstOwner: true,
+								location: 'Dhaka',
+								isNegotiable: true,
+							}}
 							onDetailsButtonClick={() => navigate(PUBLIC_ROUTE.USED_BIKES)}
 						/>
 					</Col>
