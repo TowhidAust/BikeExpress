@@ -42,11 +42,21 @@ export default function SellBike() {
 		const imgWindow = window.open(src);
 		imgWindow?.document.write(image.outerHTML);
 	};
+
+	const onRemove = (e: any) => {
+		const filesAfterRemove = fileList.filter((item) => item?.uid !== e?.uid);
+		setFileList(filesAfterRemove);
+
+		// images.filter((item, indx) => indx + 1 !== index);
+		const imagesAfterRemove = images.filter((item) => item?.uid !== e?.uid);
+		setImageList(imagesAfterRemove);
+	};
 	const beforeUpload = (file: any) => {
+		const fileName = file?.name;
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onload = () => {
-			setFileList((prev) => [...prev, { url: reader.result }]);
+			setFileList((prev) => [...prev, { url: reader.result, fileName, uid: file.uid }]);
 			setImageList((prev) => [...prev, file]);
 		};
 
@@ -330,14 +340,14 @@ export default function SellBike() {
 											Step4: Upload Image
 										</Typography.Title>
 										<Form.Item label="Upload Image">
-											<ImgCrop rotationSlider aspect={1.5} cropShape="rect" showReset>
+											<ImgCrop rotationSlider aspect={1.5} cropShape="rect">
 												<Upload
 													beforeUpload={beforeUpload}
 													name="fileList"
 													listType="picture-card"
 													fileList={fileList}
-													// onChange={onChange}
 													onPreview={onPreview}
+													onRemove={onRemove}
 												>
 													{fileList.length < 5 && '+ Upload'}
 												</Upload>
