@@ -3,9 +3,10 @@ import { emptySliceApi } from '@/api/emptySliceApi';
 export interface LoginResponseType {
 	status: string;
 	message: string;
-	token: string;
+	accessToken: string;
+	refreshToken: string;
 	result: {
-		_id: any;
+		id: any;
 		firstname: number;
 		lastname: string;
 		phone: string;

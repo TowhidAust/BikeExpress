@@ -3,12 +3,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
 	user: {
-		_id: '',
+		id: '',
 		firstname: '',
 		lastname: '',
 		phone: '',
 	},
 	token: null,
+	refreshToken: null,
 	roles: [],
 	selectedRole: null,
 };
@@ -25,6 +26,10 @@ export const authSlice = createSlice({
 			state.token = action.payload;
 		},
 
+		setRefreshToken: (state, action: PayloadAction<any>) => {
+			state.refreshToken = action.payload;
+		},
+
 		setRoles: (state, action: PayloadAction<any>) => {
 			state.roles = action.payload;
 		},
@@ -35,7 +40,7 @@ export const authSlice = createSlice({
 
 		logout: (state) => {
 			state.user = {
-				_id: '',
+				id: '',
 				firstname: '',
 				lastname: '',
 				phone: '',
@@ -48,6 +53,6 @@ export const authSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, setToken, logout, setRoles, setSelectedRole } = authSlice.actions;
+export const { setUser, setToken, setRefreshToken, logout, setRoles, setSelectedRole } = authSlice.actions;
 
 export default authSlice.reducer;

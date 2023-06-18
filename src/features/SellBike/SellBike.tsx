@@ -1,7 +1,9 @@
-import { Button, Card, Col, Form, Input, Row, Select, Typography, Upload } from 'antd';
+/* eslint-disable no-restricted-syntax */
+import { Button, Card, Col, Form, Input, Row, Select, Typography, Upload, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import type { RcFile, UploadFile } from 'antd/es/upload/interface';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import AppLayout from '@/components/Layout/AppLayout';
 import {
 	ACCIDENT_HISTORY,
@@ -14,12 +16,18 @@ import {
 	YEAR_OF_REGISTRATION,
 	ZONE_OF_REGISTRATION,
 } from '@/constants';
+import { useUploadImageMutation } from './api';
+import { RootState } from '@/redux/store';
 
 export default function SellBike() {
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
 	const [fileList, setFileList] = useState<any[]>([]);
 	const [images, setImageList] = useState<any[]>([]);
+	const { auth } = useSelector((state: RootState) => state);
+
 	const [form] = Form.useForm();
+	// const [sellBikeMutation, { isLoading: isSellBikeLoading }] = useSellBikeMutationMutation();
+	const [uploadImageMutation, { isLoading: isUploadLoading }] = useUploadImageMutation();
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
@@ -64,11 +72,33 @@ export default function SellBike() {
 		return false;
 	};
 
-	const onFinish = (value: any) => {
+	const onFinish = async (value: any) => {
 		// eslint-disable-next-line no-console
 		console.log(value);
 		// eslint-disable-next-line no-console
 		console.log(images);
+
+		const formData = new FormData();
+		for (let i in images) {
+			const singleImage = images[i];
+			formData.append('images', singleImage);
+		}
+
+		if (auth?.user?.id) {
+			uploadImageMutation({
+				userId: auth.user.id,
+				file: formData,
+			})
+				.unwrap()
+				.then((result: any) => {
+					message.success(result?.message || 'Image upload success');
+				})
+				.catch((err) => {
+					message.error(err?.data?.message || 'Image upload failed!');
+				});
+		} else {
+			message.warning('Please login first');
+		}
 	};
 
 	return (
@@ -356,7 +386,7 @@ export default function SellBike() {
 									</Col>
 								</Row>
 
-								<Button type="primary" htmlType="submit" block>
+								<Button type="primary" htmlType="submit" block loading={isUploadLoading}>
 									Submit
 								</Button>
 							</Form>

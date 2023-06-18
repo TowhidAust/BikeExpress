@@ -2,7 +2,7 @@ import { Button, Form, Input, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from './api';
-import { setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
+import { setRefreshToken, setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 import { validatePhoneNumber } from './helper';
 
@@ -24,7 +24,8 @@ export default function LoginForm() {
 			.then((data) => {
 				if (data) {
 					dispatch(setUser(data?.result));
-					dispatch(setToken(data?.token));
+					dispatch(setToken(data?.accessToken));
+					dispatch(setRefreshToken(data?.refreshToken));
 					dispatch(setRoles(data?.result?.role));
 					dispatch(setSelectedRole(data?.result?.role[0]));
 					message.success(data?.message);
