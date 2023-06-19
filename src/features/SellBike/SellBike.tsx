@@ -16,7 +16,7 @@ import {
 	YEAR_OF_REGISTRATION,
 	ZONE_OF_REGISTRATION,
 } from '@/constants';
-import { useUploadImageMutation } from './api';
+import { useSellBikeMutationMutation, useUploadImageMutation } from './api';
 import { RootState } from '@/redux/store';
 
 export default function SellBike() {
@@ -26,7 +26,7 @@ export default function SellBike() {
 	const { auth } = useSelector((state: RootState) => state);
 
 	const [form] = Form.useForm();
-	// const [sellBikeMutation, { isLoading: isSellBikeLoading }] = useSellBikeMutationMutation();
+	const [sellBikeMutation, { isLoading: isSellBikeLoading }] = useSellBikeMutationMutation();
 	const [uploadImageMutation, { isLoading: isUploadLoading }] = useUploadImageMutation();
 
 	const handleFormValuesChange = (value: any) => {
@@ -86,12 +86,38 @@ export default function SellBike() {
 
 		if (auth?.user?.id) {
 			uploadImageMutation({
-				userId: auth.user.id,
+				userId: auth?.user?.id,
 				file: formData,
 			})
 				.unwrap()
-				.then((result: any) => {
+				.then((result) => {
 					message.success(result?.message || 'Image upload success');
+
+					const finalValue = {
+						userId: auth?.user?.id,
+						images: result?.result,
+						bikeCode: value?.bikeName,
+						registrationZone: value?.registrationZone,
+						yearOfRegistration: value?.yearOfRegistration,
+						kmRun: value?.kmRun,
+						durationOfRegistration: value?.durationOfRegistration,
+						bikeModelYear: value?.bikeModelYear,
+						isAccidentHistory: value?.isAccidentHistory,
+						ownerShipStatus: value?.ownerShipStatus,
+						division: value?.division,
+						phone: value?.phone,
+						address: value?.address,
+						detailDescription: value?.detailDescription,
+						district: value?.district,
+					};
+					sellBikeMutation(finalValue)
+						.unwrap()
+						.then((res) => {
+							message.success(res?.message);
+						})
+						.catch((err) => {
+							message.error(err?.data?.message);
+						});
 				})
 				.catch((err) => {
 					message.error(err?.data?.message || 'Image upload failed!');
@@ -386,7 +412,7 @@ export default function SellBike() {
 									</Col>
 								</Row>
 
-								<Button type="primary" htmlType="submit" block loading={isUploadLoading}>
+								<Button type="primary" htmlType="submit" block loading={isUploadLoading || isSellBikeLoading}>
 									Submit
 								</Button>
 							</Form>

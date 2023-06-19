@@ -7,25 +7,21 @@ export interface SellBikeResponseType {
 }
 
 export interface SellBikeQueryType {
-	userId: string;
-	title: string;
-	imageUrl: string[];
-	brand: string;
-	price: string;
-	publishYear: string;
-	kilometerRun: string;
-	owner: string;
-	division: string;
-	district: string;
-	cc: string;
-	condition: string;
-	description: string;
-	isNegotiate: string;
-	isReviewed: string;
-	frontBrake: string;
-	rareBrake: string;
-	frontTire: string;
-	rareTire: string;
+	userId: String;
+	images: String[];
+	bikeCode: String;
+	registrationZone: String;
+	yearOfRegistration: String;
+	kmRun: String;
+	durationOfRegistration: String;
+	bikeModelYear: String;
+	isAccidentHistory: String;
+	ownerShipStatus: String;
+	division: String;
+	phone: String;
+	address: String;
+	detailDescription: String;
+	district: String;
 }
 
 export interface UploadImageResponseType {
