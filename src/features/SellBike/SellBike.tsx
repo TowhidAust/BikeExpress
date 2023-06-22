@@ -92,7 +92,6 @@ export default function SellBike() {
 				.unwrap()
 				.then((result) => {
 					message.success(result?.message || 'Image upload success');
-
 					const finalValue = {
 						userId: auth?.user?.id,
 						images: result?.result,
@@ -109,6 +108,7 @@ export default function SellBike() {
 						address: value?.address,
 						detailDescription: value?.detailDescription,
 						district: value?.district,
+						price: value?.price,
 					};
 					sellBikeMutation(finalValue)
 						.unwrap()
@@ -390,6 +390,19 @@ export default function SellBike() {
 											]}
 										>
 											<Input.TextArea placeholder="Description" rows={2} />
+										</Form.Item>
+
+										<Form.Item
+											label="Price"
+											name="price"
+											rules={[
+												{
+													required: true,
+													message: 'Please input price!',
+												},
+											]}
+										>
+											<Input placeholder="Price" type="number" />
 										</Form.Item>
 
 										<Typography.Title level={5} className="primary-font-color">

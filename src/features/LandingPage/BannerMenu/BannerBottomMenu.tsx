@@ -64,7 +64,8 @@ export default function BannerBottomMenu() {
 					<Card
 						style={{
 							borderLeft: '6px solid black',
-							borderRadius: '10px 0 10px 0px',
+							// borderTop: '6px solid black',
+							// borderRadius: '0px 0 0px 0px',
 						}}
 						hoverable
 						className="p-0"
