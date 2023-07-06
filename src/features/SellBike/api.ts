@@ -9,7 +9,9 @@ export interface SellBikeResponseType {
 export interface SellBikeQueryType {
 	userId: String;
 	images: String[];
-	bikeCode: String;
+	bikeCode?: string;
+	bikeName: String;
+	bikeBrand: String;
 	registrationZone: String;
 	yearOfRegistration: String;
 	kmRun: String;

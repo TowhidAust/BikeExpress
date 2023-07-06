@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import AppLayout from '@/components/Layout/AppLayout';
 import {
 	ACCIDENT_HISTORY,
-	BIKELIST,
 	DISTRICTS,
 	DIVISIONS,
 	DURATION_OF_REGISTRATION,
@@ -53,10 +52,10 @@ export default function SellBike() {
 		const filesAfterRemove = fileList.filter((item) => item?.uid !== e?.uid);
 		setFileList(filesAfterRemove);
 
-		// images.filter((item, indx) => indx + 1 !== index);
 		const imagesAfterRemove = images.filter((item) => item?.uid !== e?.uid);
 		setImageList(imagesAfterRemove);
 	};
+
 	const beforeUpload = (file: any) => {
 		const fileName = file?.name;
 		const reader = new FileReader();
@@ -93,7 +92,8 @@ export default function SellBike() {
 					const finalValue = {
 						userId: auth?.user?.id,
 						images: result?.result,
-						bikeCode: value?.bikeName,
+						bikeName: value?.bikeName,
+						bikeBrand: value?.bikeBrand,
 						registrationZone: value?.registrationZone,
 						yearOfRegistration: value?.yearOfRegistration,
 						kmRun: value?.kmRun,
@@ -150,8 +150,20 @@ export default function SellBike() {
 											Step1: Bike Information
 										</Typography.Title>
 										<Form.Item
-											label="Select Bike"
+											label="Bike Model Name"
 											name="bikeName"
+											rules={[
+												{
+													required: true,
+													message: 'Please input your bike model name!',
+												},
+											]}
+										>
+											<Input placeholder="Your bike model name" />
+										</Form.Item>
+										<Form.Item
+											label="Bike Brand Name"
+											name="bikeBrand"
 											rules={[
 												{
 													required: true,
@@ -159,15 +171,19 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Select
-												showSearch
-												placeholder="Select your bike"
-												optionFilterProp="children"
-												filterOption={(input, option) =>
-													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-												}
-												options={BIKELIST}
-											/>
+											<Input placeholder="Your bike brand name (eg: Yamaha)" />
+										</Form.Item>
+										<Form.Item
+											label="Bike Model Year"
+											name="bikeModelYear"
+											rules={[
+												{
+													required: true,
+													message: 'Please input bike model year!',
+												},
+											]}
+										>
+											<Input placeholder="Bike model year" type="number" />
 										</Form.Item>
 										<Form.Item
 											label="Registration Zone"
@@ -232,18 +248,6 @@ export default function SellBike() {
 												}
 												options={DURATION_OF_REGISTRATION}
 											/>
-										</Form.Item>
-										<Form.Item
-											label="Bike Model Year"
-											name="bikeModelYear"
-											rules={[
-												{
-													required: true,
-													message: 'Please input bike model year!',
-												},
-											]}
-										>
-											<Input placeholder="Bike Model year" type="number" />
 										</Form.Item>
 										<Form.Item
 											label="Accident History"
