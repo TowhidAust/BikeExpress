@@ -43,15 +43,17 @@ export default function Auth() {
 												transform: 'translate(-50%, -50%)',
 											}}
 										>
-											<Row gutter={8} className="text-center p-2" justify="space-between" align="middle">
+											<Row gutter={[8, 8]} className="text-center p-2" justify="space-between" align="middle">
 												<Col md={8}>
-													<Logo fontColor="white" width={120} fontSize={18} iconFontSize={26} />
+													<Button type="link">
+														<Logo fontColor="white" width={120} fontSize={18} iconFontSize={26} />
+													</Button>
 												</Col>
 												<Col md={8}>
 													<Button
 														block
 														className="p-0 m-0"
-														type="primary"
+														type="link"
 														onClick={() => {
 															setIsSignupActive(!isSignupActive);
 														}}

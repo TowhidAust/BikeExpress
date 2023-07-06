@@ -8,12 +8,10 @@ import AppLayout from '@/components/Layout/AppLayout';
 import {
 	ACCIDENT_HISTORY,
 	BIKELIST,
-	BIKE_MODEL_YEAR,
 	DISTRICTS,
 	DIVISIONS,
 	DURATION_OF_REGISTRATION,
 	OWNERSHIP_STATUS,
-	YEAR_OF_REGISTRATION,
 	ZONE_OF_REGISTRATION,
 } from '@/constants';
 import { useSellBikeMutationMutation, useUploadImageMutation } from './api';
@@ -197,23 +195,15 @@ export default function SellBike() {
 											rules={[
 												{
 													required: true,
-													message: 'Please input your yearOfRegistration!',
+													message: 'Please input year of registration!',
 												},
 											]}
 										>
-											<Select
-												showSearch
-												placeholder="Select Year of Registration"
-												optionFilterProp="children"
-												filterOption={(input, option) =>
-													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-												}
-												options={YEAR_OF_REGISTRATION}
-											/>
+											<Input placeholder="Registration year" type="number" />
 										</Form.Item>
 										<Form.Item
 											name="kmRun"
-											label="Km Run"
+											label="Total KM Run"
 											rules={[
 												{
 													required: true,
@@ -253,15 +243,7 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Select
-												showSearch
-												placeholder="Select bike model year"
-												optionFilterProp="children"
-												filterOption={(input, option) =>
-													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-												}
-												options={BIKE_MODEL_YEAR}
-											/>
+											<Input placeholder="Bike Model year" type="number" />
 										</Form.Item>
 										<Form.Item
 											label="Accident History"

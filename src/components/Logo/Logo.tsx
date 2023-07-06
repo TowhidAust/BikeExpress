@@ -20,9 +20,11 @@ export default function Logo(props: PropTypes) {
 				textAlign: 'center',
 			}}
 		>
-			<div style={{ color: fontColor, width: '33%' }}> BIKE </div>
-			<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: iconFontSize }} />
-			<div style={{ color: fontColor, width: '33%' }}> HUB </div>
+			<div style={{ color: fontColor, width: '33.33%' }}> BIKE </div>
+			<div style={{ width: '33.33%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+				<FaMotorcycle className="ml-2 mr-2 primary-font-color" style={{ fontSize: iconFontSize }} />
+			</div>
+			<div style={{ color: fontColor, width: '33.33%' }}> HUB </div>
 		</div>
 	);
 }
