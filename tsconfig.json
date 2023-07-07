@@ -17,7 +17,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    "types": ["node"], //for custom path ex: @/pages/index
+    "types": ["@openui5/ts-types-esm"], //for custom path ex: @/pages/index
     "paths": { //for custom path ex: @/pages/index
       "@/*": ["./src/*"]
     },
