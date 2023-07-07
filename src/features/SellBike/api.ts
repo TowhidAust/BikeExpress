@@ -8,6 +8,7 @@ export interface SellBikeResponseType {
 
 export interface SellBikeQueryType {
 	userId: String;
+	isReviewed: boolean;
 	images: String[];
 	bikeCode?: string;
 	price: string;

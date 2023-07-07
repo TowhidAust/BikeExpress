@@ -92,6 +92,7 @@ export default function SellBike() {
 					message.success(result?.message || 'Image upload success');
 					const finalValue = {
 						userId: auth?.user?.id,
+						isReviewed: false,
 						images: result?.result,
 						bikeName: value?.bikeName,
 						bikeBrand: value?.bikeBrand,
