@@ -10,6 +10,7 @@ import {
 	DISTRICTS,
 	DIVISIONS,
 	DURATION_OF_REGISTRATION,
+	IS_NEGOTIABLE,
 	OWNERSHIP_STATUS,
 	ZONE_OF_REGISTRATION,
 } from '@/constants';
@@ -107,6 +108,8 @@ export default function SellBike() {
 						detailDescription: value?.detailDescription,
 						district: value?.district,
 						price: value?.price,
+						cc: value?.cc,
+						isNegotiable: value?.isNegotiable,
 					};
 					sellBikeMutation(finalValue)
 						.unwrap()
@@ -160,6 +163,18 @@ export default function SellBike() {
 											]}
 										>
 											<Input placeholder="Your bike model name" />
+										</Form.Item>
+										<Form.Item
+											label="CC"
+											name="cc"
+											rules={[
+												{
+													required: true,
+													message: 'Please input engine CC!',
+												},
+											]}
+										>
+											<Input placeholder="Your bike engine CC" type="number" />
 										</Form.Item>
 										<Form.Item
 											label="Bike Brand Name"
@@ -389,6 +404,27 @@ export default function SellBike() {
 											]}
 										>
 											<Input placeholder="Price" type="number" />
+										</Form.Item>
+
+										<Form.Item
+											label="Negotiate"
+											name="isNegotiable"
+											rules={[
+												{
+													required: true,
+													message: 'Please input negotiate option!',
+												},
+											]}
+										>
+											<Select
+												showSearch
+												placeholder="Is the price negotiable?"
+												optionFilterProp="children"
+												filterOption={(input, option) =>
+													(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+												}
+												options={IS_NEGOTIABLE}
+											/>
 										</Form.Item>
 
 										<Typography.Title level={5} className="primary-font-color">

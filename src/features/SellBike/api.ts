@@ -10,6 +10,9 @@ export interface SellBikeQueryType {
 	userId: String;
 	images: String[];
 	bikeCode?: string;
+	price: string;
+	isNegotiable: boolean;
+	cc: number;
 	bikeName: String;
 	bikeBrand: String;
 	registrationZone: String;

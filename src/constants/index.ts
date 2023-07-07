@@ -215,17 +215,23 @@ const ZONE_OF_REGISTRATION = [
 ];
 
 const OWNERSHIP_STATUS = [
-	{ value: '1st Owner', label: '1st Owner' },
-	{ value: '2nd Owner', label: '2nd Owner' },
-	{ value: '3rd Owner', label: '3rd Owner' },
-	{ value: '4rth Owner', label: '4rth Owner' },
-	{ value: '5th Owner', label: '5th Owner' },
+	{ value: '1st', label: '1st Owner' },
+	{ value: '2nd', label: '2nd Owner' },
+	{ value: '3rd', label: '3rd Owner' },
+	{ value: '4rth', label: '4rth Owner' },
+	{ value: '5th', label: '5th Owner' },
 ];
 
 const ACCIDENT_HISTORY = [
 	{ value: true, label: 'Has Accident History' },
 	{ value: false, label: 'No Accident History' },
 ];
+
+const IS_NEGOTIABLE = [
+	{ value: true, label: 'Negotiable' },
+	{ value: false, label: 'Not Negotiable' },
+];
+
 export {
 	DIVISIONS,
 	DISTRICTS,
@@ -236,4 +242,5 @@ export {
 	ZONE_OF_REGISTRATION,
 	OWNERSHIP_STATUS,
 	ACCIDENT_HISTORY,
+	IS_NEGOTIABLE,
 };
