@@ -9,7 +9,7 @@ type ProductPropTypes = {
 		model: string;
 		cc: number;
 		km: string;
-		isFirstOwner: boolean;
+		isFirstOwner: string;
 		location: string;
 		isNegotiable: boolean;
 	};
@@ -70,13 +70,13 @@ export default function ProductCardBike(props: ProductPropTypes) {
 					Km: {km}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
-					Owner: {isFirstOwner ? '1st' : 'Pre-Owned'}
+					Owner: {isFirstOwner}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
 					Location: {location}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
-					{isNegotiable ? 'Negotiable' : 'fixed price'}
+					{isNegotiable ? 'Negotiable' : 'Fixed Price'}
 				</Col>
 			</Row>
 		</Card>
