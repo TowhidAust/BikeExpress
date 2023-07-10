@@ -49,7 +49,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 							textOverflow: 'ellipsis',
 						}}
 					>
-						<abbr style={{ textDecoration: 'none' }} title="HONDA CBR 150 DUAL CHANNEL ABS">
+						<abbr style={{ textDecoration: 'none' }} title={title}>
 							{title}
 						</abbr>
 					</Typography.Title>
