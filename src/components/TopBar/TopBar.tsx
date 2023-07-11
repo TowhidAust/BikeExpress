@@ -1,4 +1,4 @@
-import { Affix, Button, Card, Col, Input, Layout, Menu, Row } from 'antd';
+import { Affix, Button, Card, Col, Layout, Menu, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserOutlined } from '@ant-design/icons';
@@ -8,7 +8,6 @@ import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
 import Logo from '../Logo/Logo';
 
 const { Header } = Layout;
-const { Search } = Input;
 
 export default function TopBar() {
 	const { activeMenu, auth } = useSelector((state: RootState) => state);
@@ -20,18 +19,15 @@ export default function TopBar() {
 		<div>
 			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
 				<Row gutter={[16, 16]} align="middle" justify="space-between">
-					<Col xs={24} md={6}>
+					<Col xs={24} sm={24} md={6}>
 						<Logo fontColor="white" width={120} fontSize={18} iconFontSize={26} />
-					</Col>
-					<Col xs={24} md={6}>
-						<Search className="mt-sm-0 mt-md-3" placeholder="Search used bikes" enterButton="Search" size="middle" />
 					</Col>
 				</Row>
 			</Header>
 			<Affix offsetTop={0} className="width-100">
 				<Card className="m-0 p-0" bodyStyle={{ margin: 0, padding: 0 }}>
 					<Row gutter={[8, 8]} justify="space-between">
-						<Col md={18}>
+						<Col xs={24} sm={24} md={18}>
 							<Menu
 								theme="light"
 								mode="horizontal"
@@ -72,7 +68,7 @@ export default function TopBar() {
 								]}
 							/>
 						</Col>
-						<Col md={4}>
+						<Col xs={24} sm={24} md={4}>
 							{!firstname ? (
 								<Button
 									className="mt-1"

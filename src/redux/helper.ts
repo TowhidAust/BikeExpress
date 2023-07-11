@@ -2,12 +2,10 @@ import { message } from 'antd';
 
 export const globalErrorHandling = (action: any) => {
 	const responseData = action?.payload?.data;
-	const { success, code, details, message: resMessage } = responseData;
-
 	if (!responseData) {
 		return message.error('Something went wrong!');
 	}
-
+	const { success, code, details, message: resMessage } = responseData;
 	if (responseData) {
 		return message.warn(responseData?.message);
 	}
@@ -21,7 +19,6 @@ export const globalErrorHandling = (action: any) => {
 				message.warn(`${i}: ${messageArr[j]}`);
 			}
 		}
-
 		return false;
 	}
 

@@ -71,7 +71,7 @@ export default function UsedBikes() {
 											isNegotiable: item?.isNegotiable,
 										}}
 										onDetailsButtonClick={() => {
-											return navigate(`${PUBLIC_ROUTE.USED_BIKE_DETAILS}/1234`);
+											return navigate(`${PUBLIC_ROUTE.USED_BIKE_DETAILS}/${item?._id}`);
 										}}
 									/>
 								</Col>

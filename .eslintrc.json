@@ -51,7 +51,8 @@
         "jsx-a11y/anchor-is-valid": "off",
         "no-underscore-dangle": "off",
         "guard-for-in": "off",
-        "prefer-const": "off"
+        "prefer-const": "off",
+        "no-restricted-syntax": "off"
     }
     
 }

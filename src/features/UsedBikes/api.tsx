@@ -11,6 +11,10 @@ export interface UsedBikeListQueryType {
 	pageSize: number;
 }
 
+export interface UsedBikeDetailsQueryType {
+	bikeId: string | undefined;
+}
+
 export const usedBikesApiSlice = emptySliceApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getUsedBikesList: builder.query<UsedBikeListResponseType, UsedBikeListQueryType>({
@@ -19,7 +23,13 @@ export const usedBikesApiSlice = emptySliceApi.injectEndpoints({
 				url: `/used-bike-list?page=${data?.page}&pageSize=${data?.pageSize}`,
 			}),
 		}),
+		bikeDetails: builder.query<UsedBikeListResponseType, UsedBikeDetailsQueryType>({
+			query: (data) => ({
+				method: 'GET',
+				url: `/used-bike-details/${data?.bikeId}`,
+			}),
+		}),
 	}),
 });
 
-export const { useGetUsedBikesListQuery } = usedBikesApiSlice;
+export const { useGetUsedBikesListQuery, useBikeDetailsQuery } = usedBikesApiSlice;
