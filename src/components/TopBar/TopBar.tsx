@@ -61,8 +61,24 @@ export default function TopBar() {
 										key: 'bikeService',
 										label: 'Bike Service',
 										onClick: () => {
-											navigate(PUBLIC_ROUTE.SIGNUP);
+											// navigate(PUBLIC_ROUTE.SIGNUP);
 											dispatch(setCurrentActiveMenu('bikeService'));
+										},
+									},
+									{
+										key: 'blog',
+										label: 'Blog',
+										onClick: () => {
+											// navigate(PUBLIC_ROUTE.SIGNUP);
+											dispatch(setCurrentActiveMenu('blog'));
+										},
+									},
+									{
+										key: 'faq',
+										label: 'FAQ',
+										onClick: () => {
+											// navigate(PUBLIC_ROUTE.SIGNUP);
+											dispatch(setCurrentActiveMenu('faq'));
 										},
 									},
 								]}

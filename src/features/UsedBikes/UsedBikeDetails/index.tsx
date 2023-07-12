@@ -1,16 +1,20 @@
 import { Button, Card, Col, Image, Row, Table, Typography } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import AppLayout from '@/components/Layout/AppLayout';
 import { useBikeDetailsQuery } from '../api';
+import BasicModal from '@/components/Modals/BasicModal';
 
 interface DataType {
 	key: string;
-	title: string;
+	title?: string;
 	value: string;
+	dataIndex: string;
 }
 
 export default function UsedBikeDetails() {
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const { id } = useParams();
 	const {
 		data: bikeDetailsData,
@@ -63,6 +67,45 @@ export default function UsedBikeDetails() {
 
 	const data = [bikeDetailsData?.result];
 
+	const sellerDetailsColumns: ColumnsType<DataType> = [
+		{
+			title: 'Phone',
+			dataIndex: 'phone',
+			key: 2,
+		},
+		{
+			title: 'Division',
+			dataIndex: 'division',
+			key: 3,
+		},
+		{
+			title: 'District',
+			dataIndex: 'district',
+			key: 4,
+		},
+		{
+			title: 'Address',
+			dataIndex: 'address',
+			key: 5,
+		},
+	];
+	const sellerDetailsData: any[] = [
+		{
+			phone: bikeDetailsData?.result?.phone,
+			division: bikeDetailsData?.result?.division,
+			district: bikeDetailsData?.result?.district,
+			address: bikeDetailsData?.result?.address,
+		},
+	];
+
+	const handleModalCancel = () => {
+		setIsModalOpen(false);
+	};
+
+	const handleModalOk = () => {
+		setIsModalOpen(false);
+	};
+
 	if (isError) {
 		<AppLayout>Something went wrong!</AppLayout>;
 	}
@@ -113,12 +156,28 @@ export default function UsedBikeDetails() {
 						<Typography.Text>{bikeDetailsData?.result?.detailDescription}</Typography.Text>
 						<br />
 						<br />
-						<Button block type="primary" size="large">
+						<Button
+							block
+							type="primary"
+							size="large"
+							onClick={() => {
+								setIsModalOpen(true);
+							}}
+						>
 							SELLER INFORMATION
 						</Button>
 					</Col>
 				</Row>
 			</Card>
+			<BasicModal
+				title="Seller Information"
+				isOpen={isModalOpen}
+				handleOk={handleModalOk}
+				handleCancel={handleModalCancel}
+				modalBody={<Table bordered columns={sellerDetailsColumns} dataSource={sellerDetailsData} pagination={false} />}
+				bodyStyle={{ margin: 0, padding: 0 }}
+				minWidth="50%"
+			/>
 		</AppLayout>
 	);
 }
