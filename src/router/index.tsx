@@ -11,6 +11,9 @@ const SignupPage = lazy(() => import('@/pages/Auth/SignupPage'));
 const DashboardPage = lazy(() => import('@/pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound/NotFoundPage'));
 const SellBikePage = lazy(() => import('@/pages/SellBike/SellBikePage'));
+const BlogPage = lazy(() => import('@/pages/Blog/BlogPage'));
+const FaqPage = lazy(() => import('@/pages/Faq/FaqPage'));
+const BikeServicePage = lazy(() => import('@/pages/BikeService/BikeServicePage'));
 export default function AppRoutes() {
 	const publicRoutes = [
 		{
@@ -33,6 +36,18 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.SELL_BIKE_PAGE,
 			component: SellBikePage,
+		},
+		{
+			path: PUBLIC_ROUTE.BLOG,
+			component: BlogPage,
+		},
+		{
+			path: PUBLIC_ROUTE.FAQ,
+			component: FaqPage,
+		},
+		{
+			path: PUBLIC_ROUTE.BIKE_SERVICE,
+			component: BikeServicePage,
 		},
 	];
 	return (

@@ -61,7 +61,7 @@ export default function TopBar() {
 										key: 'bikeService',
 										label: 'Bike Service',
 										onClick: () => {
-											// navigate(PUBLIC_ROUTE.SIGNUP);
+											navigate(PUBLIC_ROUTE.BIKE_SERVICE);
 											dispatch(setCurrentActiveMenu('bikeService'));
 										},
 									},
@@ -69,7 +69,7 @@ export default function TopBar() {
 										key: 'blog',
 										label: 'Blog',
 										onClick: () => {
-											// navigate(PUBLIC_ROUTE.SIGNUP);
+											navigate(PUBLIC_ROUTE.BLOG);
 											dispatch(setCurrentActiveMenu('blog'));
 										},
 									},
@@ -77,7 +77,7 @@ export default function TopBar() {
 										key: 'faq',
 										label: 'FAQ',
 										onClick: () => {
-											// navigate(PUBLIC_ROUTE.SIGNUP);
+											navigate(PUBLIC_ROUTE.FAQ);
 											dispatch(setCurrentActiveMenu('faq'));
 										},
 									},

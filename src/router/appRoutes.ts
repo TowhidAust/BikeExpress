@@ -5,6 +5,9 @@ export const PUBLIC_ROUTE = {
 	USED_BIKE_DETAILS: '/category/used-bikes/details',
 	USED_BIKE_DETAILS_ID: '/category/used-bikes/details/:id',
 	SELL_BIKE_PAGE: '/sell-bike',
+	BLOG: '/blog',
+	FAQ: '/faq',
+	BIKE_SERVICE: '/bike-service',
 };
 
 export const PRIVATE_ROUTE = {
