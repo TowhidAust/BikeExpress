@@ -174,7 +174,15 @@ export default function UsedBikeDetails() {
 				isOpen={isModalOpen}
 				handleOk={handleModalOk}
 				handleCancel={handleModalCancel}
-				modalBody={<Table bordered columns={sellerDetailsColumns} dataSource={sellerDetailsData} pagination={false} />}
+				modalBody={
+					<Table
+						scroll={{ x: true }}
+						bordered
+						columns={sellerDetailsColumns}
+						dataSource={sellerDetailsData}
+						pagination={false}
+					/>
+				}
 				bodyStyle={{ margin: 0, padding: 0 }}
 				minWidth="50%"
 			/>
