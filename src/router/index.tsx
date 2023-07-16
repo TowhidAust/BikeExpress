@@ -14,6 +14,9 @@ const SellBikePage = lazy(() => import('@/pages/SellBike/SellBikePage'));
 const BlogPage = lazy(() => import('@/pages/Blog/BlogPage'));
 const FaqPage = lazy(() => import('@/pages/Faq/FaqPage'));
 const BikeServicePage = lazy(() => import('@/pages/BikeService/BikeServicePage'));
+const HelmetPage = lazy(() => import('@/pages/Products/Helmet/HelmetPage'));
+const EngineOilPage = lazy(() => import('@/pages/Products/EngineOil/EngineOilPage'));
+
 export default function AppRoutes() {
 	const publicRoutes = [
 		{
@@ -48,6 +51,14 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.BIKE_SERVICE,
 			component: BikeServicePage,
+		},
+		{
+			path: PUBLIC_ROUTE.HELMET,
+			component: HelmetPage,
+		},
+		{
+			path: PUBLIC_ROUTE.ENGINE_OIL,
+			component: EngineOilPage,
 		},
 	];
 	return (

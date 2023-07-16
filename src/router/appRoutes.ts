@@ -8,6 +8,10 @@ export const PUBLIC_ROUTE = {
 	BLOG: '/blog',
 	FAQ: '/faq',
 	BIKE_SERVICE: '/bike-service',
+
+	// product pages by category
+	HELMET: '/categories/helmet',
+	ENGINE_OIL: '/categories/engine-oil',
 };
 
 export const PRIVATE_ROUTE = {
