@@ -11,7 +11,9 @@ export const PUBLIC_ROUTE = {
 
 	// product pages by category
 	HELMET: '/categories/helmet',
+	HELMET_DETAILS: '/categories/helmet/:id',
 	ENGINE_OIL: '/categories/engine-oil',
+	ENGINE_OIL_DETAILS: '/categories/engine-oil/:id',
 };
 
 export const PRIVATE_ROUTE = {

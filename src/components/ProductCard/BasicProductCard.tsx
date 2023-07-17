@@ -25,7 +25,11 @@ export default function BasicProductCard(props: ProductPropTypes) {
 						height: '200px',
 					}}
 				>
-					<Button style={{ position: 'absolute', bottom: 0, right: 0 }} type="primary" onClick={onDetailsButtonClick}>
+					<Button
+						style={{ position: 'absolute', bottom: 0, right: 0, borderRadius: 0 }}
+						type="primary"
+						onClick={onDetailsButtonClick}
+					>
 						DETAILS
 					</Button>
 				</div>

@@ -32,7 +32,11 @@ export default function ProductCardBike(props: ProductPropTypes) {
 						height: '200px',
 					}}
 				>
-					<Button style={{ position: 'absolute', bottom: 0, right: 0 }} type="primary" onClick={onDetailsButtonClick}>
+					<Button
+						style={{ borderRadius: 0, position: 'absolute', bottom: 0, right: 0 }}
+						type="primary"
+						onClick={onDetailsButtonClick}
+					>
 						DETAILS
 					</Button>
 				</div>

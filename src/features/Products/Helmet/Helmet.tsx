@@ -1,8 +1,11 @@
-import { Col, Row, message } from 'antd';
+import { Col, Row } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import AppLayout from '@/components/Layout/AppLayout';
 import BasicProductCard from '@/components/ProductCard/BasicProductCard';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 export default function Helmet() {
+	const navigate = useNavigate();
 	return (
 		<AppLayout>
 			<Row gutter={[16, 16]}>
@@ -15,7 +18,7 @@ export default function Helmet() {
 							price: '7800',
 						}}
 						onDetailsButtonClick={() => {
-							message.info('Please create a details page');
+							navigate(`${PUBLIC_ROUTE.HELMET}/1234`);
 						}}
 					/>
 				</Col>
