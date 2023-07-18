@@ -109,7 +109,39 @@ export default function HelmetDetails() {
 							</Col>
 						</Row>
 						<br />
-
+						<Row gutter={[8, 8]}>
+							<Col xs={24} sm={24} md={24}>
+								<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+									Size
+								</Typography.Title>
+							</Col>
+							<Col xs={24} sm={24} md={4}>
+								<Button block type="ghost">
+									S
+								</Button>
+							</Col>
+							<Col xs={24} sm={24} md={4}>
+								<Button block type="ghost">
+									M
+								</Button>
+							</Col>
+							<Col xs={24} sm={24} md={4}>
+								<Button block type="ghost">
+									L
+								</Button>
+							</Col>
+							<Col xs={24} sm={24} md={4}>
+								<Button block type="ghost">
+									XL
+								</Button>
+							</Col>
+							<Col xs={24} sm={24} md={4}>
+								<Button block type="ghost">
+									XXL
+								</Button>
+							</Col>
+						</Row>
+						<br />
 						<Typography.Title level={5} className="primary-font-color font-weight-500">
 							Description
 						</Typography.Title>
