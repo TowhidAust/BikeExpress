@@ -26,7 +26,7 @@ export default function TopBar() {
 			</Header>
 			<Affix offsetTop={0} className="width-100">
 				<Card className="m-0 p-0" bodyStyle={{ margin: 0, padding: 0 }}>
-					<Row gutter={[8, 8]} justify="space-between">
+					<Row justify="space-between">
 						<Col xs={24} sm={24} md={18}>
 							<Menu
 								theme="light"
@@ -84,7 +84,7 @@ export default function TopBar() {
 								]}
 							/>
 						</Col>
-						<Col xs={24} sm={24} md={4}>
+						<Col xs={24} sm={24} md={6}>
 							{!firstname ? (
 								<Button
 									className="mt-1"
