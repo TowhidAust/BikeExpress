@@ -1,5 +1,6 @@
 import { Button, Card, Col, Divider, Image, Row, Table, Typography } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { useState } from 'react';
 import AppLayout from '@/components/Layout/AppLayout';
 
 interface DataType {
@@ -9,7 +10,14 @@ interface DataType {
 	dataIndex: string;
 }
 
+export interface ColorFieldTypes {
+	colorFieldId: string;
+	isActive: boolean;
+}
+
 export default function HelmetDetails() {
+	const [isColorFamilyCardActive, setIsColorFamilyCardActive] = useState<string>('101');
+
 	const column: ColumnsType<DataType> = [
 		{
 			key: '1',
@@ -31,13 +39,12 @@ export default function HelmetDetails() {
 			title: 'Made In',
 			dataIndex: 'madeIn',
 		},
-		// {
-		// 	key: '5',
-		// 	title: 'Available Quantity',
-		// 	dataIndex: 'quantity',
-		// },
 	];
 	const data: any[] = [{ brand: 'MT', modelNo: 'MT003', modelYear: '2023', madeIn: 'Indonesia' }];
+
+	const handleColorFamilyClick = (colorFieldId: string) => {
+		setIsColorFamilyCardActive(colorFieldId);
+	};
 
 	return (
 		<AppLayout>
@@ -86,65 +93,89 @@ export default function HelmetDetails() {
 						<Divider className="mt-2 mb-3" />
 						<Table scroll={{ x: true }} columns={column} dataSource={data} pagination={false} bordered />
 						<br />
-						<Row gutter={[8, 8]}>
-							<Col xs={24} sm={24} md={24}>
-								<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-									Color Family
-								</Typography.Title>
+						<Row gutter={[32, 8]}>
+							<Col xs={24} sm={24} md={12}>
+								<Row gutter={[8, 8]}>
+									<Col xs={24} sm={24} md={24}>
+										<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+											Color Family
+										</Typography.Title>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card
+											className={isColorFamilyCardActive === '1' ? 'secondary-bg' : ''}
+											hoverable
+											bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+											onClick={() => {
+												handleColorFamilyClick('1');
+											}}
+										>
+											MATT BLACK
+										</Card>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card
+											className={isColorFamilyCardActive === '2' ? 'secondary-bg' : ''}
+											hoverable
+											bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+											onClick={() => {
+												handleColorFamilyClick('2');
+											}}
+										>
+											DARK SEA GREEN
+										</Card>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card
+											className={isColorFamilyCardActive === '3' ? 'secondary-bg' : ''}
+											hoverable
+											bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+											onClick={() => {
+												handleColorFamilyClick('3');
+											}}
+										>
+											BLUE
+										</Card>
+									</Col>
+								</Row>
 							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="dashed">
-									RED
-								</Button>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="dashed">
-									GREEN
-								</Button>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="dashed">
-									BLUE
-								</Button>
+							<Col xs={24} sm={24} md={12}>
+								<Row gutter={[8, 8]}>
+									<Col xs={24} sm={24} md={24}>
+										<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+											Size
+										</Typography.Title>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
+											SMALL
+										</Card>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
+											MEDIUM
+										</Card>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
+											LARGE
+										</Card>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
+											XTRA LARGE
+										</Card>
+									</Col>
+									<Col xs={24} sm={24} md={8}>
+										<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
+											XTRA XTRA LARGE
+										</Card>
+									</Col>
+								</Row>
 							</Col>
 						</Row>
+
 						<br />
-						<Row gutter={[8, 8]}>
-							<Col xs={24} sm={24} md={24}>
-								<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-									Size
-								</Typography.Title>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="ghost">
-									S
-								</Button>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="ghost">
-									M
-								</Button>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="ghost">
-									L
-								</Button>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="ghost">
-									XL
-								</Button>
-							</Col>
-							<Col xs={24} sm={24} md={4}>
-								<Button block type="ghost">
-									XXL
-								</Button>
-							</Col>
-						</Row>
-						<br />
-						<Typography.Title level={5} className="primary-font-color font-weight-500">
-							Description
-						</Typography.Title>
 						<Typography.Text type="secondary">
 							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus voluptatem perferendis voluptates
 							dolore reiciendis, culpa molestias ratione aperiam nulla odio tempore dolorum aliquam quae modi iure
