@@ -14,7 +14,33 @@ export interface ColorFieldTypes {
 	isActive: boolean;
 }
 
-export default function ProductDetailsWithSku() {
+type PropTypes = {
+	productDetailsData?: {
+		title: string;
+		brand: string;
+		modelNo: string;
+		modelYear: string;
+		madeIn: string;
+		thumnail: string;
+		images: string[];
+	};
+	variants?: {
+		id: string;
+		price: string;
+		color: string;
+		sizes: [
+			{
+				id: string;
+				size: string;
+				inStock: boolean;
+			},
+		];
+	}[];
+};
+
+export default function ProductDetailsWithSku(props: PropTypes) {
+	const { productDetailsData, variants } = props;
+
 	const [isColorFamilyCardActive, setIsColorFamilyCardActive] = useState<string>('101');
 
 	const column: ColumnsType<DataType> = [
@@ -39,7 +65,14 @@ export default function ProductDetailsWithSku() {
 			dataIndex: 'madeIn',
 		},
 	];
-	const data: any[] = [{ brand: 'MT', modelNo: 'MT003', modelYear: '2023', madeIn: 'Indonesia' }];
+	const data: any[] = [
+		{
+			brand: productDetailsData?.brand || 'N/A',
+			modelNo: productDetailsData?.modelNo || 'N/A',
+			modelYear: productDetailsData?.modelYear || 'N/A',
+			madeIn: productDetailsData?.madeIn || 'N/A',
+		},
+	];
 
 	const handleColorFamilyClick = (colorFieldId: string) => {
 		setIsColorFamilyCardActive(colorFieldId);
@@ -77,7 +110,7 @@ export default function ProductDetailsWithSku() {
 				</Col>
 				<Col md={16}>
 					<Typography.Title className="m-0" level={2}>
-						MT Targo Pro H450
+						{productDetailsData?.title || 'N/A'}
 					</Typography.Title>
 					<Typography.Title level={4} className="m-0 primary-font-color">
 						BDT 7800
@@ -92,21 +125,18 @@ export default function ProductDetailsWithSku() {
 										Size
 									</Typography.Title>
 								</Col>
-								<Col xs={24} sm={24} md={8}>
-									<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
-										SMALL
-									</Card>
-								</Col>
-								<Col xs={24} sm={24} md={8}>
-									<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
-										MEDIUM
-									</Card>
-								</Col>
-								<Col xs={24} sm={24} md={8}>
-									<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
-										LARGE
-									</Card>
-								</Col>
+								{variants?.map((item: any) => {
+									const sizesArr = item?.sizes;
+									return sizesArr?.map((size: any) => {
+										return (
+											<Col xs={24} sm={24} md={8}>
+												<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
+													{size?.size || 'N/A'}
+												</Card>
+											</Col>
+										);
+									});
+								})}
 							</Row>
 						</Col>
 						<Col xs={24} sm={24} md={12}>
@@ -116,42 +146,23 @@ export default function ProductDetailsWithSku() {
 										Color Family
 									</Typography.Title>
 								</Col>
-								<Col xs={24} sm={24} md={8}>
-									<Card
-										className={isColorFamilyCardActive === '1' ? 'secondary-bg' : ''}
-										hoverable
-										bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
-										onClick={() => {
-											handleColorFamilyClick('1');
-										}}
-									>
-										MATT BLACK
-									</Card>
-								</Col>
-								<Col xs={24} sm={24} md={8}>
-									<Card
-										className={isColorFamilyCardActive === '2' ? 'secondary-bg' : ''}
-										hoverable
-										bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
-										onClick={() => {
-											handleColorFamilyClick('2');
-										}}
-									>
-										DARK SEA GREEN
-									</Card>
-								</Col>
-								<Col xs={24} sm={24} md={8}>
-									<Card
-										className={isColorFamilyCardActive === '3' ? 'secondary-bg' : ''}
-										hoverable
-										bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
-										onClick={() => {
-											handleColorFamilyClick('3');
-										}}
-									>
-										BLUE
-									</Card>
-								</Col>
+
+								{variants?.map((item: any) => {
+									return (
+										<Col xs={24} sm={24} md={8}>
+											<Card
+												className={isColorFamilyCardActive === item?.id ? 'secondary-bg' : ''}
+												hoverable
+												bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+												onClick={() => {
+													handleColorFamilyClick(item?.id);
+												}}
+											>
+												{item?.color || 'N/A'}
+											</Card>
+										</Col>
+									);
+								})}
 							</Row>
 						</Col>
 					</Row>
