@@ -63,13 +63,13 @@ export default function BannerLeftMenu() {
 					icon: <GiCoveredJar />,
 				},
 				{
-					key: 11,
+					key: 12,
 					label: 'Battery',
 					className: 'm-0',
 					icon: <FaBatteryEmpty />,
 				},
 				{
-					key: 12,
+					key: 13,
 					label: 'Number Plate Holder',
 					className: 'm-0',
 					icon: <GiCarWheel />,

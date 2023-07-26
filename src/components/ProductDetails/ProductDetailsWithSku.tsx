@@ -1,8 +1,8 @@
 import { Button, Card, Col, Divider, Image, Row, Table, Typography } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-interface DataType {
+export interface DataType {
 	key: string;
 	title?: string;
 	value: string;
@@ -16,6 +16,7 @@ export interface ColorFieldTypes {
 
 type PropTypes = {
 	productDetailsData?: {
+		_id: string;
 		title: string;
 		brand: string;
 		modelNo: string;
@@ -25,23 +26,23 @@ type PropTypes = {
 		images: string[];
 	};
 	variants?: {
-		id: string;
+		_id: string;
 		price: string;
 		color: string;
-		sizes: [
-			{
-				id: string;
-				size: string;
-				inStock: boolean;
-			},
-		];
+		sizes?: {
+			_id: string;
+			size: string;
+			inStock: boolean;
+		}[];
 	}[];
 };
 
 export default function ProductDetailsWithSku(props: PropTypes) {
 	const { productDetailsData, variants } = props;
-
-	const [isColorFamilyCardActive, setIsColorFamilyCardActive] = useState<string>('101');
+	const [selectedColorFamilyId, setSelectedColorFamilyId] = useState<string>();
+	const [selectedSizeId, setSelectedSizeId] = useState<string>();
+	const [availableSizes, setAvailableSizes] = useState<any[]>([]);
+	const [productPrice, setProductPrice] = useState<string>('0');
 
 	const column: ColumnsType<DataType> = [
 		{
@@ -65,8 +66,10 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			dataIndex: 'madeIn',
 		},
 	];
+
 	const data: any[] = [
 		{
+			_id: '1',
 			brand: productDetailsData?.brand || 'N/A',
 			modelNo: productDetailsData?.modelNo || 'N/A',
 			modelYear: productDetailsData?.modelYear || 'N/A',
@@ -75,32 +78,70 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	];
 
 	const handleColorFamilyClick = (colorFieldId: string) => {
-		setIsColorFamilyCardActive(colorFieldId);
+		setSelectedColorFamilyId(colorFieldId);
+		variants?.find((item: any) => {
+			const id = item?._id;
+			const price = item?.price;
+			const sizes = item?.sizes;
+			if (id === colorFieldId) {
+				setProductPrice(price);
+				setSelectedSizeId('');
+				setAvailableSizes(sizes);
+			}
+			return false;
+		});
 	};
+
+	const handleSizeCardClick = (sizeFieldId: string) => {
+		setSelectedSizeId(sizeFieldId);
+	};
+
+	const addToCardClickHandler = () => {};
+
+	const buyNowClickHandler = () => {
+		const finalData = {
+			productId: productDetailsData?._id,
+			skuId: selectedColorFamilyId,
+			selectedSizeId,
+		};
+		// eslint-disable-next-line no-console
+		console.log(finalData);
+	};
+
+	useEffect(() => {
+		if (variants) {
+			const defaultVariantPrice = variants[0]?.price;
+			setProductPrice(defaultVariantPrice);
+		}
+	}, [variants]);
 
 	return (
 		<Card>
 			<Row gutter={[16, 16]}>
 				<Col md={8}>
 					<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
-						<Image src="https://images.unsplash.com/photo-1611004061856-ccc3cbe944b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVsbWV0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" />
+						<Image src={productDetailsData?.thumnail} />
 					</Card>
 					<Row>
-						<Col span={6}>
-							<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
-								<Image src="https://images.unsplash.com/photo-1611004061856-ccc3cbe944b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVsbWV0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" />
-							</Card>
-						</Col>
+						{productDetailsData?.images?.map((image: any) => {
+							return (
+								<Col span={6} key={image}>
+									<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
+										<Image src={image} />
+									</Card>
+								</Col>
+							);
+						})}
 
 						<Col span={24}>
 							<Row className="mt-2" gutter={[8, 8]}>
 								<Col span={12}>
-									<Button size="large" block type="ghost">
+									<Button size="large" block type="ghost" onClick={addToCardClickHandler}>
 										ADD TO CART
 									</Button>
 								</Col>
 								<Col span={12}>
-									<Button size="large" block type="primary">
+									<Button size="large" block type="primary" onClick={buyNowClickHandler}>
 										BUY NOW
 									</Button>
 								</Col>
@@ -113,32 +154,18 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						{productDetailsData?.title || 'N/A'}
 					</Typography.Title>
 					<Typography.Title level={4} className="m-0 primary-font-color">
-						BDT 7800
+						BDT {productPrice}
 					</Typography.Title>
 					<Divider className="mt-2 mb-3" />
-					<Table scroll={{ x: true }} columns={column} dataSource={data} pagination={false} bordered />
+					<Table
+						scroll={{ x: true }}
+						columns={column}
+						dataSource={data}
+						pagination={false}
+						bordered
+						rowKey={(record: any) => record?._id}
+					/>
 					<Row className="mt-2" gutter={[32, 8]}>
-						<Col xs={24} sm={24} md={12}>
-							<Row gutter={[8, 8]}>
-								<Col xs={24} sm={24} md={24}>
-									<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-										Size
-									</Typography.Title>
-								</Col>
-								{variants?.map((item: any) => {
-									const sizesArr = item?.sizes;
-									return sizesArr?.map((size: any) => {
-										return (
-											<Col xs={24} sm={24} md={8}>
-												<Card hoverable bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}>
-													{size?.size || 'N/A'}
-												</Card>
-											</Col>
-										);
-									});
-								})}
-							</Row>
-						</Col>
 						<Col xs={24} sm={24} md={12}>
 							<Row gutter={[8, 8]}>
 								<Col xs={24} sm={24} md={24}>
@@ -149,13 +176,13 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 
 								{variants?.map((item: any) => {
 									return (
-										<Col xs={24} sm={24} md={8}>
+										<Col xs={24} sm={24} md={8} key={item?._id}>
 											<Card
-												className={isColorFamilyCardActive === item?.id ? 'secondary-bg' : ''}
+												className={selectedColorFamilyId === item?._id ? 'third-bg' : ''}
 												hoverable
 												bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
 												onClick={() => {
-													handleColorFamilyClick(item?.id);
+													handleColorFamilyClick(item?._id);
 												}}
 											>
 												{item?.color || 'N/A'}
@@ -163,6 +190,35 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 										</Col>
 									);
 								})}
+							</Row>
+						</Col>
+						<Col xs={24} sm={24} md={12}>
+							<Row gutter={[8, 8]}>
+								{availableSizes?.length > 0 && (
+									<>
+										<Col xs={24} sm={24} md={24}>
+											<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+												Size
+											</Typography.Title>
+										</Col>
+										{availableSizes?.map((size: any) => {
+											return (
+												<Col xs={24} sm={24} md={8} key={size?._id}>
+													<Card
+														className={selectedSizeId === size?._id ? 'third-bg' : ''}
+														hoverable
+														bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+														onClick={() => {
+															handleSizeCardClick(size?._id);
+														}}
+													>
+														{size?.size || 'N/A'}
+													</Card>
+												</Col>
+											);
+										})}
+									</>
+								)}
 							</Row>
 						</Col>
 					</Row>
