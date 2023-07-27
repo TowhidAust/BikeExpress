@@ -1,4 +1,4 @@
-import { Button, Card, Col, Divider, Image, Row, Table, Typography } from 'antd';
+import { Button, Card, Col, Divider, Image, Row, Table, Typography, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 
@@ -25,14 +25,16 @@ type PropTypes = {
 		thumnail: string;
 		images: string[];
 	};
-	variants?: {
+	variants: {
 		_id: string;
-		price: string;
+		price: number;
+		discount: number;
 		color: string;
-		sizes?: {
+		sizes: {
 			_id: string;
 			size: string;
 			inStock: boolean;
+			quantity: number;
 		}[];
 	}[];
 };
@@ -42,7 +44,8 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	const [selectedColorFamilyId, setSelectedColorFamilyId] = useState<string>();
 	const [selectedSizeId, setSelectedSizeId] = useState<string>();
 	const [availableSizes, setAvailableSizes] = useState<any[]>([]);
-	const [productPrice, setProductPrice] = useState<string>('0');
+	const [productPrice, setProductPrice] = useState<number>(0);
+	const [discount, setDiscount] = useState<number>(0);
 
 	const column: ColumnsType<DataType> = [
 		{
@@ -96,7 +99,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		setSelectedSizeId(sizeFieldId);
 	};
 
-	const addToCardClickHandler = () => {};
+	const addToCartClickHandler = () => {};
 
 	const buyNowClickHandler = () => {
 		const finalData = {
@@ -111,7 +114,9 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	useEffect(() => {
 		if (variants) {
 			const defaultVariantPrice = variants[0]?.price;
+			const defaultDiscount = variants[0]?.discount;
 			setProductPrice(defaultVariantPrice);
+			setDiscount(defaultDiscount);
 		}
 	}, [variants]);
 
@@ -136,7 +141,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						<Col span={24}>
 							<Row className="mt-2" gutter={[8, 8]}>
 								<Col span={12}>
-									<Button size="large" block type="ghost" onClick={addToCardClickHandler}>
+									<Button size="large" block type="ghost" onClick={addToCartClickHandler}>
 										ADD TO CART
 									</Button>
 								</Col>
@@ -153,7 +158,10 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 					<Typography.Title className="m-0" level={2}>
 						{productDetailsData?.title || 'N/A'}
 					</Typography.Title>
-					<Typography.Title level={4} className="m-0 primary-font-color">
+					<Typography.Title level={5} className="m-0 primary-font-color">
+						BDT {productPrice - (productPrice * discount) / 100}
+					</Typography.Title>
+					<Typography.Title className="m-0" level={5} style={{ textDecoration: 'line-through' }}>
 						BDT {productPrice}
 					</Typography.Title>
 					<Divider className="mt-2 mb-3" />
@@ -202,6 +210,21 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 											</Typography.Title>
 										</Col>
 										{availableSizes?.map((size: any) => {
+											if (size?.quantity === 0 || !size?.inStock) {
+												return (
+													<Col xs={24} sm={24} md={8} key={size?._id}>
+														<Card
+															hoverable
+															bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px', color: '#ddd' }}
+															onClick={() => {
+																message.warn('This size is out of stock!');
+															}}
+														>
+															{size?.size || 'N/A'}
+														</Card>
+													</Col>
+												);
+											}
 											return (
 												<Col xs={24} sm={24} md={8} key={size?._id}>
 													<Card

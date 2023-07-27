@@ -22,30 +22,35 @@ export default function HelmetDetails() {
 				variants={[
 					{
 						_id: '1',
-						price: '7899',
+						price: 7899,
+						discount: 5,
 						color: 'RED',
 						sizes: [
 							{
 								_id: '1-1',
 								size: 'S',
-								inStock: true,
+								inStock: false,
+								quantity: 0,
 							},
 							{
 								_id: '1-2',
-								size: 'M',
+								size: 'XL',
 								inStock: true,
+								quantity: 10,
 							},
 						],
 					},
 					{
 						_id: '2',
-						price: '6899',
+						price: 6899,
+						discount: 10,
 						color: 'GREEN',
 						sizes: [
 							{
 								_id: '2-1',
 								size: 'M',
 								inStock: true,
+								quantity: 5,
 							},
 						],
 					},
