@@ -34,7 +34,25 @@ export default function HelmetDetails() {
 							},
 							{
 								_id: '1-2',
+								size: 'M',
+								inStock: false,
+								quantity: 0,
+							},
+							{
+								_id: '1-3',
+								size: 'L',
+								inStock: true,
+								quantity: 10,
+							},
+							{
+								_id: '1-4',
 								size: 'XL',
+								inStock: true,
+								quantity: 10,
+							},
+							{
+								_id: '1-5',
+								size: 'XXL',
 								inStock: true,
 								quantity: 10,
 							},
@@ -48,6 +66,20 @@ export default function HelmetDetails() {
 						sizes: [
 							{
 								_id: '2-1',
+								size: 'M',
+								inStock: true,
+								quantity: 5,
+							},
+						],
+					},
+					{
+						_id: '3',
+						price: 6899,
+						discount: 10,
+						color: 'BLUE',
+						sizes: [
+							{
+								_id: '3-1',
 								size: 'M',
 								inStock: true,
 								quantity: 5,
