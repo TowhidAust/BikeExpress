@@ -18,6 +18,7 @@ export default function HelmetDetails() {
 					images: [
 						'https://images.unsplash.com/photo-1611004061856-ccc3cbe944b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVsbWV0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
 					],
+					description: 'Some awesome description about this product.',
 				}}
 				variants={[
 					{

@@ -8,6 +8,7 @@ export interface ProductDetailsDataModel {
 	madeIn: string;
 	thumnail: string;
 	images: string[];
+	description: string;
 }
 
 export interface ProductSizesModel {

@@ -59,7 +59,7 @@ export default function UsedBikes() {
 								<Col key={item?._id} xs={24} sm={24} md={12} lg={8} xxl={8}>
 									<ProductCardBike
 										productInfo={{
-											image: item?.images[0],
+											image: item?.images[0]?.downloadUrl || item?.images[0],
 											title: item?.bikeName,
 											price: item?.price,
 											isUsed: true,

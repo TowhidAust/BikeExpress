@@ -1,5 +1,5 @@
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Divider, Image, Row, Table, Typography, message } from 'antd';
+import { Button, Card, Col, Image, Row, Table, Typography, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { ProductDetailsDataModel, ProductVariantModel } from '@/models/ProductDetailsWithSkuModel';
@@ -131,8 +131,12 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		if (variants) {
 			const defaultVariantPrice = variants[0]?.price;
 			const defaultDiscount = variants[0]?.discount;
+			const defaultColorId = variants[0]?._id;
+			const defaultSizes = variants[0]?.sizes || [];
 			setProductPrice(defaultVariantPrice);
 			setDiscount(defaultDiscount);
+			setSelectedColorFamilyId(defaultColorId);
+			setAvailableSizes(defaultSizes);
 		}
 	}, [variants]);
 
@@ -156,29 +160,19 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 							})}
 
 							<Col span={24}>
-								<Typography.Title className="mt-2" level={5}>
-									Delivery Info
+								<Typography.Title className="mt-3 mb-0" level={3}>
+									{productDetailsData?.title || 'N/A'}
 								</Typography.Title>
-								<Divider className="mt-0" />
-								<ul>
-									<li>Address: Mirpur-12, Block C, Road-12, House, 14</li>
-									<li>Delivery within max 3 days</li>
-									<li>Cash on Delivery Available</li>
-								</ul>
+								<Typography.Title level={5} className="m-0 primary-font-color">
+									BDT {productPrice - (productPrice * discount) / 100}
+								</Typography.Title>
+								<Typography.Text type="secondary" style={{ textDecoration: 'line-through' }}>
+									BDT {productPrice}
+								</Typography.Text>
 							</Col>
 						</Row>
 					</Col>
 					<Col md={16}>
-						<Typography.Title className="m-0" level={2}>
-							{productDetailsData?.title || 'N/A'}
-						</Typography.Title>
-						<Typography.Title level={4} className="m-0 primary-font-color">
-							BDT {productPrice - (productPrice * discount) / 100}
-						</Typography.Title>
-						<Typography.Title className="m-0 font-weight-400" level={5} style={{ textDecoration: 'line-through' }}>
-							BDT {productPrice}
-						</Typography.Title>
-						<Divider className="mt-2 mb-3" />
 						<Table
 							scroll={{ x: true }}
 							columns={column}
@@ -263,7 +257,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									)}
 								</Row>
 							</Col>
-							<Col xs={24} sm={24} md={24}>
+							<Col xs={24} sm={24} md={12}>
 								<Typography.Title className="primary-font-color font-weight-400" level={5}>
 									Quantity
 								</Typography.Title>
@@ -287,6 +281,15 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									</section>
 								</Card>
 							</Col>
+							<Col xs={24} sm={24} md={12}>
+								<Typography.Title className="m-0 font-weight-400 primary-font-color" level={5}>
+									Warranty & Return
+								</Typography.Title>
+								<ul className="pl-3">
+									<li> 2 years service waranty </li>
+									<li> 7 days return (Change of mind is not applicable) </li>
+								</ul>
+							</Col>
 							<Col span={24}>
 								<Row className="mt-2" gutter={[8, 8]}>
 									<Col span={12}>
@@ -306,25 +309,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 				</Row>
 			</Card>
 			<Card className="mt-3" title="Product Description">
-				<Typography.Text>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum cum dolores explicabo cupiditate inventore
-					nemo quia magnam. Praesentium nobis a, provident facilis error modi iusto consequuntur aliquam dignissimos
-					adipisci harum. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis provident eius quisquam
-					sint qui eveniet possimus expedita laborum at suscipit aperiam ducimus sit labore accusamus ipsa consequatur
-					libero, molestias sed vel totam maiores, blanditiis reprehenderit nostrum asperiores! Facere adipisci optio
-					soluta ipsa necessitatibus voluptatibus! Optio aliquam corporis voluptate corrupti, suscipit libero culpa cum
-					sed earum atque. Adipisci, atque officia corporis, delectus autem qui hic facilis pariatur alias nobis iste.
-					Maiores nisi iure dolores autem? Hic facere quis suscipit natus inventore animi id placeat, omnis itaque
-					numquam non, doloribus libero nemo incidunt veritatis in ullam distinctio iure architecto dicta officia
-					laboriosam fuga illum. Eveniet doloremque adipisci veritatis illum inventore hic molestias voluptatum
-					reprehenderit exercitationem ad quo aliquam, quos iusto corrupti atque perferendis a delectus dolorem, tempora
-					vel quam recusandae deleniti quaerat pariatur. Quae repudiandae, harum nisi tempore laboriosam alias explicabo
-					cumque at saepe et magnam molestiae corrupti. Repudiandae quam atque quo? Vero sit impedit eveniet atque
-					dicta! Rem, eaque. Tempora molestias unde rem, quasi laudantium sint quia sit, dolores facilis in, earum
-					nesciunt quisquam maxime. Laboriosam sapiente possimus ipsam adipisci sed deserunt veniam quibusdam! Dolorem
-					perspiciatis blanditiis recusandae accusantium, nisi aut. Incidunt ipsam, laudantium ipsum neque doloremque
-					iure nobis minus assumenda.
-				</Typography.Text>
+				<Typography.Text>{productDetailsData?.description}</Typography.Text>
 			</Card>
 		</section>
 	);

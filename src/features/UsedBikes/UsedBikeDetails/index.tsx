@@ -115,7 +115,7 @@ export default function UsedBikeDetails() {
 				<Row gutter={16}>
 					<Col xs={24} sm={24} md={8}>
 						<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
-							<Image src={bikeDetailsData?.result?.images[0]} />
+							<Image src={bikeDetailsData?.result?.images[0]?.downloadUrl || bikeDetailsData?.result?.images[0]} />
 						</Card>
 
 						<Row>
@@ -123,7 +123,7 @@ export default function UsedBikeDetails() {
 								return (
 									<Col span={6} key={item}>
 										<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
-											<Image src={item} />
+											<Image src={item?.downloadUrl || item} />
 										</Card>
 									</Col>
 								);
