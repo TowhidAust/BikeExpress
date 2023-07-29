@@ -77,7 +77,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 					Owner: {isFirstOwner}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
-					Location: {location}
+					{location}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
 					{isNegotiable ? 'Negotiable' : 'Fixed Price'}
