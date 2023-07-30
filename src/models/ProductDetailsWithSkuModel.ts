@@ -9,6 +9,8 @@ export interface ProductDetailsDataModel {
 	thumnail: string;
 	images: string[];
 	description: string;
+	warranty?: number;
+	warrantyUnit?: string;
 }
 
 export interface ProductSizesModel {
