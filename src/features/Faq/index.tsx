@@ -1,5 +1,3 @@
-import AppLayout from '@/components/Layout/AppLayout';
-
 export default function Faq() {
-	return <AppLayout>Frequently asked questions and answers are coming soon...</AppLayout>;
+	return <section>Frequently asked questions and answers are coming soon...</section>;
 }

@@ -1,5 +1,10 @@
+import AppLayout from '@/components/Layout/AppLayout';
 import Blog from '@/features/Blog';
 
 export default function BlogPage() {
-	return <Blog />;
+	return (
+		<AppLayout>
+			<Blog />
+		</AppLayout>
+	);
 }
