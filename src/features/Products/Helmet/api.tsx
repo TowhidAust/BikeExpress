@@ -1,9 +1,16 @@
 import { emptySliceApi } from '@/api/emptySliceApi';
+import { ProductVariantModel } from '@/models/ProductDetailsWithSkuModel';
 
 export interface GetHelmetListResponseType {
 	status: string;
 	message: string;
 	result?: any;
+}
+
+export interface GetProdVariantResponseType {
+	status: string;
+	message: string;
+	result: ProductVariantModel[];
 }
 
 export interface GetHelmetListQueryType {
@@ -13,15 +20,25 @@ export interface GetHelmetListQueryType {
 	pageSize: number;
 }
 
+export interface GetProdVariantQueryType {
+	productId: string;
+}
+
 export const getHelmetListApiSlice = emptySliceApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getHelmetList: builder.query<GetHelmetListResponseType, GetHelmetListQueryType>({
 			query: (data) => ({
 				method: 'GET',
-				url: `/get-products?category=${data?.category}&page=${data?.page}&pageSize=${data?.pageSize}`,
+				url: `/get-products?id=${data?.id}&category=${data?.category}&page=${data?.page}&pageSize=${data?.pageSize}`,
+			}),
+		}),
+		getProductVariants: builder.query<GetProdVariantResponseType, GetProdVariantQueryType>({
+			query: (data) => ({
+				method: 'GET',
+				url: `/get-product-variants/${data?.productId}`,
 			}),
 		}),
 	}),
 });
 
-export const { useGetHelmetListQuery } = getHelmetListApiSlice;
+export const { useGetHelmetListQuery, useGetProductVariantsQuery } = getHelmetListApiSlice;

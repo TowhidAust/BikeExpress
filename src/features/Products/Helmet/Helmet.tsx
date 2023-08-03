@@ -38,7 +38,7 @@ export default function Helmet() {
 								price: item?.price,
 							}}
 							onDetailsButtonClick={() => {
-								navigate(`${PUBLIC_ROUTE.HELMET}/1234`);
+								navigate(`${PUBLIC_ROUTE.HELMET}/${item?._id}`);
 							}}
 						/>
 					</Col>

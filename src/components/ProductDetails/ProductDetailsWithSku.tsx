@@ -146,14 +146,14 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 				<Row gutter={[16, 16]}>
 					<Col md={8}>
 						<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
-							<Image src={productDetailsData?.thumnail} />
+							<Image src={productDetailsData?.thumbnail} />
 						</Card>
 						<Row>
 							{productDetailsData?.images?.map((image: any) => {
 								return (
-									<Col span={6} key={image}>
+									<Col span={6} key={image?.imagePath}>
 										<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
-											<Image src={image} />
+											<Image src={image?.downloadUrl || image} />
 										</Card>
 									</Col>
 								);

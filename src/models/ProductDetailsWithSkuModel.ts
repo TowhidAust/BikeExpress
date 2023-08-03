@@ -6,7 +6,7 @@ export interface ProductDetailsDataModel {
 	modelNo: string;
 	modelYear: string;
 	madeIn: string;
-	thumnail: string;
+	thumbnail: string;
 	images: string[];
 	description: string;
 	warranty?: number;

@@ -8,7 +8,7 @@ export default function GridSkeleton(props: PropTypes) {
 	return (
 		<Row gutter={[16, 16]}>
 			{[1, 2, 3, 4].map((item) => (
-				<Col xs={24} sm={24} md={6}>
+				<Col key={item} xs={24} sm={24} md={6}>
 					<Card key={item} loading={isLoading} />
 				</Col>
 			))}
