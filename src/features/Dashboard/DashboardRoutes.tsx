@@ -1,21 +1,17 @@
 import { Spin } from 'antd';
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PRIVATE_ROUTE } from '@/router/appRoutes';
 import NotFoundPage from '@/pages/NotFound/NotFoundPage';
 
-const HomePage = lazy(() => import('@/pages/Doctor/HomePage'));
-const BookingsPage = lazy(() => import('@/pages/Doctor/MyBookingsPage'));
+const HomePage = lazy(() => import('@/pages/UsedBikes/UsedBikesPage'));
+// const BookingsPage = lazy(() => import('@/pages/Doctor/MyBookingsPage'));
 
 export default function DashboardRoutes() {
 	const routes = [
 		{
 			path: PRIVATE_ROUTE.HOME,
 			component: HomePage,
-		},
-		{
-			path: PRIVATE_ROUTE.BOOKINGS,
-			component: BookingsPage,
 		},
 	];
 	return (
