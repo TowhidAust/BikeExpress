@@ -29,9 +29,16 @@ export const getHelmetListApiSlice = emptySliceApi.injectEndpoints({
 		getHelmetList: builder.query<GetHelmetListResponseType, GetHelmetListQueryType>({
 			query: (data) => ({
 				method: 'GET',
-				url: `/get-products?id=${data?.id}&category=${data?.category}&page=${data?.page}&pageSize=${data?.pageSize}`,
+				url: '/get-products',
+				params: {
+					id: data?.id,
+					category: data?.category,
+					page: data?.page,
+					pageSize: data?.pageSize,
+				},
 			}),
 		}),
+
 		getProductVariants: builder.query<GetProdVariantResponseType, GetProdVariantQueryType>({
 			query: (data) => ({
 				method: 'GET',

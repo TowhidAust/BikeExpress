@@ -11,6 +11,8 @@ export interface ProductDetailsDataModel {
 	description: string;
 	warranty?: number;
 	warrantyUnit?: string;
+	isCertified?: boolean;
+	certificationName?: string;
 }
 
 export interface ProductSizesModel {

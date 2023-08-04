@@ -7,7 +7,7 @@ export default function SingleSkeleton(props: PropTypes) {
 	const { isLoading } = props;
 	return (
 		<Row gutter={[16, 16]}>
-			<Col xs={24} sm={24} md={6}>
+			<Col xs={24} sm={24} md={24}>
 				<Card loading={isLoading} />
 			</Col>
 		</Row>

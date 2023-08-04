@@ -49,16 +49,6 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		},
 	];
 
-	const data: any[] = [
-		{
-			_id: '1',
-			brand: productDetailsData?.brand || 'N/A',
-			modelNo: productDetailsData?.modelNo || 'N/A',
-			modelYear: productDetailsData?.modelYear || 'N/A',
-			madeIn: productDetailsData?.madeIn || 'N/A',
-		},
-	];
-
 	const handleColorFamilyClick = (colorFieldId: string) => {
 		setSelectedColorFamilyId(colorFieldId);
 		variants?.find((item: any) => {
@@ -176,7 +166,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						<Table
 							scroll={{ x: true }}
 							columns={column}
-							dataSource={data}
+							dataSource={[productDetailsData]}
 							pagination={false}
 							bordered
 							rowKey={(record: any) => record?._id}
@@ -286,7 +276,12 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									Warranty & Return
 								</Typography.Title>
 								<ul className="pl-3">
-									<li> 2 years service waranty </li>
+									<li>
+										{productDetailsData?.warranty} {productDetailsData?.warrantyUnit} service waranty{' '}
+									</li>
+									{productDetailsData?.certificationName && (
+										<li> {productDetailsData?.certificationName} Certified </li>
+									)}
 									<li> 7 days return (Change of mind is not applicable) </li>
 								</ul>
 							</Col>
@@ -309,7 +304,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 				</Row>
 			</Card>
 			<Card className="mt-3" title="Product Description">
-				<Typography.Text>{productDetailsData?.description}</Typography.Text>
+				<Typography.Text>{productDetailsData?.description || 'No Description Provided'}</Typography.Text>
 			</Card>
 		</section>
 	);
