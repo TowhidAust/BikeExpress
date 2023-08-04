@@ -1,5 +1,5 @@
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Image, Row, Table, Typography, message } from 'antd';
+import { Button, Card, Col, Divider, Image, Row, Table, Typography, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { ProductDetailsDataModel, ProductVariantModel } from '@/models/ProductDetailsWithSkuModel';
@@ -148,21 +148,19 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									</Col>
 								);
 							})}
-
-							<Col span={24}>
-								<Typography.Title className="mt-3 mb-0" level={3}>
-									{productDetailsData?.title || 'N/A'}
-								</Typography.Title>
-								<Typography.Title level={5} className="m-0 primary-font-color">
-									BDT {productPrice - (productPrice * discount) / 100}
-								</Typography.Title>
-								<Typography.Text type="secondary" style={{ textDecoration: 'line-through' }}>
-									BDT {productPrice}
-								</Typography.Text>
-							</Col>
 						</Row>
 					</Col>
 					<Col md={16}>
+						<Typography.Title className="mt mb-0" level={3}>
+							{productDetailsData?.title || 'N/A'}
+						</Typography.Title>
+						<Typography.Title level={5} className="m-0 primary-font-color">
+							BDT {productPrice - (productPrice * discount) / 100}
+						</Typography.Title>
+						<Typography.Text className="m-0 p-0" type="secondary" style={{ textDecoration: 'line-through' }}>
+							BDT {productPrice}
+						</Typography.Text>
+						<Divider />
 						<Table
 							scroll={{ x: true }}
 							columns={column}
@@ -172,7 +170,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 							rowKey={(record: any) => record?._id}
 						/>
 						<Row className="mt-2" gutter={[32, 8]}>
-							<Col xs={24} sm={24} md={12}>
+							<Col xs={24} sm={24} md={24}>
 								<Row gutter={[8, 8]}>
 									<Col xs={24} sm={24} md={24}>
 										<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
@@ -182,7 +180,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 
 									{variants?.map((item: any) => {
 										return (
-											<Col xs={24} sm={24} md={8} key={item?._id}>
+											<Col xs={24} sm={24} md={4} key={item?._id}>
 												<Card
 													className={selectedColorFamilyId === item?._id ? 'third-bg' : ''}
 													hoverable
@@ -198,7 +196,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									})}
 								</Row>
 							</Col>
-							<Col xs={24} sm={24} md={12}>
+							<Col xs={24} sm={24} md={24}>
 								<Row gutter={[8, 8]}>
 									{availableSizes?.length > 0 && (
 										<>
@@ -210,7 +208,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 											{availableSizes?.map((size: any) => {
 												if (size?.quantity === 0 || !size?.inStock) {
 													return (
-														<Col xs={24} sm={24} md={8} key={size?._id}>
+														<Col xs={24} sm={24} md={4} key={size?._id}>
 															<Card
 																hoverable
 																bodyStyle={{
@@ -229,7 +227,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 													);
 												}
 												return (
-													<Col xs={24} sm={24} md={8} key={size?._id}>
+													<Col xs={24} sm={24} md={4} key={size?._id}>
 														<Card
 															className={selectedSizeId === size?._id ? 'third-bg' : ''}
 															hoverable
@@ -247,7 +245,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									)}
 								</Row>
 							</Col>
-							<Col xs={24} sm={24} md={12}>
+							<Col xs={24} sm={24} md={24}>
 								<Typography.Title className="primary-font-color font-weight-400" level={5}>
 									Quantity
 								</Typography.Title>
@@ -271,7 +269,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									</section>
 								</Card>
 							</Col>
-							<Col xs={24} sm={24} md={12}>
+							<Col xs={24} sm={24} md={24}>
 								<Typography.Title className="m-0 font-weight-400 primary-font-color" level={5}>
 									Warranty & Return
 								</Typography.Title>
