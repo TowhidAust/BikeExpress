@@ -2,7 +2,11 @@ import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Divider, Image, Row, Table, Typography, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { ProductDetailsDataModel, ProductVariantModel } from '@/models/ProductDetailsWithSkuModel';
+import { RootState } from '@/redux/store';
+import BasicModal from '../Modals/BasicModal';
+import LoginForm from '@/features/Auth/LoginForm';
 
 export interface DataType {
 	key: string;
@@ -25,6 +29,8 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	const [discount, setDiscount] = useState<number>(0);
 	const [availableQuantity, setAvailableQuantity] = useState<number>(0);
 	const [count, setCount] = useState<number>(0);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const { auth } = useSelector((state: RootState) => state);
 
 	const column: ColumnsType<DataType> = [
 		{
@@ -106,14 +112,20 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			return false;
 		}
 
-		const finalData = {
-			productId: productDetailsData?._id,
-			skuId: selectedColorFamilyId,
-			selectedSizeId,
-		};
-		// eslint-disable-next-line no-console
-		console.log(finalData);
-
+		if (auth?.user?.id) {
+			const finalData = {
+				userId: auth?.user?.id,
+				productId: productDetailsData?._id,
+				variantId: selectedColorFamilyId,
+				sizeId: selectedSizeId,
+				quantity: availableQuantity,
+			};
+			// eslint-disable-next-line no-console
+			console.log(finalData);
+		} else {
+			setIsModalOpen(!isModalOpen);
+			message.warning('Please login first');
+		}
 		return false;
 	};
 
@@ -304,6 +316,14 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			<Card className="mt-3" title="Product Description">
 				<Typography.Text>{productDetailsData?.description || 'No Description Provided'}</Typography.Text>
 			</Card>
+
+			<BasicModal
+				isOpen={isModalOpen}
+				handleCancel={() => setIsModalOpen(false)}
+				handleOk={() => setIsModalOpen(false)}
+				modalBody={<LoginForm />}
+				title="Please login"
+			/>
 		</section>
 	);
 }

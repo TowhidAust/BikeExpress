@@ -30,7 +30,7 @@ export default function Helmet() {
 		<Row gutter={[16, 16]}>
 			{data?.result?.map((item: any) => {
 				return (
-					<Col xs={24} sm={24} md={6}>
+					<Col xs={24} sm={24} md={6} key={item?._id}>
 						<BasicProductCard
 							productInfo={{
 								title: item?.title,

@@ -42,7 +42,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 	return result;
 };
 export const emptySliceApi = createApi({
-	reducerPath: 'pokemonApi',
+	reducerPath: 'bikeHubApi',
 	baseQuery: baseQueryWithReauth,
 	endpoints: () => ({}),
 });
