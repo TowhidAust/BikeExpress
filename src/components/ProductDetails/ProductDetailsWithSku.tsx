@@ -29,7 +29,8 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	const [discount, setDiscount] = useState<number>(0);
 	const [availableQuantity, setAvailableQuantity] = useState<number>(0);
 	const [count, setCount] = useState<number>(0);
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+	const [isConfirmAddressModalOpen, setIsConfirmAddressModalOpen] = useState<boolean>(false);
 	const { auth } = useSelector((state: RootState) => state);
 
 	const column: ColumnsType<DataType> = [
@@ -98,6 +99,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			message.warning('Please select a color');
 			return false;
 		}
+
 		if (!selectedSizeId) {
 			message.warning('Please select a size');
 			return false;
@@ -105,6 +107,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 
 		if (count < 1) {
 			message.warning('Quantity is not selected');
+			return false;
 		}
 
 		if (availableQuantity < count) {
@@ -113,6 +116,8 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		}
 
 		if (auth?.user?.id) {
+			// confirm your delivery address
+			setIsConfirmAddressModalOpen(true);
 			const finalData = {
 				userId: auth?.user?.id,
 				productId: productDetailsData?._id,
@@ -123,7 +128,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			// eslint-disable-next-line no-console
 			console.log(finalData);
 		} else {
-			setIsModalOpen(!isModalOpen);
+			setIsLoginModalOpen(!isLoginModalOpen);
 			message.warning('Please login first');
 		}
 		return false;
@@ -318,11 +323,19 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			</Card>
 
 			<BasicModal
-				isOpen={isModalOpen}
-				handleCancel={() => setIsModalOpen(false)}
-				handleOk={() => setIsModalOpen(false)}
+				isOpen={isLoginModalOpen}
+				handleCancel={() => setIsLoginModalOpen(false)}
+				handleOk={() => setIsLoginModalOpen(false)}
 				modalBody={<LoginForm />}
 				title="Please login"
+			/>
+
+			<BasicModal
+				isOpen={isConfirmAddressModalOpen}
+				handleCancel={() => setIsConfirmAddressModalOpen(false)}
+				handleOk={() => setIsConfirmAddressModalOpen(false)}
+				modalBody={<div>Confirm Your address</div>}
+				title="Confirm Shipping Address"
 			/>
 		</section>
 	);

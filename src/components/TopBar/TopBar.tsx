@@ -1,8 +1,9 @@
-import { Affix, Button, Card, Col, Layout, Menu, Row } from 'antd';
+import { Affix, Button, Card, Col, Dropdown, Layout, Menu, Row, Typography } from 'antd';
+import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserOutlined } from '@ant-design/icons';
-import { PUBLIC_ROUTE } from '@/router/appRoutes';
+import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { PRIVATE_ROUTE, PUBLIC_ROUTE } from '@/router/appRoutes';
 import { RootState } from '@/redux/store';
 import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
 import Logo from '../Logo/Logo';
@@ -15,6 +16,18 @@ export default function TopBar() {
 	const { firstname } = user;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const items: MenuProps['items'] = [
+		{
+			label: <Typography.Text>User Settings</Typography.Text>,
+			key: '0',
+			onClick: () => navigate(PRIVATE_ROUTE.USER_DETAILS),
+		},
+		{
+			label: <Typography.Text>Logout</Typography.Text>,
+			key: '1',
+		},
+	];
 	return (
 		<div>
 			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
@@ -84,7 +97,7 @@ export default function TopBar() {
 								]}
 							/>
 						</Col>
-						<Col xs={24} sm={24} md={6}>
+						<Col className="text-right" xs={24} sm={24} md={4}>
 							{!firstname ? (
 								<Button
 									className="mt-1"
@@ -98,9 +111,23 @@ export default function TopBar() {
 									Login
 								</Button>
 							) : (
-								<Button className="mt-1" block type="link" icon={<UserOutlined />}>
-									{firstname}
-								</Button>
+								<Dropdown menu={{ items }} trigger={['click']}>
+									<Button
+										className="mt-1"
+										type="link"
+										block
+										style={{
+											maxWidth: '220px',
+											overflow: 'hidden',
+											textOverflow: 'ellipsis',
+											whiteSpace: 'nowrap',
+											textDecoration: 'none',
+										}}
+									>
+										<abbr>{firstname}</abbr>
+										<DownOutlined className="ml-2" />
+									</Button>
+								</Dropdown>
 							)}
 						</Col>
 					</Row>

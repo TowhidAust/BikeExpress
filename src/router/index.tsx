@@ -1,6 +1,6 @@
 import { Spin } from 'antd';
 import { lazy, Suspense } from 'react';
-import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { PRIVATE_ROUTE, PUBLIC_ROUTE } from './appRoutes';
 import PrivateOutlet from './PrivateOutlet';
 
@@ -8,7 +8,6 @@ const LandingPage = lazy(() => import('@/features/LandingPage'));
 const UsedBikes = lazy(() => import('@/pages/UsedBikes/UsedBikesPage'));
 const UsedBikeDetails = lazy(() => import('@/pages/UsedBikes/UsedBikeDetailsPage'));
 const SignupPage = lazy(() => import('@/pages/Auth/SignupPage'));
-const DashboardPage = lazy(() => import('@/pages/Dashboard/DashboardPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound/NotFoundPage'));
 const SellBikePage = lazy(() => import('@/pages/SellBike/SellBikePage'));
 const BlogPage = lazy(() => import('@/pages/Blog/BlogPage'));
@@ -18,6 +17,7 @@ const HelmetPage = lazy(() => import('@/pages/Products/Helmet/HelmetPage'));
 const HelmetDetailsPage = lazy(() => import('@/pages/Products/Helmet/HelmetDetailsPage'));
 const EngineOilPage = lazy(() => import('@/pages/Products/EngineOil/EngineOilPage'));
 const EngineOilDetailsPage = lazy(() => import('@/pages/Products/EngineOil/EngineOilDetailsPage'));
+const UserDetailsPage = lazy(() => import('@/pages/UserDetails/UserDetailsPage'));
 
 export default function AppRoutes() {
 	const publicRoutes = [
@@ -93,8 +93,7 @@ export default function AppRoutes() {
 					))}
 
 					<Route element={<PrivateOutlet />}>
-						<Route path="/*" element={<DashboardPage />} />
-						<Route path="/" element={<Navigate replace to={PRIVATE_ROUTE.HOME} />} />
+						<Route path={PRIVATE_ROUTE.USER_DETAILS} element={<UserDetailsPage />} />
 					</Route>
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
