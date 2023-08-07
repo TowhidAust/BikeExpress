@@ -1,10 +1,20 @@
 import { Avatar, Button, Card, Col, Divider, Form, Input, Row, Typography } from 'antd';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useGetUserDetailsQuery } from './api';
+import { RootState } from '@/redux/store';
 
 export default function UserDetails() {
 	const [isProfileEdit, setIsProfileEdit] = useState<boolean>(true);
+	const { auth } = useSelector((state: RootState) => state);
+	const { data, isLoading, error } = useGetUserDetailsQuery({ userId: auth?.user?.id });
+
+	if (error) {
+		return <div>Something went wrong!</div>;
+	}
+
 	return (
-		<Card className="p-4">
+		<Card loading={isLoading} className="p-4">
 			<Row gutter={[8, 8]}>
 				<Col className="text-center" xs={24} sm={24} md={6}>
 					<Avatar
@@ -28,32 +38,32 @@ export default function UserDetails() {
 						<Row gutter={[64, 8]}>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="First Name" name="firstname">
-									<Input defaultValue="Towhidul" />
+									<Input defaultValue={data?.result?.firstname || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="Last Name" name="lastname">
-									<Input defaultValue="Islam" />
+									<Input defaultValue={data?.result?.lastname || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="Phone" name="phone">
-									<Input defaultValue="01737010194" disabled />
+									<Input defaultValue={data?.result?.phone || 'N/A'} disabled />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="Division" name="division">
-									<Input defaultValue="Dhaka" />
+									<Input defaultValue={data?.result?.division || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="District" name="district">
-									<Input defaultValue="Dhaka" />
+									<Input defaultValue={data?.result?.district || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="Address" name="address">
-									<Input defaultValue="Dhaka" />
+									<Input defaultValue={data?.result?.address || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={24}>
@@ -66,17 +76,17 @@ export default function UserDetails() {
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="Division" name="deliveryDivision">
-									<Input defaultValue="Dhaka" />
+									<Input defaultValue={data?.result?.deliveryLocation?.division || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="District" name="deliveryDistrict">
-									<Input defaultValue="Dhanmondi" />
+									<Input defaultValue={data?.result?.deliveryLocation?.district || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
 								<Form.Item className="m-0" label="Address" name="deliveryAddress">
-									<Input defaultValue="Court House Street 123/4" />
+									<Input defaultValue={data?.result?.deliveryLocation?.address || 'N/A'} />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={24}>

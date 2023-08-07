@@ -12,11 +12,11 @@ const { Header } = Layout;
 
 export default function TopBar() {
 	const { activeMenu, auth } = useSelector((state: RootState) => state);
-	const { user } = auth;
-	const { firstname } = user;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const { user } = auth;
+	const { firstname } = user;
 	const items: MenuProps['items'] = [
 		{
 			label: <Typography.Text>User Settings</Typography.Text>,
@@ -28,6 +28,7 @@ export default function TopBar() {
 			key: '1',
 		},
 	];
+
 	return (
 		<div>
 			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
