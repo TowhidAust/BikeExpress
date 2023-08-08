@@ -1,13 +1,29 @@
-import { Avatar, Button, Card, Col, Divider, Form, Input, Row, Typography } from 'antd';
+import { Avatar, Button, Card, Col, Divider, Form, Input, Row, Select, Typography } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetUserDetailsQuery } from './api';
 import { RootState } from '@/redux/store';
+import { DISTRICTS, DIVISIONS } from '@/constants';
 
 export default function UserDetails() {
 	const [isProfileEdit, setIsProfileEdit] = useState<boolean>(true);
+	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
+	const [selectedDivision, setSelectedDivision] = useState<any[]>();
 	const { auth } = useSelector((state: RootState) => state);
 	const { data, isLoading, error } = useGetUserDetailsQuery({ userId: auth?.user?.id });
+	const [form] = Form.useForm();
+
+	const handleFormValuesChange = (value: any) => {
+		if (value?.division) {
+			form.resetFields(['district']);
+			setSelectedPresentDivision(DISTRICTS[value?.division as keyof typeof DISTRICTS]);
+		}
+
+		if (value?.deliveryDivision) {
+			form.resetFields(['deliveryDistrict']);
+			setSelectedDivision(DISTRICTS[value?.deliveryDivision as keyof typeof DISTRICTS]);
+		}
+	};
 
 	if (error) {
 		return <div>Something went wrong!</div>;
@@ -28,42 +44,125 @@ export default function UserDetails() {
 				</Col>
 				<Col xs={24} sm={24} md={18}>
 					<Form
+						form={form}
 						size="large"
 						layout="horizontal"
 						labelCol={{ span: 6 }}
 						wrapperCol={{ span: 18 }}
 						labelAlign="left"
 						disabled={isProfileEdit}
+						onValuesChange={handleFormValuesChange}
+						initialValues={{
+							firstname: data?.result?.firstname,
+							lastname: data?.result?.lastname,
+							phone: data?.result?.phone,
+							division: data?.result?.division,
+							district: data?.result?.district,
+							address: data?.result?.address,
+							deliveryDivision: data?.result?.division,
+							deliveryDistrict: data?.result?.district,
+							deliveryAddress: data?.result?.address,
+						}}
 					>
 						<Row gutter={[64, 8]}>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="First Name" name="firstname">
-									<Input defaultValue={data?.result?.firstname || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="First Name"
+									name="firstname"
+									rules={[
+										{
+											required: true,
+											message: 'Please input First Name!',
+										},
+									]}
+								>
+									<Input />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="Last Name" name="lastname">
-									<Input defaultValue={data?.result?.lastname || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="Last Name"
+									name="lastname"
+									rules={[
+										{
+											required: true,
+											message: 'Please input Last Name!',
+										},
+									]}
+								>
+									<Input />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="Phone" name="phone">
-									<Input defaultValue={data?.result?.phone || 'N/A'} disabled />
+								<Form.Item
+									className="m-0"
+									label="Phone"
+									name="phone"
+									rules={[
+										{
+											required: true,
+											message: 'Please input phone!',
+										},
+									]}
+								>
+									<Input disabled />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="Division" name="division">
-									<Input defaultValue={data?.result?.division || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="Division"
+									name="division"
+									rules={[
+										{
+											required: true,
+											message: 'Please input division!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										optionFilterProp="children"
+										filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+										options={DIVISIONS}
+									/>
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="District" name="district">
-									<Input defaultValue={data?.result?.district || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="District"
+									name="district"
+									rules={[
+										{
+											required: true,
+											message: 'Please input district!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										optionFilterProp="children"
+										filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+										options={selectedPresentDivision}
+									/>
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="Address" name="address">
-									<Input defaultValue={data?.result?.address || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="Detail Address"
+									name="address"
+									rules={[
+										{
+											required: true,
+											message: 'Please input address!',
+										},
+									]}
+								>
+									<Input />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={24}>
@@ -75,18 +174,58 @@ export default function UserDetails() {
 								<Divider className="mt-2 mb-2" />
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="Division" name="deliveryDivision">
-									<Input defaultValue={data?.result?.deliveryLocation?.division || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="Division"
+									name="deliveryDivision"
+									rules={[
+										{
+											required: true,
+											message: 'Please input delivery division!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										optionFilterProp="children"
+										filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+										options={DIVISIONS}
+									/>
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="District" name="deliveryDistrict">
-									<Input defaultValue={data?.result?.deliveryLocation?.district || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="District"
+									name="deliveryDistrict"
+									rules={[
+										{
+											required: true,
+											message: 'Please input delivery district!',
+										},
+									]}
+								>
+									<Select
+										showSearch
+										optionFilterProp="children"
+										filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+										options={selectedDivision}
+									/>
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={12}>
-								<Form.Item className="m-0" label="Address" name="deliveryAddress">
-									<Input defaultValue={data?.result?.deliveryLocation?.address || 'N/A'} />
+								<Form.Item
+									className="m-0"
+									label="Detail Address"
+									name="deliveryAddress"
+									rules={[
+										{
+											required: true,
+											message: 'Please input delivery address!',
+										},
+									]}
+								>
+									<Input />
 								</Form.Item>
 							</Col>
 							<Col xs={24} sm={24} md={24}>

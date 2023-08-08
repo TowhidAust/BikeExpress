@@ -7,6 +7,7 @@ import { PRIVATE_ROUTE, PUBLIC_ROUTE } from '@/router/appRoutes';
 import { RootState } from '@/redux/store';
 import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
 import Logo from '../Logo/Logo';
+import { logout } from '@/redux/authSlice';
 
 const { Header } = Layout;
 
@@ -26,6 +27,11 @@ export default function TopBar() {
 		{
 			label: <Typography.Text>Logout</Typography.Text>,
 			key: '1',
+			onClick: () => {
+				dispatch(logout());
+				sessionStorage.clear();
+				navigate(PUBLIC_ROUTE.SIGNUP);
+			},
 		},
 	];
 

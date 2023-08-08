@@ -46,6 +46,7 @@ export const authSlice = createSlice({
 				phone: '',
 			};
 			state.token = null;
+			state.refreshToken = null;
 			state.roles = [];
 			state.selectedRole = null;
 		},
