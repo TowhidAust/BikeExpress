@@ -1,17 +1,19 @@
-import { Avatar, Button, Card, Col, Divider, Form, Input, Row, Select, Typography } from 'antd';
+import { Avatar, Button, Card, Col, Divider, Form, Input, Row, Select, Typography, message } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useGetUserDetailsQuery } from './api';
+import { useGetUserDetailsQuery, useUpdateUserDetailsMutation } from './api';
 import { RootState } from '@/redux/store';
 import { DISTRICTS, DIVISIONS } from '@/constants';
+import { UserModel } from '@/models';
 
 export default function UserDetails() {
 	const [isProfileEdit, setIsProfileEdit] = useState<boolean>(true);
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
 	const { auth } = useSelector((state: RootState) => state);
-	const { data, isLoading, error } = useGetUserDetailsQuery({ userId: auth?.user?.id });
 	const [form] = Form.useForm();
+	const { data, isLoading, error } = useGetUserDetailsQuery({ userId: auth?.user?.id });
+	const [updateUserMutation, { isLoading: isUpdateUserLoading }] = useUpdateUserDetailsMutation();
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
@@ -23,6 +25,32 @@ export default function UserDetails() {
 			form.resetFields(['deliveryDistrict']);
 			setSelectedDivision(DISTRICTS[value?.deliveryDivision as keyof typeof DISTRICTS]);
 		}
+	};
+
+	const updateUserHandler = (values: any) => {
+		const modifiedValues: UserModel = {
+			firstname: values?.firstname,
+			lastname: values?.lastname,
+			division: values?.division,
+			district: values?.district,
+			address: values?.address,
+			deliveryLocation: {
+				division: values?.deliveryDivision,
+				district: values?.deliveryDistrict,
+				address: values?.deliveryAddress,
+			},
+		};
+		updateUserMutation({
+			userId: auth?.user?.id,
+			payload: modifiedValues,
+		})
+			.unwrap()
+			.then(() => {
+				message.success('Update Success');
+			})
+			.catch((_error) => {
+				message.error(_error?.message || 'Something went wrong!');
+			});
 	};
 
 	if (error) {
@@ -63,6 +91,7 @@ export default function UserDetails() {
 							deliveryDistrict: data?.result?.district,
 							deliveryAddress: data?.result?.address,
 						}}
+						onFinish={updateUserHandler}
 					>
 						<Row gutter={[64, 8]}>
 							<Col xs={24} sm={24} md={12}>
@@ -230,7 +259,7 @@ export default function UserDetails() {
 							</Col>
 							<Col xs={24} sm={24} md={24}>
 								{!isProfileEdit && (
-									<Button className="mt-3" type="primary" block htmlType="submit">
+									<Button className="mt-3" type="primary" block htmlType="submit" loading={isUpdateUserLoading}>
 										Submit
 									</Button>
 								)}

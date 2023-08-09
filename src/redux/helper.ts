@@ -1,12 +1,16 @@
 import { message } from 'antd';
+import { logout } from './authSlice';
 
-export const globalErrorHandling = (action: any) => {
+export const globalErrorHandling = (api: any, action: any) => {
 	const responseData = action?.payload?.data;
 	if (!responseData) {
 		return message.error('Something went wrong!');
 	}
 	const { success, code, details, message: resMessage } = responseData;
 	if (responseData) {
+		if (responseData.status === 403) {
+			api.dispatch(logout());
+		}
 		return message.warn(responseData?.message);
 	}
 

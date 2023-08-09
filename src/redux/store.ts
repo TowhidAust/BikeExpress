@@ -22,11 +22,11 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 /**
  * Log a warning and show a toast!
  */
-export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
+export const rtkQueryErrorLogger: Middleware = (api) => (next) => (action) => {
 	// RTK Query uses `createAsyncThunk` from redux-toolkit under the hood, so we're able to utilize these matchers!
 	if (isRejectedWithValue(action)) {
 		// use your global error handling for each api error
-		globalErrorHandling(action);
+		globalErrorHandling(api, action);
 	}
 
 	return next(action);

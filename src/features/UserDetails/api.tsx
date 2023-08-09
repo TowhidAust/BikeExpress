@@ -1,25 +1,19 @@
 import { emptySliceApi } from '@/api/emptySliceApi';
+import { UserModel } from '@/models';
 
 export interface UserDetailsResponseType {
 	status: string;
 	message: string;
-	result?: {
-		firstname: string;
-		lastname: string;
-		phone: string;
-		division: string;
-		district: string;
-		address: string;
-		deliveryLocation: {
-			division: string;
-			district: string;
-			address: string;
-		};
-	};
+	result?: UserModel;
 }
 
 export interface UserDetailsQueryType {
 	userId: string;
+}
+
+export interface UpdateUserQueryType {
+	userId: string;
+	payload: UserModel;
 }
 
 export const userDetailsApiSlice = emptySliceApi.injectEndpoints({
@@ -30,7 +24,14 @@ export const userDetailsApiSlice = emptySliceApi.injectEndpoints({
 				url: `/get-user-details/${data?.userId}`,
 			}),
 		}),
+		updateUserDetails: builder.mutation<UserDetailsResponseType, UpdateUserQueryType>({
+			query: (data) => ({
+				method: 'PATCH',
+				url: `/update-user/${data?.userId}`,
+				body: data?.payload,
+			}),
+		}),
 	}),
 });
 
-export const { useGetUserDetailsQuery } = userDetailsApiSlice;
+export const { useGetUserDetailsQuery, useUpdateUserDetailsMutation } = userDetailsApiSlice;
