@@ -1,16 +1,18 @@
 import { Avatar, Button, Card, Col, Divider, Form, Input, Row, Select, Typography, message } from 'antd';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetUserDetailsQuery, useUpdateUserDetailsMutation } from './api';
 import { RootState } from '@/redux/store';
 import { DISTRICTS, DIVISIONS } from '@/constants';
 import { UserModel } from '@/models';
+import { setUser } from '@/redux/authSlice';
 
 export default function UserDetails() {
 	const [isProfileEdit, setIsProfileEdit] = useState<boolean>(true);
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
 	const [selectedDivision, setSelectedDivision] = useState<any[]>();
 	const { auth } = useSelector((state: RootState) => state);
+	const dispatch = useDispatch();
 	const [form] = Form.useForm();
 	const { data, isLoading, error } = useGetUserDetailsQuery({ userId: auth?.user?.id });
 	const [updateUserMutation, { isLoading: isUpdateUserLoading }] = useUpdateUserDetailsMutation();
@@ -47,6 +49,12 @@ export default function UserDetails() {
 			.unwrap()
 			.then(() => {
 				message.success('Update Success');
+				dispatch(
+					setUser({
+						...auth.user,
+						...{ firstname: values?.firstname },
+					}),
+				);
 			})
 			.catch((_error) => {
 				message.error(_error?.message || 'Something went wrong!');
