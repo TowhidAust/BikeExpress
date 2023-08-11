@@ -60,15 +60,10 @@ export default function BannerBottomMenu() {
 	return (
 		<Row gutter={[16, 16]} className="mt-3">
 			{bannerBottomMenuCategories?.map((item) => (
-				<Col xs={24} sm={24} md={6} key={Math.random()}>
+				<Col xs={24} sm={24} md={4} key={Math.random()}>
 					<Card
-						style={{
-							borderLeft: '6px solid black',
-							// borderTop: '6px solid black',
-							// borderRadius: '0px 0 0px 0px',
-						}}
 						hoverable
-						className="p-0"
+						className="p-0 text-center"
 						bodyStyle={{
 							padding: '0px',
 						}}
@@ -76,12 +71,11 @@ export default function BannerBottomMenu() {
 						<Button
 							block
 							style={{
-								display: 'flex',
-								alignItems: 'center',
+								fontSize: 14,
+								textAlign: 'center',
 							}}
 							type="link"
 							size="large"
-							icon={<item.categoryIcon className="mr-2" />}
 						>
 							{item?.categoryName}
 						</Button>

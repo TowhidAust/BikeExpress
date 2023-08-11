@@ -3,16 +3,16 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from './api';
 import { setRefreshToken, setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
-import { PRIVATE_ROUTE, PUBLIC_ROUTE } from '@/router/appRoutes';
+import { PUBLIC_ROUTE } from '@/router/appRoutes';
 import { validatePhoneNumber } from './helper';
 import { PromiseHandler } from '@/utils';
 
 type PropTypes = {
-	isLoginToBuyProduct?: boolean;
+	setIsModalOpen?: (arg: boolean) => void; // if you login this component in a modal use this fn to close that
 };
 
 export default function LoginForm(props: PropTypes) {
-	const { isLoginToBuyProduct } = props;
+	const { setIsModalOpen } = props;
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -34,8 +34,8 @@ export default function LoginForm(props: PropTypes) {
 			dispatch(setRoles(snapshot?.result?.role));
 			dispatch(setSelectedRole(snapshot?.result?.role[0]));
 			message.success(snapshot?.message);
-			if (isLoginToBuyProduct) {
-				navigate(PRIVATE_ROUTE.CHECKOUT);
+			if (setIsModalOpen) {
+				setIsModalOpen(false);
 				return false;
 			}
 			navigate(PUBLIC_ROUTE.LANDING);

@@ -332,8 +332,9 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 				isOpen={isLoginModalOpen}
 				handleCancel={() => setIsLoginModalOpen(false)}
 				handleOk={() => setIsLoginModalOpen(false)}
-				modalBody={<LoginForm isLoginToBuyProduct />}
+				modalBody={<LoginForm setIsModalOpen={setIsLoginModalOpen} />}
 				title="Please login"
+				isFooter={false}
 			/>
 		</section>
 	);
