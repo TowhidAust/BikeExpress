@@ -22,4 +22,5 @@ export const PRIVATE_ROUTE = {
 	BOOKINGS: '/admin/bookings',
 
 	USER_DETAILS: '/user/details',
+	CHECKOUT: '/checkout',
 };

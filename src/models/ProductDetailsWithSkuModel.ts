@@ -1,6 +1,7 @@
 // Product details with sku models
 export interface ProductDetailsDataModel {
 	_id: string;
+	hasSku: boolean;
 	title: string;
 	brand: string;
 	modelNo: string;
@@ -13,6 +14,8 @@ export interface ProductDetailsDataModel {
 	warrantyUnit?: string;
 	isCertified?: boolean;
 	certificationName?: string;
+	quantity: number;
+	inStock: boolean;
 }
 
 export interface ProductSizesModel {

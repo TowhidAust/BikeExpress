@@ -6,6 +6,7 @@ import { RootState } from '@/redux/store';
 import { DISTRICTS, DIVISIONS } from '@/constants';
 import { UserModel } from '@/models';
 import { setUser } from '@/redux/authSlice';
+import { PromiseHandler } from '@/utils';
 
 export default function UserDetails() {
 	const [isProfileEdit, setIsProfileEdit] = useState<boolean>(true);
@@ -29,7 +30,7 @@ export default function UserDetails() {
 		}
 	};
 
-	const updateUserHandler = (values: any) => {
+	const updateUserHandler = async (values: any) => {
 		const modifiedValues: UserModel = {
 			firstname: values?.firstname,
 			lastname: values?.lastname,
@@ -42,23 +43,27 @@ export default function UserDetails() {
 				address: values?.deliveryAddress,
 			},
 		};
-		updateUserMutation({
-			userId: auth?.user?.id,
-			payload: modifiedValues,
-		})
-			.unwrap()
-			.then(() => {
-				message.success('Update Success');
-				dispatch(
-					setUser({
-						...auth.user,
-						...{ firstname: values?.firstname },
-					}),
-				);
-			})
-			.catch((_error) => {
-				message.error(_error?.message || 'Something went wrong!');
-			});
+
+		const [snapshot, updateUserError] = await PromiseHandler(
+			updateUserMutation({
+				userId: auth?.user?.id,
+				payload: modifiedValues,
+			}).unwrap(),
+		);
+
+		if (snapshot) {
+			message.success('Update Success');
+			dispatch(
+				setUser({
+					...auth.user,
+					...{ firstname: values?.firstname },
+				}),
+			);
+		}
+
+		if (updateUserError) {
+			message.error(updateUserError?.message || 'Something went wrong!');
+		}
 	};
 
 	if (error) {

@@ -17,7 +17,7 @@ export default function TopBar() {
 	const navigate = useNavigate();
 
 	const { user } = auth;
-	const { firstname } = user;
+	const firstname = user?.firstname || 'N/A';
 	const items: MenuProps['items'] = [
 		{
 			label: <Typography.Text>User Settings</Typography.Text>,

@@ -30,8 +30,24 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	const [availableQuantity, setAvailableQuantity] = useState<number>(0);
 	const [count, setCount] = useState<number>(0);
 	const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
-	const [isConfirmAddressModalOpen, setIsConfirmAddressModalOpen] = useState<boolean>(false);
 	const { auth } = useSelector((state: RootState) => state);
+
+	useEffect(() => {
+		if (!productDetailsData?.hasSku) {
+			setAvailableQuantity(productDetailsData?.quantity);
+		}
+
+		if (productDetailsData?.hasSku && variants) {
+			const defaultVariantPrice = variants[0]?.price;
+			const defaultDiscount = variants[0]?.discount;
+			const defaultColorId = variants[0]?._id;
+			const defaultSizes = variants[0]?.sizes || [];
+			setProductPrice(defaultVariantPrice);
+			setDiscount(defaultDiscount);
+			setSelectedColorFamilyId(defaultColorId);
+			setAvailableSizes(defaultSizes);
+		}
+	}, [productDetailsData?.hasSku, variants, productDetailsData?.quantity]);
 
 	const column: ColumnsType<DataType> = [
 		{
@@ -95,12 +111,12 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	};
 
 	const buyNowClickHandler = () => {
-		if (!selectedColorFamilyId) {
+		if (productDetailsData?.hasSku && !selectedColorFamilyId) {
 			message.warning('Please select a color');
 			return false;
 		}
 
-		if (!selectedSizeId) {
+		if (productDetailsData?.hasSku && !selectedSizeId) {
 			message.warning('Please select a size');
 			return false;
 		}
@@ -116,8 +132,6 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		}
 
 		if (auth?.user?.id) {
-			// confirm your delivery address
-			setIsConfirmAddressModalOpen(true);
 			const finalData = {
 				userId: auth?.user?.id,
 				productId: productDetailsData?._id,
@@ -133,19 +147,6 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		}
 		return false;
 	};
-
-	useEffect(() => {
-		if (variants) {
-			const defaultVariantPrice = variants[0]?.price;
-			const defaultDiscount = variants[0]?.discount;
-			const defaultColorId = variants[0]?._id;
-			const defaultSizes = variants[0]?.sizes || [];
-			setProductPrice(defaultVariantPrice);
-			setDiscount(defaultDiscount);
-			setSelectedColorFamilyId(defaultColorId);
-			setAvailableSizes(defaultSizes);
-		}
-	}, [variants]);
 
 	return (
 		<section>
@@ -187,82 +188,87 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 							rowKey={(record: any) => record?._id}
 						/>
 						<Row className="mt-2" gutter={[32, 8]}>
-							<Col xs={24} sm={24} md={24}>
-								<Row gutter={[8, 8]}>
+							{productDetailsData?.hasSku && (
+								<>
 									<Col xs={24} sm={24} md={24}>
-										<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-											Color Family
-										</Typography.Title>
-									</Col>
-
-									{variants?.map((item: any) => {
-										return (
-											<Col xs={24} sm={24} md={4} key={item?._id}>
-												<Card
-													className={selectedColorFamilyId === item?._id ? 'third-bg' : ''}
-													hoverable
-													bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
-													onClick={() => {
-														handleColorFamilyClick(item?._id);
-													}}
-												>
-													{item?.color || 'N/A'}
-												</Card>
-											</Col>
-										);
-									})}
-								</Row>
-							</Col>
-							<Col xs={24} sm={24} md={24}>
-								<Row gutter={[8, 8]}>
-									{availableSizes?.length > 0 && (
-										<>
+										<Row gutter={[8, 8]}>
 											<Col xs={24} sm={24} md={24}>
 												<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-													Size
+													Color Family
 												</Typography.Title>
 											</Col>
-											{availableSizes?.map((size: any) => {
-												if (size?.quantity === 0 || !size?.inStock) {
-													return (
-														<Col xs={24} sm={24} md={4} key={size?._id}>
-															<Card
-																hoverable
-																bodyStyle={{
-																	padding: 10,
-																	textAlign: 'center',
-																	fontSize: '10px',
-																	color: '#ddd',
-																}}
-																onClick={() => {
-																	message.warn('This size is out of stock!');
-																}}
-															>
-																{size?.size || 'N/A'}
-															</Card>
-														</Col>
-													);
-												}
+
+											{variants?.map((item: any) => {
 												return (
-													<Col xs={24} sm={24} md={4} key={size?._id}>
+													<Col xs={24} sm={24} md={4} key={item?._id}>
 														<Card
-															className={selectedSizeId === size?._id ? 'third-bg' : ''}
+															className={selectedColorFamilyId === item?._id ? 'third-bg' : ''}
 															hoverable
 															bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
 															onClick={() => {
-																handleSizeCardClick(size?._id, size?.quantity);
+																handleColorFamilyClick(item?._id);
 															}}
 														>
-															{size?.size || 'N/A'}
+															{item?.color || 'N/A'}
 														</Card>
 													</Col>
 												);
 											})}
-										</>
-									)}
-								</Row>
-							</Col>
-							<Col xs={24} sm={24} md={24}>
+										</Row>
+									</Col>
+									<Col xs={24} sm={24} md={24}>
+										<Row gutter={[8, 8]}>
+											{availableSizes?.length > 0 && (
+												<>
+													<Col xs={24} sm={24} md={24}>
+														<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+															Size
+														</Typography.Title>
+													</Col>
+													{availableSizes?.map((size: any) => {
+														if (size?.quantity === 0 || !size?.inStock) {
+															return (
+																<Col xs={24} sm={24} md={4} key={size?._id}>
+																	<Card
+																		hoverable
+																		bodyStyle={{
+																			padding: 10,
+																			textAlign: 'center',
+																			fontSize: '10px',
+																			color: '#ddd',
+																		}}
+																		onClick={() => {
+																			message.warn('This size is out of stock!');
+																		}}
+																	>
+																		{size?.size || 'N/A'}
+																	</Card>
+																</Col>
+															);
+														}
+														return (
+															<Col xs={24} sm={24} md={4} key={size?._id}>
+																<Card
+																	className={selectedSizeId === size?._id ? 'third-bg' : ''}
+																	hoverable
+																	bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+																	onClick={() => {
+																		handleSizeCardClick(size?._id, size?.quantity);
+																	}}
+																>
+																	{size?.size || 'N/A'}
+																</Card>
+															</Col>
+														);
+													})}
+												</>
+											)}
+										</Row>
+									</Col>
+								</>
+							)}
+
+							<Col xs={24} sm={24} md={12}>
 								<Typography.Title className="primary-font-color font-weight-400" level={5}>
 									Quantity
 								</Typography.Title>
@@ -286,7 +292,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									</section>
 								</Card>
 							</Col>
-							<Col xs={24} sm={24} md={24}>
+							<Col xs={24} sm={24} md={12}>
 								<Typography.Title className="m-0 font-weight-400 primary-font-color" level={5}>
 									Warranty & Return
 								</Typography.Title>
@@ -326,16 +332,8 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 				isOpen={isLoginModalOpen}
 				handleCancel={() => setIsLoginModalOpen(false)}
 				handleOk={() => setIsLoginModalOpen(false)}
-				modalBody={<LoginForm />}
+				modalBody={<LoginForm isLoginToBuyProduct />}
 				title="Please login"
-			/>
-
-			<BasicModal
-				isOpen={isConfirmAddressModalOpen}
-				handleCancel={() => setIsConfirmAddressModalOpen(false)}
-				handleOk={() => setIsConfirmAddressModalOpen(false)}
-				modalBody={<div>Confirm Your address</div>}
-				title="Confirm Shipping Address"
 			/>
 		</section>
 	);

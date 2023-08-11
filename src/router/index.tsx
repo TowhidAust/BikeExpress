@@ -18,6 +18,7 @@ const HelmetDetailsPage = lazy(() => import('@/pages/Products/Helmet/HelmetDetai
 const EngineOilPage = lazy(() => import('@/pages/Products/EngineOil/EngineOilPage'));
 const EngineOilDetailsPage = lazy(() => import('@/pages/Products/EngineOil/EngineOilDetailsPage'));
 const UserDetailsPage = lazy(() => import('@/pages/UserDetails/UserDetailsPage'));
+const CheckoutPage = lazy(() => import('@/pages/Checkout/CheckoutPage'));
 
 export default function AppRoutes() {
 	const publicRoutes = [
@@ -94,6 +95,7 @@ export default function AppRoutes() {
 
 					<Route element={<PrivateOutlet />}>
 						<Route path={PRIVATE_ROUTE.USER_DETAILS} element={<UserDetailsPage />} />
+						<Route path={PRIVATE_ROUTE.CHECKOUT} element={<CheckoutPage />} />
 					</Route>
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>

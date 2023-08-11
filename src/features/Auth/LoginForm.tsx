@@ -3,38 +3,49 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from './api';
 import { setRefreshToken, setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
-import { PUBLIC_ROUTE } from '@/router/appRoutes';
+import { PRIVATE_ROUTE, PUBLIC_ROUTE } from '@/router/appRoutes';
 import { validatePhoneNumber } from './helper';
+import { PromiseHandler } from '@/utils';
 
-export default function LoginForm() {
+type PropTypes = {
+	isLoginToBuyProduct?: boolean;
+};
+
+export default function LoginForm(props: PropTypes) {
+	const { isLoginToBuyProduct } = props;
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [loginMutation, { isLoading }] = useLoginMutation();
 
-	const onFinish = (values: any) => {
+	const onFinish = async (values: any) => {
 		const isPhoneNumberValid = validatePhoneNumber(values?.phone);
 		if (!isPhoneNumberValid) {
 			message.info('Invalid phone number');
 			return false;
 		}
 
-		loginMutation(values)
-			.unwrap()
-			.then((data) => {
-				if (data) {
-					dispatch(setUser(data?.result));
-					dispatch(setToken(data?.accessToken));
-					dispatch(setRefreshToken(data?.refreshToken));
-					dispatch(setRoles(data?.result?.role));
-					dispatch(setSelectedRole(data?.result?.role[0]));
-					message.success(data?.message);
-					navigate(PUBLIC_ROUTE.LANDING);
-				}
-			})
-			.catch((err) => {
-				if (err?.message) message.error(err?.message);
-			});
+		const [snapshot, loginError] = await PromiseHandler(loginMutation(values).unwrap());
+		if (snapshot) {
+			dispatch(setUser(snapshot?.result));
+			dispatch(setToken(snapshot?.accessToken));
+			dispatch(setRefreshToken(snapshot?.refreshToken));
+			dispatch(setRoles(snapshot?.result?.role));
+			dispatch(setSelectedRole(snapshot?.result?.role[0]));
+			message.success(snapshot?.message);
+			if (isLoginToBuyProduct) {
+				navigate(PRIVATE_ROUTE.CHECKOUT);
+				return false;
+			}
+			navigate(PUBLIC_ROUTE.LANDING);
+			return false;
+		}
+
+		if (loginError) {
+			message.error(loginError?.message || 'Something went wrong!');
+			return false;
+		}
 
 		return false;
 	};
