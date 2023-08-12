@@ -2,11 +2,14 @@ import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Divider, Image, Row, Table, Typography, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { ProductDetailsDataModel, ProductVariantModel } from '@/models/ProductDetailsWithSkuModel';
 import { RootState } from '@/redux/store';
 import BasicModal from '../Modals/BasicModal';
 import LoginForm from '@/features/Auth/LoginForm';
+import { PRIVATE_ROUTE } from '@/router/appRoutes';
+import { setOrderSummary } from '@/redux/orderSummarySlice';
 
 export interface DataType {
 	key: string;
@@ -31,6 +34,8 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	const [count, setCount] = useState<number>(0);
 	const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 	const { auth } = useSelector((state: RootState) => state);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (!productDetailsData?.hasSku) {
@@ -135,12 +140,19 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			const finalData = {
 				userId: auth?.user?.id,
 				productId: productDetailsData?._id,
+				hasSku: productDetailsData?.hasSku,
 				variantId: selectedColorFamilyId,
 				sizeId: selectedSizeId,
-				quantity: availableQuantity,
+				quantity: count,
 			};
+			if (!productDetailsData?.hasSku) {
+				delete finalData.variantId;
+				delete finalData.sizeId;
+			}
 			// eslint-disable-next-line no-console
 			console.log(finalData);
+			dispatch(setOrderSummary(finalData));
+			navigate(PRIVATE_ROUTE.CHECKOUT);
 		} else {
 			setIsLoginModalOpen(!isLoginModalOpen);
 			message.warning('Please login first');

@@ -176,6 +176,7 @@ export default function UsedBikeDetails() {
 				handleCancel={handleModalCancel}
 				modalBody={
 					<Table
+						rowKey={(record: any) => record?._id}
 						scroll={{ x: true }}
 						bordered
 						columns={sellerDetailsColumns}

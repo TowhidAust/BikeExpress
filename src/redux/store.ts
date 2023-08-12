@@ -1,13 +1,13 @@
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-
 import session from 'redux-persist/lib/storage/session';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import type { Middleware } from '@reduxjs/toolkit';
 import counterReducer from '@/redux/counterSlice';
 import activeMenuSliceReducer from '@/redux/activeMenubarSlice';
 import authReducer from '@/redux/authSlice';
-// import { emptySplitApi } from '@/RTKQuery/apiSlice';
+import orderSummaryReducer from './orderSummarySlice';
+
 import { globalErrorHandling } from './helper';
 import { emptySliceApi } from '@/api/emptySliceApi';
 
@@ -37,6 +37,7 @@ export const store = configureStore({
 		counter: counterReducer,
 		auth: persistedAuthReducer,
 		activeMenu: activeMenuSliceReducer,
+		orderSummary: orderSummaryReducer,
 		[emptySliceApi.reducerPath]: emptySliceApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
