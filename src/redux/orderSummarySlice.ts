@@ -8,6 +8,10 @@ type InitialStateType = {
 	variantId: undefined | null | string;
 	sizeId: undefined | null | string;
 	quantity: undefined | null | number;
+	productTitle: undefined | null | string;
+	size: undefined | null | string;
+	price: undefined | null | number;
+	discount: undefined | null | number;
 };
 const initialState: InitialStateType = {
 	userId: null,
@@ -16,6 +20,10 @@ const initialState: InitialStateType = {
 	variantId: null,
 	sizeId: null,
 	quantity: null,
+	size: null,
+	productTitle: null,
+	price: null,
+	discount: null,
 };
 
 export const orderSummarySlice = createSlice({
@@ -29,6 +37,10 @@ export const orderSummarySlice = createSlice({
 			state.variantId = action.payload.variantId;
 			state.sizeId = action.payload.sizeId;
 			state.quantity = action.payload.quantity;
+			state.size = action.payload.size;
+			state.productTitle = action.payload.productTitle;
+			state.price = action.payload.price;
+			state.discount = action.payload.discount;
 		},
 	},
 });

@@ -9,7 +9,7 @@ import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
 export default function Checkout() {
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
 	const [radioValue, setRadioValue] = useState(1);
-	const { auth } = useSelector((state: RootState) => state);
+	const { auth, orderSummary } = useSelector((state: RootState) => state);
 	const [form] = Form.useForm();
 	const {
 		data: userDetailsData,
@@ -26,6 +26,15 @@ export default function Checkout() {
 
 	const onRadioBtnChange = (e: RadioChangeEvent) => {
 		setRadioValue(e.target.value);
+	};
+
+	const calculateSubtotal = (_orderSummary: any) => {
+		const price = _orderSummary?.price;
+		const discount = _orderSummary?.discount;
+		const quantity = _orderSummary?.quantity;
+		const totalPrice = price * quantity;
+
+		return totalPrice - (price * quantity * discount) / 100;
 	};
 
 	if (userDetailsError) {
@@ -150,12 +159,13 @@ export default function Checkout() {
 						</Typography.Title>
 						<Divider className="mt-2 mb-2" />
 						<Typography.Title className="font-weight-400" level={5}>
-							MT TARGO PRO
+							{orderSummary?.productTitle || 'N/A'}
 						</Typography.Title>
-						<Typography.Text> Price: BDT 7800 </Typography.Text>
+						<Typography.Text> Price: {orderSummary?.price || 0}</Typography.Text>
 						<br />
-						<Typography.Text> Quantity: 3 </Typography.Text> <br />
-						<Typography.Text> Vat&Tax: BDT 12 </Typography.Text> <br />
+						<Typography.Text> Quantity: {orderSummary?.quantity || 0} </Typography.Text> <br />
+						<Typography.Text> Discount: {orderSummary?.discount || 0} </Typography.Text> <br />
+						<Typography.Text>Total: {calculateSubtotal(orderSummary)}</Typography.Text>
 					</Col>
 				</Row>
 			</Card>

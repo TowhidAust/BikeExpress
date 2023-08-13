@@ -3,6 +3,7 @@ export interface ProductDetailsDataModel {
 	_id: string;
 	hasSku: boolean;
 	title: string;
+	price: number;
 	brand: string;
 	modelNo: string;
 	modelYear: string;
@@ -16,6 +17,7 @@ export interface ProductDetailsDataModel {
 	certificationName?: string;
 	quantity: number;
 	inStock: boolean;
+	discount: number;
 }
 
 export interface ProductSizesModel {
