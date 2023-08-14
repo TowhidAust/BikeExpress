@@ -17,7 +17,14 @@ const persistConfig = {
 	storage: session,
 };
 
+const orderSummaryPersistConfig = {
+	key: 'orderSummary',
+	version: 1,
+	storage: session,
+};
+
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedOrderSummaryReducer = persistReducer(orderSummaryPersistConfig, orderSummaryReducer);
 
 /**
  * Log a warning and show a toast!
@@ -37,7 +44,7 @@ export const store = configureStore({
 		counter: counterReducer,
 		auth: persistedAuthReducer,
 		activeMenu: activeMenuSliceReducer,
-		orderSummary: orderSummaryReducer,
+		orderSummary: persistedOrderSummaryReducer,
 		[emptySliceApi.reducerPath]: emptySliceApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>

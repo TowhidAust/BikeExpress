@@ -72,8 +72,11 @@ export default function Checkout() {
 										</Typography.Title>
 										<Divider className="mt-2 mb-3" />
 										<Radio.Group onChange={onRadioBtnChange} value={radioValue} buttonStyle="solid">
-											<Radio.Button value={1}>CASH ON DELIVERY</Radio.Button>
-											<Radio.Button value={2}>DIGITAL PAYMENT</Radio.Button>
+											<Radio.Button value={1}> CASH ON DELIVERY </Radio.Button>
+											<Radio.Button value={2} disabled>
+												{' '}
+												DIGITAL PAYMENT{' '}
+											</Radio.Button>
 										</Radio.Group>
 									</section>
 								</Col>
@@ -165,6 +168,7 @@ export default function Checkout() {
 						<br />
 						<Typography.Text> Quantity: {orderSummary?.quantity || 0} </Typography.Text> <br />
 						<Typography.Text> Discount: {orderSummary?.discount || 0} </Typography.Text> <br />
+						<Divider />
 						<Typography.Text>Total: {calculateSubtotal(orderSummary)}</Typography.Text>
 					</Col>
 				</Row>
