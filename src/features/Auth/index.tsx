@@ -46,7 +46,7 @@ export default function Auth() {
 											<Row gutter={[8, 8]} className="text-center p-2" justify="space-between" align="middle">
 												<Col md={8}>
 													<Button type="link">
-														<Logo fontColor="white" width={120} fontSize={18} iconFontSize={26} />
+														<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
 													</Button>
 												</Col>
 												<Col md={8}>

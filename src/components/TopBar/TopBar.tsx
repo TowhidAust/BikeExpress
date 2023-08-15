@@ -1,4 +1,4 @@
-import { Affix, Button, Card, Col, Dropdown, Layout, Menu, Row, Typography } from 'antd';
+import { Affix, Button, Card, Col, Dropdown, Input, Layout, Menu, Row, Typography } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,7 +40,10 @@ export default function TopBar() {
 			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
 				<Row gutter={[16, 16]} align="middle" justify="space-between">
 					<Col xs={24} sm={24} md={6}>
-						<Logo fontColor="white" width={120} fontSize={18} iconFontSize={26} />
+						<Logo fontColor="white" width={160} fontSize={18} iconFontSize={22} />
+					</Col>
+					<Col xs={24} sm={24} md={6}>
+						<Input.Search className="mt-3" placeholder="search" size="middle" />
 					</Col>
 				</Row>
 			</Header>
@@ -56,6 +59,7 @@ export default function TopBar() {
 									{
 										key: 'home',
 										label: 'Home',
+
 										onClick: () => {
 											dispatch(setCurrentActiveMenu('home'));
 											navigate(PUBLIC_ROUTE.LANDING);

@@ -5,6 +5,7 @@ import { DISTRICTS, DIVISIONS } from '@/constants';
 import { useGetUserDetailsQuery } from '../UserDetails/api';
 import { RootState } from '@/redux/store';
 import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 export default function Checkout() {
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
@@ -37,6 +38,11 @@ export default function Checkout() {
 		return totalPrice - (price * quantity * discount) / 100;
 	};
 
+	const onFinish = (values: any) => {
+		// eslint-disable-next-line no-console
+		console.log(values);
+	};
+
 	if (userDetailsError) {
 		return <div>Something went wrong!</div>;
 	}
@@ -47,7 +53,7 @@ export default function Checkout() {
 
 	if (userDetailsData) {
 		return (
-			<Card loading={userDetailsLoading}>
+			<Card>
 				<Row gutter={[32, 16]}>
 					<Col xs={24} sm={24} md={12}>
 						<Form
@@ -58,31 +64,32 @@ export default function Checkout() {
 							wrapperCol={{ span: 18 }}
 							labelAlign="left"
 							onValuesChange={handleFormValuesChange}
+							onFinish={onFinish}
 							initialValues={{
 								division: userDetailsData?.result?.deliveryLocation?.division,
 								district: userDetailsData?.result?.deliveryLocation?.district,
 								address: userDetailsData?.result?.deliveryLocation?.address,
+								paymentMethod: 'CASH',
 							}}
 						>
 							<Row gutter={[8, 8]}>
 								<Col xs={24} sm={24} md={24}>
-									<section>
-										<Typography.Title className="m-0 primary-font-color" level={5}>
-											Choose a Payment Method
-										</Typography.Title>
-										<Divider className="mt-2 mb-3" />
-										<Radio.Group onChange={onRadioBtnChange} value={radioValue} buttonStyle="solid">
-											<Radio.Button value={1}> CASH ON DELIVERY </Radio.Button>
-											<Radio.Button value={2} disabled>
-												{' '}
-												DIGITAL PAYMENT{' '}
+									<Typography.Title className="m-0" level={5}>
+										Choose a Payment Method
+									</Typography.Title>
+									<Divider className="mt-2 mb-1" />
+									<Form.Item className="mb-2" name="paymentMethod">
+										<Radio.Group onChange={onRadioBtnChange} value={radioValue} buttonStyle="solid" size="middle">
+											<Radio.Button value="CASH"> CASH ON DELIVERY </Radio.Button>
+											<Radio.Button value="DIGITAL" disabled>
+												DIGITAL PAYMENT
 											</Radio.Button>
 										</Radio.Group>
-									</section>
+									</Form.Item>
 								</Col>
 
 								<Col xs={24} sm={24} md={24}>
-									<Typography.Title className="mt-4 mb-0 primary-font-color" level={5}>
+									<Typography.Title className="m-0" level={5}>
 										Confirm Delivery Address
 									</Typography.Title>
 								</Col>
@@ -149,9 +156,11 @@ export default function Checkout() {
 								</Col>
 
 								<Col xs={24} sm={24} md={24}>
-									<Button className="mt-2" type="primary" htmlType="submit" block>
-										SUBMIT
-									</Button>
+									<BlackButtonContainer>
+										<Button className="mt-2" type="primary" htmlType="submit" block>
+											SUBMIT
+										</Button>
+									</BlackButtonContainer>
 								</Col>
 							</Row>
 						</Form>

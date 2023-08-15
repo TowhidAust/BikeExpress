@@ -5,6 +5,7 @@ import { useSignupMutation } from './api';
 import { setRoles, setSelectedRole, setToken, setUser } from '@/redux/authSlice';
 import { validatePassword, validatePhoneNumber } from './helper';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 export default function SignupForm() {
 	const dispatch = useDispatch();
@@ -162,9 +163,11 @@ export default function SignupForm() {
 			</Form.Item>
 
 			<Form.Item>
-				<Button loading={isLoading} block size="large" type="primary" htmlType="submit">
-					SIGN UP
-				</Button>
+				<BlackButtonContainer>
+					<Button loading={isLoading} block size="large" type="primary" htmlType="submit">
+						SIGN UP
+					</Button>
+				</BlackButtonContainer>
 			</Form.Item>
 		</Form>
 	);

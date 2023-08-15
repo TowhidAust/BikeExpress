@@ -5,6 +5,7 @@ import { useState } from 'react';
 import AppLayout from '@/components/Layout/AppLayout';
 import { useBikeDetailsQuery } from '../api';
 import BasicModal from '@/components/Modals/BasicModal';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 interface DataType {
 	key: string;
@@ -156,16 +157,18 @@ export default function UsedBikeDetails() {
 						<Typography.Text>{bikeDetailsData?.result?.detailDescription}</Typography.Text>
 						<br />
 						<br />
-						<Button
-							block
-							type="primary"
-							size="large"
-							onClick={() => {
-								setIsModalOpen(true);
-							}}
-						>
-							SELLER INFORMATION
-						</Button>
+						<BlackButtonContainer>
+							<Button
+								block
+								type="primary"
+								size="large"
+								onClick={() => {
+									setIsModalOpen(true);
+								}}
+							>
+								SELLER INFORMATION
+							</Button>
+						</BlackButtonContainer>
 					</Col>
 				</Row>
 			</Card>

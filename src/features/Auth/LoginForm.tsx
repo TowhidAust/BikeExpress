@@ -6,6 +6,7 @@ import { setRefreshToken, setRoles, setSelectedRole, setToken, setUser } from '@
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 import { validatePhoneNumber } from './helper';
 import { PromiseHandler } from '@/utils';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 type PropTypes = {
 	setIsModalOpen?: (arg: boolean) => void; // if you login this component in a modal use this fn to close that
@@ -99,9 +100,11 @@ export default function LoginForm(props: PropTypes) {
 			</Form.Item>
 
 			<Form.Item>
-				<Button loading={isLoading} block size="large" type="primary" htmlType="submit">
-					LOGIN
-				</Button>
+				<BlackButtonContainer>
+					<Button loading={isLoading} block size="large" type="primary" htmlType="submit">
+						LOGIN
+					</Button>
+				</BlackButtonContainer>
 			</Form.Item>
 		</Form>
 	);

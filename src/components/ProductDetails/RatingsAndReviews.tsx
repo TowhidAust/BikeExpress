@@ -1,6 +1,7 @@
 import { Button, Card, Divider, Input, Pagination, Tabs } from 'antd';
 import Comments from '../Comments/Comments';
 import Reviews from '../Reviews/Reviews';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 export default function RatingsAndReviews() {
 	return (
@@ -30,9 +31,11 @@ export default function RatingsAndReviews() {
 									rows={5}
 									size="large"
 								/>
-								<Button className="mt-3" size="large" type="primary" block>
-									ADD COMMENT
-								</Button>
+								<BlackButtonContainer>
+									<Button className="mt-3" size="large" type="primary" block>
+										ADD COMMENT
+									</Button>
+								</BlackButtonContainer>
 							</>
 						),
 					},

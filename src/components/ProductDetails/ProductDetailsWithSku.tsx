@@ -10,6 +10,7 @@ import BasicModal from '../Modals/BasicModal';
 import LoginForm from '@/features/Auth/LoginForm';
 import { PRIVATE_ROUTE } from '@/router/appRoutes';
 import { setOrderSummary } from '@/redux/orderSummarySlice';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 export interface DataType {
 	key: string;
@@ -331,14 +332,16 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 							<Col span={24}>
 								<Row className="mt-2" gutter={[8, 8]}>
 									<Col span={12}>
-										<Button size="large" block type="ghost" onClick={addToCartClickHandler}>
+										<Button size="large" block type="primary" onClick={addToCartClickHandler}>
 											ADD TO CART
 										</Button>
 									</Col>
 									<Col span={12}>
-										<Button size="large" block type="primary" onClick={buyNowClickHandler}>
-											BUY NOW
-										</Button>
+										<BlackButtonContainer>
+											<Button size="large" block type="primary" onClick={buyNowClickHandler}>
+												BUY NOW
+											</Button>
+										</BlackButtonContainer>
 									</Col>
 								</Row>
 							</Col>

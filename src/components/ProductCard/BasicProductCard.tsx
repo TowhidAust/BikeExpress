@@ -1,4 +1,5 @@
 import { Button, Card, Col, Row, Typography } from 'antd';
+import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 
 type ProductPropTypes = {
 	productInfo: {
@@ -25,13 +26,15 @@ export default function BasicProductCard(props: ProductPropTypes) {
 						height: '200px',
 					}}
 				>
-					<Button
-						style={{ position: 'absolute', bottom: 0, right: 0, borderRadius: 0 }}
-						type="primary"
-						onClick={onDetailsButtonClick}
-					>
-						DETAILS
-					</Button>
+					<BlackButtonContainer>
+						<Button
+							style={{ position: 'absolute', bottom: 0, right: 0, borderRadius: 0 }}
+							type="primary"
+							onClick={onDetailsButtonClick}
+						>
+							DETAILS
+						</Button>
+					</BlackButtonContainer>
 				</div>
 			}
 		>
