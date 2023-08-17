@@ -20,7 +20,7 @@ export default function Logo(props: PropTypes) {
 				textAlign: 'center',
 			}}
 		>
-			<div style={{ color: fontColor, width: '40%', textAlign: 'left' }}> BIKERS </div>
+			<div style={{ color: fontColor, width: '40%', textAlign: 'left' }}> RIDERS </div>
 			<div
 				style={{
 					width: '20%',
@@ -31,7 +31,7 @@ export default function Logo(props: PropTypes) {
 			>
 				<FaMotorcycle className="primary-font-color width-100 mr-1" style={{ fontSize: iconFontSize }} />
 			</div>
-			<div style={{ color: fontColor, width: '40%', textAlign: 'right' }}> BUCKET </div>
+			<div style={{ color: fontColor, width: '40%', textAlign: 'right' }}> CONSOLE </div>
 		</div>
 	);
 }

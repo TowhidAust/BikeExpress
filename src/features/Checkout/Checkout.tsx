@@ -6,10 +6,11 @@ import { useGetUserDetailsQuery } from '../UserDetails/api';
 import { RootState } from '@/redux/store';
 import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
 import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
+// import { useGetHelmetListQuery } from '../Products/Helmet/api';
 
 export default function Checkout() {
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
-	const [radioValue, setRadioValue] = useState(1);
+	const [radioValue, setRadioValue] = useState('CASH');
 	const { auth, orderSummary } = useSelector((state: RootState) => state);
 	const [form] = Form.useForm();
 	const {
@@ -17,6 +18,12 @@ export default function Checkout() {
 		isLoading: userDetailsLoading,
 		error: userDetailsError,
 	} = useGetUserDetailsQuery({ userId: auth?.user?.id });
+
+	// const {
+	// 	data: prodDetailsData,
+	// 	isLoading: isProdDetailsLoading,
+	// 	error: prodDetailsError,
+	// } = useGetHelmetListQuery({ id: '123', page: 0, pageSize: 10 });
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
@@ -171,12 +178,12 @@ export default function Checkout() {
 						</Typography.Title>
 						<Divider className="mt-2 mb-2" />
 						<Typography.Title className="font-weight-400" level={5}>
-							{orderSummary?.productTitle || 'N/A'}
+							N/A
 						</Typography.Title>
-						<Typography.Text> Price: {orderSummary?.price || 0}</Typography.Text>
+						<Typography.Text> Price: {0}</Typography.Text>
 						<br />
-						<Typography.Text> Quantity: {orderSummary?.quantity || 0} </Typography.Text> <br />
-						<Typography.Text> Discount: {orderSummary?.discount || 0} </Typography.Text> <br />
+						<Typography.Text> Quantity: {0} </Typography.Text> <br />
+						<Typography.Text> Discount: {0} </Typography.Text> <br />
 						<Divider />
 						<Typography.Text>Total: {calculateSubtotal(orderSummary)}</Typography.Text>
 					</Col>

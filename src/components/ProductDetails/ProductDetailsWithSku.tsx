@@ -138,20 +138,17 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		}
 
 		if (auth?.user?.id) {
-			const indexOfVariant = variants.findIndex((object) => object._id === selectedColorFamilyId);
-			const indexOfSize = variants[indexOfVariant].sizes.findIndex((object) => object._id === selectedSizeId);
-
 			const finalData: any = {
 				userId: auth?.user?.id,
-				productId: productDetailsData?._id,
-				variantId: selectedColorFamilyId,
-				sizeId: selectedSizeId,
-				hasSku: productDetailsData?.hasSku,
-				productTitle: productDetailsData?.title,
-				price: variants[indexOfVariant]?.price || productDetailsData?.price || null,
-				discount: variants[indexOfVariant]?.discount || productDetailsData?.discount || null,
-				size: variants[indexOfVariant].sizes[indexOfSize].size || null,
-				quantity: count,
+				items: [
+					{
+						productId: productDetailsData?._id,
+						variantId: selectedColorFamilyId,
+						sizeId: selectedSizeId,
+						hasSku: productDetailsData?.hasSku,
+						quantity: count,
+					},
+				],
 			};
 
 			if (!productDetailsData?.hasSku) {
