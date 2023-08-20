@@ -2,8 +2,6 @@ import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 import { useState } from 'react';
-import { TbHelmet } from 'react-icons/tb';
-import { RiLock2Line, RiOilLine } from 'react-icons/ri';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -32,20 +30,32 @@ export default function BannerLeftMenu() {
 	const navigate = useNavigate();
 
 	const items: MenuItem[] = [
-		getItem('Helmet', 'helmet', <TbHelmet />, undefined, undefined, () => navigate(PUBLIC_ROUTE.HELMET)),
-		getItem('Engine Oil', 'engine_oil', <RiOilLine />, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),
-		getItem('Looking Glass', 'looking_glass', <RiLock2Line />),
-		getItem('Lock', 'lock', <RiLock2Line />),
-		getItem('Horn', 'horn', <RiLock2Line />),
-		getItem('Light', 'light', <RiLock2Line />),
-		getItem('Riding Gears', 'riding_gears', <RiLock2Line />, [
+		getItem('Helmet', 'helmet', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.HELMET)),
+		getItem('Engine Oil', 'engine_oil', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),
+		getItem('Looking Glass', 'looking_glass'),
+		getItem('Lock', 'lock'),
+
+		getItem('Accessories', 'accessories', null, [
+			getItem('Horn', 'horn'),
+			getItem('Light', 'light'),
+			getItem('Clutch Liver', 'clutch_liver'),
+			getItem('Break Liver', 'break_liver'),
+			getItem('Mobile Holder', 'mobile_holder'),
+			getItem('Communicator', 'communicator'),
+			getItem('Engine Guard', 'engine_guard'),
+			getItem('Quick Throttle', 'quick_throttle'),
+			getItem('Handle Bar', 'handle_bar'),
+			getItem('Sticker', 'sticker'),
+		]),
+
+		getItem('Riding Gears', 'riding_gears', null, [
 			getItem('T-Shirt', '9'),
 			getItem('Hand Gloves', '10'),
 			getItem('Riding Jacket', '11'),
 			getItem('Riding Shoes', '12'),
 			getItem('BackPack', '12'),
 		]),
-		getItem('Test Nested Menu', 'sub2', <RiLock2Line />, [
+		getItem('Test Nested Menu', 'sub2', null, [
 			getItem('Option 5', '5'),
 			getItem('Option 6', '6'),
 			getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
@@ -53,7 +63,7 @@ export default function BannerLeftMenu() {
 	];
 
 	// submenu keys of first level
-	const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
+	const rootSubmenuKeys = ['accessories', 'riding_gears', 'sub2'];
 
 	const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
 		const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -68,7 +78,7 @@ export default function BannerLeftMenu() {
 		<Menu
 			className="py-5"
 			style={{ minHeight: '660px' }}
-			mode="inline"
+			mode="vertical"
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
 			items={
