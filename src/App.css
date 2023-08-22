@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'Telenor';
+  src: url(./fonts/Telenor-Regular.otf);
+}
+
+:root {
+  --app-primary-color: #059669;
+  --app-secondary-color: #D1FAE5;
+  --app-third-color: #E5E8F0;
+  --app-fourth-color: #004282;
+  --app-fifth-color: #F97316;
+  --app-sixth-color: #334155;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Telenor" !important;
+}
+
+.layout-bg {
+  background-color: #E2E8F0 !important;
+}
+
+.primary-bg {
+  background-color: #059669 !important;
+}
+
+.secondary-bg {
+  background-color: var(--app-secondary-color);
+}
+
+.third-bg {
+  background-color: var(--app-third-color);
+}
+
+.fourth-bg {
+  background-color: var(--app-fourth-color);
+}
+
+.fifth-bg {
+  background-color: var(--app-fifth-color);
+}
+
+.sixth-bg {
+  background-color: var(--app-sixth-color);
+}
+
+.black-bg {
+  background-color: black;
+}
+
+.white-bg {
+  background-color: white !important;
+}
+
+
+.primary-font-color {
+  color: var(--app-primary-color) !important;
+}
+
+.secondary-font-color {
+  color: var(--app-secondary-color) !important;
+}
+
+.third-font-color {
+  color: var(--app-third-color) !important;
+}
+
+.fourth-font-color {
+  color: var(--app-fourth-color) !important;
+}
+
+.fifth-font-color {
+  color: var(--app-fifth-color) !important;
+}
+
+.sixth-font-color {
+  color: var(--app-sixth-color) !important;
+}
+
+.font-white {
+  color: white !important;
+}
+
+
+.font-weight-600 {
+  font-weight: 600 !important;
+}
+
+.font-weight-500 {
+  font-weight: 500 !important;
+}
+
+.font-weight-400 {
+font-weight: 400 !important;
+}
+
+.border-radius-20 {
+  border-radius: 20px !important;
+}
+
+.border-solid-1px {
+ border: 1px solid #E2E8F0 !important; 
+}
+
+
+.width-100 {
+  width: 100% !important;
+}
+
+.width-90 {
+  width: 90% !important;
+}
+
+.width-80 {
+  width: 80% !important;
+}
+
+.width-70 {
+  width: 70% !important;
+}
+
+.width-60 {
+  width: 60% !important;
+}
+
+.width-50 {
+  width: 50% !important;
+}
+
+.border-radius-0 {
+  border-radius: 0 !important;
+}
+
+.layout-content-padding {
+  padding: 3% !important;
+}
+
+.ant-carousel .slick-dots {
+  z-index: 1 !important;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+  width: 100% !important;
+}
+
+.text-center {
+text-align: center !important;
+}
+
+
+

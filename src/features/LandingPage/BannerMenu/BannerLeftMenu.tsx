@@ -53,7 +53,7 @@ export default function BannerLeftMenu() {
 			getItem('Hand Gloves', '10'),
 			getItem('Riding Jacket', '11'),
 			getItem('Riding Shoes', '12'),
-			getItem('BackPack', '12'),
+			getItem('BackPack', '13'),
 		]),
 		getItem('Test Nested Menu', 'sub2', null, [
 			getItem('Option 5', '5'),
