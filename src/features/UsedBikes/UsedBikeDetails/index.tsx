@@ -72,22 +72,22 @@ export default function UsedBikeDetails() {
 		{
 			title: 'Phone',
 			dataIndex: 'phone',
-			key: 2,
+			key: 101,
 		},
 		{
 			title: 'Division',
 			dataIndex: 'division',
-			key: 3,
+			key: 102,
 		},
 		{
 			title: 'District',
 			dataIndex: 'district',
-			key: 4,
+			key: 103,
 		},
 		{
 			title: 'Address',
 			dataIndex: 'address',
-			key: 5,
+			key: 104,
 		},
 	];
 	const sellerDetailsData: any[] = [
@@ -179,7 +179,9 @@ export default function UsedBikeDetails() {
 				handleCancel={handleModalCancel}
 				modalBody={
 					<Table
-						rowKey={(record: any) => record?._id}
+						rowKey={(record: any) => {
+							return record?.phone;
+						}}
 						scroll={{ x: true }}
 						bordered
 						columns={sellerDetailsColumns}

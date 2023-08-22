@@ -449,7 +449,7 @@ export default function SellBike() {
 								</Row>
 
 								<Button type="primary" htmlType="submit" block loading={isUploadLoading || isSellBikeLoading}>
-									Submit
+									SUBMIT
 								</Button>
 							</Form>
 						</Card>

@@ -21,7 +21,7 @@ function getItem(
 		label,
 		type,
 		onClick,
-		style: { margin: 0 },
+		// style: { margin: 0 },
 	} as MenuItem;
 }
 
