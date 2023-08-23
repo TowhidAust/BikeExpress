@@ -172,6 +172,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 		<section>
 			<Card>
 				<Row gutter={[16, 16]}>
+					{/* Image gallery */}
 					<Col md={8}>
 						<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
 							<Image src={productDetailsData?.thumbnail} />
@@ -189,7 +190,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						</Row>
 					</Col>
 					<Col md={16}>
-						<Typography.Title className="mt mb-0" level={3}>
+						<Typography.Title className="mb-0" level={3}>
 							{productDetailsData?.title || 'N/A'}
 						</Typography.Title>
 						<Typography.Title level={5} className="m-0 primary-font-color">
@@ -258,7 +259,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 																			color: '#ddd',
 																		}}
 																		onClick={() => {
-																			message.warn('This size is out of stock!');
+																			message.warning('This size is out of stock!');
 																		}}
 																	>
 																		{size?.size || 'N/A'}

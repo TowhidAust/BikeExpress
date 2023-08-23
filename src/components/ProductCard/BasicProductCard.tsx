@@ -6,6 +6,7 @@ type ProductPropTypes = {
 		image: string;
 		title: string;
 		price: string;
+		available?: number;
 	};
 	onDetailsButtonClick: () => void;
 };
@@ -53,6 +54,7 @@ export default function BasicProductCard(props: ProductPropTypes) {
 							{title}
 						</abbr>
 					</Typography.Title>
+					{productInfo?.available && <Typography.Text> Available: {productInfo?.available} </Typography.Text>}
 				</Col>
 				<Col xs={24} sm={24} md={12}>
 					<Typography.Text className="font-weight-600 primary-font-color">BDT {price}</Typography.Text>

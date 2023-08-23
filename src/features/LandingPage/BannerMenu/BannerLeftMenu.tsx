@@ -21,7 +21,7 @@ function getItem(
 		label,
 		type,
 		onClick,
-		// style: { margin: 0 },
+		style: {},
 	} as MenuItem;
 }
 
@@ -48,22 +48,21 @@ export default function BannerLeftMenu() {
 			getItem('Sticker', 'sticker'),
 		]),
 
-		getItem('Riding Gears', 'riding_gears', null, [
-			getItem('T-Shirt', '9'),
-			getItem('Hand Gloves', '10'),
-			getItem('Riding Jacket', '11'),
-			getItem('Riding Shoes', '12'),
-			getItem('BackPack', '13'),
+		getItem('Electronics', 'electronics', null, [
+			getItem('Communicator', '9'),
+			getItem('Action Camera', '10'),
+			getItem('Camera Mount', '11'),
+			getItem('Odometer', '12'),
 		]),
-		getItem('Test Nested Menu', 'sub2', null, [
-			getItem('Option 5', '5'),
-			getItem('Option 6', '6'),
+		getItem('Back & Pack', 'backpack', null, [
+			getItem('Wallet', '5'),
+			getItem('Backpack', '6'),
 			getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
 		]),
 	];
 
 	// submenu keys of first level
-	const rootSubmenuKeys = ['accessories', 'riding_gears', 'sub2'];
+	const rootSubmenuKeys = ['accessories', 'electronics', 'backpack'];
 
 	const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
 		const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -76,9 +75,9 @@ export default function BannerLeftMenu() {
 
 	return (
 		<Menu
-			className="py-5"
+			className=""
 			style={{ minHeight: '660px' }}
-			mode="vertical"
+			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
 			items={

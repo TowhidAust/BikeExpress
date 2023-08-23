@@ -62,7 +62,7 @@ export default function UsedBikeDetails() {
 		{
 			title: 'Registration Zone',
 			dataIndex: 'registrationZone',
-			key: '7',
+			key: '8',
 		},
 	];
 
@@ -122,7 +122,7 @@ export default function UsedBikeDetails() {
 						<Row>
 							{bikeDetailsData?.result?.images.map((item: any) => {
 								return (
-									<Col span={6} key={item}>
+									<Col span={6} key={item?.imagePath}>
 										<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
 											<Image src={item?.downloadUrl || item} />
 										</Card>

@@ -9,7 +9,8 @@ function App() {
 			theme={{
 				token: {
 					colorPrimary: '#059669',
-					borderRadius: 0,
+					colorLink: '#059669',
+					borderRadius: 3,
 				},
 				components: {
 					Input: {
@@ -17,11 +18,13 @@ function App() {
 						// borderRadiusLG: 10,
 					},
 					Select: {
-						controlHeightLG: 55,
+						controlHeightLG: 50,
 						// borderRadiusLG: 10,
 					},
 					Button: {
-						controlHeightLG: 55,
+						controlHeightLG: 50,
+						colorPrimary: 'black',
+						colorPrimaryHover: 'rgba(0,0,0,0.85)',
 					},
 				},
 			}}
