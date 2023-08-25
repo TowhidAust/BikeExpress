@@ -8,7 +8,7 @@ type ItemsType = {
 	sizeId: string;
 	quantity: number;
 	price: undefined | null | number;
-	productName: undefined | null | String;
+	title: undefined | null | String;
 	discount: undefined | null | number;
 };
 
