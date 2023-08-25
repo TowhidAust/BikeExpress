@@ -35,6 +35,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 	const [count, setCount] = useState<number>(0);
 	const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 	const { auth } = useSelector((state: RootState) => state);
+	const [messageApi, contextHolder] = message.useMessage();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -118,35 +119,51 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 
 	const buyNowClickHandler = () => {
 		if (productDetailsData?.hasSku && !selectedColorFamilyId) {
-			message.warning('Please select a color');
+			messageApi.warning('Please select a color', 10000);
 			return false;
 		}
 
 		if (productDetailsData?.hasSku && !selectedSizeId) {
-			message.warning('Please select a size');
+			messageApi.warning('Please select a size');
 			return false;
 		}
 
 		if (count < 1) {
-			message.warning('Quantity is not selected');
+			messageApi.warning('Quantity is not selected');
 			return false;
 		}
 
 		if (availableQuantity < count) {
-			message.warning(`You can select maximum quantity of ${availableQuantity}.`);
+			messageApi.warning(`You can select maximum quantity of ${availableQuantity}.`);
 			return false;
 		}
 
 		if (auth?.user?.id) {
+			const hasSkuAvailable = productDetailsData?.hasSku;
+
+			const selectedVariantIndex = hasSkuAvailable
+				? variants.findIndex((item) => item.productId === productDetailsData._id)
+				: -1;
+			const selectedSizeArr = hasSkuAvailable ? variants[selectedVariantIndex].sizes : [];
+
+			const selectedSizeIndex = hasSkuAvailable
+				? selectedSizeArr.findIndex((item) => item?._id === selectedSizeId)
+				: -1;
+
 			const finalData: any = {
 				userId: auth?.user?.id,
 				items: [
 					{
 						productId: productDetailsData?._id,
+						hasSku: productDetailsData?.hasSku,
 						variantId: selectedColorFamilyId,
 						sizeId: selectedSizeId,
-						hasSku: productDetailsData?.hasSku,
 						quantity: count,
+
+						price: hasSkuAvailable ? variants[selectedVariantIndex]?.price : null,
+						discount: hasSkuAvailable ? variants[selectedVariantIndex].discount : productDetailsData?.discount || null,
+						title: productDetailsData?.title || null,
+						size: hasSkuAvailable ? selectedSizeArr[selectedSizeIndex].size : null,
 					},
 				],
 			};
@@ -163,202 +180,205 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			navigate(PRIVATE_ROUTE.CHECKOUT);
 		} else {
 			setIsLoginModalOpen(!isLoginModalOpen);
-			message.warning('Please login first');
+			messageApi.warning('Please login first');
 		}
 		return false;
 	};
 
 	return (
-		<section>
-			<Card>
-				<Row gutter={[16, 16]}>
-					{/* Image gallery */}
-					<Col md={8}>
-						<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
-							<Image src={productDetailsData?.thumbnail} />
-						</Card>
-						<Row>
-							{productDetailsData?.images?.map((image: any) => {
-								return (
-									<Col span={6} key={image?.imagePath}>
-										<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
-											<Image src={image?.downloadUrl || image} />
-										</Card>
-									</Col>
-								);
-							})}
-						</Row>
-					</Col>
-					<Col md={16}>
-						<Typography.Title className="mb-0" level={3}>
-							{productDetailsData?.title || 'N/A'}
-						</Typography.Title>
-						<Typography.Title level={5} className="m-0 primary-font-color">
-							BDT {productPrice - (productPrice * discount) / 100}
-						</Typography.Title>
-						<Typography.Text className="m-0 p-0" type="secondary" style={{ textDecoration: 'line-through' }}>
-							BDT {productPrice}
-						</Typography.Text>
-						<Divider />
-						<Table
-							scroll={{ x: true }}
-							columns={column}
-							dataSource={[productDetailsData]}
-							pagination={false}
-							bordered
-							rowKey={(record: any) => record?._id}
-						/>
-						<Row className="mt-2" gutter={[32, 8]}>
-							{productDetailsData?.hasSku && (
-								<>
-									<Col xs={24} sm={24} md={24}>
-										<Row gutter={[8, 8]}>
-											<Col xs={24} sm={24} md={24}>
-												<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-													Color Family
-												</Typography.Title>
-											</Col>
+		<>
+			{contextHolder}
+			<section>
+				<Card>
+					<Row gutter={[16, 16]}>
+						{/* Image gallery */}
+						<Col md={8}>
+							<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
+								<Image src={productDetailsData?.thumbnail} />
+							</Card>
+							<Row>
+								{productDetailsData?.images?.map((image: any) => {
+									return (
+										<Col span={6} key={image?.imagePath}>
+											<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
+												<Image src={image?.downloadUrl || image} />
+											</Card>
+										</Col>
+									);
+								})}
+							</Row>
+						</Col>
+						<Col md={16}>
+							<Typography.Title className="mb-0" level={3}>
+								{productDetailsData?.title || 'N/A'}
+							</Typography.Title>
+							<Typography.Title level={5} className="m-0 primary-font-color">
+								BDT {productPrice - (productPrice * discount) / 100}
+							</Typography.Title>
+							<Typography.Text className="m-0 p-0" type="secondary" style={{ textDecoration: 'line-through' }}>
+								BDT {productPrice}
+							</Typography.Text>
+							<Divider />
+							<Table
+								scroll={{ x: true }}
+								columns={column}
+								dataSource={[productDetailsData]}
+								pagination={false}
+								bordered
+								rowKey={(record: any) => record?._id}
+							/>
+							<Row className="mt-2" gutter={[32, 8]}>
+								{productDetailsData?.hasSku && (
+									<>
+										<Col xs={24} sm={24} md={24}>
+											<Row gutter={[8, 8]}>
+												<Col xs={24} sm={24} md={24}>
+													<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+														Color Family
+													</Typography.Title>
+												</Col>
 
-											{variants?.map((item: any) => {
-												return (
-													<Col xs={24} sm={24} md={4} key={item?._id}>
-														<Card
-															className={selectedColorFamilyId === item?._id ? 'third-bg' : ''}
-															hoverable
-															bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
-															onClick={() => {
-																handleColorFamilyClick(item?._id);
-															}}
-														>
-															{item?.color || 'N/A'}
-														</Card>
-													</Col>
-												);
-											})}
-										</Row>
-									</Col>
-									<Col xs={24} sm={24} md={24}>
-										<Row gutter={[8, 8]}>
-											{availableSizes?.length > 0 && (
-												<>
-													<Col xs={24} sm={24} md={24}>
-														<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
-															Size
-														</Typography.Title>
-													</Col>
-													{availableSizes?.map((size: any) => {
-														if (size?.quantity === 0 || !size?.inStock) {
+												{variants?.map((item: any) => {
+													return (
+														<Col xs={24} sm={24} md={4} key={item?._id}>
+															<Card
+																className={selectedColorFamilyId === item?._id ? 'third-bg' : ''}
+																hoverable
+																bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
+																onClick={() => {
+																	handleColorFamilyClick(item?._id);
+																}}
+															>
+																{item?.color || 'N/A'}
+															</Card>
+														</Col>
+													);
+												})}
+											</Row>
+										</Col>
+										<Col xs={24} sm={24} md={24}>
+											<Row gutter={[8, 8]}>
+												{availableSizes?.length > 0 && (
+													<>
+														<Col xs={24} sm={24} md={24}>
+															<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+																Size
+															</Typography.Title>
+														</Col>
+														{availableSizes?.map((size: any) => {
+															if (size?.quantity === 0 || !size?.inStock) {
+																return (
+																	<Col xs={24} sm={24} md={4} key={size?._id}>
+																		<Card
+																			hoverable
+																			bodyStyle={{
+																				padding: 10,
+																				textAlign: 'center',
+																				fontSize: '10px',
+																				color: '#ddd',
+																			}}
+																			onClick={() => {
+																				message.warning('This size is out of stock!');
+																			}}
+																		>
+																			{size?.size || 'N/A'}
+																		</Card>
+																	</Col>
+																);
+															}
 															return (
 																<Col xs={24} sm={24} md={4} key={size?._id}>
 																	<Card
+																		className={selectedSizeId === size?._id ? 'third-bg' : ''}
 																		hoverable
-																		bodyStyle={{
-																			padding: 10,
-																			textAlign: 'center',
-																			fontSize: '10px',
-																			color: '#ddd',
-																		}}
+																		bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
 																		onClick={() => {
-																			message.warning('This size is out of stock!');
+																			handleSizeCardClick(size?._id, size?.quantity);
 																		}}
 																	>
 																		{size?.size || 'N/A'}
 																	</Card>
 																</Col>
 															);
-														}
-														return (
-															<Col xs={24} sm={24} md={4} key={size?._id}>
-																<Card
-																	className={selectedSizeId === size?._id ? 'third-bg' : ''}
-																	hoverable
-																	bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px' }}
-																	onClick={() => {
-																		handleSizeCardClick(size?._id, size?.quantity);
-																	}}
-																>
-																	{size?.size || 'N/A'}
-																</Card>
-															</Col>
-														);
-													})}
-												</>
-											)}
-										</Row>
-									</Col>
-								</>
-							)}
+														})}
+													</>
+												)}
+											</Row>
+										</Col>
+									</>
+								)}
 
-							<Col xs={24} sm={24} md={12}>
-								<Typography.Title className="primary-font-color font-weight-400" level={5}>
-									Quantity
-								</Typography.Title>
+								<Col xs={24} sm={24} md={12}>
+									<Typography.Title className="primary-font-color font-weight-400" level={5}>
+										Quantity
+									</Typography.Title>
 
-								<Card
-									style={{ width: '120px' }}
-									bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px', color: '#ddd' }}
-								>
-									<section
-										style={{
-											display: 'flex',
-											justifyContent: 'space-around',
-											alignItems: 'center',
-										}}
+									<Card
+										style={{ width: '120px' }}
+										bodyStyle={{ padding: 10, textAlign: 'center', fontSize: '10px', color: '#ddd' }}
 									>
-										<Button type="link" icon={<MinusCircleOutlined />} onClick={minusClickHandler} />
-										<Typography.Title className="m-0" level={5}>
-											{count}
-										</Typography.Title>
-										<Button type="link" icon={<PlusCircleOutlined />} onClick={plusClickHandler} />
-									</section>
-								</Card>
-							</Col>
-							<Col xs={24} sm={24} md={12}>
-								<Typography.Title className="m-0 font-weight-400 primary-font-color" level={5}>
-									Warranty & Return
-								</Typography.Title>
-								<ul className="pl-3">
-									<li>
-										{productDetailsData?.warranty} {productDetailsData?.warrantyUnit} service waranty{' '}
-									</li>
-									{productDetailsData?.certificationName && (
-										<li> {productDetailsData?.certificationName} Certified </li>
-									)}
-									<li> 7 days return (Change of mind is not applicable) </li>
-								</ul>
-							</Col>
-							<Col span={24}>
-								<Row className="mt-2" gutter={[8, 8]}>
-									<Col span={12}>
-										<Button size="large" block type="primary" onClick={addToCartClickHandler}>
-											ADD TO CART
-										</Button>
-									</Col>
-									<Col span={12}>
-										<BlackButtonContainer>
-											<Button size="large" block type="primary" onClick={buyNowClickHandler}>
-												BUY NOW
+										<section
+											style={{
+												display: 'flex',
+												justifyContent: 'space-around',
+												alignItems: 'center',
+											}}
+										>
+											<Button type="link" icon={<MinusCircleOutlined />} onClick={minusClickHandler} />
+											<Typography.Title className="m-0" level={5}>
+												{count}
+											</Typography.Title>
+											<Button type="link" icon={<PlusCircleOutlined />} onClick={plusClickHandler} />
+										</section>
+									</Card>
+								</Col>
+								<Col xs={24} sm={24} md={12}>
+									<Typography.Title className="m-0 font-weight-400 primary-font-color" level={5}>
+										Warranty & Return
+									</Typography.Title>
+									<ul className="pl-3">
+										<li>
+											{productDetailsData?.warranty} {productDetailsData?.warrantyUnit} service waranty{' '}
+										</li>
+										{productDetailsData?.certificationName && (
+											<li> {productDetailsData?.certificationName} Certified </li>
+										)}
+										<li> 7 days return (Change of mind is not applicable) </li>
+									</ul>
+								</Col>
+								<Col span={24}>
+									<Row className="mt-2" gutter={[8, 8]}>
+										<Col span={12}>
+											<Button size="large" block type="primary" onClick={addToCartClickHandler}>
+												ADD TO CART
 											</Button>
-										</BlackButtonContainer>
-									</Col>
-								</Row>
-							</Col>
-						</Row>
-					</Col>
-				</Row>
-			</Card>
-			<Card className="mt-3" title="Product Description">
-				<Typography.Text>{productDetailsData?.description || 'No Description Provided'}</Typography.Text>
-			</Card>
+										</Col>
+										<Col span={12}>
+											<BlackButtonContainer>
+												<Button size="large" block type="primary" onClick={buyNowClickHandler}>
+													BUY NOW
+												</Button>
+											</BlackButtonContainer>
+										</Col>
+									</Row>
+								</Col>
+							</Row>
+						</Col>
+					</Row>
+				</Card>
+				<Card className="mt-3" title="Product Description">
+					<Typography.Text>{productDetailsData?.description || 'No Description Provided'}</Typography.Text>
+				</Card>
 
-			<BasicModal
-				isOpen={isLoginModalOpen}
-				handleCancel={() => setIsLoginModalOpen(false)}
-				handleOk={() => setIsLoginModalOpen(false)}
-				modalBody={<LoginForm setIsModalOpen={setIsLoginModalOpen} />}
-				title="Please login"
-				isFooter={false}
-			/>
-		</section>
+				<BasicModal
+					isOpen={isLoginModalOpen}
+					handleCancel={() => setIsLoginModalOpen(false)}
+					handleOk={() => setIsLoginModalOpen(false)}
+					modalBody={<LoginForm setIsModalOpen={setIsLoginModalOpen} />}
+					title="Please login"
+					isFooter={false}
+				/>
+			</section>
+		</>
 	);
 }

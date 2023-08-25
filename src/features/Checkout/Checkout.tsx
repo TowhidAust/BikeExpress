@@ -6,7 +6,6 @@ import { useGetUserDetailsQuery } from '../UserDetails/api';
 import { RootState } from '@/redux/store';
 import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
 import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
-// import { useGetHelmetListQuery } from '../Products/Helmet/api';
 
 export default function Checkout() {
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
@@ -18,12 +17,6 @@ export default function Checkout() {
 		isLoading: userDetailsLoading,
 		error: userDetailsError,
 	} = useGetUserDetailsQuery({ userId: auth?.user?.id });
-
-	// const {
-	// 	data: prodDetailsData,
-	// 	isLoading: isProdDetailsLoading,
-	// 	error: prodDetailsError,
-	// } = useGetHelmetListQuery({ id: '123', page: 0, pageSize: 10 });
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
@@ -37,12 +30,18 @@ export default function Checkout() {
 	};
 
 	const calculateSubtotal = (_orderSummary: any) => {
-		const price = _orderSummary?.price;
-		const discount = _orderSummary?.discount;
-		const quantity = _orderSummary?.quantity;
-		const totalPrice = price * quantity;
+		const { items } = _orderSummary;
 
-		return totalPrice - (price * quantity * discount) / 100;
+		let finalPrice: number = 0;
+		items?.forEach((orderItems: any) => {
+			const price = orderItems?.price || 0;
+			const discount = orderItems?.discount || 0;
+			const quantity = orderItems?.quantity || 0;
+			const totalPrice = price * quantity;
+			const totalPriceAfterDiscount = totalPrice - (totalPrice * discount) / 100;
+			finalPrice += totalPriceAfterDiscount;
+		});
+		return finalPrice;
 	};
 
 	const onFinish = (values: any) => {
@@ -172,21 +171,23 @@ export default function Checkout() {
 							</Row>
 						</Form>
 					</Col>
-					<Col xs={24} sm={24} md={12}>
-						<Typography.Title className="m-0 primary-font-color" level={5}>
-							Your Order Summary
-						</Typography.Title>
-						<Divider className="mt-2 mb-2" />
-						<Typography.Title className="font-weight-400" level={5}>
-							N/A
-						</Typography.Title>
-						<Typography.Text> Price: {0}</Typography.Text>
-						<br />
-						<Typography.Text> Quantity: {0} </Typography.Text> <br />
-						<Typography.Text> Discount: {0} </Typography.Text> <br />
-						<Divider />
-						<Typography.Text>Total: {calculateSubtotal(orderSummary)}</Typography.Text>
-					</Col>
+					{orderSummary?.items?.map((items) => (
+						<Col xs={24} sm={24} md={12} key={items?.productId}>
+							<Typography.Title className="m-0 primary-font-color" level={5}>
+								Your Order Summary
+							</Typography.Title>
+							<Divider className="mt-2 mb-2" />
+							<Typography.Title className="font-weight-400" level={5}>
+								{items?.title}
+							</Typography.Title>
+							<Typography.Text> Price: {items?.price}</Typography.Text>
+							<br />
+							<Typography.Text> Quantity: {items?.quantity} </Typography.Text> <br />
+							<Typography.Text> Discount: {items?.discount} </Typography.Text> <br />
+							<Divider />
+							<Typography.Text>Total: {calculateSubtotal(orderSummary)}</Typography.Text>
+						</Col>
+					))}
 				</Row>
 			</Card>
 		);

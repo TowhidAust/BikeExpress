@@ -29,6 +29,7 @@ export interface ProductSizesModel {
 
 export interface ProductVariantModel {
 	_id: string;
+	productId: string;
 	price: number;
 	discount: number;
 	color: string;

@@ -7,12 +7,16 @@ type ItemsType = {
 	variantId: string;
 	sizeId: string;
 	quantity: number;
+	price: undefined | null | number;
+	productName: undefined | null | String;
+	discount: undefined | null | number;
 };
 
 type InitialStateType = {
 	userId: undefined | null | string;
 	items: undefined | null | ItemsType[];
 };
+
 const initialState: InitialStateType = {
 	userId: null,
 	items: [],

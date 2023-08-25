@@ -11,6 +11,7 @@ function App() {
 					colorPrimary: '#059669',
 					colorLink: '#059669',
 					borderRadius: 3,
+					boxShadow: 'none',
 				},
 				components: {
 					Input: {
@@ -25,6 +26,7 @@ function App() {
 						controlHeightLG: 50,
 						colorPrimary: 'black',
 						colorPrimaryHover: 'rgba(0,0,0,0.85)',
+						colorPrimaryActive: 'black',
 					},
 				},
 			}}

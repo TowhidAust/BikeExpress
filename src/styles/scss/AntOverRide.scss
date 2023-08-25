@@ -1,3 +1,7 @@
-button {
+button, input:focus {
+  box-shadow: none !important;
+}
+
+.ant-select-selector, .ant-input-affix-wrapper {
   box-shadow: none !important;
 }
