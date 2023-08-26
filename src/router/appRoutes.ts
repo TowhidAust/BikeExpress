@@ -23,4 +23,5 @@ export const PRIVATE_ROUTE = {
 
 	USER_DETAILS: '/user/details',
 	CHECKOUT: '/checkout',
+	ORDER_SUCCESS: '/order-succes',
 };

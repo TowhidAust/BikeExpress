@@ -37,14 +37,14 @@ export default function TopBar() {
 
 	return (
 		<div>
+			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
+				<Row gutter={[16, 16]} align="middle" justify="space-between">
+					<Col xs={24} sm={24} md={6}>
+						<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
+					</Col>
+				</Row>
+			</Header>
 			<Affix offsetTop={0} className="width-100">
-				<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
-					<Row gutter={[16, 16]} align="middle" justify="space-between">
-						<Col xs={24} sm={24} md={6}>
-							<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
-						</Col>
-					</Row>
-				</Header>
 				<Card className="m-0 p-0" style={{ borderRadius: 0 }} bodyStyle={{ margin: 0, padding: 0 }}>
 					<Row justify="space-between">
 						<Col xs={24} sm={24} md={18}>

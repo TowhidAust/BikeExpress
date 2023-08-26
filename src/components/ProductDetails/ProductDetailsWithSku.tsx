@@ -140,12 +140,10 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 
 		if (auth?.user?.id) {
 			const hasSkuAvailable = productDetailsData?.hasSku;
-
 			const selectedVariantIndex = hasSkuAvailable
-				? variants.findIndex((item) => item.productId === productDetailsData._id)
+				? variants.findIndex((item) => item._id === selectedColorFamilyId)
 				: -1;
 			const selectedSizeArr = hasSkuAvailable ? variants[selectedVariantIndex].sizes : [];
-
 			const selectedSizeIndex = hasSkuAvailable
 				? selectedSizeArr.findIndex((item) => item?._id === selectedSizeId)
 				: -1;
@@ -194,14 +192,14 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						{/* Image gallery */}
 						<Col md={8}>
 							<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
-								<Image src={productDetailsData?.thumbnail} style={{ borderRadius: 8 }} />
+								<Image src={productDetailsData?.thumbnail} style={{ borderRadius: 8 }} width="100%" height={300} />
 							</Card>
 							<Row>
 								{productDetailsData?.images?.map((image: any) => {
 									return (
 										<Col span={6} key={image?.imagePath}>
 											<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
-												<Image src={image?.downloadUrl || image} style={{ borderRadius: 8 }} />
+												<Image src={image?.downloadUrl || image} style={{ borderRadius: 8 }} width="100%" height={60} />
 											</Card>
 										</Col>
 									);

@@ -1,18 +1,22 @@
 import { App, Button, Card, Col, Divider, Form, Input, Radio, RadioChangeEvent, Row, Select, Typography } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { DISTRICTS, DIVISIONS } from '@/constants';
 import { useGetUserDetailsQuery, useUpdateUserDetailsMutation } from '../UserDetails/api';
 import { RootState } from '@/redux/store';
 import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
 import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
 import { PromiseHandler } from '@/utils';
+import { CreateOrderQueryType, useCreateOrderMutation } from './api';
+import { PRIVATE_ROUTE } from '@/router/appRoutes';
 
 export default function Checkout() {
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
 	const [radioValue, setRadioValue] = useState('CASH');
 	const { auth, orderSummary } = useSelector((state: RootState) => state);
 	const { message } = App.useApp();
+	const navigate = useNavigate();
 	const [form] = Form.useForm();
 	const {
 		data: userDetailsData,
@@ -21,6 +25,7 @@ export default function Checkout() {
 	} = useGetUserDetailsQuery({ userId: auth?.user?.id });
 
 	const [updateUserDetailsMutation, { isLoading: updateUserLoading }] = useUpdateUserDetailsMutation();
+	const [createOrderMutation, { isLoading: createOrderLoading }] = useCreateOrderMutation();
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
@@ -51,6 +56,23 @@ export default function Checkout() {
 	const onFinish = async (values: any) => {
 		// eslint-disable-next-line no-console
 		// const { paymentMethod } = values;
+		const createOrderPayload: CreateOrderQueryType = {
+			userId: auth.user.id,
+			paymentMethod: values.paymentMethod,
+			paymentStatus: false,
+			deliveryStatus: false,
+			items: orderSummary.items
+				? orderSummary.items?.map((orderItems) => {
+						return {
+							hasSku: orderItems?.hasSku,
+							productId: orderItems?.productId,
+							variantId: orderItems?.variantId,
+							sizeId: orderItems?.sizeId,
+							quantity: orderItems?.quantity,
+						};
+				  })
+				: [],
+		};
 		delete values.paymentMethod;
 		const [snapshot, updateUserError] = await PromiseHandler(
 			updateUserDetailsMutation({
@@ -61,12 +83,17 @@ export default function Checkout() {
 			}).unwrap(),
 		);
 
-		if (snapshot) {
-			message.success(snapshot?.message || 'Success');
+		const [createOrderSnapshot, createOrderError] = await PromiseHandler(
+			createOrderMutation(createOrderPayload).unwrap(),
+		);
+
+		if (snapshot && createOrderSnapshot) {
+			message.success('Order created successfully');
+			navigate(PRIVATE_ROUTE.ORDER_SUCCESS);
 		}
 
-		if (updateUserError) {
-			message.warning(updateUserError?.data?.message || 'Something went wrong!');
+		if (updateUserError || createOrderError) {
+			message.warning(updateUserError?.data?.message || createOrderError?.data?.message || 'Something went wrong!');
 		}
 	};
 
@@ -184,7 +211,13 @@ export default function Checkout() {
 
 								<Col xs={24} sm={24} md={24}>
 									<BlackButtonContainer>
-										<Button className="mt-2" type="primary" htmlType="submit" block loading={updateUserLoading}>
+										<Button
+											className="mt-2"
+											type="primary"
+											htmlType="submit"
+											block
+											loading={updateUserLoading || createOrderLoading}
+										>
 											SUBMIT
 										</Button>
 									</BlackButtonContainer>

@@ -120,9 +120,9 @@ export default function UsedBikeDetails() {
 						</Card>
 
 						<Row>
-							{bikeDetailsData?.result?.images.map((item: any) => {
+							{bikeDetailsData?.result?.images.map((item: any, index: any) => {
 								return (
-									<Col span={6} key={item?.imagePath}>
+									<Col span={6} key={item?.imagePath || index}>
 										<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
 											<Image src={item?.downloadUrl || item} />
 										</Card>

@@ -45,7 +45,7 @@ export default function LoginForm(props: PropTypes) {
 		}
 
 		if (loginError) {
-			messageApi.error(loginError?.message || 'Something went wrong!');
+			messageApi.warning(loginError?.data?.message || 'Something went wrong!');
 			return false;
 		}
 
