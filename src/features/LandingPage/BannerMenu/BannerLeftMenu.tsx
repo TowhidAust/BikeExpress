@@ -76,79 +76,11 @@ export default function BannerLeftMenu() {
 	return (
 		<Menu
 			className=""
-			style={{ minHeight: '660px' }}
+			style={{ minHeight: '660px', borderRadius: 8 }}
 			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
-			items={
-				items
-
-				// 	[
-				// 	{ key: 1, label: 'Helmet', className: 'm-0', icon: <TbHelmet />, onClick: () => navigate(PUBLIC_ROUTE.HELMET) },
-				// 	{
-				// 		key: 2,
-				// 		label: 'Engine Oil',
-				// 		className: 'm-0',
-				// 		icon: <RiOilLine />,
-				// 		onClick: () => navigate(PUBLIC_ROUTE.ENGINE_OIL),
-				// 	},
-				// 	{
-				// 		key: 3,
-				// 		label: 'Riding Gears',
-				// 		className: 'm-0',
-				// 		icon: <GiWinterGloves />,
-				// 		children: [
-				// 			{ label: 'T-Shirt', key: 'sub-1' },
-				// 			{ label: 'Gloves', key: 'Gloves' },
-				// 		],
-				// 	},
-				// 	{
-				// 		key: 4,
-				// 		label: 'T-Shirt',
-				// 		className: 'm-0',
-				// 		icon: <RiTShirtAirLine />,
-				// 	},
-				// 	{ key: 5, label: 'Light', className: 'm-0', icon: <BulbOutlined /> },
-				// 	{
-				// 		key: 6,
-				// 		label: 'Looking Glass',
-				// 		className: 'm-0',
-				// 		icon: <GiMirrorMirror />,
-				// 	},
-				// 	{ key: 7, label: 'Horn', className: 'm-0', icon: <GiHornInternal /> },
-				// 	{
-				// 		key: 8,
-				// 		label: 'Sticker',
-				// 		className: 'm-0',
-				// 		icon: <TbSticker />,
-				// 	},
-				// 	{
-				// 		key: 9,
-				// 		label: 'Tank Pad',
-				// 		className: 'm-0',
-				// 		icon: <TbSticker />,
-				// 	},
-				// 	{ key: 10, label: 'Lock', className: 'm-0', icon: <RiLock2Line /> },
-				// 	{
-				// 		key: 11,
-				// 		label: 'Seat Cover',
-				// 		className: 'm-0',
-				// 		icon: <GiCoveredJar />,
-				// 	},
-				// 	{
-				// 		key: 12,
-				// 		label: 'Battery',
-				// 		className: 'm-0',
-				// 		icon: <FaBatteryEmpty />,
-				// 	},
-				// 	{
-				// 		key: 13,
-				// 		label: 'Number Plate Holder',
-				// 		className: 'm-0',
-				// 		icon: <GiCarWheel />,
-				// 	},
-				// ]
-			}
+			items={items}
 		/>
 	);
 }

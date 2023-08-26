@@ -161,9 +161,9 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						quantity: count,
 
 						price: hasSkuAvailable ? variants[selectedVariantIndex]?.price : null,
-						discount: hasSkuAvailable ? variants[selectedVariantIndex].discount : productDetailsData?.discount || null,
+						discount: hasSkuAvailable ? variants[selectedVariantIndex]?.discount : productDetailsData?.discount || null,
 						title: productDetailsData?.title || null,
-						size: hasSkuAvailable ? selectedSizeArr[selectedSizeIndex].size : null,
+						size: hasSkuAvailable ? selectedSizeArr[selectedSizeIndex]?.size : null,
 					},
 				],
 			};
@@ -194,14 +194,14 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						{/* Image gallery */}
 						<Col md={8}>
 							<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
-								<Image src={productDetailsData?.thumbnail} />
+								<Image src={productDetailsData?.thumbnail} style={{ borderRadius: 8 }} />
 							</Card>
 							<Row>
 								{productDetailsData?.images?.map((image: any) => {
 									return (
 										<Col span={6} key={image?.imagePath}>
 											<Card hoverable className="p-0" bodyStyle={{ padding: '3%' }}>
-												<Image src={image?.downloadUrl || image} />
+												<Image src={image?.downloadUrl || image} style={{ borderRadius: 8 }} />
 											</Card>
 										</Col>
 									);
@@ -212,13 +212,13 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 							<Typography.Title className="mb-0" level={3}>
 								{productDetailsData?.title || 'N/A'}
 							</Typography.Title>
-							<Typography.Title level={5} className="m-0 primary-font-color">
+							<Typography.Title level={5} className="mt-0 mb-0 primary-font-color">
 								BDT {productPrice - (productPrice * discount) / 100}
 							</Typography.Title>
-							<Typography.Text className="m-0 p-0" type="secondary" style={{ textDecoration: 'line-through' }}>
+							<Typography.Text type="secondary" style={{ textDecoration: 'line-through' }}>
 								BDT {productPrice}
 							</Typography.Text>
-							<Divider />
+							<Divider className="mt-3" />
 							<Table
 								scroll={{ x: true }}
 								columns={column}
@@ -233,7 +233,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 										<Col xs={24} sm={24} md={24}>
 											<Row gutter={[8, 8]}>
 												<Col xs={24} sm={24} md={24}>
-													<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+													<Typography.Title className="primary-font-color mb-0 font-weight-400" level={5}>
 														Color Family
 													</Typography.Title>
 												</Col>
@@ -261,7 +261,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 												{availableSizes?.length > 0 && (
 													<>
 														<Col xs={24} sm={24} md={24}>
-															<Typography.Title className="primary-font-color m-0 font-weight-400" level={5}>
+															<Typography.Title className="primary-font-color mb-0 font-weight-400" level={5}>
 																Size
 															</Typography.Title>
 														</Col>
@@ -308,7 +308,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									</>
 								)}
 
-								<Col xs={24} sm={24} md={12}>
+								<Col xs={24} sm={24} md={24}>
 									<Typography.Title className="primary-font-color font-weight-400" level={5}>
 										Quantity
 									</Typography.Title>
@@ -324,36 +324,44 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 												alignItems: 'center',
 											}}
 										>
-											<Button type="link" icon={<MinusCircleOutlined />} onClick={minusClickHandler} />
-											<Typography.Title className="m-0" level={5}>
+											<Button
+												disabled={count < 1}
+												type="link"
+												icon={<MinusCircleOutlined />}
+												onClick={minusClickHandler}
+											/>
+											<Typography.Title className="m-0 mb-1" level={5}>
 												{count}
 											</Typography.Title>
 											<Button type="link" icon={<PlusCircleOutlined />} onClick={plusClickHandler} />
 										</section>
 									</Card>
 								</Col>
-								<Col xs={24} sm={24} md={12}>
+								<Col xs={24} sm={24} md={24}>
 									<Typography.Title className="m-0 font-weight-400 primary-font-color" level={5}>
 										Warranty & Return
 									</Typography.Title>
 									<ul className="pl-3">
-										<li>
-											{productDetailsData?.warranty} {productDetailsData?.warrantyUnit} service waranty{' '}
-										</li>
+										{productDetailsData?.warranty && (
+											<li>
+												{productDetailsData?.warranty} {productDetailsData?.warrantyUnit} service waranty
+											</li>
+										)}
+
 										{productDetailsData?.certificationName && (
 											<li> {productDetailsData?.certificationName} Certified </li>
 										)}
-										<li> 7 days return (Change of mind is not applicable) </li>
+										<li> 7 days easy return (T&C) </li>
 									</ul>
 								</Col>
 								<Col span={24}>
 									<Row className="mt-2" gutter={[8, 8]}>
-										<Col span={12}>
-											<Button size="large" block type="primary" onClick={addToCartClickHandler}>
+										<Col xs={24} sm={24} md={12}>
+											<Button size="large" block type="default" onClick={addToCartClickHandler}>
 												ADD TO CART
 											</Button>
 										</Col>
-										<Col span={12}>
+										<Col xs={24} sm={24} md={12}>
 											<BlackButtonContainer>
 												<Button size="large" block type="primary" onClick={buyNowClickHandler}>
 													BUY NOW

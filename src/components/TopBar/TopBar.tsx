@@ -1,4 +1,4 @@
-import { Affix, Button, Card, Col, Dropdown, Input, Layout, Menu, Row, Typography } from 'antd';
+import { Affix, Button, Card, Col, Dropdown, Layout, Menu, Row, Typography } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,18 +37,15 @@ export default function TopBar() {
 
 	return (
 		<div>
-			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
-				<Row gutter={[16, 16]} align="middle" justify="space-between">
-					<Col xs={24} sm={24} md={6}>
-						<Logo fontColor="white" width={160} fontSize={18} iconFontSize={22} />
-					</Col>
-					<Col xs={24} sm={24} md={6}>
-						<Input.Search className="mt-3" placeholder="search" size="middle" />
-					</Col>
-				</Row>
-			</Header>
 			<Affix offsetTop={0} className="width-100">
-				<Card className="m-0 p-0" bodyStyle={{ margin: 0, padding: 0 }}>
+				<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
+					<Row gutter={[16, 16]} align="middle" justify="space-between">
+						<Col xs={24} sm={24} md={6}>
+							<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
+						</Col>
+					</Row>
+				</Header>
+				<Card className="m-0 p-0" style={{ borderRadius: 0 }} bodyStyle={{ margin: 0, padding: 0 }}>
 					<Row justify="space-between">
 						<Col xs={24} sm={24} md={18}>
 							<Menu
@@ -108,7 +105,7 @@ export default function TopBar() {
 								]}
 							/>
 						</Col>
-						<Col className="text-right" xs={24} sm={24} md={4}>
+						<Col xs={24} sm={24} md={4} style={{ textAlign: 'center' }}>
 							{!firstname ? (
 								<Button
 									className="mt-1"
@@ -122,12 +119,12 @@ export default function TopBar() {
 									Login
 								</Button>
 							) : (
-								<Dropdown menu={{ items }} trigger={['click']}>
+								<Dropdown menu={{ items }} trigger={['click']} placement="bottomRight">
 									<Button
-										className="mt-1"
 										type="link"
-										block
+										// block
 										style={{
+											marginTop: '5px',
 											maxWidth: '220px',
 											overflow: 'hidden',
 											textOverflow: 'ellipsis',

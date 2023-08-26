@@ -1,22 +1,26 @@
-import { Button, Card, Col, Divider, Form, Input, Radio, RadioChangeEvent, Row, Select, Typography } from 'antd';
+import { App, Button, Card, Col, Divider, Form, Input, Radio, RadioChangeEvent, Row, Select, Typography } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { DISTRICTS, DIVISIONS } from '@/constants';
-import { useGetUserDetailsQuery } from '../UserDetails/api';
+import { useGetUserDetailsQuery, useUpdateUserDetailsMutation } from '../UserDetails/api';
 import { RootState } from '@/redux/store';
 import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
 import { BlackButtonContainer } from '@/styles/styled/BlackButtonContainer';
+import { PromiseHandler } from '@/utils';
 
 export default function Checkout() {
 	const [selectedPresentDivision, setSelectedPresentDivision] = useState<any[]>();
 	const [radioValue, setRadioValue] = useState('CASH');
 	const { auth, orderSummary } = useSelector((state: RootState) => state);
+	const { message } = App.useApp();
 	const [form] = Form.useForm();
 	const {
 		data: userDetailsData,
 		isLoading: userDetailsLoading,
 		error: userDetailsError,
 	} = useGetUserDetailsQuery({ userId: auth?.user?.id });
+
+	const [updateUserDetailsMutation, { isLoading: updateUserLoading }] = useUpdateUserDetailsMutation();
 
 	const handleFormValuesChange = (value: any) => {
 		if (value?.division) {
@@ -44,9 +48,26 @@ export default function Checkout() {
 		return finalPrice;
 	};
 
-	const onFinish = (values: any) => {
+	const onFinish = async (values: any) => {
 		// eslint-disable-next-line no-console
-		console.log(values);
+		// const { paymentMethod } = values;
+		delete values.paymentMethod;
+		const [snapshot, updateUserError] = await PromiseHandler(
+			updateUserDetailsMutation({
+				userId: auth?.user?.id,
+				payload: {
+					deliveryLocation: values,
+				},
+			}).unwrap(),
+		);
+
+		if (snapshot) {
+			message.success(snapshot?.message || 'Success');
+		}
+
+		if (updateUserError) {
+			message.warning(updateUserError?.data?.message || 'Something went wrong!');
+		}
 	};
 
 	if (userDetailsError) {
@@ -163,7 +184,7 @@ export default function Checkout() {
 
 								<Col xs={24} sm={24} md={24}>
 									<BlackButtonContainer>
-										<Button className="mt-2" type="primary" htmlType="submit" block>
+										<Button className="mt-2" type="primary" htmlType="submit" block loading={updateUserLoading}>
 											SUBMIT
 										</Button>
 									</BlackButtonContainer>

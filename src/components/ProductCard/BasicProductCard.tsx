@@ -25,11 +25,12 @@ export default function BasicProductCard(props: ProductPropTypes) {
 						backgroundSize: 'cover',
 						backgroundRepeat: 'no-repeat',
 						height: '200px',
+						borderRadius: '8px 8px 0 0',
 					}}
 				>
 					<BlackButtonContainer>
 						<Button
-							style={{ position: 'absolute', bottom: 0, right: 0, borderRadius: 0 }}
+							style={{ position: 'absolute', bottom: 0, right: 0, borderRadius: '8px 0 0 0' }}
 							type="primary"
 							onClick={onDetailsButtonClick}
 						>

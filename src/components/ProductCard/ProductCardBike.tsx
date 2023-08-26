@@ -31,11 +31,12 @@ export default function ProductCardBike(props: ProductPropTypes) {
 						backgroundSize: 'cover',
 						backgroundRepeat: 'no-repeat',
 						height: '200px',
+						borderRadius: '8px 8px 0 0',
 					}}
 				>
 					<BlackButtonContainer>
 						<Button
-							style={{ borderRadius: 0, position: 'absolute', bottom: 0, right: 0 }}
+							style={{ borderRadius: '8px 0 0 0', position: 'absolute', bottom: 0, right: 0 }}
 							type="primary"
 							onClick={onDetailsButtonClick}
 						>

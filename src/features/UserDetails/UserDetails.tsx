@@ -88,7 +88,7 @@ export default function UserDetails() {
 						form={form}
 						size="large"
 						layout="horizontal"
-						labelCol={{ span: 6 }}
+						labelCol={{ span: 7 }}
 						wrapperCol={{ span: 18 }}
 						labelAlign="left"
 						disabled={isProfileEdit}

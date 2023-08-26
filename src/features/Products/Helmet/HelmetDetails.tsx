@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import ProductDetailsWithSku from '@/components/ProductDetails/ProductDetailsWithSku';
-import RatingsAndReviews from '@/components/ProductDetails/RatingsAndReviews';
+// import RatingsAndReviews from '@/components/ProductDetails/RatingsAndReviews';
 import { useGetHelmetListQuery, useGetProductVariantsQuery } from './api';
 import SingleSkeleton from '@/components/Skeleton/SingleSkeleton';
 
@@ -27,7 +27,7 @@ export default function HelmetDetails() {
 	return (
 		<>
 			<ProductDetailsWithSku productDetailsData={prodDetailsData?.result[0]} variants={data?.result || []} />
-			<RatingsAndReviews />
+			{/* <RatingsAndReviews /> */}
 		</>
 	);
 }

@@ -3,14 +3,14 @@ import AppRoutes from './router';
 import './App.css';
 import './styles/scss/index.scss';
 
-function App() {
+function MyApp() {
 	return (
 		<ConfigProvider
 			theme={{
 				token: {
 					colorPrimary: '#059669',
 					colorLink: '#059669',
-					borderRadius: 3,
+					// borderRadius: 0,
 					boxShadow: 'none',
 				},
 				components: {
@@ -24,9 +24,9 @@ function App() {
 					},
 					Button: {
 						controlHeightLG: 50,
-						colorPrimary: 'black',
-						colorPrimaryHover: 'rgba(0,0,0,0.85)',
-						colorPrimaryActive: 'black',
+						// colorPrimary: 'darkred',
+						// colorPrimaryHover: 'rgba(0,0,0,0.85)',
+						// colorPrimaryActive: 'black',
 					},
 				},
 			}}
@@ -36,4 +36,4 @@ function App() {
 	);
 }
 
-export default App;
+export default MyApp;

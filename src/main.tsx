@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { Suspense } from 'react';
-import { Spin } from 'antd';
+import { Spin , App } from 'antd';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
@@ -10,9 +10,10 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import App from './App';
+import MyApp from './App';
 import { store } from './redux/store';
 import './index.css';
+
 
 const persistor = persistStore(store);
 
@@ -57,11 +58,13 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 		}
 	>
 		<React.StrictMode>
-			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<App />
-				</PersistGate>
-			</Provider>
+			<App>
+				<Provider store={store}>
+					<PersistGate loading={null} persistor={persistor}>
+						<MyApp />
+					</PersistGate>
+				</Provider>
+			</App>
 		</React.StrictMode>
 	</Suspense>,
 );
