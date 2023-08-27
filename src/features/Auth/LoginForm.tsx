@@ -56,7 +56,6 @@ export default function LoginForm(props: PropTypes) {
 		<>
 			{contextHolder}
 			<Form
-				style={{ padding: '50px 40px' }}
 				labelCol={{ span: 24 }}
 				wrapperCol={{ span: 24 }}
 				size="large"

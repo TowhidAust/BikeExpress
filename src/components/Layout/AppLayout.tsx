@@ -13,9 +13,11 @@ export default function AppLayout(props: PropTypes) {
 	const { children } = props;
 	return (
 		<Layout>
-			<TopBar />
-			<Content className="layout-content-padding">{children}</Content>
-			<AppFooter />
+			<Content style={{ minHeight: '100vh' }}>
+				<TopBar />
+				<Content className="layout-content-padding">{children}</Content>
+				<AppFooter />
+			</Content>
 		</Layout>
 	);
 }

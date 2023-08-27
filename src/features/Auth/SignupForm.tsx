@@ -30,7 +30,6 @@ export default function SignupForm() {
 
 	return (
 		<Form
-			style={{ padding: '50px 40px' }}
 			labelCol={{ span: 24 }}
 			wrapperCol={{ span: 24 }}
 			size="large"
