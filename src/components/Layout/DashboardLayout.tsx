@@ -1,4 +1,4 @@
-import { Layout, Menu, theme, ConfigProvider, Button } from 'antd';
+import { Layout, Menu, theme, ConfigProvider, Button, Typography } from 'antd';
 import { useState } from 'react';
 import {
 	MenuFoldOutlined,
@@ -7,17 +7,17 @@ import {
 	UserOutlined,
 	VideoCameraOutlined,
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
+import { PRIVATE_ROUTE } from '@/router/appRoutes';
+import DashboardRoutes from './DashboardRoutes';
 
 const { Header, Content, Sider } = Layout;
 
-type PropTypes = {
-	children: any;
-};
-
-export default function DashboardLayout(props: PropTypes) {
-	const { children } = props;
+export default function DashboardLayout() {
 	const [collapsed, setCollapsed] = useState(false);
+	const [activeMenuKey, setActiveMenuKey] = useState<string>('1');
+	const navigate = useNavigate();
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
@@ -44,30 +44,60 @@ export default function DashboardLayout(props: PropTypes) {
 			}}
 		>
 			<Layout>
-				<Sider trigger={null} collapsible collapsed={collapsed} style={{ background: 'black' }}>
-					<div style={{ padding: '10px' }}>
-						<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
-					</div>
+				<Sider trigger={null} collapsible collapsed={collapsed} theme="light" width={280}>
+					{!collapsed && (
+						<div
+							style={{
+								padding: '10px 10px 10px 28px',
+								display: 'flex',
+								flexFlow: 'wrap',
+								justifyContent: 'start',
+								alignItems: 'start',
+								backgroundColor: 'black',
+								flexDirection: 'column',
+							}}
+						>
+							<div>
+								<Logo fontColor="white" width="100%" fontSize={14} iconFontSize={20} />
+							</div>
+							<div style={{ color: 'white', width: '100%' }}>
+								<Typography.Text className="primary-font-color" type="success">
+									Admin
+								</Typography.Text>
+							</div>
+						</div>
+					)}
+
 					<Menu
-						style={{ background: 'black' }}
-						theme="dark"
+						theme="light"
 						mode="inline"
-						defaultSelectedKeys={['1']}
+						defaultSelectedKeys={[activeMenuKey]}
 						items={[
 							{
 								key: '1',
 								icon: <UserOutlined />,
 								label: 'Dashboard',
+								style: { marginLeft: 0, marginRight: 0, width: '100%' },
+								onClick: () => {
+									navigate(PRIVATE_ROUTE.DASHBOARD);
+									setActiveMenuKey('1');
+								},
 							},
 							{
 								key: '2',
 								icon: <VideoCameraOutlined />,
 								label: 'Orders',
+								style: { marginLeft: 0, marginRight: 0, width: '100%' },
 							},
 							{
 								key: '3',
 								icon: <UploadOutlined />,
 								label: 'Product Listing',
+								style: { marginLeft: 0, marginRight: 0, width: '100%' },
+								onClick: () => {
+									navigate(PRIVATE_ROUTE.PRODUCT_LISTING);
+									setActiveMenuKey('3');
+								},
 							},
 						]}
 					/>
@@ -93,7 +123,7 @@ export default function DashboardLayout(props: PropTypes) {
 							background: colorBgContainer,
 						}}
 					>
-						{children}
+						<DashboardRoutes />
 					</Content>
 				</Layout>
 			</Layout>

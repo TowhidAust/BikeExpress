@@ -20,7 +20,7 @@ export default function Logo(props: PropTypes) {
 				textAlign: 'center',
 			}}
 		>
-			<div style={{ color: fontColor, width: '40%', textAlign: 'left' }}> RIDERS </div>
+			<div style={{ color: fontColor, marginRight: 5 }}> RIDERS </div>
 			<div
 				style={{
 					width: '20%',
@@ -29,9 +29,9 @@ export default function Logo(props: PropTypes) {
 					alignItems: 'center',
 				}}
 			>
-				<FaMotorcycle className="primary-font-color width-100 mr-1" style={{ fontSize: iconFontSize }} />
+				<FaMotorcycle className="primary-font-color width-100" style={{ fontSize: iconFontSize }} />
 			</div>
-			<div style={{ color: fontColor, width: '40%', textAlign: 'right' }}> CONSOLE </div>
+			<div style={{ color: fontColor, marginLeft: 5 }}> CONSOLE </div>
 		</div>
 	);
 }

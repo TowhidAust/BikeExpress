@@ -18,10 +18,13 @@ export const PUBLIC_ROUTE = {
 
 export const PRIVATE_ROUTE = {
 	HOME: '/admin/home',
-	DASHBOARD: '/admin/dashboard',
 	BOOKINGS: '/admin/bookings',
 
 	USER_DETAILS: '/user/details',
 	CHECKOUT: '/checkout',
 	ORDER_SUCCESS: '/order-succes',
+
+	// admins
+	DASHBOARD: '/admin/dashboard',
+	PRODUCT_LISTING: '/admin/product-listing',
 };

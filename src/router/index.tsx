@@ -22,7 +22,7 @@ const CheckoutPage = lazy(() => import('@/pages/Checkout/CheckoutPage'));
 const OrderSuccessPage = lazy(() => import('@/pages/Success/OrderSuccessPage'));
 
 // Admins
-const AdminDashboardPage = lazy(() => import('@/pages/Admin/Dashboard/DashboardPage'));
+const DashboardLayout = lazy(() => import('@/components/Layout/DashboardLayout'));
 
 export default function AppRoutes() {
 	const publicRoutes = [
@@ -101,7 +101,8 @@ export default function AppRoutes() {
 						<Route path={PRIVATE_ROUTE.USER_DETAILS} element={<UserDetailsPage />} />
 						<Route path={PRIVATE_ROUTE.CHECKOUT} element={<CheckoutPage />} />
 						<Route path={PRIVATE_ROUTE.ORDER_SUCCESS} element={<OrderSuccessPage />} />
-						<Route path={PRIVATE_ROUTE.DASHBOARD} element={<AdminDashboardPage />} />
+
+						<Route path="/*" element={<DashboardLayout />} />
 					</Route>
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
