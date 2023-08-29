@@ -33,9 +33,19 @@ export default function DashboardLayout() {
 				components: {
 					Input: {
 						lineHeightLG: 2.5,
+						borderRadius: 8,
+						borderRadiusLG: 8,
+						borderRadiusOuter: 8,
+						borderRadiusSM: 8,
+						borderRadiusXS: 8,
 					},
 					Select: {
 						controlHeightLG: 50,
+						borderRadius: 8,
+						borderRadiusLG: 8,
+						borderRadiusOuter: 8,
+						borderRadiusSM: 8,
+						borderRadiusXS: 8,
 					},
 					Button: {
 						controlHeightLG: 50,

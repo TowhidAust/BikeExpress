@@ -175,7 +175,7 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Input placeholder="Your bike engine CC" type="number" />
+											<Input placeholder="Your bike engine CC" type="number" onWheel={(e: any) => e.target.blur()} />
 										</Form.Item>
 										<Form.Item
 											label="Bike Brand Name"
@@ -199,7 +199,7 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Input placeholder="Bike model year" type="number" />
+											<Input placeholder="Bike model year" type="number" onWheel={(e: any) => e.target.blur()} />
 										</Form.Item>
 										<Form.Item
 											label="Registration Zone"
@@ -231,7 +231,7 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Input placeholder="Registration year" type="number" />
+											<Input placeholder="Registration year" type="number" onWheel={(e: any) => e.target.blur()} />
 										</Form.Item>
 										<Form.Item
 											name="kmRun"
@@ -243,7 +243,11 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Input type="number" placeholder="Total Kilometer run of your bike" />
+											<Input
+												type="number"
+												placeholder="Total Kilometer run of your bike"
+												onWheel={(e: any) => e.target.blur()}
+											/>
 										</Form.Item>
 										<Form.Item
 											label="Tax Token"
@@ -404,7 +408,7 @@ export default function SellBike() {
 												},
 											]}
 										>
-											<Input placeholder="Price" type="number" />
+											<Input placeholder="Price" type="number" onWheel={(e: any) => e.target.blur()} />
 										</Form.Item>
 
 										<Form.Item
