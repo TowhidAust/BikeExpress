@@ -54,7 +54,7 @@ export default function DashboardLayout() {
 			}}
 		>
 			<Layout>
-				<Sider trigger={null} collapsible collapsed={collapsed} theme="light" width={280}>
+				<Sider trigger={null} collapsible collapsed={collapsed} theme="light" width={200}>
 					{!collapsed && (
 						<div
 							style={{
