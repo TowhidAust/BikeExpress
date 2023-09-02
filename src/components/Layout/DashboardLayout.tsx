@@ -49,6 +49,11 @@ export default function DashboardLayout() {
 					},
 					Button: {
 						controlHeightLG: 50,
+						borderRadius: 8,
+						borderRadiusLG: 8,
+						borderRadiusOuter: 8,
+						borderRadiusSM: 8,
+						borderRadiusXS: 8,
 					},
 				},
 			}}
@@ -127,7 +132,7 @@ export default function DashboardLayout() {
 					</Header>
 					<Content
 						style={{
-							margin: '24px 16px',
+							margin: '15px',
 							padding: 24,
 							minHeight: '85vh',
 							background: colorBgContainer,
