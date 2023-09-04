@@ -27,33 +27,33 @@ export default function DashboardLayout() {
 				token: {
 					colorPrimary: '#059669',
 					colorLink: '#059669',
-					borderRadius: 0,
+					// borderRadius: 0,
 					boxShadow: 'none',
 				},
 				components: {
 					Input: {
 						lineHeightLG: 2.5,
-						borderRadius: 8,
-						borderRadiusLG: 8,
-						borderRadiusOuter: 8,
-						borderRadiusSM: 8,
-						borderRadiusXS: 8,
+						// borderRadius: 8,
+						// borderRadiusLG: 8,
+						// borderRadiusOuter: 8,
+						// borderRadiusSM: 8,
+						// borderRadiusXS: 8,
 					},
 					Select: {
 						controlHeightLG: 50,
-						borderRadius: 8,
-						borderRadiusLG: 8,
-						borderRadiusOuter: 8,
-						borderRadiusSM: 8,
-						borderRadiusXS: 8,
+						// borderRadius: 8,
+						// borderRadiusLG: 8,
+						// borderRadiusOuter: 8,
+						// borderRadiusSM: 8,
+						// borderRadiusXS: 8,
 					},
 					Button: {
 						controlHeightLG: 50,
-						borderRadius: 8,
-						borderRadiusLG: 8,
-						borderRadiusOuter: 8,
-						borderRadiusSM: 8,
-						borderRadiusXS: 8,
+						// borderRadius: 8,
+						// borderRadiusLG: 8,
+						// borderRadiusOuter: 8,
+						// borderRadiusSM: 8,
+						// borderRadiusXS: 8,
 					},
 				},
 			}}
@@ -132,10 +132,10 @@ export default function DashboardLayout() {
 					</Header>
 					<Content
 						style={{
-							margin: '15px',
-							padding: 24,
+							// margin: '10px',
+							padding: 20,
 							minHeight: '85vh',
-							background: colorBgContainer,
+							// background: colorBgContainer,
 						}}
 					>
 						<DashboardRoutes />

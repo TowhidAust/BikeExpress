@@ -1,12 +1,23 @@
-import { Col, Form, Input, Radio, Row, Select, Space } from 'antd';
+import { Col, Form, Input, Radio, Row, Select, Space, Button } from 'antd';
 
-export default function ProductListForm() {
+type PropTypes = {
+	current: number;
+	setCurrent: any;
+};
+
+export default function ProductListForm(props: PropTypes) {
 	const [form] = Form.useForm();
+	const { setCurrent, current } = props;
+
+	const onFinish = (value: any) => {
+		// eslint-disable-next-line no-console
+		console.log(value);
+		setCurrent(current + 1);
+	};
 
 	return (
 		<Space direction="vertical" size="large">
 			<Form
-				className="mt-5"
 				size="large"
 				form={form}
 				name="basic"
@@ -15,13 +26,13 @@ export default function ProductListForm() {
 				labelCol={{ span: 6 }}
 				wrapperCol={{ span: 18 }}
 				labelAlign="left"
-				// onFinish={onFinish}
+				onFinish={onFinish}
 				// onValuesChange={handleFormValuesChange}
 				// layout="vertical"
 			>
 				<Row gutter={[32, 0]}>
 					<Col md={12}>
-						<Form.Item label="Category">
+						<Form.Item name="category" label="Category" rules={[{ required: true, message: 'Required' }]}>
 							<Select
 								showSearch
 								placeholder="Select a category"
@@ -35,17 +46,17 @@ export default function ProductListForm() {
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Title">
+						<Form.Item name="title" label="Title" rules={[{ required: true, message: 'Required' }]}>
 							<Input placeholder="Your product title" />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Price">
+						<Form.Item name="price" label="Price" rules={[{ required: true, message: 'Required' }]}>
 							<Input placeholder="Your product price" type="number" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Availablity">
+						<Form.Item name="inStock" label="Availablity" rules={[{ required: true, message: 'Required' }]}>
 							<Radio.Group>
 								<Radio value>In-Stock</Radio>
 								<Radio value={false}>Out of Stock</Radio>
@@ -53,12 +64,12 @@ export default function ProductListForm() {
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Warranty">
+						<Form.Item name="warranty" label="Warranty">
 							<Input placeholder="Warranty" type="number" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Warranty Unit">
+						<Form.Item name="warrantyUnit" label="Warranty Unit">
 							<Select
 								showSearch
 								placeholder="Select a warranty unit"
@@ -74,27 +85,27 @@ export default function ProductListForm() {
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Brand">
+						<Form.Item name="brand" label="Brand">
 							<Input placeholder="Enter product brand" />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Made In">
+						<Form.Item name="madeIn" label="Made In">
 							<Input placeholder="Enter brand origin" />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Model No">
+						<Form.Item name="modelNo" label="Model No">
 							<Input placeholder="Enter model no" />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Model Year">
+						<Form.Item name="modelYear" label="Model Year">
 							<Input placeholder="Enter model year" />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Is Certified">
+						<Form.Item name="isCertified" label="Is Certified">
 							<Radio.Group>
 								<Radio value>Yes</Radio>
 								<Radio value={false}>No</Radio>
@@ -102,19 +113,24 @@ export default function ProductListForm() {
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Certification Name">
+						<Form.Item name="certificationName" label="Certification Name">
 							<Input placeholder="Enter Certification name" />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Quantity">
+						<Form.Item name="quantity" label="Quantity" rules={[{ required: true, message: 'Required' }]}>
 							<Input type="number" placeholder="Enter Total quantity" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
 					<Col md={12}>
-						<Form.Item label="Description">
+						<Form.Item name="description" label="Description" rules={[{ required: true, message: 'Required' }]}>
 							<Input placeholder="Enter Description" />
 						</Form.Item>
+					</Col>
+					<Col md={24}>
+						<Button type="primary" htmlType="submit" block>
+							Save & Next
+						</Button>
 					</Col>
 				</Row>
 			</Form>

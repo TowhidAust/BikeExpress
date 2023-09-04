@@ -1,4 +1,4 @@
-import { Steps, Button, Row, Col } from 'antd';
+import { Steps, Button, Row, Col, Card } from 'antd';
 import { useState } from 'react';
 import ProductListForm from './ProductListForm';
 import ProductVariantForm from './ProductVariantForm';
@@ -15,8 +15,9 @@ export default function ProductListing() {
 	};
 
 	return (
-		<>
+		<Card style={{ padding: 18 }}>
 			<Steps
+				className="mb-8"
 				current={current}
 				items={[
 					{
@@ -39,7 +40,7 @@ export default function ProductListing() {
 					},
 				]}
 			/>
-			{current === 0 && <ProductListForm />}
+			{current === 0 && <ProductListForm current={current} setCurrent={setCurrent} />}
 			{current === 1 && (
 				<div>
 					<ProductVariantForm />
@@ -48,18 +49,20 @@ export default function ProductListing() {
 			{current === 2 && <div>Upload Images</div>}
 			{current === 3 && <div>Overview</div>}
 			{current === 4 && <div>Done</div>}
-			<Row gutter={[16, 16]}>
-				<Col md={12}>
-					<Button type="dashed" size="large" block onClick={prev} disabled={current === 0}>
-						PREV
-					</Button>
-				</Col>
-				<Col md={12}>
-					<Button type="primary" size="large" block onClick={next} disabled={current === 5}>
-						NEXT
-					</Button>
-				</Col>
-			</Row>
-		</>
+			{current > 0 && (
+				<Row gutter={[16, 16]} className="mt-8">
+					<Col md={12}>
+						<Button type="dashed" size="large" block onClick={prev} disabled={current === 0}>
+							PREV
+						</Button>
+					</Col>
+					<Col md={12}>
+						<Button type="primary" size="large" block onClick={next} disabled={current === 5} htmlType="submit">
+							NEXT
+						</Button>
+					</Col>
+				</Row>
+			)}
+		</Card>
 	);
 }
