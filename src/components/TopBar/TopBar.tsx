@@ -40,7 +40,7 @@ export default function TopBar() {
 			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
 				<Row gutter={[16, 16]} align="middle" justify="space-between">
 					<Col xs={24} sm={24} md={6}>
-						<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
+						<Logo fontColor="white" width={150} fontSize={15} iconFontSize={20} />
 					</Col>
 				</Row>
 			</Header>

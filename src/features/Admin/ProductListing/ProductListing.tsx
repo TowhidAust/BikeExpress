@@ -57,7 +57,15 @@ export default function ProductListing() {
 						</Button>
 					</Col>
 					<Col md={12}>
-						<Button type="primary" size="large" block onClick={next} disabled={current === 5} htmlType="submit">
+						<Button
+							className="underline"
+							type="primary"
+							size="large"
+							block
+							onClick={next}
+							disabled={current === 5}
+							htmlType="submit"
+						>
 							NEXT
 						</Button>
 					</Col>

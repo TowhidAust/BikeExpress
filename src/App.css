@@ -4,7 +4,7 @@
 }
 
 :root {
-  --app-primary-color: #059669;
+  --app-primary-color: rgb(3, 105, 161);
   --app-secondary-color: #D1FAE5;
   --app-third-color: #E5E8F0;
   --app-fourth-color: #004282;
@@ -25,7 +25,7 @@
 }
 
 .primary-bg {
-  background-color: #059669 !important;
+  background-color: var(--app-primary-color) !important;
 }
 
 .secondary-bg {

@@ -10,3 +10,6 @@ vite.config.ts
 
 tailwind.config.cjs
 postcss.config.cjs
+
+tailwind.config.js
+postcss.config.js

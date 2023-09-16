@@ -18,7 +18,7 @@ export default function Auth() {
 				}}
 			>
 				<Header style={{ backgroundColor: 'black', color: 'white', marginBottom: '40px' }}>
-					<Logo fontColor="white" width={150} fontSize={16} iconFontSize={22} />
+					<Logo fontColor="white" width={150} fontSize={15} iconFontSize={20} />
 				</Header>
 				<Row justify="center" align="middle">
 					<Col xs={24} sm={24} md={8} lg={8} xxl={8}>

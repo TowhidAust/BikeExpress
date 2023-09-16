@@ -25,35 +25,19 @@ export default function DashboardLayout() {
 		<ConfigProvider
 			theme={{
 				token: {
-					colorPrimary: '#059669',
-					colorLink: '#059669',
-					// borderRadius: 0,
+					colorPrimary: 'rgb(3, 105, 161)',
+					colorLink: 'rgb(3, 105, 161)',
 					boxShadow: 'none',
 				},
 				components: {
 					Input: {
 						lineHeightLG: 2.5,
-						// borderRadius: 8,
-						// borderRadiusLG: 8,
-						// borderRadiusOuter: 8,
-						// borderRadiusSM: 8,
-						// borderRadiusXS: 8,
 					},
 					Select: {
 						controlHeightLG: 50,
-						// borderRadius: 8,
-						// borderRadiusLG: 8,
-						// borderRadiusOuter: 8,
-						// borderRadiusSM: 8,
-						// borderRadiusXS: 8,
 					},
 					Button: {
 						controlHeightLG: 50,
-						// borderRadius: 8,
-						// borderRadiusLG: 8,
-						// borderRadiusOuter: 8,
-						// borderRadiusSM: 8,
-						// borderRadiusXS: 8,
 					},
 				},
 			}}
@@ -89,6 +73,7 @@ export default function DashboardLayout() {
 						defaultSelectedKeys={[activeMenuKey]}
 						items={[
 							{
+								className: 'rounded-none',
 								key: '1',
 								icon: <UserOutlined />,
 								label: 'Dashboard',
@@ -99,12 +84,14 @@ export default function DashboardLayout() {
 								},
 							},
 							{
+								className: 'rounded-none',
 								key: '2',
 								icon: <VideoCameraOutlined />,
 								label: 'Orders',
 								style: { marginLeft: 0, marginRight: 0, width: '100%' },
 							},
 							{
+								className: 'rounded-none',
 								key: '3',
 								icon: <UploadOutlined />,
 								label: 'Product Listing',

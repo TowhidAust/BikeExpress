@@ -8,25 +8,19 @@ function MyApp() {
 		<ConfigProvider
 			theme={{
 				token: {
-					colorPrimary: '#059669',
-					colorLink: '#059669',
-					// borderRadius: 0,
+					colorPrimary: 'rgb(3, 105, 161)',
+					colorLink: 'rgb(3, 105, 161)',
 					boxShadow: 'none',
 				},
 				components: {
 					Input: {
 						lineHeightLG: 2.5,
-						// borderRadiusLG: 10,
 					},
 					Select: {
 						controlHeightLG: 50,
-						// borderRadiusLG: 10,
 					},
 					Button: {
 						controlHeightLG: 50,
-						// colorPrimary: 'darkred',
-						// colorPrimaryHover: 'rgba(0,0,0,0.85)',
-						// colorPrimaryActive: 'black',
 					},
 				},
 			}}
