@@ -7,6 +7,7 @@ import counterReducer from '@/redux/counterSlice';
 import activeMenuSliceReducer from '@/redux/activeMenubarSlice';
 import authReducer from '@/redux/authSlice';
 import orderSummaryReducer from './orderSummarySlice';
+import listProductReducer from './admin/listProductSlice';
 
 import { globalErrorHandling } from './helper';
 import { emptySliceApi } from '@/api/emptySliceApi';
@@ -45,6 +46,7 @@ export const store = configureStore({
 		auth: persistedAuthReducer,
 		activeMenu: activeMenuSliceReducer,
 		orderSummary: persistedOrderSummaryReducer,
+		listProduct: listProductReducer,
 		[emptySliceApi.reducerPath]: emptySliceApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>

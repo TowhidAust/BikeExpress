@@ -75,7 +75,6 @@ export default function BannerLeftMenu() {
 
 	return (
 		<Menu
-			className=""
 			style={{ minHeight: '660px', borderRadius: 8 }}
 			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
 			openKeys={openKeys}

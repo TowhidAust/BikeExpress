@@ -1,4 +1,7 @@
 import { Col, Form, Input, Radio, Row, Select, Space, Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import { setProductInformation } from '@/redux/admin/listProductSlice';
 
 type PropTypes = {
 	current: number;
@@ -6,12 +9,15 @@ type PropTypes = {
 };
 
 export default function ProductListForm(props: PropTypes) {
-	const [form] = Form.useForm();
 	const { setCurrent, current } = props;
+	const { listProduct } = useSelector((state: RootState) => state);
+	const dispatch = useDispatch();
+	const [form] = Form.useForm();
 
 	const onFinish = (value: any) => {
 		// eslint-disable-next-line no-console
 		console.log(value);
+		dispatch(setProductInformation(value));
 		setCurrent(current + 1);
 	};
 
@@ -21,7 +27,23 @@ export default function ProductListForm(props: PropTypes) {
 				size="large"
 				form={form}
 				name="basic"
-				initialValues={{ remember: true }}
+				initialValues={{
+					title: listProduct.productInformation.title,
+					category: listProduct.productInformation.category,
+					price: listProduct.productInformation.price,
+					hasSku: listProduct.productInformation.hasSku,
+					inStock: listProduct.productInformation.inStock,
+					warranty: listProduct.productInformation.warranty,
+					warrantyUnit: listProduct.productInformation.warrantyUnit,
+					brand: listProduct.productInformation.brand,
+					madeIn: listProduct.productInformation.madeIn,
+					modelNo: listProduct.productInformation.modelNo,
+					modelYear: listProduct.productInformation.modelYear,
+					isCertified: listProduct.productInformation.isCertified,
+					certificationName: listProduct.productInformation.certificationName,
+					quantity: listProduct.productInformation.quantity,
+					description: listProduct.productInformation.description,
+				}}
 				autoComplete="off"
 				labelCol={{ span: 6 }}
 				wrapperCol={{ span: 18 }}
@@ -124,7 +146,7 @@ export default function ProductListForm(props: PropTypes) {
 					</Col>
 					<Col md={12}>
 						<Form.Item name="description" label="Description" rules={[{ required: true, message: 'Required' }]}>
-							<Input placeholder="Enter Description" />
+							<Input.TextArea rows={5} cols={8} placeholder="Enter Description" />
 						</Form.Item>
 					</Col>
 					<Col md={24}>

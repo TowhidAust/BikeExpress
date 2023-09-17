@@ -18,6 +18,7 @@ export default function BasicModal(props: PropTypes) {
 	if (!isFooter) {
 		return (
 			<Modal
+				// mask={false}
 				bodyStyle={bodyStyle}
 				title={title}
 				open={isOpen}
@@ -35,6 +36,7 @@ export default function BasicModal(props: PropTypes) {
 
 	return (
 		<Modal
+			// mask={false}
 			bodyStyle={bodyStyle}
 			title={title}
 			open={isOpen}
