@@ -13,6 +13,7 @@ function getItem(
 	children?: MenuItem[],
 	type?: 'group',
 	onClick?: () => any,
+	onTitleClick?: () => any,
 ): MenuItem {
 	return {
 		key,
@@ -21,6 +22,7 @@ function getItem(
 		label,
 		type,
 		onClick,
+		onTitleClick,
 		style: {},
 	} as MenuItem;
 }
@@ -30,23 +32,38 @@ export default function BannerLeftMenu() {
 	const navigate = useNavigate();
 
 	const items: MenuItem[] = [
-		getItem('Helmet', 'helmet', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.HELMET)),
+		getItem(
+			'Helmet',
+			'helmet',
+			undefined,
+			[getItem('Helmet Accessories', 'helmet_accessories')],
+			undefined,
+			undefined,
+			() => navigate(PUBLIC_ROUTE.HELMET),
+		),
 		getItem('Engine Oil', 'engine_oil', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),
 		getItem('Looking Glass', 'looking_glass'),
 		getItem('Lock', 'lock'),
 
-		getItem('Accessories', 'accessories', null, [
-			getItem('Horn', 'horn'),
-			getItem('Light', 'light'),
-			getItem('Clutch Liver', 'clutch_liver'),
-			getItem('Break Liver', 'break_liver'),
-			getItem('Mobile Holder', 'mobile_holder'),
-			getItem('Communicator', 'communicator'),
-			getItem('Engine Guard', 'engine_guard'),
-			getItem('Quick Throttle', 'quick_throttle'),
-			getItem('Handle Bar', 'handle_bar'),
-			getItem('Sticker', 'sticker'),
-		]),
+		getItem(
+			'Accessories',
+			'accessories',
+			null,
+			[
+				getItem('Horn', 'horn'),
+				getItem('Light', 'light'),
+				getItem('Clutch Liver', 'clutch_liver'),
+				getItem('Break Liver', 'break_liver'),
+				getItem('Mobile Holder', 'mobile_holder'),
+				getItem('Communicator', 'communicator'),
+				getItem('Engine Guard', 'engine_guard'),
+				getItem('Quick Throttle', 'quick_throttle'),
+				getItem('Handle Bar', 'handle_bar'),
+				getItem('Sticker', 'sticker'),
+			],
+			undefined,
+			undefined,
+		),
 
 		getItem('Electronics', 'electronics', null, [
 			getItem('Communicator', '9'),
@@ -75,6 +92,7 @@ export default function BannerLeftMenu() {
 
 	return (
 		<Menu
+			className="pt-5 pb-5 pl-5"
 			style={{ minHeight: '660px', borderRadius: 8 }}
 			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
 			openKeys={openKeys}
