@@ -5,3 +5,16 @@ button, input:focus {
 .ant-select-selector, .ant-input-affix-wrapper {
   box-shadow: none !important;
 }
+
+// .ant-menu-vertical.ant-menu-sub > .ant-menu-item {
+// }
+
+.towhidul-popup {
+  top: 160px !important;
+}
+
+.towhidul-popup ul {
+  min-width: 250px !important;
+  min-height: calc(100vh - 170px) !important;
+  height: calc(100vh - 170px) !important;
+}

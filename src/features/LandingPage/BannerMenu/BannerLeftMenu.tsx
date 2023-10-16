@@ -16,14 +16,14 @@ function getItem(
 	onTitleClick?: () => any,
 ): MenuItem {
 	return {
+		label,
 		key,
 		icon,
 		children,
-		label,
 		type,
 		onClick,
 		onTitleClick,
-		style: {},
+		popupClassName: 'towhidul-popup',
 	} as MenuItem;
 }
 
@@ -32,38 +32,18 @@ export default function BannerLeftMenu() {
 	const navigate = useNavigate();
 
 	const items: MenuItem[] = [
-		getItem(
-			'Helmet',
-			'helmet',
-			undefined,
-			[getItem('Helmet Accessories', 'helmet_accessories')],
-			undefined,
-			undefined,
-			() => navigate(PUBLIC_ROUTE.HELMET),
-		),
+		getItem('Helmet', 'helmet', undefined, [
+			getItem('All Helmet', 'all_helmet', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.HELMET)),
+			getItem('Full Face Helmet', 'full_face_helmet'),
+			getItem('Half Face Helmet', 'half_face_helmet'),
+			getItem('Flip Up Helmet', 'flip_up_helmet'),
+			getItem('Modular Helmet', 'modular_helmet'),
+			getItem('Jet Helmet', 'jet_helmet'),
+			getItem('Helmet Accessories', 'helmet_accessories'),
+		]),
 		getItem('Engine Oil', 'engine_oil', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),
 		getItem('Looking Glass', 'looking_glass'),
 		getItem('Lock', 'lock'),
-
-		getItem(
-			'Accessories',
-			'accessories',
-			null,
-			[
-				getItem('Horn', 'horn'),
-				getItem('Light', 'light'),
-				getItem('Clutch Liver', 'clutch_liver'),
-				getItem('Break Liver', 'break_liver'),
-				getItem('Mobile Holder', 'mobile_holder'),
-				getItem('Communicator', 'communicator'),
-				getItem('Engine Guard', 'engine_guard'),
-				getItem('Quick Throttle', 'quick_throttle'),
-				getItem('Handle Bar', 'handle_bar'),
-				getItem('Sticker', 'sticker'),
-			],
-			undefined,
-			undefined,
-		),
 
 		getItem('Electronics', 'electronics', null, [
 			getItem('Communicator', '9'),
@@ -76,6 +56,26 @@ export default function BannerLeftMenu() {
 			getItem('Backpack', '6'),
 			getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
 		]),
+		getItem('Accessories', 'accessories', null, [
+			getItem('Horn', 'horn'),
+			getItem('Light', 'light'),
+			getItem('Clutch Liver', 'clutch_liver'),
+			getItem('Break Liver', 'break_liver'),
+			getItem('Mobile Holder', 'mobile_holder'),
+			getItem('Communicator', 'communicator'),
+			getItem('Engine Guard', 'engine_guard'),
+			getItem('Quick Throttle', 'quick_throttle'),
+			getItem('Handle Bar', 'handle_bar'),
+			getItem('Sticker', 'sticker'),
+
+			getItem('Communicator', 'communicator'),
+			getItem('Engine Guard', 'engine_guard'),
+			getItem('Quick Throttle', 'quick_throttle'),
+			getItem('Handle Bar', 'handle_bar'),
+			getItem('Sticker', 'sticker'),
+		]),
+		null,
+		null,
 	];
 
 	// submenu keys of first level
@@ -92,8 +92,8 @@ export default function BannerLeftMenu() {
 
 	return (
 		<Menu
-			className="pt-5 pb-5 pl-5"
-			style={{ minHeight: '660px', borderRadius: 8 }}
+			className="pt-5 pb-5"
+			style={{ height: 'calc(100vh - 170px)', borderRadius: 8 }}
 			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
