@@ -45,6 +45,7 @@ export default function BasicModal(props: PropTypes) {
 			style={{ minWidth }}
 			centered
 			okText={okText}
+			transitionName=""
 		>
 			{modalBody}
 		</Modal>

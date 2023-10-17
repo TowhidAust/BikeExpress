@@ -93,7 +93,7 @@ export default function BannerLeftMenu() {
 	return (
 		<Menu
 			className="pt-5 pb-5"
-			style={{ height: 'calc(100vh - 170px)', borderRadius: 8 }}
+			style={{ height: 'calc(100vh - 170px)', borderRadius: 8, overflow: 'auto' }}
 			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
