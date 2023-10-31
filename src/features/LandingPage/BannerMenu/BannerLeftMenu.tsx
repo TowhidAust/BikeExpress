@@ -34,7 +34,9 @@ export default function BannerLeftMenu() {
 	const items: MenuItem[] = [
 		getItem('Helmet', 'helmet', undefined, [
 			getItem('All Helmet', 'all_helmet', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.HELMET)),
-			getItem('Helmet Accessories', 'helmet_accessories'),
+			getItem('Helmet Accessories', 'helmet_accessories', undefined, undefined, undefined, () =>
+				navigate(PUBLIC_ROUTE.HELMET_ACCESSORIES),
+			),
 			getItem('Full Face Helmet', 'full_face_helmet'),
 			getItem('Half Face Helmet', 'half_face_helmet'),
 			getItem('Flip Up Helmet', 'flip_up_helmet'),
