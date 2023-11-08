@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Telenor';
-  /* src: url(./fonts/Telenor-Regular.otf); */
-  src: url(./fonts/VictorMono-Bold.ttf);
+  src: url(./fonts/Telenor-Regular.otf);
+  /* src: url(./fonts/VictorMono-SemiBold.ttf); */
 }
 
 :root {
@@ -17,8 +17,8 @@
   margin: 0;
   padding: 0;
   font-family: "Telenor" !important;
-  /* letter-spacing: -0.09px !important; */
-  /* word-spacing: -3px !important; */
+  /* letter-spacing: -0.2px !important; */
+  /* word-spacing: -3.5px !important; */
 }
 
 .layout-bg {
