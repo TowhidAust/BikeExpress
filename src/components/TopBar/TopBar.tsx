@@ -1,18 +1,21 @@
-import { Affix, Button, Card, Col, Dropdown, Layout, Menu, Row, Typography } from 'antd';
+import { Affix, Button, Card, Col, Drawer, Dropdown, Layout, Menu, Row, Typography } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { DownOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 import { PRIVATE_ROUTE, PUBLIC_ROUTE } from '@/router/appRoutes';
 import { RootState } from '@/redux/store';
 import { setCurrentActiveMenu } from '@/redux/activeMenubarSlice';
 import Logo from '../Logo/Logo';
 import { logout } from '@/redux/authSlice';
+import BannerLeftMenu from '@/features/LandingPage/BannerMenu/BannerLeftMenu';
 
 const { Header } = Layout;
 
 export default function TopBar() {
 	const { activeMenu, auth } = useSelector((state: RootState) => state);
+	const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -35,6 +38,10 @@ export default function TopBar() {
 		},
 	];
 
+	const onDrawerClose = () => {
+		setDrawerOpen(false);
+	};
+
 	return (
 		<div>
 			<Header className="pl-4 pr-4" style={{ background: 'black', width: '100%', height: 'auto' }}>
@@ -53,6 +60,13 @@ export default function TopBar() {
 								mode="horizontal"
 								defaultSelectedKeys={[activeMenu.currentActiveMenu]}
 								items={[
+									{
+										key: 'menu',
+										label: <MenuOutlined />,
+										onClick: () => {
+											setDrawerOpen(true);
+										},
+									},
 									{
 										key: 'home',
 										label: 'Home',
@@ -141,6 +155,10 @@ export default function TopBar() {
 					</Row>
 				</Card>
 			</Affix>
+
+			<Drawer title="Categories" placement="left" onClose={onDrawerClose} open={drawerOpen} bodyStyle={{ padding: 0 }}>
+				<BannerLeftMenu insideDrawer={drawerOpen} />
+			</Drawer>
 		</div>
 	);
 }

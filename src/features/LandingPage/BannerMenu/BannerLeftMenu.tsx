@@ -6,6 +6,10 @@ import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
+type PropTypes = {
+	insideDrawer: boolean;
+};
+
 function getItem(
 	label: React.ReactNode,
 	key: React.Key,
@@ -27,9 +31,10 @@ function getItem(
 	} as MenuItem;
 }
 
-export default function BannerLeftMenu() {
+export default function BannerLeftMenu(props: PropTypes) {
 	const [openKeys, setOpenKeys] = useState(['sub1']);
 	const navigate = useNavigate();
+	const { insideDrawer } = props;
 
 	const items: MenuItem[] = [
 		getItem('Helmet', 'helmet', undefined, [
@@ -89,8 +94,8 @@ export default function BannerLeftMenu() {
 	return (
 		<Menu
 			className="pt-5 pb-5"
-			style={{ height: 'calc(100vh - 170px)', borderRadius: 8, overflow: 'auto' }}
-			mode={window.innerWidth > 768 ? 'vertical' : 'inline'}
+			style={{ height: !insideDrawer ? 'calc(100vh - 170px)' : 'unset', borderRadius: 8, overflow: 'auto' }}
+			mode={window.innerWidth > 768 && !insideDrawer ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
 			items={items}
