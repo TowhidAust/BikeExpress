@@ -17,7 +17,7 @@ export default function ProductListing() {
 	return (
 		<Card style={{ padding: 18 }}>
 			<Steps
-				className="mb-8"
+				className="mb-12"
 				current={current}
 				items={[
 					{

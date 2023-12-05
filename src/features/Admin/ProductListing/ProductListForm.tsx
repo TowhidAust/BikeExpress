@@ -45,8 +45,8 @@ export default function ProductListForm(props: PropTypes) {
 					description: listProduct.productInformation.description,
 				}}
 				autoComplete="off"
-				labelCol={{ span: 6 }}
-				wrapperCol={{ span: 18 }}
+				labelCol={{ span: 8 }}
+				wrapperCol={{ span: 16 }}
 				labelAlign="left"
 				onFinish={onFinish}
 				// onValuesChange={handleFormValuesChange}
