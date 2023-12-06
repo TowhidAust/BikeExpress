@@ -18,6 +18,7 @@ const initialState = {
 		isCertified: null,
 		certificationName: null,
 		quantity: null,
+		forBike: null,
 		description: null,
 	},
 	thumbnail: null,
