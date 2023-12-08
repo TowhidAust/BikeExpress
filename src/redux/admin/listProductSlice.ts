@@ -15,6 +15,7 @@ const initialState = {
 		modelNo: null,
 		modelYear: null,
 		category: null,
+		helmetType: null,
 		isCertified: null,
 		certificationName: null,
 		quantity: null,

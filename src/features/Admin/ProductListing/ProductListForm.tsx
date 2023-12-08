@@ -1,5 +1,6 @@
 import { Col, Form, Input, Radio, Row, Select, Space, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { RootState } from '@/redux/store';
 import { setProductInformation } from '@/redux/admin/listProductSlice';
 
@@ -13,6 +14,15 @@ export default function ProductListForm(props: PropTypes) {
 	const { listProduct } = useSelector((state: RootState) => state);
 	const dispatch = useDispatch();
 	const [form] = Form.useForm();
+	const [IsHelmetCategorySelected, setIsHelmetCategorySelected] = useState<boolean>(false);
+
+	const categoryChangeHandler = (value: any) => {
+		if (value === 'HELMET') {
+			setIsHelmetCategorySelected(true);
+		} else {
+			setIsHelmetCategorySelected(false);
+		}
+	};
 
 	const onFinish = (value: any) => {
 		// eslint-disable-next-line no-console
@@ -30,6 +40,7 @@ export default function ProductListForm(props: PropTypes) {
 				initialValues={{
 					title: listProduct.productInformation.title,
 					category: listProduct.productInformation.category,
+					helmetType: listProduct.productInformation.helmetType,
 					price: listProduct.productInformation.price,
 					hasSku: listProduct.productInformation.hasSku,
 					inStock: listProduct.productInformation.inStock,
@@ -54,22 +65,22 @@ export default function ProductListForm(props: PropTypes) {
 				// layout="vertical"
 			>
 				<Row gutter={[32, 0]}>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="title" label="Title" rules={[{ required: true, message: 'Required' }]}>
 							<Input placeholder="Your product title" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="price" label="Price" rules={[{ required: true, message: 'Required' }]}>
 							<Input placeholder="Your product price" type="number" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="quantity" label="Quantity" rules={[{ required: true, message: 'Required' }]}>
 							<Input type="number" placeholder="Enter Total quantity" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="category" label="Category" rules={[{ required: true, message: 'Required' }]}>
 							<Select
 								showSearch
@@ -80,10 +91,30 @@ export default function ProductListForm(props: PropTypes) {
 									{ value: 'HELMET', label: 'HELMET' },
 									{ value: 'ENGINE_OIL', label: 'ENGINE_OIL' },
 								]}
+								onChange={categoryChangeHandler}
 							/>
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					{IsHelmetCategorySelected && (
+						<Col md={12}>
+							<Form.Item name="helmetType" label="Helmet Type" rules={[{ required: true, message: 'Required' }]}>
+								<Select
+									showSearch
+									placeholder="Select a helmet type"
+									optionFilterProp="children"
+									filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+									options={[
+										{ value: 'FULL_FACE', label: 'Full Face' },
+										{ value: 'HALF_FACE', label: 'Half Face' },
+										{ value: 'FLIP_UP', label: 'Flip Up' },
+										{ value: 'MODULAR', label: 'Modular' },
+										{ value: 'JET', label: 'Jet' },
+									]}
+								/>
+							</Form.Item>
+						</Col>
+					)}
+					<Col md={12}>
 						<Form.Item name="inStock" label="Availablity" rules={[{ required: true, message: 'Required' }]}>
 							<Radio.Group>
 								<Radio value>In-Stock</Radio>
@@ -91,12 +122,12 @@ export default function ProductListForm(props: PropTypes) {
 							</Radio.Group>
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="warranty" label="Warranty">
 							<Input placeholder="Warranty" type="number" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="warrantyUnit" label="Warranty Unit">
 							<Select
 								showSearch
@@ -112,27 +143,27 @@ export default function ProductListForm(props: PropTypes) {
 							/>
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="brand" label="Brand">
 							<Input placeholder="Enter product brand" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="madeIn" label="Made In">
 							<Input placeholder="Enter brand origin" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="modelNo" label="Model No">
 							<Input placeholder="Enter model no" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="modelYear" label="Model Year">
 							<Input placeholder="Enter model year" type="number" onWheel={(e: any) => e.target.blur()} />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="isCertified" label="Is Certified">
 							<Radio.Group>
 								<Radio value>Yes</Radio>
@@ -140,22 +171,22 @@ export default function ProductListForm(props: PropTypes) {
 							</Radio.Group>
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="certificationName" label="Certification Name">
 							<Input placeholder="Enter Certification name" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="forBike" label="For Bike">
 							<Input placeholder="Enter motorcycle name" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Form.Item name="description" label="Description">
 							<Input.TextArea rows={5} cols={8} placeholder="Enter Description" />
 						</Form.Item>
 					</Col>
-					<Col md={24}>
+					<Col md={12}>
 						<Button type="primary" htmlType="submit" block>
 							Save & Next
 						</Button>

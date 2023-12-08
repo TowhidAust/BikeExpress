@@ -1,4 +1,4 @@
-import { Steps, Button, Row, Col, Card } from 'antd';
+import { Steps, Button, Row, Col, Card, Affix } from 'antd';
 import { useState } from 'react';
 import ProductListForm from './ProductListForm';
 import ProductVariantForm from './ProductVariantForm';
@@ -16,30 +16,32 @@ export default function ProductListing() {
 
 	return (
 		<Card style={{ padding: 18 }}>
-			<Steps
-				className="mb-12"
-				current={current}
-				items={[
-					{
-						title: 'Product Information',
-					},
-					{
-						title: 'Product Variant',
-					},
-					{
-						title: 'Upload Thumbnail',
-					},
-					{
-						title: 'Upload Images',
-					},
-					{
-						title: 'Overview',
-					},
-					{
-						title: 'Done',
-					},
-				]}
-			/>
+			<Affix offsetTop={0}>
+				<Steps
+					className="mb-12 bg-white py-2"
+					current={current}
+					items={[
+						{
+							title: 'Product Information',
+						},
+						{
+							title: 'Product Variant',
+						},
+						{
+							title: 'Upload Thumbnail',
+						},
+						{
+							title: 'Upload Images',
+						},
+						{
+							title: 'Overview',
+						},
+						{
+							title: 'Done',
+						},
+					]}
+				/>
+			</Affix>
 			{current === 0 && <ProductListForm current={current} setCurrent={setCurrent} />}
 			{current === 1 && (
 				<div>
