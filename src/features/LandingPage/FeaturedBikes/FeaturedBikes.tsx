@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from 'antd';
+import { Col, Divider, Row, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import cafeRacer from '@/assets/cafeRacer.jpg';
 import ProductCardBike from '@/components/ProductCard/ProductCardBike';
@@ -9,8 +9,13 @@ export default function FeaturedBikes() {
 	const data = [1, 2, 3, 4];
 	return (
 		<section className="mt-5">
-			<Typography.Title level={2}>Featured Bikes</Typography.Title>
 			<Row gutter={[8, 8]}>
+				<Col span={24}>
+					<Typography.Title className="m-0" level={4}>
+						Featured Bikes
+					</Typography.Title>
+					<Divider className="mt-2 mb-2" />
+				</Col>
 				{data.map(() => (
 					<Col xs={24} sm={24} md={6} key={Math.random()}>
 						<ProductCardBike

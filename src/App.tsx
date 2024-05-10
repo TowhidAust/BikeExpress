@@ -11,6 +11,7 @@ function MyApp() {
 					colorPrimary: 'rgb(3, 105, 161)',
 					colorLink: 'rgb(3, 105, 161)',
 					boxShadow: 'none',
+					borderRadius: 5,
 				},
 				components: {
 					Input: {

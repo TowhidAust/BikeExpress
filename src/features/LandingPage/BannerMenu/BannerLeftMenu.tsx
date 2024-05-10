@@ -27,7 +27,7 @@ function getItem(
 		type,
 		onClick,
 		onTitleClick,
-		popupClassName: 'towhidul-popup',
+		popupClassName: 'ant-submenu-popup',
 	} as MenuItem;
 }
 
@@ -93,8 +93,8 @@ export default function BannerLeftMenu(props: PropTypes) {
 
 	return (
 		<Menu
-			className="pt-5 pb-5"
-			style={{ height: !insideDrawer ? 'calc(100vh - 170px)' : 'unset', borderRadius: 8, overflow: 'auto' }}
+			className="pt-5 pb-5 app-border-radius"
+			style={{ height: !insideDrawer ? '450px' : 'unset', overflow: 'auto' }}
 			mode={window.innerWidth > 768 && !insideDrawer ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}

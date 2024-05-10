@@ -6,15 +6,11 @@ button, input:focus {
   box-shadow: none !important;
 }
 
-// .ant-menu-vertical.ant-menu-sub > .ant-menu-item {
-// }
-
-.towhidul-popup {
+.ant-submenu-popup {
   top: 140px !important;
 }
 
-.towhidul-popup ul {
+.ant-submenu-popup ul {
   min-width: 250px !important;
-  min-height: calc(100vh - 170px) !important;
-  height: calc(100vh - 170px) !important;
+  height: 450px !important;
 }

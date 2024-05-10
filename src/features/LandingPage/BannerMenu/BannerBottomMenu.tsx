@@ -96,11 +96,6 @@ export default function BannerBottomMenu() {
 			categoryName: 'SPEEDER',
 			categoryIcon: AiOutlinePhone,
 		},
-		{
-			key: 19,
-			categoryName: 'HPOWER',
-			categoryIcon: AiOutlinePhone,
-		},
 	];
 	return (
 		<Row gutter={[6, 6]} className="mt-1">

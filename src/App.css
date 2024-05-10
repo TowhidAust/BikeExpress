@@ -11,6 +11,8 @@
   --app-fourth-color: #004282;
   --app-fifth-color: #F97316;
   --app-sixth-color: #334155;
+  --app-border-radius: 5px;
+  --app-border-radius-product-card-image: 5px 5px 0px 0px;
 }
 
 * {
@@ -19,6 +21,14 @@
   font-family: "Telenor" !important;
   /* letter-spacing: -0.2px !important; */
   /* word-spacing: -3.5px !important; */
+}
+
+.app-border-radius {
+  border-radius: var(--app-border-radius) !important;
+}
+
+.app-border-radius-product-card-image {
+  border-radius: var(--app-border-radius-product-card-image) !important;
 }
 
 .layout-bg {

@@ -10,7 +10,7 @@ type ProductPropTypes = {
 		model: string;
 		cc: number;
 		km: string;
-		isFirstOwner: string;
+		isFirstOwner: boolean;
 		location: string;
 		isNegotiable: boolean;
 	};
@@ -24,6 +24,7 @@ export default function ProductCardBike(props: ProductPropTypes) {
 			// key={key}
 			cover={
 				<div
+					className="app-border-radius-product-card-image"
 					style={{
 						position: 'relative',
 						textAlign: 'right',
@@ -31,12 +32,11 @@ export default function ProductCardBike(props: ProductPropTypes) {
 						backgroundSize: 'cover',
 						backgroundRepeat: 'no-repeat',
 						height: '200px',
-						borderRadius: '8px 8px 0 0',
 					}}
 				>
 					<BlackButtonContainer>
 						<Button
-							style={{ borderRadius: '8px 0 0 0', position: 'absolute', bottom: 0, right: 0 }}
+							style={{ borderRadius: '5px 0 0 0', position: 'absolute', bottom: 0, right: 0 }}
 							type="primary"
 							onClick={onDetailsButtonClick}
 						>
