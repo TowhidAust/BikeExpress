@@ -31,7 +31,7 @@ export default function Logo(props: PropTypes) {
 			>
 				<FaMotorcycle className="primary-font-color width-100" style={{ fontSize: iconFontSize }} />
 			</div>
-			<div style={{ color: fontColor, marginLeft: 5 }}> SURGERY </div>
+			<div style={{ color: fontColor, marginLeft: 5 }}> DEBUG </div>
 		</div>
 	);
 }
