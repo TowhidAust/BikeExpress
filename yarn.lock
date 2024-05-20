@@ -35,9 +35,9 @@
     "@ctrl/tinycolor" "^3.4.0"
 
 "@ant-design/compatible@^5.17.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/compatible/-/compatible-5.1.2.tgz#af6ae0a32466440e3719bb8c1118ae14f5950044"
-  integrity sha512-PcNV6hCrlx1JnKBjC148BjJNM3XLVSEER422SOk/HRVD8rm8ZovItlZrQOoO3WH5L4jqwj5gxQap2cqSnmQaTg==
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@ant-design/compatible/-/compatible-5.1.3.tgz#5ede26392defae43f54e19f604fdb44eb9859816"
+  integrity sha512-uLvjwENnpY/1gxYb5m8L2k+WmBpBHqH45fO76+4J+WUDKTUKpmwbEW3OG/in2mSO2HI6h3Mcp57+tAMr18ZkgQ==
   dependencies:
     classnames "^2.2.6"
     dayjs "^1.11.4"

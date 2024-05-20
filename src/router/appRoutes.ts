@@ -8,6 +8,7 @@ export const PUBLIC_ROUTE = {
 	BLOG: '/blog',
 	FAQ: '/faq',
 	BIKE_SERVICE: '/bike-service',
+	BIKE_SERVICE_CENTERS: '/bike-service/service-centers',
 
 	// product pages by category
 	HELMET: '/categories/helmet',

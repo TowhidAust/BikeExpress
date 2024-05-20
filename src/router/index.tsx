@@ -13,6 +13,7 @@ const SellBikePage = lazy(() => import('@/pages/SellBike/SellBikePage'));
 const BlogPage = lazy(() => import('@/pages/Blog/BlogPage'));
 const FaqPage = lazy(() => import('@/pages/Faq/FaqPage'));
 const BikeServicePage = lazy(() => import('@/pages/BikeService/BikeServicePage'));
+const BikeServiceCentersPage = lazy(() => import('@/pages/BikeService/ServiceCentersPage'));
 const HelmetPage = lazy(() => import('@/pages/Products/Helmet/HelmetPage'));
 const HelmetDetailsPage = lazy(() => import('@/pages/Products/Helmet/HelmetDetailsPage'));
 const EngineOilPage = lazy(() => import('@/pages/Products/EngineOil/EngineOilPage'));
@@ -79,6 +80,10 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.ENGINE_OIL_DETAILS,
 			component: EngineOilDetailsPage,
+		},
+		{
+			path: PUBLIC_ROUTE.BIKE_SERVICE_CENTERS,
+			component: BikeServiceCentersPage,
 		},
 	];
 	return (
