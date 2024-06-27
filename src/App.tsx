@@ -23,6 +23,9 @@ function MyApp() {
 					Button: {
 						controlHeightLG: 50,
 					},
+					Menu: {
+						itemHoverBg: 'lightseagreen',
+					},
 				},
 			}}
 		>

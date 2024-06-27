@@ -12,7 +12,7 @@ export default function BikeService() {
 		<Row gutter={[16, 8]} className="mt-1">
 			<Col span={24}>
 				<Typography.Title className="m-0" level={4}>
-					DEBUG YOUR BIKE AT HOME
+					Reliable & Trustworthy bike service at home
 				</Typography.Title>
 				<Divider className="mt-2 mb-2" />
 			</Col>

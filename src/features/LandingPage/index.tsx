@@ -6,7 +6,6 @@ import BannerBottomMenu from './BannerMenu/BannerBottomMenu';
 import AppLayout from '@/components/Layout/AppLayout';
 import FeaturedBikes from './FeaturedBikes/FeaturedBikes';
 import NewBikes from './NewBikes/NewBikes';
-import BikeService from '../BikeService';
 
 export default function LandingPage() {
 	return (
@@ -17,9 +16,6 @@ export default function LandingPage() {
 				</Col>
 				<Col xs={24} sm={24} md={18}>
 					<BannerCarousel />
-				</Col>
-				<Col xs={24} sm={24} md={24}>
-					<BikeService />
 				</Col>
 				<Col xs={24} sm={24} md={24}>
 					<BannerBottomMenu />
