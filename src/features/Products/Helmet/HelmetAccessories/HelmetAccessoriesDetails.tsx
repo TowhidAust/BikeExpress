@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ProductDetailsWithSku from '@/components/ProductDetails/ProductDetailsWithSku';
 
 export default function HelmetAccessoriesDetails() {
-	const [productDetailsData, setProductDetailsData] = useState<any>({
+	const [productDetailsData] = useState<any>({
 		_id: '1234',
 		hasSku: false,
 		title: 'This is a title',
