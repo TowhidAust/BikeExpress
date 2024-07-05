@@ -24,10 +24,5 @@ export default function HelmetDetails() {
 		return <SingleSkeleton isLoading={isLoading || isProdDetailsLoading} />;
 	}
 
-	return (
-		<>
-			<ProductDetailsWithSku productDetailsData={prodDetailsData?.result[0]} variants={data?.result || []} />
-			{/* <RatingsAndReviews /> */}
-		</>
-	);
+	return <ProductDetailsWithSku productDetailsData={prodDetailsData?.result[0]} variants={data?.result || []} />;
 }

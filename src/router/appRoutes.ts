@@ -14,6 +14,7 @@ export const PUBLIC_ROUTE = {
 	HELMET: '/categories/helmet',
 	HELMET_DETAILS: '/categories/helmet/:id',
 	HELMET_ACCESSORIES: '/categories/helmet/helmet-accessories',
+	HELMET_ACCESSORIES_DETAILS: '/categories/helmet/helmet-accessories/:id',
 	ENGINE_OIL: '/categories/engine-oil',
 	ENGINE_OIL_DETAILS: '/categories/engine-oil/:id',
 };

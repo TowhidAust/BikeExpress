@@ -28,7 +28,11 @@ export default function BasicProductCard(props: ProductPropTypes) {
 					}}
 				>
 					<BlackButtonContainer>
-						<Button style={{ position: 'absolute', bottom: 0, right: 0 }} type="primary" onClick={onDetailsButtonClick}>
+						<Button
+							style={{ borderRadius: '5px 0 0 0', position: 'absolute', bottom: 0, right: 0 }}
+							type="primary"
+							onClick={onDetailsButtonClick}
+						>
 							DETAILS
 						</Button>
 					</BlackButtonContainer>

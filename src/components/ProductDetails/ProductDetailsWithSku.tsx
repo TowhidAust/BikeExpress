@@ -1,5 +1,5 @@
 import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Divider, Image, Row, Table, Typography, message } from 'antd';
+import { Button, Card, Col, Image, Row, Table, Typography, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -158,7 +158,7 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 						sizeId: selectedSizeId,
 						quantity: count,
 
-						price: hasSkuAvailable ? variants[selectedVariantIndex]?.price : null,
+						price: hasSkuAvailable ? variants[selectedVariantIndex]?.price : productDetailsData?.price,
 						discount: hasSkuAvailable ? variants[selectedVariantIndex]?.discount : productDetailsData?.discount || null,
 						title: productDetailsData?.title || null,
 						size: hasSkuAvailable ? selectedSizeArr[selectedSizeIndex]?.size : null,
@@ -189,7 +189,6 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			<section>
 				<Card>
 					<Row gutter={[16, 16]}>
-						{/* Image gallery */}
 						<Col md={8}>
 							<Card className="mb-2" bodyStyle={{ padding: '1%' }}>
 								<Image src={productDetailsData?.thumbnail} width="100%" height={300} />
@@ -205,18 +204,21 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 									);
 								})}
 							</Row>
+							<section className="mt-2">
+								<Col span={24}>
+									<Typography.Title className="mb-0" level={3}>
+										{productDetailsData?.title || 'N/A'}
+									</Typography.Title>
+									<Typography.Title level={5} className="mt-0 mb-0 primary-font-color">
+										BDT {productPrice - (productPrice * discount) / 100}
+									</Typography.Title>
+									<Typography.Text type="secondary" style={{ textDecoration: 'line-through' }}>
+										BDT {productPrice}
+									</Typography.Text>
+								</Col>
+							</section>
 						</Col>
 						<Col md={16}>
-							<Typography.Title className="mb-0" level={3}>
-								{productDetailsData?.title || 'N/A'}
-							</Typography.Title>
-							<Typography.Title level={5} className="mt-0 mb-0 primary-font-color">
-								BDT {productPrice - (productPrice * discount) / 100}
-							</Typography.Title>
-							<Typography.Text type="secondary" style={{ textDecoration: 'line-through' }}>
-								BDT {productPrice}
-							</Typography.Text>
-							<Divider className="mt-3" />
 							<Table
 								scroll={{ x: true }}
 								columns={column}

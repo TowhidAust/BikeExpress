@@ -22,6 +22,7 @@ const UserDetailsPage = lazy(() => import('@/pages/UserDetails/UserDetailsPage')
 const CheckoutPage = lazy(() => import('@/pages/Checkout/CheckoutPage'));
 const OrderSuccessPage = lazy(() => import('@/pages/Success/OrderSuccessPage'));
 const HelmetAccessoriesPage = lazy(() => import('@/pages/Products/Helmet/HelmetAccessoriesPage'));
+const HelmetAccessoriesDetailsPage = lazy(() => import('@/pages/Products/Helmet/HelemtAccessoriesDetailsPage'));
 
 // Admins
 const DashboardLayout = lazy(() => import('@/components/Layout/DashboardLayout'));
@@ -72,6 +73,10 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.HELMET_ACCESSORIES,
 			component: HelmetAccessoriesPage,
+		},
+		{
+			path: PUBLIC_ROUTE.HELMET_ACCESSORIES_DETAILS,
+			component: HelmetAccessoriesDetailsPage,
 		},
 		{
 			path: PUBLIC_ROUTE.ENGINE_OIL,

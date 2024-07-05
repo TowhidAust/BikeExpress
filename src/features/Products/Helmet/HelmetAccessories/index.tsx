@@ -15,7 +15,7 @@ export default function HelmetAccessories() {
 						price: '1450',
 					}}
 					onDetailsButtonClick={() => {
-						navigate(`${PUBLIC_ROUTE.HELMET_ACCESSORIES}`);
+						navigate(`${PUBLIC_ROUTE.HELMET_ACCESSORIES}/1234`);
 					}}
 				/>
 			</Col>
