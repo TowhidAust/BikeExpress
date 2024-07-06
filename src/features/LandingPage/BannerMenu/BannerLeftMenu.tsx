@@ -50,7 +50,7 @@ export default function BannerLeftMenu(props: PropTypes) {
 		]),
 
 		getItem('Engine Oil', 'engine_oil', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),
-		getItem('Looking Glass', 'looking_glass'),
+		// getItem('Looking Glass', 'looking_glass'),
 		getItem('Lock & Security', 'lock'),
 
 		getItem('Electronics', 'electronics', null, [
@@ -66,7 +66,15 @@ export default function BannerLeftMenu(props: PropTypes) {
 			getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
 		]),
 
+		getItem('Riding Gears', 'riding_gears', null, [
+			getItem('Hand Gloves', 'hand_gloves'),
+			getItem('Riding Jacket', 'riding_jacket'),
+			getItem('Shoes', 'shoes'),
+			getItem('Rain Coat', 'rain_coat'),
+		]),
+
 		getItem('Accessories', 'accessories', null, [
+			getItem('Looking Glass', 'looking_glass'),
 			getItem('Horn', 'horn'),
 			getItem('Light', 'light'),
 			getItem('Clutch Liver', 'clutch_liver'),
@@ -76,6 +84,7 @@ export default function BannerLeftMenu(props: PropTypes) {
 			getItem('Quick Throttle', 'quick_throttle'),
 			getItem('Handle Bar', 'handle_bar'),
 			getItem('Sticker', 'sticker'),
+			getItem('Break Pad', 'break_pad'),
 		]),
 	];
 
