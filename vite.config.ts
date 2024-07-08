@@ -7,6 +7,18 @@ import * as path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    // src: https://github.com/remix-run/remix/issues/8891
+    chunkSizeWarningLimit: 100,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
+          return;
+        }
+        warn(warning);
+      },
+    },
+  },
 	plugins: [react(), alias()],
 	server: {
 		open: true,
