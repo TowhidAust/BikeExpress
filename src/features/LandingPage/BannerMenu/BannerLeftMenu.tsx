@@ -42,11 +42,21 @@ export default function BannerLeftMenu(props: PropTypes) {
 			getItem('Helmet Accessories', 'helmet_accessories', undefined, undefined, undefined, () =>
 				navigate(PUBLIC_ROUTE.HELMET_ACCESSORIES),
 			),
-			getItem('Full Face Helmet', 'full_face_helmet'),
-			getItem('Half Face Helmet', 'half_face_helmet'),
-			getItem('Flip Up Helmet', 'flip_up_helmet'),
-			getItem('Modular Helmet', 'modular_helmet'),
-			getItem('Jet Helmet', 'jet_helmet'),
+			getItem('Full Face Helmet', 'full_face_helmet', undefined, undefined, undefined, () =>
+				navigate(`${PUBLIC_ROUTE.HELMET}?helmet-type=full_face_helmet`),
+			),
+			getItem('Half Face Helmet', 'half_face_helmet', undefined, undefined, undefined, () =>
+				navigate(`${PUBLIC_ROUTE.HELMET}?helmet-type=half_face_helmet`),
+			),
+			getItem('Flip Up Helmet', 'flip_up_helmet', undefined, undefined, undefined, () =>
+				navigate(`${PUBLIC_ROUTE.HELMET}?helmet-type=flip_up_helmet`),
+			),
+			getItem('Modular Helmet', 'modular_helmet', undefined, undefined, undefined, () =>
+				navigate(`${PUBLIC_ROUTE.HELMET}?helmet-type=modular_helmet`),
+			),
+			getItem('Jet Helmet', 'jet_helmet', undefined, undefined, undefined, () =>
+				navigate(`${PUBLIC_ROUTE.HELMET}?helmet-type=jet_helmet`),
+			),
 		]),
 
 		getItem('Engine Oil', 'engine_oil', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),

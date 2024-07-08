@@ -1,5 +1,5 @@
 import AppLayout from '@/components/Layout/AppLayout';
-import Helmet from '@/features/Products/Helmet/Helmet';
+import Helmet from '@/features/Products/Helmet';
 
 export default function HelmetPage() {
 	return (
