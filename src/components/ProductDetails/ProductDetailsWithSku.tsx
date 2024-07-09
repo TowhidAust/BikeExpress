@@ -41,7 +41,10 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 
 	useEffect(() => {
 		if (!productDetailsData?.hasSku) {
+			const productDiscount = productDetailsData?.discount;
 			setAvailableQuantity(productDetailsData?.quantity);
+			setProductPrice(productDetailsData?.price);
+			setDiscount(productDiscount);
 		}
 
 		if (productDetailsData?.hasSku && variants) {
@@ -54,7 +57,13 @@ export default function ProductDetailsWithSku(props: PropTypes) {
 			setSelectedColorFamilyId(defaultColorId);
 			setAvailableSizes(defaultSizes);
 		}
-	}, [productDetailsData?.hasSku, variants, productDetailsData?.quantity]);
+	}, [
+		productDetailsData?.hasSku,
+		variants,
+		productDetailsData?.quantity,
+		productDetailsData?.price,
+		productDetailsData?.discount,
+	]);
 
 	const column: ColumnsType<DataType> = [
 		{
