@@ -4,28 +4,25 @@ import { Col, Row } from 'antd';
 import BasicProductCard from '@/components/ProductCard/BasicProductCard';
 import { PUBLIC_ROUTE } from '@/router/appRoutes';
 
-export default function EngineOil() {
+export default function SecurityLock() {
 	const [productInfo] = useState<any[]>([
 		{
 			_id: 1,
-			image:
-				'https://lh3.googleusercontent.com/proxy/EhHXapeVpBGtBqpqVNe8gNZPRL7XH9QizSm2nOGV_Jm83Tt96zGkFvQxDqFjGPJ4BLl86cokG5FmJsP3FSepwELbDJBj6CQf7pdeoHIlaVEfwRQ0Y7-q9EShJARwMLwUxIaXEw',
+			image: 'https://m.media-amazon.com/images/I/619gZm-kxoL._AC_SL1000_.jpg',
 			title: 'Motul',
 			price: 1200,
 			available: 10,
 		},
 		{
 			_id: 2,
-			image:
-				'https://lh3.googleusercontent.com/proxy/EhHXapeVpBGtBqpqVNe8gNZPRL7XH9QizSm2nOGV_Jm83Tt96zGkFvQxDqFjGPJ4BLl86cokG5FmJsP3FSepwELbDJBj6CQf7pdeoHIlaVEfwRQ0Y7-q9EShJARwMLwUxIaXEw',
+			image: 'https://m.media-amazon.com/images/I/619gZm-kxoL._AC_SL1000_.jpg',
 			title: 'Motul',
 			price: 1200,
 			available: 10,
 		},
 		{
 			_id: 3,
-			image:
-				'https://lh3.googleusercontent.com/proxy/EhHXapeVpBGtBqpqVNe8gNZPRL7XH9QizSm2nOGV_Jm83Tt96zGkFvQxDqFjGPJ4BLl86cokG5FmJsP3FSepwELbDJBj6CQf7pdeoHIlaVEfwRQ0Y7-q9EShJARwMLwUxIaXEw',
+			image: 'https://m.media-amazon.com/images/I/619gZm-kxoL._AC_SL1000_.jpg',
 			title: 'Motul',
 			price: 1200,
 			available: 10,
@@ -43,7 +40,7 @@ export default function EngineOil() {
 							price: item?.price,
 						}}
 						onDetailsButtonClick={() => {
-							navigate(`${PUBLIC_ROUTE.ENGINE_OIL}/${item?._id}`);
+							navigate(`${PUBLIC_ROUTE.SECURITY_LOCK}/${item?._id}`);
 						}}
 					/>
 				</Col>

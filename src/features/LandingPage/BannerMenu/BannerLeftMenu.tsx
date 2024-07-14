@@ -61,7 +61,7 @@ export default function BannerLeftMenu(props: PropTypes) {
 
 		getItem('Engine Oil', 'engine_oil', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.ENGINE_OIL)),
 		// getItem('Looking Glass', 'looking_glass'),
-		getItem('Lock & Security', 'lock'),
+		getItem('Lock & Security', 'lock', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.SECURITY_LOCK)),
 
 		getItem('Electronics', 'electronics', null, [
 			getItem('Communicator', '9'),

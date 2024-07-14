@@ -17,6 +17,8 @@ export const PUBLIC_ROUTE = {
 	HELMET_ACCESSORIES_DETAILS: '/categories/helmet/helmet-accessories/:id',
 	ENGINE_OIL: '/categories/engine-oil',
 	ENGINE_OIL_DETAILS: '/categories/engine-oil/:id',
+	SECURITY_LOCK: '/categories/security-lock',
+	SECURITY_LOCK_DETAILS: '/categories/security-lock/:id',
 };
 
 export const PRIVATE_ROUTE = {
