@@ -19,6 +19,8 @@ export const PUBLIC_ROUTE = {
 	ENGINE_OIL_DETAILS: '/categories/engine-oil/:id',
 	SECURITY_LOCK: '/categories/security-lock',
 	SECURITY_LOCK_DETAILS: '/categories/security-lock/:id',
+	BACK_PACK: '/categories/back-pack',
+	BACK_PACK_DETAILS: '/categories/back-pack/:id',
 };
 
 export const PRIVATE_ROUTE = {

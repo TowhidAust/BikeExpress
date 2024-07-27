@@ -25,6 +25,8 @@ const HelmetAccessoriesPage = lazy(() => import('@/pages/Products/Helmet/HelmetA
 const HelmetAccessoriesDetailsPage = lazy(() => import('@/pages/Products/Helmet/HelemtAccessoriesDetailsPage'));
 const SecurityLockPage = lazy(() => import('@/pages/Products/SecurityLock/SecurityLockPage'));
 const SecurityLockDetailsPage = lazy(() => import('@/pages/Products/SecurityLock/SecurityLockDetailsPage'));
+const BackPackPage = lazy(() => import('@/pages/Products/BackPack/BackPackPage'));
+const BackPackDetailsPage = lazy(() => import('@/pages/Products/BackPack/BackPackDetailsPage'));
 
 // Admins
 const DashboardLayout = lazy(() => import('@/components/Layout/DashboardLayout'));
@@ -91,6 +93,14 @@ export default function AppRoutes() {
 		{
 			path: PUBLIC_ROUTE.SECURITY_LOCK,
 			component: SecurityLockPage,
+		},
+		{
+			path: PUBLIC_ROUTE.BACK_PACK,
+			component: BackPackPage,
+		},
+		{
+			path: PUBLIC_ROUTE.BACK_PACK_DETAILS,
+			component: BackPackDetailsPage,
 		},
 		{
 			path: PUBLIC_ROUTE.SECURITY_LOCK_DETAILS,

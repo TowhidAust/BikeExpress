@@ -71,9 +71,10 @@ export default function BannerLeftMenu(props: PropTypes) {
 		]),
 
 		getItem('Back & Pack', 'backpack', null, [
-			getItem('Wallet', '5'),
-			getItem('Backpack', '6'),
-			getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
+			getItem('Back Pack', 'back_pack', undefined, undefined, undefined, () => navigate(PUBLIC_ROUTE.BACK_PACK)),
+			getItem('Wallet', 'wallet'),
+			getItem('Document Holder', 'docs_holder'),
+			// getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
 		]),
 
 		getItem('Riding Gears', 'riding_gears', null, [
