@@ -83,7 +83,35 @@ export default function BannerLeftMenu(props: PropTypes) {
 			getItem('Shoes', 'shoes'),
 			getItem('Rain Coat', 'rain_coat'),
 		]),
-
+		getItem('Engine Components', 'engine_components', null, [
+			getItem('Cylinder Head', 'cylinder_head'),
+			getItem('Piston', 'piston'),
+			getItem('Crankshaft', 'crankshaft'),
+			getItem('Camshaft', 'camshaft'),
+			getItem('Valves', 'valves'),
+			getItem('Spark Plugs', 'spark_plugs'),
+			getItem('Carburetor', 'carburetor'),
+			getItem('Fuel Injectors', 'fuel_injectors'),
+			getItem('Exhaust System', 'exaust_system'),
+			getItem('Air Filter', 'air_filter'),
+		]),
+		getItem('Transmission and Drivetrain', 'transmission_drivetrain', null, [
+			getItem('Clutch', 'clutch'),
+			getItem('Gearbox', 'gearbox'),
+			getItem('Drive Chain/Belt', 'drive_chain'),
+			getItem('Sprockets', 'sprockets'),
+			getItem('Transmission Oil', 'transmission_oil'),
+			getItem('Final Drive', 'final_drive'),
+		]),
+		getItem('Suspension and Steering', 'suspension_steering', null, [
+			getItem('Front Fork', 'front_fork'),
+			getItem('Rear Shock Absorber', 'rear_shock_absorber'),
+			getItem('Swingarm', 'swingarm'),
+			getItem('Steering Stem', 'steering_stem'),
+			getItem('Triple Tree', 'triple_tree'),
+			getItem('Handlebars', 'handlebars'),
+			getItem('Steering Damper', 'steering_damper'),
+		]),
 		getItem('Accessories', 'accessories', null, [
 			getItem('Looking Glass', 'looking_glass'),
 			getItem('Horn', 'horn'),
@@ -114,7 +142,7 @@ export default function BannerLeftMenu(props: PropTypes) {
 	return (
 		<Menu
 			className="pt-5 pb-5 app-border-radius"
-			style={{ height: !insideDrawer ? '450px' : 'unset', overflow: 'auto' }}
+			style={{ height: !insideDrawer ? '500px' : 'unset', overflow: 'auto' }}
 			mode={window.innerWidth > 768 && !insideDrawer ? 'vertical' : 'inline'}
 			openKeys={openKeys}
 			onOpenChange={onOpenChange}
